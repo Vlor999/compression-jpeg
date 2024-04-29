@@ -6,8 +6,8 @@
 
 double calcul_dct(Mcu *m,uint8_t i, uint8_t j){
     double somme = 0;
-    for (int x=0;x<8;x++){
-        for (int y=0;y<8;y++){
+    for (uint8_t x=0;x<8;x++){
+        for (uint8_t y=0;y<8;y++){
             int8_t tmp = (m -> tab)[x][y] - 128;
             somme += tmp*cos((2*x+1)*i*M_PI/16)*cos((2*y+1)*j*M_PI/16);
         }
@@ -26,9 +26,9 @@ double calcul_dct(Mcu *m,uint8_t i, uint8_t j){
 
 double **dct(Mcu *m){ //COMMENT IMPLEMENTER ??
     double **res = (double**)malloc(8*sizeof(double*));
-    for (int i=0;i<8;i++){
+    for (uint8_t i=0;i<8;i++){
         res[i]=(double*)malloc(8*sizeof(double));
-        for (int j=0;j<8;j++){
+        for (uint8_t j=0;j<8;j++){
             res[i][j] = calcul_dct(m,i,j);
             printf("%f ",res[i][j]);
         }
@@ -36,12 +36,12 @@ double **dct(Mcu *m){ //COMMENT IMPLEMENTER ??
     return res;
 }
 
-int main(){
+int main(){ //test 
     Mcu *m = (Mcu*)malloc(sizeof(Mcu));
     uint8_t **tab = (uint8_t**)malloc(8*sizeof(uint8_t*));
-    for (int i=0;i<8;i++){
+    for (uint8_t i=0;i<8;i++){
         tab[i]= (uint8_t*)malloc(8*sizeof(uint8_t));
-        for (int j=0;j<8;j++){
+        for (uint8_t j=0;j<8;j++){
             tab[i][j] = rand()%256;
         }
     }
