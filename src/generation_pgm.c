@@ -47,7 +47,7 @@ void* creation_valeur_aleatoire(void * s, size_t taille)
  
     for(size_t i = 0; i < taille; i+=1)
     {
-        chaine[i] = (unsigned char)(rand() % 2 + '0'); // on remplit la chaine avec des valeurs aléatoires
+        chaine[i] = (unsigned char)(rand() % 256 + '0'); // on remplit la chaine avec des valeurs aléatoires
     }
     chaine[taille] = '\0';
     return s;
@@ -70,9 +70,9 @@ void ajout_entete(FILE *fichier)
     /*
     Création de l'en-tête du fichier pgm
     */
-    fprintf(fichier, "P2\n");
+    fprintf(fichier, "P5\n");
     fprintf(fichier, "8 8\n");
-    fprintf(fichier, "1\n");
+    fprintf(fichier, "255\n");
 }
 
 char* donne_nom( uint16_t numero, bool aleatoire)
@@ -140,11 +140,12 @@ int main(void)
 {
     /*
     Ici on génère des images de taille 8x8 avec des valeurs aléatoires
-    le nombre d'images générées est définie par la taille donnée ci-dessous
+    le nombre d'images générées est définie par la variable nombre donnée ci-dessous
     on choisit soit de faire des tests aléatoires ou non. 
     */
+    uint16_t nombre = 2;
     uint16_t taille = 64;
     bool alea = true;
-    generation_pgm(alea, taille, 2);
+    generation_pgm(alea, taille, nombre);
     return 0;
 }

@@ -26,3 +26,4 @@ obj/%.o: src/%.c
 
 clean:
 	rm -rf ppm2jpeg $(OBJ_FILES)
+	rm -rf src/*.o
