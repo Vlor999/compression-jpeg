@@ -6,9 +6,9 @@
 #include <stdlib.h>
 
 typedef struct Triplet_RGB{
-    int8_t R;
-    int8_t G;
-    int8_t B;
+    uint8_t R;
+    uint8_t G;
+    uint8_t B;
 }Triplet_RGB;
 
 typedef struct Triplet_Y{
@@ -36,6 +36,6 @@ Triplet_Y conversionRGB(Triplet_RGB pixel);
  * @return une matrice qui contient les YCbCr correspondants 
  */
 
-Triplet_Y **conversiontotale(imagePGM *img);
+Triplet_Y** conversionRGB_2_VCrCb(imagePGM *image);
 
 #endif

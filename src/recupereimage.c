@@ -15,7 +15,7 @@
 
 
 imagePGM* recupereimage(char* file){
-    imagePGM* image;
+    imagePGM* image = malloc(sizeof(imagePGM));
     FILE* fichier_PGM = fopen(file, "rb"); //on lit binaire d'où le rb
     if (fichier_PGM ==NULL){
         perror("fichier n'existe pas");
@@ -24,7 +24,7 @@ imagePGM* recupereimage(char* file){
     char premiere_ligne[3];
     fgets(premiere_ligne, sizeof(premiere_ligne), fichier_PGM); // on passe la première ligne avec la version
     fscanf(fichier_PGM, "%d %d", &image->ligne,&image->col); //on recupere le nb de colonne et ligne
-    fscanf(fichier_PGM, "%d", &image->max); // on recupere le niveau max de gris
+    fscanf(fichier_PGM, "%hhd", &image->max); // on recupere le niveau max de gris
 
     image->tab = malloc(sizeof(uint8_t*)*image->col); //on va initialiser la matrice
     if (image->tab ==NULL){

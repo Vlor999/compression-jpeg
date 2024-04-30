@@ -13,32 +13,41 @@ Triplet_Y conversionRGB(Triplet_RGB pixel){
     return pixel_YCbCr;
 }
 
-Triplet_Y **conversiontotale(imagePGM *img){
-    Triplet_RGB val;
-    Triplet_Y val_Y;
-    Triplet_Y** tab = malloc((img -> col)*sizeof(Triplet_Y*));
-    printf("nirugrigre\n");
-    for (int i= 0; i < img -> col; i++){
-        tab[i] = malloc((img -> ligne)*sizeof(Triplet_Y));
-        for (int j = 0; j < img -> ligne; j ++){
-            val.R = img->tab[i][j];
-            val.G = img->tab[i][j];
-            val.B = img->tab[i][j];
-            val_Y = conversionRGB(val);
-            tab[i][j] = val_Y;
+Triplet_Y** conversionRGB_2_VCrCb(imagePGM *image)
+{
+    Triplet_RGB pixel;
+    Triplet_Y pixel_YCbCr;
+
+    int taille_ligne = image->ligne;
+    int taille_col = image->col;
+
+    Triplet_Y **tab_YCbCr = malloc(taille_ligne * sizeof(Triplet_Y *));
+    
+    for (int lig = 0; lig < taille_ligne; lig++)
+    {
+        tab_YCbCr[lig] = malloc(taille_col * sizeof(Triplet_Y));
+        for (int col = 0; col < taille_col; col++)
+        {
+            pixel.R = image->tab[lig][col];
+            pixel.G = image->tab[lig][col];
+            pixel.B = image->tab[lig][col];
+            pixel_YCbCr = conversionRGB(pixel);
+            tab_YCbCr[lig][col] = pixel_YCbCr;
         }
     }
-    for (int i= 0; i < img->ligne; i++){
-        for (int j = 0; j < img->col; j ++){
-            printf("%f",tab[i][j].Y);
-            printf("%f",tab[i][j].Y);
-            printf("%f",tab[i][j].Y);
-            
-        }
-        printf("\n");
-    }
-    return tab;
+    return tab_YCbCr;
 }
 
-
+// int main(){
+//     imagePGM* image = recupereimage("../images/invader.pgm");
+//     Triplet_Y** new_image = conversionRGB_2_VCrCb(image);
+//     for (int i = 0; i < image->ligne; i++)
+//     {
+//         for (int j = 0; j < image->col; j++)
+//         {
+//             printf("Y: %f, Cb: %f, Cr: %f\n", new_image[i][j].Y, new_image[i][j].Cb, new_image[i][j].Cr);
+//         }
+//     }
+//     return 0;
+// }
 

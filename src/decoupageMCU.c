@@ -60,8 +60,3 @@ Mcu *decoupage(imagePGM *img)
     return matrice;
     // }
 }
-
-int main(){
-
-    return 0;
-}

@@ -5,8 +5,8 @@
 
 #define M_PI  3.14159265358979323846
 
-double calcul_dct(Mcu *m, uint8_t i, uint8_t j){
-    double somme = 0;
+uint16_t calcul_dct(Mcu *m, uint8_t i, uint8_t j){
+    uint16_t somme = 0;
     for (uint8_t x=0;x<8;x++){
         for (uint8_t y=0;y<8;y++){
             int8_t tmp = (m -> tab)[x][y] - 128;
@@ -25,10 +25,10 @@ double calcul_dct(Mcu *m, uint8_t i, uint8_t j){
     }
 }
 
-double **dct(Mcu *m){ //COMMENT IMPLEMENTER ??
-    double **res = (double**)malloc(8*sizeof(double*));
+uint16_t **dct(Mcu *m){ //COMMENT IMPLEMENTER ??
+    uint16_t **res = (uint16_t**)malloc(8*sizeof(uint16_t*));
     for (uint8_t i=0;i<8;i++){
-        res[i]=(double*)malloc(8*sizeof(double));
+        res[i]=(uint16_t*)malloc(8*sizeof(uint16_t));
         for (uint8_t j=0;j<8;j++){
             res[i][j] = calcul_dct(m,i,j);
             printf("%f ",res[i][j]);
@@ -47,7 +47,7 @@ double **dct(Mcu *m){ //COMMENT IMPLEMENTER ??
 //         }
 //     }
 //     m -> tab = tab;
-//     double **res = dct(m);
+//     uint16_t **res = dct(m);
 
 
 //     for (int i=0;i<8;i++){

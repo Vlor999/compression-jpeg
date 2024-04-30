@@ -91,15 +91,6 @@ void generation_pgm(bool aleatoire, uint8_t taille, uint16_t nb_images)
     creation_meme_valeur(FIN, '1', taille); // la valeur de fin est remplie de 1
 
     char debut[taille + 1]; // On choisit entre une valeur initale aléatoire ou non
-    if(aleatoire == true)
-    {
-        creation_valeur_aleatoire(debut, taille);
-        printf("valeur aléatoire : %d\n", debut);
-    }
-    else
-    {
-        creation_meme_valeur(debut, '0', taille);
-    }
 
     FILE *fichier = NULL;
     uint16_t compteur = 0;
@@ -115,18 +106,17 @@ void generation_pgm(bool aleatoire, uint8_t taille, uint16_t nb_images)
 
         ajout_entete(fichier); // on ajoute l'en-tête du fichier
 
-        afficher(debut, taille, fichier); // on ajoute les valeurs de la chaine de caractère dans le fichier
         if (aleatoire) // On change la valeur en focntion de si elle est aléatoire ou non
         {
             creation_valeur_aleatoire(debut, taille); 
-            printf("valeur aléatoire : %d\n", debut);
-            
         }
         else
         {
             ajout(debut, taille);
         }
 
+        afficher(debut, taille, fichier); // on ajoute les valeurs de la chaine de caractère dans le fichier
+        
         fclose(fichier);// on ferme le fichier
 
         compteur++;
@@ -146,7 +136,7 @@ int main(void)
     on choisit soit de faire des tests aléatoires ou non. 
     */
     srand((unsigned int)time(NULL));
-    uint16_t nombre = 2;
+    uint16_t nombre = 3;
     uint8_t taille = 64;
     bool alea = true;
     generation_pgm(alea, taille, nombre);

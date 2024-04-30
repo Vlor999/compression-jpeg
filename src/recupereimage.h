@@ -7,7 +7,7 @@
 struct imagePGM{
     int32_t col;
     int32_t ligne;
-    int32_t max;
+    int8_t max;
     uint8_t** tab;
 };
 typedef struct imagePGM imagePGM;
