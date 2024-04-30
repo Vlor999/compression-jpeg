@@ -30,11 +30,10 @@ void* creation_meme_valeur(void * s, int c, size_t taille)
     */
     unsigned char* chaine = (unsigned char *) s;
  
-    for(size_t i = 0; i < taille; i+=1)
+    for(size_t i = 0; i <= taille; i+=1)
     {
         chaine[i] = (unsigned char)c; // on remplit la chaine avec la valeur c afin d'avoir une image avec une seule valeur
     }
-    chaine[taille] = '\0'; // on ajoute le caractère de fin de chaine
     return s;
 }
 
@@ -48,9 +47,8 @@ void* creation_valeur_aleatoire(void * s, size_t taille)
  
     for(size_t i = 0; i < taille; i+=1)
     {
-        chaine[i] = (unsigned char)(rand() % 256 ); // on remplit la chaine avec des valeurs aléatoires
+        chaine[i] = rand()% 256; // on remplit la chaine avec des valeurs aléatoires
     }
-    chaine[taille] = '\0';
     return s;
 }
 
@@ -96,6 +94,7 @@ void generation_pgm(bool aleatoire, uint8_t taille, uint16_t nb_images)
     if(aleatoire == true)
     {
         creation_valeur_aleatoire(debut, taille);
+        printf("valeur aléatoire : %d\n", debut);
     }
     else
     {
@@ -120,6 +119,8 @@ void generation_pgm(bool aleatoire, uint8_t taille, uint16_t nb_images)
         if (aleatoire) // On change la valeur en focntion de si elle est aléatoire ou non
         {
             creation_valeur_aleatoire(debut, taille); 
+            printf("valeur aléatoire : %d\n", debut);
+            
         }
         else
         {
@@ -144,7 +145,7 @@ int main(void)
     le nombre d'images générées est définie par la variable nombre donnée ci-dessous
     on choisit soit de faire des tests aléatoires ou non. 
     */
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     uint16_t nombre = 2;
     uint8_t taille = 64;
     bool alea = true;

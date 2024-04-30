@@ -4,9 +4,10 @@
 #include "recupereimage.h"
 #include "conversionRGB.h"
 
-int main(){
+int main(void)
+{
     imagePGM* image = recupereimage("our_images/alea_image0.pgm");
-    Triplet_Y** tab;
+    Triplet_Y** tab = malloc(image->ligne * sizeof(Triplet_Y*));
     for (int i= 0; i < image->ligne; i++){
         for (int j = 0; j < image->col; j ++){
             Triplet_RGB val;
