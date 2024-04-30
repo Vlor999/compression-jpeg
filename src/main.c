@@ -55,6 +55,20 @@ int main(){
     Mcu* img_Cb_MCU = decoupage(&PGM_Cb);
     Mcu* img_Cr_MCU = decoupage(&PGM_Cr);
 
+    uint16_t** img_Y_DCT = dct(img_Y_MCU);
+    uint16_t** img_Cb_DCT = dct(img_Cb_MCU);
+    uint16_t** img_Cr_DCT = dct(img_Cr_MCU);
+
+    printf("---------------------\n");
+    printf("Images DCT Y : \n");
+    for(uint16_t i = 0; i < img_Y_MCU->colonne; i++)
+    {
+        for(uint16_t j = 0; j < img_Y_MCU->ligne; j++)
+        {
+            printf("%x\t", img_Y_DCT[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 

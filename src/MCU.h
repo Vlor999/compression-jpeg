@@ -32,7 +32,7 @@ Mcu *decoupage(imagePGM *tab);
     *  @brief libère la mémoire
     *  @param la tete de liste chainée
 */
-void free_decouapge(Mcu *m);
+void free_decoupage(Mcu *m);
 
 
 #endif
