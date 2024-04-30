@@ -26,6 +26,7 @@ int16_t calcul_dct(Mcu *m, uint8_t i, uint8_t j)
     else{
         somme = somme;
     }
+
     return (int16_t)somme;
     
 }
