@@ -4,10 +4,19 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-uint8_t trouver_magnetude(uint32_t n){
+
+
+uint8_t trouver_magnetude(int32_t n){
     int64_t nombre=1;
+    uint16_t n2; //on prend la valeur absolue sinon LES PROBLEMES 
+    if (n<0){
+        n2=-n;
+    }
+    else{
+        n2=n;
+    }
     for (uint8_t k=0;k<12;k++){
-        if (nombre-1 >= n && -(nombre-1) <= n){
+        if (nombre-1 >= n2){
             return k;
         }
         nombre = nombre * 2;
@@ -15,17 +24,6 @@ uint8_t trouver_magnetude(uint32_t n){
     perror("C'est trop grand chacal t'abuses \n");
 }
 
-
-
-// int main(){
-//     printf("%d\n",trouver_magnetude(77));
-//     printf("%d\n",trouver_magnetude(0));
-//     printf("%d\n",trouver_magnetude(1));
-//     printf("%d\n",trouver_magnetude(-150));
-//     printf("%d\n",trouver_magnetude(2000));
-//     printf("%d\n",trouver_magnetude(-2000));
-//     printf("%d\n",trouver_magnetude(14154511));
-// }
 
 uint8_t* codage_AC_RLE(uint16_t* tab){  
     uint8_t* tab_RLE = malloc(sizeof(uint8_t)*64);
@@ -49,6 +47,44 @@ uint8_t* codage_AC_RLE(uint16_t* tab){
 }
 
 
+uint8_t *codage_dc_tete(int32_t n){
+    
+    uint8_t magn = trouver_magnetude(n);
+    int64_t nombre = 1;
+    uint64_t res;
+    int64_t tmp;
+    uint8_t *tab;
+    for (uint8_t k = 0;k<magn;k++){
+        nombre = nombre * 2;   
+    }
+    nombre = nombre - 1;
+    printf("nombre %ld \n", nombre );
+    if (n==0){
+        tab = malloc(sizeof(uint8_t));
+        tab[0]=0; 
+    }
+    else if (n<0){
+        res = (nombre + n) ;
+    }
+    else{
+        tmp = ((int64_t) ((nombre+1) / 2));
+        res = (nombre - tmp + 1) + (n - tmp); //les négatifs puis les positifs, on compte tous ceux qui sont avant
+    }
+    printf("res %ld ",res);
+    //on transforme res en binaire
+    // on a magn qui nous dit sur combien de bits on code res  
+    tab = malloc(magn*sizeof(uint8_t));
+    for (uint8_t i=0;i<magn;i++){
+        tab[magn-i-1]= res%2;
+        res = res/2;
+    }
+    for (uint8_t i=0;i<magn;i++){
+        printf("%d ",tab[i]);
+    }
+    return tab;
+}
+
+
 int main(){
     uint16_t tab[64] = {-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
     uint8_t* tab_rle = codage_AC_RLE(&tab);
@@ -56,5 +92,8 @@ int main(){
         printf("%02x ", tab_rle[i]);
     }
     printf("\n");
-    printf("%u",trouver_magnetude(-1));
+
+    printf("%d\n",trouver_magnetude(-1));
+    uint8_t *t = codage_dc_tete(-23);
+    return 0;
 }

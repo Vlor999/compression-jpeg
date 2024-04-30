@@ -19,3 +19,12 @@ uint8_t trouver_magnetude(uint32_t n);
  * **/
 
 uint8_t* codage_AC_RLE(uint16_t* tab);
+
+/*
+* @brief trouve le codage dc associé
+* @entree n l entier choisi 
+* @sortie le code dc 
+*/
+
+
+uint8_t *codage_dc_tete(int32_t n);
