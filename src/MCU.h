@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdint.h>
+#include "recupereimage.h"
 
 struct Mcu{
     uint8_t **tab; //tableau qui contient tous degrés de gris  
@@ -22,7 +23,7 @@ uint32_t entier_superieur(uint32_t l);
     *  @param la matrice des pixels
     *  @return les MCUs sous forme de liste chainee, la valeur renvoyée étant la tete
 */
-Mcu *decoupage(int8_t **tab);
+Mcu *decoupage(imagePGM *tab);
 
 
 /*

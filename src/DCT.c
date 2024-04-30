@@ -4,7 +4,7 @@
 
 #define M_PI  3.14159265358979323846
 
-double calcul_dct(Mcu *m,uint8_t i, uint8_t j){
+double calcul_dct(Mcu *m, uint8_t i, uint8_t j){
     double somme = 0;
     for (uint8_t x=0;x<8;x++){
         for (uint8_t y=0;y<8;y++){
