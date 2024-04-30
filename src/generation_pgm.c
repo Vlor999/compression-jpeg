@@ -44,12 +44,11 @@ void* creation_valeur_aleatoire(void * s, size_t taille)
     Fonction assez similaire sauf q'ici on remplit la chaine avec des valeurs aléatoires
     Chaque valeur est soit 0 ou 1
     */
-    srand(time(NULL));
     unsigned char* chaine = (unsigned char *) s;
  
     for(size_t i = 0; i < taille; i+=1)
     {
-        chaine[i] = (unsigned char)(rand() % 256 + '0'); // on remplit la chaine avec des valeurs aléatoires
+        chaine[i] = (unsigned char)(rand() % 256 ); // on remplit la chaine avec des valeurs aléatoires
     }
     chaine[taille] = '\0';
     return s;
@@ -145,6 +144,7 @@ int main(void)
     le nombre d'images générées est définie par la variable nombre donnée ci-dessous
     on choisit soit de faire des tests aléatoires ou non. 
     */
+    srand(time(NULL));
     uint16_t nombre = 2;
     uint8_t taille = 64;
     bool alea = true;
