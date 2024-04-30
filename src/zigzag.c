@@ -163,32 +163,3 @@ double* zigzag_matrice1(double** matrice)
 
 
 
-double* codage_RLE(double* tab){
-    double* tab_RLE = malloc(sizeof(double)*64);
-    int8_t indice = 1;
-    int8_t nb_zero = 0;
-    for (int8_t i = 0; i<64; i++){
-        if (tab[i] == 0){
-            nb_zero ++;
-        }
-        else{
-            if (nb_zero > 0){
-                tab_RLE[indice] = nb_zero;
-                indice ++;
-                tab_RLE[indice] = 0;
-                indice ++;
-            }
-            tab_RLE[indice] = tab[i];
-            indice ++;
-            nb_zero = 0;
-        }
-    }
-    if (nb_zero > 0){
-                tab_RLE[indice] = nb_zero;
-                indice ++;
-                tab_RLE[indice] = 0;
-            }
-    tab_RLE[0] = indice +1; // l'indice 0 est la taille du tableau qui suit
-    tab_RLE = realloc(tab_RLE, sizeof(double)*(indice +2));
-    return tab_RLE;
-}
