@@ -1,0 +1,11 @@
+POUR DEFINIR UN FICHIER.h POUR EVITER TOUS LES PROBLEMES D INCLUSION : 
+
+
+#ifndef _NOMFICHIER_H
+#define _NOMFICHIER_H
+
+//blablabla
+
+
+#endif
+

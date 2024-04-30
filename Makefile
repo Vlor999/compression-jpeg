@@ -1,4 +1,4 @@
-CC = gcc
+CC = gcc -lm
 LD = gcc
 
 # -O0 désactive les optimisations à la compilation
