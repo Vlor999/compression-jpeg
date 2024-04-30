@@ -1,14 +1,9 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "conversionRGB.h"
+#include "recupereimage.h"
+#include <stdlib.h>
 
-
-/**
- * @brief fais conversion de RGB vers YCbCr
- *
- * @param pixel triplet_RGB qui correspond à 1 seul pixel, il faut donc appliquer la fonction sur tous les pixels
- * @return pixel au format YCbCr ou les parametre du triplet (Y, Cb, Cr) sont des floats
- */
 
 Triplet_Y conversionRGB(Triplet_RGB pixel){
     Triplet_Y pixel_YCbCr;
@@ -17,5 +12,33 @@ Triplet_Y conversionRGB(Triplet_RGB pixel){
     pixel_YCbCr.Cr = 0.5* pixel.R - 0.4187 * pixel.G - 0.0813*pixel.B + 128;
     return pixel_YCbCr;
 }
+
+Triplet_Y **conversiontotale(imagePGM *img){
+    Triplet_RGB val;
+    Triplet_Y val_Y;
+    Triplet_Y** tab = malloc((img -> col)*sizeof(Triplet_Y*));
+    printf("nirugrigre\n");
+    for (int i= 0; i < img -> col; i++){
+        tab[i] = malloc((img -> ligne)*sizeof(Triplet_Y));
+        for (int j = 0; j < img -> ligne; j ++){
+            val.R = img->tab[i][j];
+            val.G = img->tab[i][j];
+            val.B = img->tab[i][j];
+            val_Y = conversionRGB(val);
+            tab[i][j] = val_Y;
+        }
+    }
+    for (int i= 0; i < img->ligne; i++){
+        for (int j = 0; j < img->col; j ++){
+            printf("%f",tab[i][j].Y);
+            printf("%f",tab[i][j].Y);
+            printf("%f",tab[i][j].Y);
+            
+        }
+        printf("\n");
+    }
+    return tab;
+}
+
 
 

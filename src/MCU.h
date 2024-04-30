@@ -1,3 +1,5 @@
+#ifndef _MCU_H
+#define _MCU_H
 #include <stdlib.h>
 #include <stdint.h>
 #include "recupereimage.h"
@@ -32,3 +34,5 @@ Mcu *decoupage(imagePGM *tab);
 */
 void free_decouapge(Mcu *m);
 
+
+#endif

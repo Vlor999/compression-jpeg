@@ -1,4 +1,7 @@
+#ifndef _DCT_H
+#define _DCT_H
 #include "MCU.h"
+
 #include <stdint.h>
 
 /*
@@ -16,3 +19,5 @@ double calcul_dct(Mcu *m,uint32_t i, uint32_t j);
 */
 
 double **dct(Mcu *m);
+
+#endif

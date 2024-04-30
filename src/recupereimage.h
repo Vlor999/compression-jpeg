@@ -1,12 +1,24 @@
+#ifndef _RECUPEREIMAGE_H
+#define _RECUPEREIMAGE_H
 #include <stdio.h>
 #include <stdint.h>
 
 
-typedef struct imagePGM{
+struct imagePGM{
     int32_t col;
     int32_t ligne;
     int32_t max;
     uint8_t** tab;
-}imagePGM;
+};
+typedef struct imagePGM imagePGM;
 
-imagePGM* recupereimage(char* file);
+/*
+ * @brief recupere l'image au format pgm 
+ *
+ * @param file nom du fichier pgm
+ * @return image de type imagePGM
+*/
+
+imagePGM *recupereimage(char* file);
+
+#endif

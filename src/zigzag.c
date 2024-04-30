@@ -131,31 +131,31 @@ double* zigzag_matrice1(double** matrice)
     return zigzag;
 }
 
-int main(void)
-{
-    double** matrice = malloc(8 * sizeof(double*));
-    for (int i = 0; i < 8; i++)
-    {
-        matrice[i] = malloc(8 * sizeof(double));
-    }
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 8; j++)
-        {
-            matrice[i][j] = i * 8 + j;
-            printf("%f ", matrice[i][j]);
-        }
-        printf("\n");
-    }
-    double* zigzag = zigzag_matrice(matrice);
-    for (int i = 0; i < 64; i++)
-    {
-        printf("%f\n", zigzag[i]);
-    }
-    free(zigzag);
-    for (int i = 0; i < 8; i++)
-    {
-        free(matrice[i]);
-    }
-    return 0;
-}
+// int main(void)
+// {
+//     double** matrice = malloc(8 * sizeof(double*));
+//     for (int i = 0; i < 8; i++)
+//     {
+//         matrice[i] = malloc(8 * sizeof(double));
+//     }
+//     for (int i = 0; i < 8; i++)
+//     {
+//         for (int j = 0; j < 8; j++)
+//         {
+//             matrice[i][j] = i * 8 + j;
+//             printf("%f ", matrice[i][j]);
+//         }
+//         printf("\n");
+//     }
+//     double* zigzag = zigzag_matrice(matrice);
+//     for (int i = 0; i < 64; i++)
+//     {
+//         printf("%f\n", zigzag[i]);
+//     }
+//     free(zigzag);
+//     for (int i = 0; i < 8; i++)
+//     {
+//         free(matrice[i]);
+//     }
+//     return 0;
+// }
