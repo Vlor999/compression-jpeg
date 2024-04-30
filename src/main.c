@@ -8,7 +8,7 @@
 
 
 int main(){
-    imagePGM *img = recupereimage("src/our_images/alea_image1.pgm"); // cest bon 
+    imagePGM *img = recupereimage("our_images/alea_image1.pgm"); // cest bon 
     printf("unrignerigreughre\n");
     for (int i= 0; i < img->col; i++){
         for (int j = 0; j < img->ligne; j ++){
@@ -16,10 +16,10 @@ int main(){
         }
         printf("\n");
     }
-    Triplet_RGB r;
-    r.G = 11;
-    r.B = 10;
-    r.R = 10;
+    Triplet_RGB* r;
+    r->G = 11;
+    r->B = 10;
+    r->R = 10;
     //Triplet_Y y = conversionRGB(r);
     // printf("%f %f %f\n", y.Y,y.Cb,y.Cr);
     //Triplet_Y **triplet_y = conversiontotale(img);
