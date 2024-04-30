@@ -17,3 +17,5 @@ Triplet_Y conversionRGB(Triplet_RGB pixel){
     pixel_YCbCr.Cr = 0.5* pixel.R - 0.4187 * pixel.G - 0.0813*pixel.B + 128;
     return pixel_YCbCr;
 }
+
+

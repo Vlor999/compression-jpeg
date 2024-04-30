@@ -40,9 +40,22 @@ imagePGM* recupereimage(char* file){
     }
     //fin de l'initialisation de la matrice
 
+    fgetc(fichier_PGM);
     for (int32_t i = 0; i < image->ligne; i++){
         fread(image->tab[i],sizeof(uint8_t), image->col, fichier_PGM); // on rcrit valeur binaire dans tableau
     }
     fclose(fichier_PGM);
     return image;
+}
+
+
+int main(){
+    imagePGM* image = recupereimage("our_images/alea_image1.pgm");
+    for (int i= 0; i < image->ligne; i++){
+        for (int j = 0; j < image->col; j ++){
+            printf("%d ", image->tab[i][j]);   
+        }
+        printf("\n");
+    }
+    return 0;
 }
