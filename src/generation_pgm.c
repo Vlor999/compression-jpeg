@@ -11,7 +11,10 @@ char *ajout(char *chaine, uint16_t taille)
     On ajoute 1 en binaire à la chaine de caractère
     */
     int i = taille - 1;
-    while (i >= 0 && chaine[i] == '1')// on cherche le premier 0 en partant de la fin en s'assurant que nous somme dans les limites de la chaine
+    while (i >= 0 && chaine[i] == '1')
+    /*
+    on cherche le premier 0 en partant de la fin en s'assurant que nous somme dans les limites de la chaine
+    */ 
     {
         chaine[i] = '0'; // on remplace les 1 par des 0
         i--;
@@ -47,7 +50,7 @@ void* creation_valeur_aleatoire(void * s, size_t taille)
  
     for(size_t i = 0; i < taille; i+=1)
     {
-        chaine[i] = rand()% 256; // on remplit la chaine avec des valeurs aléatoires
+        chaine[i] = abs(rand()% 256); // on remplit la chaine avec des valeurs aléatoires
     }
     return s;
 }
@@ -57,10 +60,7 @@ void afficher(char *chaine, uint8_t taille, FILE* fichier)
     /*
     Renvoie dans le fichier les valeurs de la chaine de caractère
     */
-    for (uint16_t i = 0; i < taille; i++)
-    {
-        fprintf(fichier, "%c\n", chaine[i]);
-    }
+    fwrite(chaine, sizeof(unsigned char), taille, fichier);
     fprintf(fichier, "\n");
 }
 
@@ -91,6 +91,7 @@ void generation_pgm(bool aleatoire, uint8_t taille, uint16_t nb_images)
     creation_meme_valeur(FIN, '1', taille); // la valeur de fin est remplie de 1
 
     char debut[taille + 1]; // On choisit entre une valeur initale aléatoire ou non
+    creation_meme_valeur(debut, '0', taille);
 
     FILE *fichier = NULL;
     uint16_t compteur = 0;
