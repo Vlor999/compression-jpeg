@@ -131,47 +131,64 @@ double* zigzag_matrice1(double** matrice)
     return zigzag;
 }
 
-int main(void)
-{
-    double** matrice = malloc(8 * sizeof(double*));
-    for (int i = 0; i < 8; i++)
-    {
-        matrice[i] = malloc(8 * sizeof(double));
-    }
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 8; j++)
-        {
-            matrice[i][j] = i * 8 + j;
-            printf("%f ", matrice[i][j]);
-        }
-        printf("\n");
-    }
-    double* zigzag = zigzag_matrice(matrice);
-    for (int i = 0; i < 64; i++)
-    {
-        printf("%f\n", zigzag[i]);
-    }
-    free(zigzag);
-    for (int i = 0; i < 8; i++)
-    {
-        free(matrice[i]);
-    }
-    return 0;
-}
+// int main(void)
+// {
+//     double** matrice = malloc(8 * sizeof(double*));
+//     for (int i = 0; i < 8; i++)
+//     {
+//         matrice[i] = malloc(8 * sizeof(double));
+//     }
+//     for (int i = 0; i < 8; i++)
+//     {
+//         for (int j = 0; j < 8; j++)
+//         {
+//             matrice[i][j] = i * 8 + j;
+//             printf("%f ", matrice[i][j]);
+//         }
+//         printf("\n");
+//     }
+//     double* zigzag = zigzag_matrice(matrice);
+//     for (int i = 0; i < 64; i++)
+//     {
+//         printf("%f\n", zigzag[i]);
+//     }
+//     free(zigzag);
+//     for (int i = 0; i < 8; i++)
+//     {
+//         free(matrice[i]);
+//     }
+//     return 0;
+// }
+
+
 
 
 double* codage_RLE(double* tab){
-    double tab_RLE[64];
-    int8_t indice = 0;
+    double* tab_RLE = malloc(sizeof(double)*64);
+    int8_t indice = 1;
     int8_t nb_zero = 0;
     for (int8_t i = 0; i<64; i++){
-        if (tab[i] == (double) 0){
+        if (tab[i] == 0){
             nb_zero ++;
         }
         else{
+            if (nb_zero > 0){
+                tab_RLE[indice] = nb_zero;
+                indice ++;
+                tab_RLE[indice] = 0;
+                indice ++;
+            }
             tab_RLE[indice] = tab[i];
             indice ++;
+            nb_zero = 0;
         }
     }
+    if (nb_zero > 0){
+                tab_RLE[indice] = nb_zero;
+                indice ++;
+                tab_RLE[indice] = 0;
+            }
+    tab_RLE[0] = indice +1; // l'indice 0 est la taille du tableau qui suit
+    tab_RLE = realloc(tab_RLE, sizeof(double)*(indice +2));
+    return tab_RLE;
 }
