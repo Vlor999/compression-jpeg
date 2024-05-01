@@ -55,7 +55,7 @@ void* creation_valeur_aleatoire(void * s, size_t taille)
     return s;
 }
 
-void afficher(char *chaine, uint8_t taille, FILE* fichier)
+void afficher(char *chaine, uint32_t taille, FILE* fichier)
 {
     /*
     Renvoie dans le fichier les valeurs de la chaine de caractère
@@ -64,13 +64,13 @@ void afficher(char *chaine, uint8_t taille, FILE* fichier)
     fprintf(fichier, "\n");
 }
 
-void ajout_entete(FILE *fichier)
+void ajout_entete(FILE *fichier, uint16_t nb_ligne, uint16_t nb_colonne)
 {
     /*
     Création de l'en-tête du fichier pgm
     */
     fprintf(fichier, "P5\n");
-    fprintf(fichier, "8 8\n");
+    fprintf(fichier, "%d %d\n", nb_ligne, nb_colonne);
     fprintf(fichier, "255\n");
 }
 
@@ -81,11 +81,11 @@ char* donne_nom(uint16_t numero, bool aleatoire)
     */
     char* nom = malloc(100 * sizeof(char));
     char* est_aleatoire = aleatoire ? "alea_" : "pas_alea_";
-    sprintf(nom, "./our_images/%simage%d.pgm", est_aleatoire, numero);
+    sprintf(nom, "./images/our_images/%simage%d.pgm", est_aleatoire, numero);
     return nom;
 }
 
-void generation_pgm(bool aleatoire, uint8_t taille, uint16_t nb_images)
+void generation_pgm(bool aleatoire, uint32_t taille, uint16_t nb_images, uint16_t ligne, uint16_t colonne)
 {
     char FIN[taille + 1];
     creation_meme_valeur(FIN, '1', taille); // la valeur de fin est remplie de 1
@@ -103,9 +103,10 @@ void generation_pgm(bool aleatoire, uint8_t taille, uint16_t nb_images)
     {
         FILE *fichier = NULL;
         char* nom_ficher = donne_nom(compteur, aleatoire); // on donne un nom au fichier
+        printf("%s : %d/%d\n", nom_ficher, compteur + 1, nb_images);
         fichier = fopen(nom_ficher, "w"); // on ouvre le fichier en écriture
 
-        ajout_entete(fichier); // on ajoute l'en-tête du fichier
+        ajout_entete(fichier, ligne, colonne); // on ajoute l'en-tête du fichier
 
         if (aleatoire) // On change la valeur en focntion de si elle est aléatoire ou non
         {
@@ -129,17 +130,24 @@ void generation_pgm(bool aleatoire, uint8_t taille, uint16_t nb_images)
 }
 
 
-int main(void)
+int main(int argc, char const *argv[])
 {
     /*
     Ici on génère des images de taille 8x8 avec des valeurs aléatoires
     le nombre d'images générées est définie par la variable nombre donnée ci-dessous
     on choisit soit de faire des tests aléatoires ou non. 
     */
+    if (argc != 4)
+    {
+        printf("Veuillez entrer le format : ./generation_pgm nombre ligne colonne\n");
+    }
+
     srand((unsigned int)time(NULL));
-    uint16_t nombre = 3;
-    uint8_t taille = 64;
+    uint16_t nombre = atoi(argv[1]);
+    uint16_t ligne = atoi(argv[2]);
+    uint16_t colonne = atoi(argv[3]);
+    uint32_t taille = ligne * colonne;
     bool alea = true;
-    generation_pgm(alea, taille, nombre);
+    generation_pgm(alea, taille, nombre, ligne, colonne);
     return 0;
 }
