@@ -6,7 +6,7 @@
  * @return un tableau 1D de taille 64
  * **/
 
-uint16_t* zigzag_matrice(uint16_t** matrice);
+int16_t* zigzag_matrice(int16_t** matrice);
 
 /**
  * @brief Fonction qui permet de parcourir une matrice en zigzag mais sans boucle
@@ -14,6 +14,6 @@ uint16_t* zigzag_matrice(uint16_t** matrice);
  * @return un tableau 1D de taille 64
  * **/
 
-uint16_t* zigzag_matrice1(uint16_t** matrice);
+int16_t* zigzag_matrice1(int16_t** matrice);
 
 

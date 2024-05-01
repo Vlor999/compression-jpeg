@@ -9,7 +9,7 @@
 
 
 
-uint8_t trouver_magnetude(uint32_t n);
+uint8_t trouver_magnetude(int32_t n);
 
 
 /**
@@ -18,7 +18,7 @@ uint8_t trouver_magnetude(uint32_t n);
  * @return un tableau 1D plus court sous forme 1222130 ou 30 veut dire 3 zero d'affilé
  * **/
 
-uint8_t* codage_AC_RLE(uint16_t* tab);
+uint8_t* codage_AC_RLE(int16_t* tab);
 
 /*
 * @brief trouve le codage dc associé
