@@ -9,7 +9,7 @@
 
 
 
-uint8_t trouver_magnetude(int32_t n);
+uint8_t trouver_magnetude(int16_t n);
 
 
 /**
@@ -27,4 +27,4 @@ uint8_t* codage_AC_RLE(int16_t* tab);
 */
 
 
-uint8_t *codage_dc_tete(int32_t n);
+uint8_t *codage_dc_tete(int16_t n);

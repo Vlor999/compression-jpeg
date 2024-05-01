@@ -3,6 +3,7 @@
 #include "conversionRGB.h"
 #include "zigzag.h"
 #include "quantification.h"
+#include "magnetude_dc.h"
 #include "MCU.h"
 #include "MCU.h"
 #include "DCT.h"
@@ -100,7 +101,15 @@ int main(){
         }
         printf("\n");
     }
+    printf("---------------------\n");
+    printf("Coefficient DC \n");
 
+    uint8_t magnetude_Y = trouver_magnetude(img_Y_quantifie[0]);
+    uint8_t *DC_Y = codage_dc_tete(img_Y_quantifie[0]);
+    printf("value %d, magnetude %d, DC ", img_Y_quantifie[0],magnetude_Y );
+    for (int i=0;i<magnetude_Y;i++){
+        printf("%d ",DC_Y[i]);
+    }
     return 0;
 
     
