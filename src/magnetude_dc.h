@@ -40,6 +40,21 @@ uint8_t* codage_AC_RLE(int16_t* tab);
 */
 
 
-uint8_t *codage_dc_tete(int16_t n);
+uint8_t *codage_magnetude(int16_t n);
+
+
+extern uint8_t code_DC_Y[12][10];
+
+extern uint8_t code_DC_CbCr[12][11];
+
+/**
+ * @brief relie les deux codages pour n'en faire qu'un
+ * @param n l'entier, code_associe le code de Huffman associe 
+ * @return un tableau qui contient l'entete puis l indice de n 
+ * **/
+
+uint8_t *codage_total_DC_Y(int16_t n);
+
+uint8_t *codage_total_DC_CbCr(int16_t n);
 
 #endif

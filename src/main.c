@@ -103,9 +103,8 @@ int main(){
     }
     printf("---------------------\n");
     printf("Coefficient DC \n");
-
     uint8_t magnetude_Y = trouver_magnetude(img_Y_quantifie[0]);
-    uint8_t *DC_Y = codage_dc_tete(img_Y_quantifie[0]);
+    uint8_t *DC_Y = codage_magnetude(img_Y_quantifie[0]);
     printf("value : %d, magnitude : %d", img_Y_quantifie[0],magnetude_Y );
     uint16_t DC_Y_value = 0;
     for (int i = 0; i < magnetude_Y; i++)
@@ -113,8 +112,11 @@ int main(){
         DC_Y_value = DC_Y_value << 1 | DC_Y[i];
     }
     printf(", index : %d\n", DC_Y_value);
+    printf("final ");
+    uint8_t *code_Y_final = codage_total_DC_Y(img_Y_quantifie[0]);
+    for (int i=1;i<=code_Y_final[0];i++){
+        printf("%d ", code_Y_final[i]);
+    }
     return 0;
-
-    
 
 }

@@ -14,6 +14,8 @@ uint8_t htables_symbols_DC_Y[] = {
     0x0B
 };
 
+
+
 /* Table des symboles DC, Cb et Cr */
 uint8_t htables_symbols_DC_CbCr[] = {
     0x00, 0x01, 0x02,
@@ -173,3 +175,4 @@ uint8_t htables_nb_symbols[NB_SAMPLE_TYPES][NB_COLOR_COMPONENTS] = {
         162  // Cr
     }
 };
+
