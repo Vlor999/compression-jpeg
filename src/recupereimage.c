@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include "recupereimage.h"
+#include "../include/recupereimage.h"
 
 imagePGM* recupereimage(char* file){
     imagePGM* image = malloc(sizeof(imagePGM));
@@ -37,13 +37,13 @@ imagePGM* recupereimage(char* file){
 }
 
 
-int main(){
-    imagePGM* image = recupereimage("images/our_images/alea_image1.pgm");
-    for (int i= 0; i < image->ligne; i++){
-        for (int j = 0; j < image->col; j ++){
-            printf("%d\t ", image->tab[i][j]);   
-        }
-        printf("\n");
-    }
-    return 0;
-}
+// int main(){
+//     imagePGM* image = recupereimage("images/our_images/alea_image1.pgm");
+//     for (int i= 0; i < image->ligne; i++){
+//         for (int j = 0; j < image->col; j ++){
+//             printf("%d\t ", image->tab[i][j]);   
+//         }
+//         printf("\n");
+//     }
+//     return 0;
+// }

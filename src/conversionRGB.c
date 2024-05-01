@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "conversionRGB.h"
-#include "recupereimage.h"
+#include "../include/conversionRGB.h"
+#include "../include/recupereimage.h"
 #include <stdlib.h>
 
 

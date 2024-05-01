@@ -130,24 +130,24 @@ void generation_pgm(bool aleatoire, uint32_t taille, uint16_t nb_images, uint16_
 }
 
 
-int main(int argc, char const *argv[])
-{
-    /*
-    Ici on génère des images de taille 8x8 avec des valeurs aléatoires
-    le nombre d'images générées est définie par la variable nombre donnée ci-dessous
-    on choisit soit de faire des tests aléatoires ou non. 
-    */
-    if (argc != 4)
-    {
-        printf("Veuillez entrer le format : ./generation_pgm nombre ligne colonne\n");
-    }
+// int main(int argc, char const *argv[])
+// {
+//     /*
+//     Ici on génère des images de taille 8x8 avec des valeurs aléatoires
+//     le nombre d'images générées est définie par la variable nombre donnée ci-dessous
+//     on choisit soit de faire des tests aléatoires ou non. 
+//     */
+//     if (argc != 4)
+//     {
+//         printf("Veuillez entrer le format : ./generation_pgm nombre ligne colonne\n");
+//     }
 
-    srand((unsigned int)time(NULL));
-    uint16_t nombre = atoi(argv[1]);
-    uint16_t ligne = atoi(argv[2]);
-    uint16_t colonne = atoi(argv[3]);
-    uint32_t taille = ligne * colonne;
-    bool alea = true;
-    generation_pgm(alea, taille, nombre, ligne, colonne);
-    return 0;
-}
+//     srand((unsigned int)time(NULL));
+//     uint16_t nombre = atoi(argv[1]);
+//     uint16_t ligne = atoi(argv[2]);
+//     uint16_t colonne = atoi(argv[3]);
+//     uint32_t taille = ligne * colonne;
+//     bool alea = true;
+//     generation_pgm(alea, taille, nombre, ligne, colonne);
+//     return 0;
+// }

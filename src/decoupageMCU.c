@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "recupereimage.h"
-#include "conversionRGB.h"
-#include "MCU.h"
+#include "../include/recupereimage.h"
+#include "../include/conversionRGB.h"
+#include "../include/MCU.h"
 
 
 uint32_t entier_superieur(uint32_t l){
