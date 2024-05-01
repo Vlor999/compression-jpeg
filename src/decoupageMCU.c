@@ -16,7 +16,7 @@ uint32_t entier_superieur(uint32_t l){
     }
 }
 
-Mcu *decoupage(imagePGM *img)
+MCU *decoupage(imagePGM *img)
 { 
     // //A FINIR QUAND Y A PLUSIEURS MCU
     // //POUR LE GRIS UNIQUEMENT APRES FAUT ALLER NIQUER SA MERE 
@@ -46,7 +46,7 @@ Mcu *decoupage(imagePGM *img)
                 
     //         }
     //     }
-    Mcu *matrice = malloc(sizeof(Mcu));
+    MCU *matrice = malloc(sizeof(MCU));
     matrice->tab = malloc(8 * sizeof(uint8_t*));
     for (uint8_t i = 0; i < 8; i++){
         matrice->tab[i] = malloc(8 * sizeof(uint8_t));

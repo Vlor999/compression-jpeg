@@ -5,7 +5,7 @@
 
 #define M_PI  3.14159265358979323846
 
-int16_t calcul_dct(Mcu *m, uint8_t i, uint8_t j)
+int16_t calcul_dct(MCU *m, uint8_t i, uint8_t j)
 {
     double somme = 0;
     for (uint8_t x = 0; x < 8; x++)
@@ -27,11 +27,11 @@ int16_t calcul_dct(Mcu *m, uint8_t i, uint8_t j)
         somme = somme;
     }
 
-    return (int16_t) somme;
+    return (int16_t)somme;
     
 }
 
-int16_t **dct(Mcu *m)
+int16_t **dct(MCU *m)
 {
     int16_t **res = (int16_t**)malloc(8*sizeof(int16_t*));
     for (uint8_t i=0; i<8; i++)

@@ -5,27 +5,27 @@
 #include <stdlib.h>
 
 
-Triplet_Y conversionRGB(Triplet_RGB pixel){
-    Triplet_Y pixel_YCbCr;
+Triplet_YCbCr conversionRGB(Triplet_RGB pixel){
+    Triplet_YCbCr pixel_YCbCr;
     pixel_YCbCr.Y = 0.299* pixel.R + 0.587* pixel.G + 0.114* pixel.B;
     pixel_YCbCr.Cb = (-0.1687)* pixel.R - 0.3313* pixel.G + 0.5* pixel.B + 128;
     pixel_YCbCr.Cr = 0.5* pixel.R - 0.4187 * pixel.G - 0.0813*pixel.B + 128;
     return pixel_YCbCr;
 }
 
-Triplet_Y** conversionRGB_2_VCrCb(imagePGM *image)
+Triplet_YCbCr** conversionRGB_2_VCrCb(imagePGM *image)
 {
     Triplet_RGB pixel;
-    Triplet_Y pixel_YCbCr;
+    Triplet_YCbCr pixel_YCbCr;
 
     int taille_ligne = image->ligne;
     int taille_col = image->col;
 
-    Triplet_Y **tab_YCbCr = malloc(taille_ligne * sizeof(Triplet_Y *));
+    Triplet_YCbCr **tab_YCbCr = malloc(taille_ligne * sizeof(Triplet_YCbCr *));
     
     for (int lig = 0; lig < taille_ligne; lig++)
     {
-        tab_YCbCr[lig] = malloc(taille_col * sizeof(Triplet_Y));
+        tab_YCbCr[lig] = malloc(taille_col * sizeof(Triplet_YCbCr));
         for (int col = 0; col < taille_col; col++)
         {
             pixel.R = image->tab[lig][col];

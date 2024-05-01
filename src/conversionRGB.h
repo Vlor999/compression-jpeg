@@ -11,11 +11,11 @@ typedef struct Triplet_RGB{
     uint8_t B;
 }Triplet_RGB;
 
-typedef struct Triplet_Y{
+typedef struct Triplet_YCbCr{
     float Y;
     float Cb;
     float Cr;
-}Triplet_Y;
+}Triplet_YCbCr;
 
 
 /**
@@ -26,7 +26,7 @@ typedef struct Triplet_Y{
  */
 
 
-Triplet_Y conversionRGB(Triplet_RGB pixel);
+Triplet_YCbCr conversionRGB(Triplet_RGB pixel);
 
 
 /**
@@ -36,6 +36,6 @@ Triplet_Y conversionRGB(Triplet_RGB pixel);
  * @return une matrice qui contient les YCbCr correspondants 
  */
 
-Triplet_Y** conversionRGB_2_VCrCb(imagePGM *image);
+Triplet_YCbCr** conversionRGB_2_VCrCb(imagePGM *image);
 
 #endif

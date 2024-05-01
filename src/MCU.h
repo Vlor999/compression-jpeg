@@ -4,14 +4,14 @@
 #include <stdint.h>
 #include "recupereimage.h"
 
-struct Mcu{
+struct MCU{
     uint8_t **tab; //tableau qui contient tous degrés de gris  
     uint32_t ligne; //savoir quelle ligne on est dans les MCUs (pas nécessaire mais facilite les calculs)
     uint32_t colonne; //savoir quelle colonne on est dans les MCUs (pas nécessaire mais facilite les calculs)
-    struct Mcu *suiv; //prochain Mcu
+    struct MCU *suiv; //prochain Mcu
 };
 
-typedef struct Mcu Mcu;
+typedef struct MCU MCU;
 
 /*
     *  @brief trouve la partie entiere superieur pour le découpage 
@@ -25,14 +25,14 @@ uint32_t entier_superieur(uint32_t l);
     *  @param la matrice des pixels
     *  @return les MCUs sous forme de liste chainee, la valeur renvoyée étant la tete
 */
-Mcu *decoupage(imagePGM *tab);
+MCU *decoupage(imagePGM *tab);
 
 
 /*
     *  @brief libère la mémoire
     *  @param la tete de liste chainée
 */
-void free_decoupage(Mcu *m);
+void free_decoupage(MCU *m);
 
 
 #endif
