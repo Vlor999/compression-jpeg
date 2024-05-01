@@ -111,6 +111,7 @@ int main(){
     //     DC_Y_value = DC_Y_value << 1 | DC_Y[i];
     // }
     //printf(", index : %d\n", DC_Y_value);
+    
     printf("\nfinal ");
     uint8_t *code_Y_final = codage_total_DC_Y(img_Y_quantifie[0]);
     for (int i=1;i<=code_Y_final[0];i++){
