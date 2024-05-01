@@ -11,7 +11,7 @@
     *  @return la DCT 
 */
 
-uint16_t calcul_dct(Mcu *m,uint16_t i, uint16_t j);
+int16_t calcul_dct(Mcu *m,uint8_t i, uint8_t j);
 
 /*
     *  @brief construit la matrice des DCT 
@@ -19,6 +19,6 @@ uint16_t calcul_dct(Mcu *m,uint16_t i, uint16_t j);
     *  @return la matrice des DCT 
 */
 
-uint16_t **dct(Mcu *m);
+int16_t **dct(Mcu *m);
 
 #endif

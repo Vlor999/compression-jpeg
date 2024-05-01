@@ -57,9 +57,9 @@ int main(){
     Mcu* img_Cb_MCU = decoupage(&PGM_Cb);
     Mcu* img_Cr_MCU = decoupage(&PGM_Cr);
 
-    uint16_t** img_Y_DCT = dct(img_Y_MCU);
-    uint16_t** img_Cb_DCT = dct(img_Cb_MCU);
-    uint16_t** img_Cr_DCT = dct(img_Cr_MCU);
+    int16_t** img_Y_DCT = dct(img_Y_MCU);
+    int16_t** img_Cb_DCT = dct(img_Cb_MCU);
+    int16_t** img_Cr_DCT = dct(img_Cr_MCU);
 
     printf("---------------------\n");
     printf("Images DCT Y : \n");
@@ -72,9 +72,9 @@ int main(){
         printf("\n");
     }
 
-    uint16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
-    uint16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
-    uint16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
+    int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
+    int16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
+    int16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
 
     printf("---------------------\n");
     printf("Images ZigZag Y : \n");
@@ -82,7 +82,7 @@ int main(){
     {
         for (uint8_t j = 0; j < img_Y_MCU->ligne; j++)
         {
-            printf("%x\t", img_Y_ZigZag[i * img_Y_MCU->ligne + j]);
+            printf("%4x\t", img_Y_ZigZag[i * img_Y_MCU->ligne + j]);
         }
         printf("\n");
     }
@@ -96,7 +96,7 @@ int main(){
     {
         for (uint32_t j = 0; j < img_Y_MCU->ligne; j++)
         {
-            printf("%x\t", img_Y_quantifie[i * img_Y_MCU->ligne + j]);
+            printf("%8x\t", img_Y_quantifie[i * img_Y_MCU->ligne + j]);
         }
         printf("\n");
     }
