@@ -13,7 +13,7 @@ int16_t* quotient(int16_t* vector1, uint8_t* vector2, int size)
     int16_t* result = malloc(size * sizeof(int));
     
     for (int i = 0; i < size; i++) {
-        result[i] = (int16_t)(floor((vector1[i] + floor(vector2[i] / 2)) / vector2[i]));
+        result[i] = (int16_t)(floor(vector1[i] / vector2[i]));
     }
     
     return result;
