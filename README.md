@@ -1,19 +1,59 @@
-# Notre encodeur JPEG à nous
+# Projet JPEG : 1A
+## Team 6 :
+## ADNET Willem, DA CRUZ Édouard, ZABIEGO Hugo
 
-Bienvenue sur la page d'accueil de _votre_ projet JPEG, un grand espace de liberté, sous le regard bienveillant de vos enseignants préférés.
-Le sujet sera disponible dès le lundi 2 mai à l'adresse suivante : [https://formationc.pages.ensimag.fr/projet/jpeg/jpeg/](https://formationc.pages.ensimag.fr/projet/jpeg/jpeg/).
+### Présentation: 
 
-Vous pouvez reprendre cette page d'accueil comme bon vous semble, mais elle devra au moins comporter les infos suivantes **avant la fin de la première semaine (vendredi 6 mai)** :
+Nous vous présentons ici notre projet **JPEG** qui consiste à convertir une image sous format ppm/pgm en une image compressée sous format **JPEG**. Nous allons tout d'abord vous présenter les points suivants :   
 
-1. des informations sur le découpage des fonctionnalités du projet en modules, en spécifiant les données en entrée et sortie de chaque étape ;
-2. (au moins) un dessin des structures de données de votre projet (format libre, ça peut être une photo d'un dessin manuscrit par exemple) ;
-3. une répartition des tâches au sein de votre équipe de développement, comportant une estimation du temps consacré à chacune d'elle (là encore, format libre, du truc cracra fait à la main, au joli Gantt chart).
+1) Découpage des fonctionnalités du projet en module.
+2) Structure de donnée du projet.
+3) Répartition des tâches au sein de l'équipe.
 
-Rajouter **régulièrement** des informations sur l'avancement de votre projet est aussi **une très bonne idée** (prendre 10 min tous les trois chaque matin pour résumer ce qui a été fait la veille, établir un plan d'action pour la journée qui commence et reporter tout ça ici, par exemple).
+Il sera alors présenter l'avancement à chque étape du projet.
 
-# Liens utiles
+### 1 : Le découpage des fonctionnalités du projet en module.
 
-- Bien former ses messages de commits : [https://www.conventionalcommits.org/en/v1.0.0/](https://www.conventionalcommits.org/en/v1.0.0/) ;
-- Problème relationnel au sein du groupe ? Contactez [Pascal](https://fr.wikipedia.org/wiki/Pascal,_le_grand_fr%C3%A8re) !
-- Besoin de prendre l'air ? Le [Mont Rachais](https://fr.wikipedia.org/wiki/Mont_Rachais) est accessible à pieds depuis la salle E301 !
-- Un peu juste sur le projet à quelques heures de la deadline ? Le [Montrachet](https://www.vinatis.com/achat-vin-puligny-montrachet) peut faire passer l'envie à vos profs de vous mettre une tôle !
+1) Module 1 : 
+    1) Module 1.1 : Lecture des images **PPM/PGM**.
+        1) Entrée : Chemin d'accès des images.
+        2) Sortie : Images **PGM** ou **PPM** : matrice de taille **M × N** (**M** lignes et **N** colonnes).
+    2) Module 1.2 : Génération des images **PGM** et **PPM**.
+        1) Entrée : Nombre d'images à générer.
+        2) Sortie : Images **PGM** ou **PPM** : matrice de taille **M × N**.
+2) Module 2 : Conversion de l'image en **YCbCr**.
+    1) Entrée : Image **PPM** ou **PGM** sous format **RGB**.
+    2) Sortie : Image sous format **YCbCr** : matrice de taille **M × N**.
+3) Module 3 : Sous-échantillonnage de l'image.
+    1) Entrée : Image sous format **YCbCr**.
+    2) Sortie : Image sous format **YCbCr** sous-échantillonnée sous le format : 
+        * h<sub>1</sub> × v<sub>1</sub>, h<sub>2</sub> × v<sub>2</sub>, h<sub>3</sub> × v<sub>3</sub>.
+4) Module 4 : Transformation **DCT**.
+    1) Entrée : Image sous format **YCbCr** : matrices d'entiers non signés sur 16 bits.
+    2) Sortie : Image sous format **DCT** : matrices d'entiers signés.
+5) Module 5 : ZigZag.
+    1) Entrée : Image sous format **DCT**.
+    2) Sortie : Image sous format **ZigZag** : Vecteur ligne d'entiers signés vecteur de taille : **MN**.
+6) Module 6 : Quantification.
+    1) Entrée : Image sous format **ZigZag** : Vecteur ligne.
+    2) Sortie : Image sous format **ZigZag** : Vecteur quantifié mais avec le même format que précédement.
+7) Module 7 : Encodage **RLE**.
+    1) Entrée : Image sous format **ZigZag** : Vecteur quantifié.
+    2) Sortie : Image sous format **RLE** : Compression des zéros.
+8) Module 8 : Encodage **Huffman**.
+    1) Entrée : Image sous format **RLE**.
+    2) Sortie : Image sous format **Huffman** : Compression des pixels via le codage de Huffan préfixé.
+9) Module 9 : Ecriture de l'image compressée.
+    1) Entrée : Image sous format **Huffman**.
+    2) Sortie : Image compressée sous format **JPEG**.
+10) Module 10 : Optimisation de la compression **JPEG**.
+    1) Entrée : Notre code de compression **JPEG**.
+    2) Sortie : Image compressée sous format **JPEG** optimisée, plus rapidement et en utilisant moins d'espace mémoire.
+
+### 2 : Structure de donnée du projet.
+
+<img src="IMG_1181.jpg">
+
+### 3 : Répartition des tâches au sein de l'équipe.
+
+<img src="IMG_1182.jpg">
