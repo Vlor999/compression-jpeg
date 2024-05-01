@@ -12,12 +12,14 @@ struct imagePGM{
 };
 typedef struct imagePGM imagePGM;
 
-/*
+
+
+/**
  * @brief recupere l'image au format pgm 
  *
  * @param file nom du fichier pgm
  * @return image de type imagePGM
-*/
+ */
 
 imagePGM *recupereimage(char* file);
 

@@ -22,7 +22,7 @@ int main(){
         printf("\n");
     }
 
-    Triplet_Y** new_image = conversionRGB_2_VCrCb(img);
+    Triplet_YCbCr** new_image = conversionRGB_2_VCrCb(img);
     uint8_t** image_Y = malloc(img->col * sizeof(uint8_t*));
     uint8_t** image_Cb = malloc(img->col * sizeof(uint8_t*));
     uint8_t** image_Cr = malloc(img->col * sizeof(uint8_t*));
@@ -54,9 +54,9 @@ int main(){
     imagePGM PGM_Cb = {img->col, img->ligne, img->max, image_Cb};
     imagePGM PGM_Cr = {img->col, img->ligne, img->max, image_Cr};
 
-    Mcu* img_Y_MCU = decoupage(&PGM_Y);
-    Mcu* img_Cb_MCU = decoupage(&PGM_Cb);
-    Mcu* img_Cr_MCU = decoupage(&PGM_Cr);
+    MCU* img_Y_MCU = decoupage(&PGM_Y);
+    MCU* img_Cb_MCU = decoupage(&PGM_Cb);
+    MCU* img_Cr_MCU = decoupage(&PGM_Cr);
 
     int16_t** img_Y_DCT = dct(img_Y_MCU);
     int16_t** img_Cb_DCT = dct(img_Cb_MCU);
