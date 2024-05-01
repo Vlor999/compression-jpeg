@@ -1,6 +1,7 @@
 #ifndef _DCT_H
 #define _DCT_H
 #include "MCU.h"
+#include <stdint.h>
 
 #include <stdint.h>
 
@@ -10,7 +11,7 @@
     *  @return la DCT 
 */
 
-double calcul_dct(Mcu *m,uint32_t i, uint32_t j);
+uint16_t calcul_dct(Mcu *m,uint16_t i, uint16_t j);
 
 /*
     *  @brief construit la matrice des DCT 
@@ -18,6 +19,6 @@ double calcul_dct(Mcu *m,uint32_t i, uint32_t j);
     *  @return la matrice des DCT 
 */
 
-double **dct(Mcu *m);
+uint16_t **dct(Mcu *m);
 
 #endif

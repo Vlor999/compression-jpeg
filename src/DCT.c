@@ -5,33 +5,41 @@
 
 #define M_PI  3.14159265358979323846
 
-uint16_t calcul_dct(Mcu *m, uint8_t i, uint8_t j){
-    uint16_t somme = 0;
-    for (uint8_t x=0;x<8;x++){
-        for (uint8_t y=0;y<8;y++){
-            int8_t tmp = (m -> tab)[x][y] - 128;
-            somme += tmp*cos((2*x+1)*i*M_PI/16)*cos((2*y+1)*j*M_PI/16);
+int16_t calcul_dct(Mcu *m, uint8_t i, uint8_t j)
+{
+    double somme = 0;
+    for (uint8_t x = 0; x < 8; x++)
+    {
+        for (uint8_t y = 0; y < 8; y++)
+        {
+            int16_t tmp = (m -> tab)[x][y] - 128;
+            somme += tmp*cos((2*x+1)*i*M_PI / 16) * cos((2*y+1)*j*M_PI / 16);
         }
     }
     somme = somme/4;
     if (i == 0 && j == 0){
-        return somme/2;
+        somme = somme/2;
     }
     else if (i==0 || j==0){
-        return somme/sqrt(2);
+        somme = somme/sqrt(2);
     }
     else{
-        return somme;
+        somme = somme;
     }
+
+    return (int16_t) somme;
+    
 }
 
-uint16_t **dct(Mcu *m){ //COMMENT IMPLEMENTER ??
-    uint16_t **res = (uint16_t**)malloc(8*sizeof(uint16_t*));
-    for (uint8_t i=0;i<8;i++){
-        res[i]=(uint16_t*)malloc(8*sizeof(uint16_t));
-        for (uint8_t j=0;j<8;j++){
-            res[i][j] = calcul_dct(m,i,j);
-            printf("%f ",res[i][j]);
+int16_t **dct(Mcu *m)
+{
+    int16_t **res = (int16_t**)malloc(8*sizeof(int16_t*));
+    for (uint8_t i=0; i<8; i++)
+    {
+        res[i] = (int16_t*)malloc(8*sizeof(int16_t));
+        for (uint8_t j = 0; j < 8; j++)
+        {
+            res[i][j] = calcul_dct(m, i, j);
         }
     }
     return res;

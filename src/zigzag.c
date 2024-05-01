@@ -3,9 +3,9 @@
 #include <stdlib.h>
 
 // Fonction qui prend en paramètre une matrice 8x8 et qui retourne un tableau 1D de taille 64
-double* zigzag_matrice(double** matrice)
+int16_t* zigzag_matrice(int16_t** matrice)
 {
-    double* zigzag = malloc(64 * sizeof(double));
+    int16_t* zigzag = malloc(64 * sizeof(int16_t));
     int l = 0;
     int c = 0;
     int coeff_dire = 1;
@@ -57,13 +57,13 @@ double* zigzag_matrice(double** matrice)
     return zigzag;
 }
 
-double* zigzag_matrice1(double** matrice) 
+int16_t* zigzag_matrice1(int16_t** matrice) 
 {   /*
     Fonction qui prend en paramètre une matrice 8x8 et qui retourne un tableau 1D de taille 64.
     Cette version est plus effcicace que le précédente car il n'y a aucune condition mais beaucoup plus grande. 
     Nous avons obtenu cette version en observant les indices de la matrice 8x8 et en les mettant dans l'ordre du zigzag. Ceci grace à la fonction précédente.
     */
-    double* zigzag = malloc(64 * sizeof(double));
+    int16_t* zigzag = malloc(64 * sizeof(int16_t));
     zigzag[0] = matrice[0][0];
     zigzag[1] = matrice[0][1];
     zigzag[2] = matrice[1][0];
@@ -133,10 +133,10 @@ double* zigzag_matrice1(double** matrice)
 
 // int main(void)
 // {
-//     double** matrice = malloc(8 * sizeof(double*));
+//     int16_t** matrice = malloc(8 * sizeof(int16_t*));
 //     for (int i = 0; i < 8; i++)
 //     {
-//         matrice[i] = malloc(8 * sizeof(double));
+//         matrice[i] = malloc(8 * sizeof(int16_t));
 //     }
 //     for (int i = 0; i < 8; i++)
 //     {
@@ -147,7 +147,7 @@ double* zigzag_matrice1(double** matrice)
 //         }
 //         printf("\n");
 //     }
-//     double* zigzag = zigzag_matrice(matrice);
+//     int16_t* zigzag = zigzag_matrice(matrice);
 //     for (int i = 0; i < 64; i++)
 //     {
 //         printf("%f\n", zigzag[i]);

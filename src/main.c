@@ -1,6 +1,8 @@
 #include "conversionRGB.h"
 #include "recupereimage.h"
 #include "conversionRGB.h"
+#include "zigzag.h"
+#include "quantification.h"
 #include "MCU.h"
 #include "MCU.h"
 #include "DCT.h"
@@ -55,6 +57,49 @@ int main(){
     Mcu* img_Cb_MCU = decoupage(&PGM_Cb);
     Mcu* img_Cr_MCU = decoupage(&PGM_Cr);
 
+    uint16_t** img_Y_DCT = dct(img_Y_MCU);
+    uint16_t** img_Cb_DCT = dct(img_Cb_MCU);
+    uint16_t** img_Cr_DCT = dct(img_Cr_MCU);
+
+    printf("---------------------\n");
+    printf("Images DCT Y : \n");
+    for(uint8_t i = 0; i < img_Y_MCU->colonne; i++)
+    {
+        for(uint8_t j = 0; j < img_Y_MCU->ligne; j++)
+        {
+            printf("%x\t", img_Y_DCT[i][j]);
+        }
+        printf("\n");
+    }
+
+    uint16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
+    uint16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
+    uint16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
+
+    printf("---------------------\n");
+    printf("Images ZigZag Y : \n");
+    for (uint8_t i = 0; i < img_Y_MCU->colonne; i++)
+    {
+        for (uint8_t j = 0; j < img_Y_MCU->ligne; j++)
+        {
+            printf("%x\t", img_Y_ZigZag[i * img_Y_MCU->ligne + j]);
+        }
+        printf("\n");
+    }
+
+    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, img_Y_MCU->colonne * img_Y_MCU->ligne);
+    int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag, img_Cb_MCU->colonne * img_Cb_MCU->ligne);
+    int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag, img_Cr_MCU->colonne * img_Cr_MCU->ligne);
+    printf("---------------------\n");
+    printf("Images Quantifie Y : \n");
+    for (uint32_t i = 0; i < img_Y_MCU->colonne; i++)
+    {
+        for (uint32_t j = 0; j < img_Y_MCU->ligne; j++)
+        {
+            printf("%x\t", img_Y_quantifie[i * img_Y_MCU->ligne + j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 

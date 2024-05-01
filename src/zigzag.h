@@ -1,3 +1,4 @@
+#include <stdint.h>
 
 /**
  * @brief Fonction qui permet de parcourir une matrice en zigzag
@@ -5,7 +6,7 @@
  * @return un tableau 1D de taille 64
  * **/
 
-double* zigzag_matrice(double** matrice);
+int16_t* zigzag_matrice(int16_t** matrice);
 
 /**
  * @brief Fonction qui permet de parcourir une matrice en zigzag mais sans boucle
@@ -13,6 +14,6 @@ double* zigzag_matrice(double** matrice);
  * @return un tableau 1D de taille 64
  * **/
 
-double* zigzag_matrice1(double** matrice);
+int16_t* zigzag_matrice1(int16_t** matrice);
 
 
