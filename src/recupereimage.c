@@ -3,10 +3,6 @@
 #include <stdlib.h>
 #include "recupereimage.h"
 
-
-
-
-
 imagePGM* recupereimage(char* file){
     imagePGM* image = malloc(sizeof(imagePGM));
     FILE* fichier_PGM = fopen(file, "rb"); //on lit binaire d'où le rb
@@ -41,13 +37,13 @@ imagePGM* recupereimage(char* file){
 }
 
 
-// int main(){
-//     imagePGM* image = recupereimage("src/our_images/alea_image1.pgm");
-//     for (int i= 0; i < image->ligne; i++){
-//         for (int j = 0; j < image->col; j ++){
-//             printf("%d ", image->tab[i][j]);   
-//         }
-//         printf("\n");
-//     }
-//     return 0;
-// }
+int main(){
+    imagePGM* image = recupereimage("images/our_images/alea_image1.pgm");
+    for (int i= 0; i < image->ligne; i++){
+        for (int j = 0; j < image->col; j ++){
+            printf("%d\t ", image->tab[i][j]);   
+        }
+        printf("\n");
+    }
+    return 0;
+}
