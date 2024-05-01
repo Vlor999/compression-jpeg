@@ -57,4 +57,8 @@ uint8_t *codage_total_DC_Y(int16_t n);
 
 uint8_t *codage_total_DC_CbCr(int16_t n);
 
+uint8_t *codage_total_AC_CbCr(int16_t n);
+
+uint8_t *codage_total_AC_Y(int16_t n);
+
 #endif

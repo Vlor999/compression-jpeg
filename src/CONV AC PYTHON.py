@@ -1,4 +1,4 @@
-file = open("conv2.txt","r")
+file = open("conv.txt","r")
 liste = []
 for ligne in file:
     liste.append(ligne.strip())
