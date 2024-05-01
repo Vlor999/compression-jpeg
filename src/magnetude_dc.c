@@ -25,6 +25,37 @@ uint8_t trouver_magnetude(int16_t n){
     return 0;
 }
 
+uint16_t indice_magnetude(int32_t n){
+    uint8_t magnetude = trouver_magnetude(n);
+    if (n<0){
+        uint16_t val_max = (pow(2,magnetude-1) -1);
+        uint16_t val_mini = (pow(2,magnetude) -1);
+        uint16_t indice = 0;
+        while (val_mini != val_max){
+            if ( abs(n)  == val_mini){
+                return indice;
+            }
+            val_mini --;
+            indice ++;
+        }
+    }
+    else{
+        uint16_t val_max = (pow(2,magnetude) -1);
+        uint16_t val_mini = (pow(2,magnetude - 1) -1);
+        uint16_t indice = val_max - val_mini -1;
+        while (val_mini != val_max){
+            if ( n  == val_mini){
+                return indice;
+            }
+            val_mini ++;
+            indice ++;
+        }
+    }
+    perror("suspect mon chef");
+}
+
+
+
 
 uint8_t* codage_AC_RLE(int16_t* tab){  
     uint8_t* tab_RLE = malloc(sizeof(uint8_t)*64);
