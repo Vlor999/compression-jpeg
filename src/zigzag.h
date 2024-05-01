@@ -1,3 +1,6 @@
+#ifndef _ZIGZAG_H
+#define _ZIGZAG_H
+
 #include <stdint.h>
 
 /**
@@ -17,3 +20,4 @@ int16_t* zigzag_matrice(int16_t** matrice);
 int16_t* zigzag_matrice1(int16_t** matrice);
 
 
+#endif

@@ -1,3 +1,5 @@
+#ifndef _MAGNETUDE_DC_H
+#define _MAGNETUDE_DC_H
 #include <stdint.h>
 
 /**
@@ -9,7 +11,18 @@
 
 
 
-uint8_t trouver_magnetude(int32_t n);
+uint8_t trouver_magnetude(int16_t n);
+
+
+/**
+* @brief trouve l'indice dans la classe de magnétude associée à n
+* @param n l entier choisi 
+* @return l'indice dans la classe magnétude, une erreur si n est trop grand
+*
+**/
+
+uint16_t indice_magnetude(int32_t n);
+
 
 
 /**
@@ -27,4 +40,6 @@ uint8_t* codage_AC_RLE(int16_t* tab);
 */
 
 
-uint8_t *codage_dc_tete(int32_t n);
+uint8_t *codage_dc_tete(int16_t n);
+
+#endif

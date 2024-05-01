@@ -3,6 +3,7 @@
 #include "conversionRGB.h"
 #include "zigzag.h"
 #include "quantification.h"
+#include "magnetude_dc.h"
 #include "MCU.h"
 #include "MCU.h"
 #include "DCT.h"
@@ -16,7 +17,7 @@ int main(){
     printf("Images initales : \n");
     for (int i= 0; i < img->col; i++){
         for (int j = 0; j < img->ligne; j ++){
-            printf("%x\t ", img->tab[i][j]);   
+            printf("%04x\t ", img->tab[i][j]);   
         }
         printf("\n");
     }
@@ -44,7 +45,7 @@ int main(){
     {
         for (int j = 0; j < img->ligne; j++)
         {
-            printf("%x\t", image_Y[i][j]);
+            printf("%04x\t", image_Y[i][j]);
         }
         printf("\n");
     }
@@ -57,9 +58,9 @@ int main(){
     Mcu* img_Cb_MCU = decoupage(&PGM_Cb);
     Mcu* img_Cr_MCU = decoupage(&PGM_Cr);
 
-    uint16_t** img_Y_DCT = dct(img_Y_MCU);
-    uint16_t** img_Cb_DCT = dct(img_Cb_MCU);
-    uint16_t** img_Cr_DCT = dct(img_Cr_MCU);
+    int16_t** img_Y_DCT = dct(img_Y_MCU);
+    int16_t** img_Cb_DCT = dct(img_Cb_MCU);
+    int16_t** img_Cr_DCT = dct(img_Cr_MCU);
 
     printf("---------------------\n");
     printf("Images DCT Y : \n");
@@ -67,14 +68,14 @@ int main(){
     {
         for(uint8_t j = 0; j < img_Y_MCU->ligne; j++)
         {
-            printf("%x\t", img_Y_DCT[i][j]);
+            printf("%04x\t", img_Y_DCT[i][j] & 0xFFFF);
         }
         printf("\n");
     }
 
-    uint16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
-    uint16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
-    uint16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
+    int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
+    int16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
+    int16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
 
     printf("---------------------\n");
     printf("Images ZigZag Y : \n");
@@ -82,7 +83,7 @@ int main(){
     {
         for (uint8_t j = 0; j < img_Y_MCU->ligne; j++)
         {
-            printf("%x\t", img_Y_ZigZag[i * img_Y_MCU->ligne + j]);
+            printf("%04x\t", img_Y_ZigZag[i * img_Y_MCU->ligne + j] & 0xFFFF);
         }
         printf("\n");
     }
@@ -96,11 +97,22 @@ int main(){
     {
         for (uint32_t j = 0; j < img_Y_MCU->ligne; j++)
         {
-            printf("%x\t", img_Y_quantifie[i * img_Y_MCU->ligne + j]);
+            printf("%04x\t", img_Y_quantifie[i * img_Y_MCU->ligne + j] & 0xFFFF);
         }
         printf("\n");
     }
+    printf("---------------------\n");
+    printf("Coefficient DC \n");
 
+    uint8_t magnetude_Y = trouver_magnetude(img_Y_quantifie[0]);
+    uint8_t *DC_Y = codage_dc_tete(img_Y_quantifie[0]);
+    printf("value : %d, magnitude : %d", img_Y_quantifie[0],magnetude_Y );
+    uint16_t DC_Y_value = 0;
+    for (int i = 0; i < magnetude_Y; i++)
+    {
+        DC_Y_value = DC_Y_value << 1 | DC_Y[i];
+    }
+    printf(", index : %d\n", DC_Y_value);
     return 0;
 
     

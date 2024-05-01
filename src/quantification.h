@@ -1,3 +1,6 @@
+#ifndef _QUANTIFICATION_H
+#define _QUANTIFICATION_H
+
 #include <stdint.h>
 
 /**
@@ -10,8 +13,10 @@ int16_t* quotient(uint16_t* vector1, uint8_t* vector2, int size);
 
 /**
  * @brief Utilise la focntion précédente pour utiliser la qtable sur Y**/
-int16_t* quotient_qtable_Y(uint16_t* vect, int size);
+int16_t* quotient_qtable_Y(int16_t* vect, int size);
 
 /**
  * @brief Utilise la focntion précédente pour utiliser la qtable sur Cb ou Cr**/
-int16_t* quotient_qtable_CbCr(uint16_t* vect, int size);
+int16_t* quotient_qtable_CbCr(int16_t* vect, int size);
+
+#endif
