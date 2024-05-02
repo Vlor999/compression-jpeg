@@ -81,25 +81,25 @@
 //     return img;
 // }
 
-
 imagePGM* recupereimage(char* file){
     imagePGM* image = malloc(sizeof(imagePGM));
     FILE* fichier_PGM = fopen(file, "rb"); //on lit binaire d'où le rb
-    if (fichier_PGM ==NULL){
+    if (fichier_PGM == NULL){
         perror("fichier n'existe pas");
         exit(1);
     }
     char premiere_ligne[3];
     fgets(premiere_ligne, sizeof(premiere_ligne), fichier_PGM); // on passe la première ligne avec la version
-    fscanf(fichier_PGM, "%d %d", &image->ligne,&image->col); //on recupere le nb de colonne et ligne
+    fscanf(fichier_PGM, "%d %d", &image->col, &image->ligne); //on recupere le nb de colonne et ligne
     fscanf(fichier_PGM, "%hhd", &image->max); // on recupere le niveau max de gris
 
-    image->tab = malloc(sizeof(uint8_t*)*image->col); //on va initialiser la matrice
+
+    image->tab = malloc(sizeof(uint8_t*)*image->ligne); //on va initialiser la matrice
     if (image->tab ==NULL){
         perror("allocation echouée");
         exit(1);
     }
-    for (int32_t i = 0; i < image->col; i++){
+    for (uint32_t i = 0; i < image->ligne; i++){
         image->tab[i] = malloc(sizeof(uint8_t)*image->ligne);
         if (image->tab[i] ==NULL){
             perror("allocation echouée");
@@ -107,16 +107,20 @@ imagePGM* recupereimage(char* file){
         }
     }
     //fin de l'initialisation de la matrice
-    fgetc(fichier_PGM);
-    for (int32_t i = 0; i < image->ligne; i++){
-        fread(image->tab[i],sizeof(uint8_t), image->ligne, fichier_PGM); // on rcrit valeur binaire dans tableau
+    for (uint32_t i = 0; i < image->ligne; i++){
+        image->tab[i] = malloc(sizeof(uint8_t) * image->col); // Allocate memory for columns
+        if (image->tab[i] == NULL){
+            perror("Allocation de mémoire échouée");
+            exit(1);
+        }
+        fread(image->tab[i], sizeof(uint8_t), image->col, fichier_PGM); // Read row data
     }
     fclose(fichier_PGM);
     return image;
 }
 
 void libere_image(imagePGM* image){
-    for (int i = 0; i < image->ligne; i++){
+    for (uint32_t i = 0; i < image->ligne; i++){
         free(image->tab[i]);
     }
     free(image->tab);
@@ -130,21 +134,19 @@ void libere_image(imagePGM* image){
 //         return 1;
 //     }
 
-//     const char* filename = argv[1];
-//     imagePGM* img = LecturePPM(filename);
+//     char* filename = argv[1];
+//     imagePGM* img = recupereimage(filename);
 //     if (!img) {
 //         printf("Failed to read PPM file: %s\n", filename);
 //         return 1;
 //     }
 
-//     for(uint8_t i = 0; i < img->ligne; i++)
-//     {
-//         for(uint8_t j = 0; j < img->col; j++)
-//         {
-//             printf("R: %d, G: %d, B: %d\n", img->tab[i][j].R, img->tab[i][j].G, img->tab[i][j].B);
+//     for(uint32_t i = 0; i < img->ligne; i++) {
+//         for(uint32_t j = 0; j < img->col; j++) {
+//             printf("%d \t", img->tab[i][j]);
 //         }
+//         printf("\n");
 //     }
-
 //     libere_image(img);
 //     return 0;
 // }

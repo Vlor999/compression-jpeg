@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include <unistd.h>
 
 char *ajout(char *chaine, uint16_t taille)
 {
@@ -74,14 +75,14 @@ void ajout_entete(FILE *fichier, uint16_t nb_ligne, uint16_t nb_colonne)
     fprintf(fichier, "255\n");
 }
 
-char* donne_nom(uint16_t numero, bool aleatoire)
+char* donne_nom(uint16_t numero, bool aleatoire, uint16_t hauteur, uint16_t largeur)
 {
     /*
     On donne un nom qui informe si l'image est aléatoire ou non et le numéro de l'image
     */
     char* nom = malloc(100 * sizeof(char));
     char* est_aleatoire = aleatoire ? "alea_" : "pas_alea_";
-    sprintf(nom, "./images/our_images/%simage%d.pgm", est_aleatoire, numero);
+    sprintf(nom, "./images/our_images/%simage%d_%dx%d.pgm", est_aleatoire, numero, hauteur, largeur);
     return nom;
 }
 
@@ -102,7 +103,7 @@ void generation_pgm(bool aleatoire, uint32_t taille, uint16_t nb_images, uint16_
     */
     {
         FILE *fichier = NULL;
-        char* nom_ficher = donne_nom(compteur, aleatoire); // on donne un nom au fichier
+        char* nom_ficher = donne_nom(compteur, aleatoire, ligne, colonne); // on donne un nom au fichier
         printf("%s : %d/%d\n", nom_ficher, compteur + 1, nb_images);
         fichier = fopen(nom_ficher, "w"); // on ouvre le fichier en écriture
 
@@ -141,8 +142,9 @@ int main(int argc, char const *argv[])
     {
         printf("Veuillez entrer le format : ./generation_pgm nombre ligne colonne\n");
     }
+    sleep(1);
+    srand(time(NULL));
 
-    srand((unsigned int)time(NULL));
     uint16_t nombre = atoi(argv[1]);
     uint16_t ligne = atoi(argv[2]);
     uint16_t colonne = atoi(argv[3]);
