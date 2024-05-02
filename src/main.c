@@ -121,8 +121,15 @@ int main(){
     printf("\n");
     printf("---------------------\n");
     printf("Coefficients AC \n");
-    uint8_t *RLE = codage_AC_RLE(img_Y_quantifie);
+    uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
     uint8_t *resultat_final = codage_total_AC_Y(RLE,img_Y_quantifie);
+    for (uint64_t i = 0;i<30000; i++){ // résultat du flux de l encodage, a voir si c est bien ce qui est demandé 
+        if (resultat_final[i]==88){
+            break;
+        }
+        printf("%d ", resultat_final[i]);
+
+    }
     // for (uint8_t i=1;i<64;i++){
     //     if (img_Y_quantifie[i] != 0){
     //         magnetude_Y = trouver_magnetude(img_Y_quantifie[i]);
