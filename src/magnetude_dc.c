@@ -216,10 +216,12 @@ uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux){ //attention le flux con
         }
         else{
             uint8_t temp = RLE[compteurRLE+1];
-            printf("value %d code %d, nb bits %d\n",flux[compteur],temp,code_AC_Y[temp][0]);
             uint8_t *tab_temp = code_AC_Y[temp];
+            uint64_t s = 0;
             for (uint8_t i=1;i<=tab_temp[0];i++){
+                printf("%d ",tab_temp[i]);
                 res[indice] =tab_temp[i];
+                s += pow(2,tab_temp[0]-i)*tab_temp[i];
                 indice++;
             }
             tab_temp = codage_indice_magn(flux[compteur]);
@@ -228,6 +230,7 @@ uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux){ //attention le flux con
                 res[indice] = tab_temp[i];
                 indice++;
             }
+            printf("value %d magnetude %d huffman path %ld \ncode %d, nb bits %d\n",flux[compteur],magn,s,temp,code_AC_Y[temp][0]);
             compteurRLE++;
             compteur++;
         }
