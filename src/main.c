@@ -126,7 +126,7 @@ int main(){
             magnetude_Y = trouver_magnetude(img_Y_quantifie[i]);
             printf("value : %d, magnitude : %d,", img_Y_quantifie[i],magnetude_Y );
             DC_Y = codage_indice_magn(img_Y_quantifie[i]);
-            printf("index ");
+            printf("index ");   
             for (int i = 0; i < magnetude_Y; i++)
             {
                 printf(" %d",DC_Y[i]);

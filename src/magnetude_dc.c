@@ -88,6 +88,10 @@ uint8_t* codage_AC_RLE(int16_t* tab){
 }
 
 
+uint8_t *bits_poids_forts(uint8_t *RLE){
+    
+}
+
 uint8_t *codage_indice_magn(int16_t n){
     
     uint8_t magn = trouver_magnetude(n);
@@ -125,6 +129,11 @@ uint8_t *codage_indice_magn(int16_t n){
 
 uint8_t *codage_total_AC_CbCr(int16_t n){
     uint8_t magn = trouver_magnetude(n);
+    uint8_t *codage_magn = malloc(4*sizeof(uint8_t)); //les 4 bits de poids faible
+    for (uint8_t i=0;i<4;i++){
+        codage_magn[i] = magn%2;
+        magn = magn/2;
+    } //on a dans codage_magn les 4 bits de poids faible de AC        
     uint8_t *cd = codage_indice_magn(n);
     uint8_t *entete = code_AC_CbCr[magn];
     uint8_t *res = malloc((entete[0]+magn)*sizeof(uint8_t));
