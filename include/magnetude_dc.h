@@ -21,9 +21,16 @@ uint8_t trouver_magnetude(int16_t n);
 *
 **/
 
-uint16_t indice_magnetude(int32_t n);
+// uint16_t indice_magnetude(int16_t n);
 
 
+/**
+ * @brief écrit les bits de poids fort pour l'octet AC
+ * @param RLE le tableau RLE
+ * @return un tableau 1D plus court sous forme 1222130 ou 30 veut dire 3 zero d'affilé
+ * **/
+
+uint8_t *bits_poids_forts(uint8_t *RLE);
 
 /**
  * @brief recupère le tableau après zig zag et applique codage RLE sur 0 uniquement
@@ -40,7 +47,7 @@ uint8_t* codage_AC_RLE(int16_t* tab);
 */
 
 
-uint8_t *codage_magnetude(int16_t n);
+uint8_t *codage_indice_magn(int16_t n);
 
 
 extern uint8_t code_DC_Y[12][10];
@@ -53,12 +60,13 @@ extern uint8_t code_DC_CbCr[12][11];
  * @return un tableau qui contient l'entete puis l indice de n 
  * **/
 
+//ATTENTION PREMIERE VALEUR CONTIENT LA TAILLE
 uint8_t *codage_total_DC_Y(int16_t n);
 
 uint8_t *codage_total_DC_CbCr(int16_t n);
 
 uint8_t *codage_total_AC_CbCr(int16_t n);
 
-uint8_t *codage_total_AC_Y(int16_t n);
+uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux);
 
 #endif
