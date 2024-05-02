@@ -204,35 +204,51 @@ uint8_t *codage_total_DC_CbCr(int16_t n){
     return res;
 }
 
-uint8_t *codage_total_AC_Y(int16_t n){
-    uint8_t magn = trouver_magnetude(n);
-    uint8_t *cd = codage_indice_magn(n);
-    uint8_t *entete = code_AC_Y[magn];
-    uint8_t *res = malloc((entete[0]+magn)*sizeof(uint8_t));
-    res[0]=entete[0]+magn;
-    for (uint8_t i=1;i<=entete[0];i++){
-        res[i] = entete[i];
-    }
-    for (uint8_t i=1;i<=magn;i++){
-        res[i+entete[0]] = cd[i-1];
+uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux){ //attention le flux contient DC 
+    // renvoie le flux de bits attendu 
+    uint16_t compteur = 1;
+    uint16_t compteurRLE = 1;
+    uint8_t indice=0; //contient la taille, le premier element
+    uint8_t *res = malloc((50000)*sizeof(uint8_t));
+    while (compteur < 64){
+        if (flux[compteur]==0){
+            compteur++;
+        }
+        else{
+            uint8_t temp = RLE[compteurRLE+1];
+            printf("value %d code %d, nb bits %d\n",flux[compteur],temp,code_AC_Y[temp][0]);
+            uint8_t *tab_temp = code_AC_Y[temp];
+            for (uint8_t i=1;i<=tab_temp[0];i++){
+                res[indice] =tab_temp[i];
+                indice++;
+            }
+            tab_temp = codage_indice_magn(flux[compteur]);
+            uint8_t magn = trouver_magnetude(flux[compteur]);
+            for (uint8_t i=0;i<magn;i++){
+                res[indice] = tab_temp[i];
+                indice++;
+            }
+            compteurRLE++;
+            compteur++;
+        }
     }
     return res;
 }
-int main(){
-    // int16_t tab[64] = {-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
-    // uint8_t* tab_rle = codage_AC_RLE(tab);
+// int main(){
+//     // int16_t tab[64] = {-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
+//     // uint8_t* tab_rle = codage_AC_RLE(tab);
     
-    // for (int i = 0 ; i < tab_rle[0]; i++){
-    //     printf("%x ", tab_rle[i]);
-    // }
-    // printf("\n");
-    // uint8_t tab[11] = {10, 2, 2, 2, 1, 12, 0, 1, 3, 15, 0};
-    // uint8_t *res = bits_poids_forts(tab);
-    // uint8_t taille = res[0];
-    // for (int i = 1 ; i < taille; i++)
-    // {
-    //     printf("%d ", res[i]);
-    // }
-    // printf("\n");
-    // return 0;
-}
+//     // for (int i = 0 ; i < tab_rle[0]; i++){
+//     //     printf("%x ", tab_rle[i]);
+//     // }
+//     // printf("\n");
+//     // uint8_t tab[11] = {10, 2, 2, 2, 1, 12, 0, 1, 3, 15, 0};
+//     // uint8_t *res = bits_poids_forts(tab);
+//     // uint8_t taille = res[0];
+//     // for (int i = 1 ; i < taille; i++)
+//     // {
+//     //     printf("%d ", res[i]);
+//     // }
+//     // printf("\n");
+//     // return 0;
+// }
