@@ -105,19 +105,41 @@ int main(){
     uint8_t magnetude_Y = trouver_magnetude(img_Y_quantifie[0]);
     uint8_t *DC_Y = codage_indice_magn(img_Y_quantifie[0]);
     printf("value : %d, magnitude : %d", img_Y_quantifie[0],magnetude_Y );
-    // uint16_t DC_Y_value = 0;
-    // for (int i = 0; i < magnetude_Y; i++)
-    // {
-    //     DC_Y_value = DC_Y_value << 1 | DC_Y[i];
-    // }
-    //printf(", index : %d\n", DC_Y_value);
+    uint16_t DC_Y_value = 0;
+    for (int i = 0; i < magnetude_Y; i++)
+    {
+        DC_Y_value = DC_Y_value << 1 | DC_Y[i];
+    }
+    printf(", index : %d\n", DC_Y_value);
     
-    printf("\nfinal ");
+    printf("\nfinal :");
     uint8_t *code_Y_final = codage_total_DC_Y(img_Y_quantifie[0]);
-    for (int i=1;i<=code_Y_final[0];i++){
+    for (uint8_t i=1;i<=code_Y_final[0];i++){
         printf("%d ", code_Y_final[i]);
     }
+    //TEST AC
     printf("\n");
+    printf("---------------------\n");
+    printf("Coefficients AC \n");
+    for (uint8_t i=1;i<64;i++){
+        if (img_Y_quantifie[i] != 0){
+            magnetude_Y = trouver_magnetude(img_Y_quantifie[i]);
+            printf("value : %d, magnitude : %d,", img_Y_quantifie[i],magnetude_Y );
+            DC_Y = codage_indice_magn(img_Y_quantifie[i]);
+            printf("index ");
+            for (int i = 0; i < magnetude_Y; i++)
+            {
+                printf(" %d",DC_Y[i]);
+            }
+            printf("\nfinal : ");
+            code_Y_final = codage_total_AC_Y(img_Y_quantifie[i]);
+            for (uint8_t i=1;i<=code_Y_final[0];i++){
+                printf("%d ", code_Y_final[i]);
+            }
+            printf("\n");
+        }
+    }
     return 0;
+
 
 }

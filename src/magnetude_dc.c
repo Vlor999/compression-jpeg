@@ -31,35 +31,37 @@ uint8_t trouver_magnetude(int16_t n){
     return 0;
 }
 
-uint16_t indice_magnetude(int32_t n){
-    uint8_t magnetude = trouver_magnetude(n);
-    if (n<0){
-        uint16_t val_max = (pow(2,magnetude-1) -1);
-        uint16_t val_mini = (pow(2,magnetude) -1);
-        uint16_t indice = 0;
-        while (val_mini != val_max){
-            if ( abs(n)  == val_mini){
-                return indice;
-            }
-            val_mini --;
-            indice ++;
-        }
-    }
-    else{
-        uint16_t val_max = (pow(2,magnetude) -1);
-        uint16_t val_mini = (pow(2,magnetude - 1) -1);
-        uint16_t indice = val_max - val_mini -1;
-        while (val_mini != val_max){
-            if ( n  == val_mini){
-                return indice;
-            }
-            val_mini ++;
-            indice ++;
-        }
-    }
-    perror("suspect mon chef");
-    return 0;
-}
+
+// Je ne comprends pas l interet de la fonction, je la programe au dessus.
+// uint16_t indice_magnetude(int16_t n){
+//     uint8_t magnetude = trouver_magnetude(n);
+//     if (n<0){
+//         uint16_t val_max = (pow(2,magnetude-1) -1);
+//         uint16_t val_mini = (pow(2,magnetude) -1);
+//         uint16_t indice = 0;
+//         while (val_mini != val_max){
+//             if ( abs(n)  == val_mini){
+//                 return indice;
+//             }
+//             val_mini --;
+//             indice ++;
+//         }
+//     }
+//     else{
+//         uint16_t val_max = (pow(2,magnetude) -1);
+//         uint16_t val_mini = (pow(2,magnetude - 1) -1);
+//         uint16_t indice = val_max - val_mini -1;
+//         while (val_mini != val_max){
+//             if ( n  == val_mini){
+//                 return indice;
+//             }
+//             val_mini ++;
+//             indice ++;
+//         }
+//     }
+//     perror("suspect mon chef");
+//     return 0;
+// }
 
 
 
@@ -124,10 +126,10 @@ uint8_t *codage_indice_magn(int16_t n){
 uint8_t *codage_total_AC_CbCr(int16_t n){
     uint8_t magn = trouver_magnetude(n);
     uint8_t *cd = codage_indice_magn(n);
-    uint8_t *entete = code_DC_Y[magn];
+    uint8_t *entete = code_AC_CbCr[magn];
     uint8_t *res = malloc((entete[0]+magn)*sizeof(uint8_t));
     res[0]=entete[0]+magn;
-    for (uint8_t i=1;i<entete[0];i++){
+    for (uint8_t i=1;i<=entete[0];i++){
         res[i] = entete[i];
     }
     for (uint8_t i=1;i<=magn;i++){
@@ -139,10 +141,11 @@ uint8_t *codage_total_AC_CbCr(int16_t n){
 uint8_t *codage_total_DC_Y(int16_t n){
     uint8_t magn = trouver_magnetude(n);
     uint8_t *cd = codage_indice_magn(n);
+    
     uint8_t *entete = code_DC_Y[magn];
     uint8_t *res = malloc((entete[0]+magn)*sizeof(uint8_t));
     res[0]=entete[0]+magn;
-    for (uint8_t i=1;i<entete[0];i++){
+    for (uint8_t i=1;i<=entete[0];i++){
         res[i] = entete[i];
     }
     for (uint8_t i=1;i<=magn;i++){
@@ -157,7 +160,7 @@ uint8_t *codage_total_DC_CbCr(int16_t n){
     uint8_t *entete = code_DC_CbCr[magn];
     uint8_t *res = malloc((entete[0]+magn)*sizeof(uint8_t));
     res[0]=entete[0]+magn;
-    for (uint8_t i=1;i<entete[0];i++){
+    for (uint8_t i=1;i<=entete[0];i++){
         res[i] = entete[i];
     }
     for (uint8_t i=1;i<=magn;i++){

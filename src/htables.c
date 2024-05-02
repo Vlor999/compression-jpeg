@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-#include <htables.h>
+#include "../include/htables.h"
 
 /* Table des symboles DC, Y */
 uint8_t htables_symbols_DC_Y[] = {
