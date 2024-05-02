@@ -2,22 +2,26 @@
 #include <stdlib.h>
 #include <time.h>
 
+void generate_tete(FILE *file, int largeur, int hauteur) 
+{
+    fprintf(file, "P6\n%d %d\n255\n", largeur, hauteur);
+}
+
 void generatePPM(const char *filename, int largeur, int hauteur) {
-    FILE *file = fopen(filename, "w");
-    fprintf(file, "P3\n%d %d\n255\n", largeur, hauteur);
+    FILE *file = fopen(filename, "wb"); 
+    generate_tete(file, largeur, hauteur);
 
+    unsigned char *pixels = malloc(3 * largeur * hauteur * sizeof(unsigned char));
 
-    for (int y = 0; y < hauteur; y++) {
-        for (int x = 0; x < largeur; x++) {
-            // Génération de valeurs RGB aléatoires
-            int r = rand() % 256;
-            int g = rand() % 256;
-            int b = rand() % 256;
-            fprintf(file, "%d %d %d ", r, g, b);
-        }
-        fprintf(file, "\n");
+    for (int i = 0; i < largeur * hauteur * 3; i += 3) 
+    {
+        pixels[i] = rand() % 256;
+        pixels[i + 1] = rand() % 256;
+        pixels[i + 2] = rand() % 256;
     }
 
+    fwrite(pixels, sizeof(unsigned char), 3 * largeur * hauteur, file);
+    free(pixels); 
     fclose(file);
 }
 
