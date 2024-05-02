@@ -67,6 +67,12 @@ uint8_t *codage_total_DC_CbCr(int16_t n);
 
 uint8_t *codage_total_AC_CbCr(int16_t n);
 
+
+/**
+ * @brief donne le flux de bits attendus en sortie 
+ * @param RLE les valeurs RLE pour les codages, flux pour les blocs 8x8 à analyser
+ * @return le tableau avec tout le flux correspondant
+ * **/
 uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux);
 
 #endif
