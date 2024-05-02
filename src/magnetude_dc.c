@@ -64,8 +64,6 @@ uint8_t trouver_magnetude(int16_t n){
 // }
 
 
-
-
 uint8_t* codage_AC_RLE(int16_t* tab){  
     uint8_t* tab_RLE = malloc(sizeof(uint8_t)*64);
     uint8_t indice = 1;
@@ -88,8 +86,36 @@ uint8_t* codage_AC_RLE(int16_t* tab){
 }
 
 
-uint8_t *bits_poids_forts(uint8_t *RLE){
-    
+uint8_t *bits_poids_forts(uint8_t *RLE)
+{
+    /*
+    input : 10 2 2 2 1 12 0 1 3 15 0
+    output : [indice 1er 0, nb_0_0
+             indice 2eme 1, nb_0_1
+            ...
+            ]
+    */
+    uint8_t taille = RLE[0];
+    uint8_t* res = malloc(sizeof(uint8_t)*taille);
+    uint8_t pos = 1;
+    uint8_t indice = 1;
+    uint8_t previous = RLE[1];
+    uint8_t current = RLE[2];
+    for (uint8_t i = 2; i < taille + 1 ; i++)
+    {
+        if (current == 0)
+        {
+            res[pos] = indice - 1;
+            res[pos + 1] = previous;
+            pos += 2;
+            indice += previous - 1;
+        }
+        previous = current;
+        current = RLE[i + 1];
+        indice++;
+    }
+    res[0] = pos;
+    return res;
 }
 
 uint8_t *codage_indice_magn(int16_t n){
@@ -192,15 +218,21 @@ uint8_t *codage_total_AC_Y(int16_t n){
     }
     return res;
 }
-// int main(){
-//     int16_t tab[64] = {-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
-//     uint8_t* tab_rle = codage_AC_RLE(&tab);
-//     for (int i = 0 ; i < tab_rle[0]; i++){
-//         printf("%02x ", tab_rle[i]);
-//     }
-//     printf("\n");
-
-//     printf("%d\n",trouver_magnetude(-1));
-//     uint8_t *t = codage_dc_tete(-23);
-//     return 0;
-// }
+int main(){
+    // int16_t tab[64] = {-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
+    // uint8_t* tab_rle = codage_AC_RLE(tab);
+    
+    // for (int i = 0 ; i < tab_rle[0]; i++){
+    //     printf("%x ", tab_rle[i]);
+    // }
+    // printf("\n");
+    // uint8_t tab[11] = {10, 2, 2, 2, 1, 12, 0, 1, 3, 15, 0};
+    // uint8_t *res = bits_poids_forts(tab);
+    // uint8_t taille = res[0];
+    // for (int i = 1 ; i < taille; i++)
+    // {
+    //     printf("%d ", res[i]);
+    // }
+    // printf("\n");
+    // return 0;
+}
