@@ -47,4 +47,28 @@ void ecrire_qtable( char* file, uint8_t* table_Y, uint8_t* table_CbCr);
 void ecrire_htable(char* file, uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t*** htable_nb_length);
 
 
+
+/**
+* @brief ecrit la partie SOF pour donner les specifications sur l'image
+* @param file le fichier dans lequel on ecrit le format jpeg // hauteur de l'imgae // largeur de l'image
+* @return rien hehe
+*
+**/
+
+void ecrire_SOF(char* file, uint16_t hauteur_image, uint16_t largeur_image);
+
+
+
+/**
+* @brief ecrit la partie SOS pplus l'ensemble des valeurs des tableaux de huffman
+* @param file le fichier dans lequel on ecrit le format jpeg // tab_MCU_Huffman_Y tableau contenant nb_MCU et 
+*        chaque valeur est un tableau de MCU (donc 8x8 =64) et dans les MCU les 64 valeurs sont les codes de huffman sous forme de tableau
+         nb_MCU_Y correspond a len(tab_MCU_Huffman_Y)
+* @return rien hehe
+*
+**/
+
+void ecrire_SOS(char* file, uint8_t*** tab_MCU_huffman_Y, uint16_t nb_MCU_Y);
+
+
 #endif
