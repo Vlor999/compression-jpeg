@@ -61,14 +61,12 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
     for (int8_t i = 0; i < 12; i++){
         fwrite(&htable_DC_Y[i], sizeof(uint8_t), 1, fptr);
     }
-    // res[indice] = 1;
-    // indice++;
-    // res[indice] = 0;
-    // indice++;
-    // res[indice] = 1;
-    // indice++;
-    // res[indice] = 0;
-    // indice++;recision2, sizeof(int8_t),1,fptr);
+
+
+    int8_t precision2 = 0x01;                //indice 1 , et type 0 car DC pour CbCr
+    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    fwrite(&length, sizeof(int16_t), 1, fptr);
+    fwrite(&precision2, sizeof(int8_t),1,fptr);
     for (int8_t j = 0; j < 16; j++){
         fwrite(&htable_nb_length[0][1][j], sizeof(uint8_t), 1, fptr);
     }
