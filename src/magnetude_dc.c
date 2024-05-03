@@ -79,7 +79,7 @@ uint8_t* codage_AC_RLE(int16_t* tab){
             nb_zero = 0;
         }
     }
-    tab_RLE[indice] = 0;
+    //tab_RLE[indice] = 0;
     tab_RLE[0] = indice +1; // l'indice 0 est la taille du tableau qui suit
     tab_RLE = realloc(tab_RLE, sizeof(uint8_t)*(indice +2));
     return tab_RLE;
@@ -186,15 +186,15 @@ uint8_t *codage_total_AC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le flux 
         }
     }
     //ICI endofblock
-    res[indice] = 1;
-    indice++;
-    res[indice] = 0;
-    indice++;
-    res[indice] = 1;
-    indice++;
-    res[indice] = 0;
-    indice++;
-    res[indice] = 88; //fin du fichier 
+    // res[indice] = 1;
+    // indice++;
+    // res[indice] = 0;
+    // indice++;
+    // res[indice] = 1;
+    // indice++;
+    // res[indice] = 0;
+    // indice++;
+    // res[indice] = 88; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
 }
@@ -263,14 +263,14 @@ uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux){ //attention le flux con
         }
     }
     //ICI endofblock
-    res[indice] = 1;
-    indice++;
-    res[indice] = 0;
-    indice++;
-    res[indice] = 1;
-    indice++;
-    res[indice] = 0;
-    indice++;
+    // res[indice] = 1;
+    // indice++;
+    // res[indice] = 0;
+    // indice++;
+    // res[indice] = 1;
+    // indice++;
+    // res[indice] = 0;
+    // indice++;
     res[indice] = 88; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
