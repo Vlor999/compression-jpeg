@@ -175,6 +175,10 @@ void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,u
         if (biffleur==-1){ // on écrit 
             biffleur = 7;
             fwrite(&nb, sizeof(uint8_t),1,fptr);
+            if(nb == 0xff){
+                fwrite(&val_zero,sizeof(int8_t),1,fptr);
+            
+            }
             nb = 0;
         }
         else{
