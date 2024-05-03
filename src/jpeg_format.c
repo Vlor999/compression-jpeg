@@ -20,7 +20,7 @@ void ecrire_debut(FILE* fptr){
 
 
 void ecrire_fin(FILE* fptr){
-    int16_t fin = 0xd9ff;
+    int16_t fin = 0xffd9;
     fwrite(&fin, sizeof(int16_t), 1, fptr);
      
 }
@@ -28,8 +28,8 @@ void ecrire_fin(FILE* fptr){
 
 void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr){
     // Indice de table quantification pour Y est 0
-    int16_t marqueur = 0xdbff;
-    int16_t length = 0x4300;                //la longueur de la section
+    int16_t marqueur = 0xffdb;
+    int16_t length = 0x0043;                //la longueur de la section
     int8_t precision = 0x00;
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
@@ -49,8 +49,8 @@ void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr){
 
 
 void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16]){
-    int16_t marqueur = 0xc4ff;  
-    int16_t length = 0x1f00;                //la longueur de la section
+    int16_t marqueur = 0xffc4;  
+    int16_t length = 0x001f;                //la longueur de la section
     int8_t precision = 0x00;                //indice 0 , et type 0 car DC pour Y
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
@@ -74,7 +74,7 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
         fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
     }
 
-    int16_t length2 = 0xb900;        
+    int16_t length2 = 0x00b9;        
     int8_t precision3 = 0x12;                //indice 2 , et type 1 car AC pour Y
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length2, sizeof(int16_t), 1, fptr);
@@ -102,8 +102,8 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
 
 
 void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image){
-    int16_t marqueur = 0xc0ff;
-    int16_t length = 0x0b00;                            //la longueur de la section
+    int16_t marqueur = 0xffc0;
+    int16_t length = 0x000b;                            //la longueur de la section
     int8_t precision = 0x08;     
     int8_t nb_composante = 0x01;                        // nb de composante de 1 pour l'instant car niveaux gris et mettre a 3 si YCbCr               
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
@@ -133,8 +133,8 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image){
 
 void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
     {
-    int16_t marqueur = 0xdaff;
-    int16_t length = 0x0800;                            //la longueur de la section vaut 2* nb_composante + 6 ici nb_composante = 1 car niveaux gris   
+    int16_t marqueur = 0xffda;
+    int16_t length = 0x0008;                            //la longueur de la section vaut 2* nb_composante + 6 ici nb_composante = 1 car niveaux gris   
     int8_t nb_composante = 0x01;  
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
