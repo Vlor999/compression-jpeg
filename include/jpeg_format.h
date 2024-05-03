@@ -68,7 +68,7 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image);
 *
 **/
 
-void ecrire_SOS(FILE* fptr, uint8_t*** tab_MCU_huffman_Y, uint16_t nb_MCU_Y);
+void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y);
 
 
 #endif

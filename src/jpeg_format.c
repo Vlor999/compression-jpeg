@@ -20,7 +20,7 @@ void ecrire_debut(FILE* fptr){
 
 
 void ecrire_fin(FILE* fptr){
-    int16_t fin = 0xffd9;
+    int16_t fin = 0xd9ff;
     fwrite(&fin, sizeof(int16_t), 1, fptr);
      
 }
@@ -74,7 +74,7 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
         fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
     }
 
-    int16_t length2 = 0xb500;        
+    int16_t length2 = 0xb900;        
     int8_t precision3 = 0x12;                //indice 2 , et type 1 car AC pour Y
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length2, sizeof(int16_t), 1, fptr);
@@ -94,7 +94,7 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
     for (int8_t j = 0; j < 16; j++){
         fwrite(&htable_nb_length[1][1][j], sizeof(uint8_t), 1, fptr);
     }
-    for (int i = 0; i < 162; i++){
+    for (int i = 0; i < 166; i++){
         fwrite(&htable_AC_CbCr[i], sizeof(uint8_t), 1, fptr);
     }
      
@@ -131,7 +131,7 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image){
      
 }
 
-void ecrire_SOS(FILE* fptr, uint8_t*** tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
+void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
     {
     int16_t marqueur = 0xdaff;
     int16_t length = 0x0800;                            //la longueur de la section vaut 2* nb_composante + 6 ici nb_composante = 1 car niveaux gris   
@@ -162,14 +162,13 @@ void ecrire_SOS(FILE* fptr, uint8_t*** tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //
 
     // ecriture par bloc de 8x8 par nb de bloc et par ordre de composante
 
-    for (uint16_t i = 0; i < nb_MCU_Y; i ++){
-        for (uint8_t j = 0; j <64; j ++){
-            for (int16_t k = 1; k < tab_MCU_huffman_Y[i][j][0]; k++){
-                fwrite(&tab_MCU_huffman_Y[i][j][k], sizeof(uint8_t),1,fptr);
-                }
-            }
-    }
-     
+    // for (uint16_t i = 0; i < nb_MCU_Y; i ++){
+    uint16_t i =0;
+    while (tab_MCU_huffman_Y[i] != 88 ){
+            fwrite(&tab_MCU_huffman_Y[i], sizeof(uint8_t),1,fptr);
+            i++;
+        }
+    // }
     }
 
 
@@ -181,6 +180,7 @@ int main(){
     ecrire_SOF(fptr,8,8);
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
+    ecrire_fin(fptr);
     fclose(fptr);
     return 0;
 }
