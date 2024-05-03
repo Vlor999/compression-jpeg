@@ -12,21 +12,22 @@
 #include "../include/jpeg_format.h"
 #include "../include/htables.h"
 #include "../include/qtables.h"
+#include "../include/recup_v2.h"
 
 int main(int argc, char **argv){
     if (argc != 3){
         perror("Ton daron en slibard\n");
     } 
-    imagePGM *img = recupereimage(argv[1]); // nom du fichier a preciser  
+    imagePGM_RGB *img = LecturePPM(argv[1]); // nom du fichier a preciser  
     printf("Images initales : \n");
     for (uint32_t i= 0; i < img->col; i++){
         for (uint32_t j = 0; j < img->ligne; j ++){
-            printf("%04x\t ", img->tab[i][j]);   
+            printf("%04x\t ", img->tab[i][j].R);   
         }
         printf("\n");
     }
 
-    Triplet_YCbCr** new_image = conversionRGB_2_VCrCb(img);
+    Triplet_YCbCr** new_image = conversionRGB_2_YCrCb(img);
     uint8_t** image_Y = malloc(img->col * sizeof(uint8_t*));
     uint8_t** image_Cb = malloc(img->col * sizeof(uint8_t*));
     uint8_t** image_Cr = malloc(img->col * sizeof(uint8_t*));
