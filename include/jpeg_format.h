@@ -13,7 +13,7 @@
 **/
 
 
-void ecrire_debut(char* file);
+void ecrire_debut(FILE* fptr);
 
 
 /**
@@ -23,7 +23,7 @@ void ecrire_debut(char* file);
 *
 **/
 
-void ecrire_fin(char* file);
+void ecrire_fin(FILE* fptr);
 
 
 /**
@@ -33,7 +33,7 @@ void ecrire_fin(char* file);
 *
 **/
 
-void ecrire_qtable( char* file, uint8_t* table_Y, uint8_t* table_CbCr);
+void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr);
 
 
 /**
@@ -44,7 +44,7 @@ void ecrire_qtable( char* file, uint8_t* table_Y, uint8_t* table_CbCr);
 *
 **/
 
-void ecrire_htable(char* file, uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t*** htable_nb_length);
+void ecrire_htable(FILE* fptr, uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16]);
 
 
 
@@ -55,7 +55,7 @@ void ecrire_htable(char* file, uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8
 *
 **/
 
-void ecrire_SOF(char* file, uint16_t hauteur_image, uint16_t largeur_image);
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image);
 
 
 
@@ -68,7 +68,7 @@ void ecrire_SOF(char* file, uint16_t hauteur_image, uint16_t largeur_image);
 *
 **/
 
-void ecrire_SOS(char* file, uint8_t*** tab_MCU_huffman_Y, uint16_t nb_MCU_Y);
+void ecrire_SOS(FILE* fptr, uint8_t*** tab_MCU_huffman_Y, uint16_t nb_MCU_Y);
 
 
 #endif
