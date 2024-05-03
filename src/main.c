@@ -14,8 +14,8 @@
 int main(){
     imagePGM *img = recupereimage("../images/invader.pgm"); // cest bon 
     printf("Images initales : \n");
-    for (int i= 0; i < img->col; i++){
-        for (int j = 0; j < img->ligne; j ++){
+    for (uint32_t i= 0; i < img->col; i++){
+        for (uint32_t j = 0; j < img->ligne; j ++){
             printf("%04x\t ", img->tab[i][j]);   
         }
         printf("\n");
@@ -25,12 +25,12 @@ int main(){
     uint8_t** image_Y = malloc(img->col * sizeof(uint8_t*));
     uint8_t** image_Cb = malloc(img->col * sizeof(uint8_t*));
     uint8_t** image_Cr = malloc(img->col * sizeof(uint8_t*));
-    for (int i = 0; i < img->col; i++)
+    for (uint32_t i = 0; i < img->col; i++)
     {
         image_Y[i] = malloc(img->ligne * sizeof(uint8_t));
         image_Cb[i] = malloc(img->ligne * sizeof(uint8_t));
         image_Cr[i] = malloc(img->ligne * sizeof(uint8_t));
-        for (int j = 0; j < img->ligne; j++)
+        for (uint32_t j = 0; j < img->ligne; j++)
         {
             image_Y[i][j] = new_image[i][j].Y;
             image_Cb[i][j] = new_image[i][j].Cb;
@@ -40,9 +40,9 @@ int main(){
 
     printf("---------------------\n");
     printf("Images Downsampling Y : \n");
-    for (int i = 0; i < img->col; i++)
+    for (uint32_t i = 0; i < img->col; i++)
     {
-        for (int j = 0; j < img->ligne; j++)
+        for (uint32_t j = 0; j < img->ligne; j++)
         {
             printf("%04x\t", image_Y[i][j]);
         }
@@ -63,9 +63,9 @@ int main(){
 
     printf("---------------------\n");
     printf("Images DCT Y : \n");
-    for(uint8_t i = 0; i < img_Y_MCU->colonne; i++)
+    for(uint32_t i = 0; i < img_Y_MCU->colonne; i++)
     {
-        for(uint8_t j = 0; j < img_Y_MCU->ligne; j++)
+        for(uint32_t j = 0; j < img_Y_MCU->ligne; j++)
         {
             printf("%04x\t", img_Y_DCT[i][j] & 0xFFFF);
         }

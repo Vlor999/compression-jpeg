@@ -6,8 +6,8 @@
 
 struct MCU{
     uint8_t **tab; //tableau qui contient tous degrés de gris  
-    uint32_t ligne; //savoir quelle ligne on est dans les MCUs (pas nécessaire mais facilite les calculs)
-    uint32_t colonne; //savoir quelle colonne on est dans les MCUs (pas nécessaire mais facilite les calculs)
+    uint32_t ligne; //savoir quelle ligne on est dans les MCUs (pas nécessaire mais facilite les calculs), on compte 8 par 8 
+    uint32_t colonne; //savoir quelle colonne on est dans les MCUs (pas nécessaire mais facilite les calculs), on compte 8 par 8 
     struct MCU *suiv; //prochain Mcu
 };
 

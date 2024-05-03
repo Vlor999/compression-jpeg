@@ -34,4 +34,3 @@ while (j<len(liste2)):
         compteur = compteur + 1
         sortie.write("{")
         sortie.write("0},")
-
