@@ -49,13 +49,13 @@ imagePGM *nouveau_tableau(imagePGM *image)
         }
         else if (new_ligne != nb_ligne)
         {
-            new_tab->ligne = new_ligne + 8;
+            new_tab->ligne = new_ligne;
             new_tab->col = nb_colonne + 8;
         }
         else
         {
             new_tab->ligne = nb_ligne + 8;
-            new_tab->col = new_colonne + 8;
+            new_tab->col = new_colonne;
         }
         new_tab->max = image->max;
 
