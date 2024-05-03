@@ -1,166 +1,62 @@
-#include "../include/MCU.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include "../include/recupereimage.h"
+#include "../include/conversionRGB.h"
+#include "../include/MCU.h"
 
-uint32_t entier_inferieur(uint32_t l)
-{
-    return 8 * (l / 8);
+
+uint32_t entier_superieur(uint32_t l){
+    uint32_t tmp;
+    if (l%8==0){
+        return l;
+    }
+    else{
+        return l + 8;
+    }
 }
 
-void free_decoupage(MCU *m)
-{
-    if (m == NULL)
-    {
-        return;
-    }
-    for (int i = 0; i < 8; i++)
-    {
-        free(m->tab[i]);
-    }
-    free(m->tab);
-    free_decoupage(m->suiv);
-    free(m);
-}
-
-int min(int a, int b)
-{
-    if (a < b)
-    {
-        return a;
-    }
-    return b;
-}
-
-imagePGM *nouveau_tableau(imagePGM *image)
-{
-    uint32_t nb_ligne = image->ligne;
-    uint32_t nb_colonne = image->col;
-    uint32_t new_ligne = entier_inferieur(nb_ligne);
-    uint32_t new_colonne = entier_inferieur(nb_colonne);
-
-    if (new_ligne != nb_ligne || new_colonne != nb_colonne)
-    {
-        // ON va créer une imagePGM avec des bords mutiples de 8
-        imagePGM *new_tab = malloc(sizeof(imagePGM));
-
-        if (new_ligne != nb_ligne && new_colonne != nb_colonne)
-        {
-            new_tab->ligne = new_ligne + 8;
-            new_tab->col = new_colonne + 8;
-        }
-        else if (new_ligne != nb_ligne)
-        {
-            new_tab->ligne = new_ligne + 8;
-            new_tab->col = nb_colonne + 8;
-        }
-        else
-        {
-            new_tab->ligne = nb_ligne + 8;
-            new_tab->col = new_colonne + 8;
-        }
-        new_tab->max = image->max;
-
-        new_tab->tab = malloc(new_tab->ligne * sizeof(uint8_t *));
-
-        for (uint32_t i = 0; i < new_tab->ligne; i++)
-        {
-            new_tab->tab[i] = malloc(new_tab->col * sizeof(uint8_t));
-            for (uint32_t j = 0; j < new_tab->col; j++)
-            {
-                if (i < nb_ligne && j < nb_colonne)
-                {
-                    new_tab->tab[i][j] = image->tab[i][j];
-                }
-                else
-                {
-                    new_tab->tab[i][j] = 0;
-                }
-            }
-        }
-        return new_tab;
-    }
-    return image;
-}
-
-MCU *decoupage(imagePGM *tab)
-{
-    tab = nouveau_tableau(tab);
-    // On a une image avec des bords multiples de 8
-
-    uint32_t i, j, k, l;
-    uint8_t **tab2 = tab->tab;
-    MCU *tete = malloc(sizeof(MCU));
-    if (tete == NULL)
-    {
-        return NULL;
-    }
-    tete->tab = malloc(8 * sizeof(uint8_t *));
-    if (tete->tab == NULL)
-    {
-        free(tete);
-        return NULL;
-    }
-    tete->ligne = 0;
-    tete->colonne = 0;
-    tete->suiv = NULL;
-    for (i = 0; i < 8; i++)
-    {
-        tete->tab[i] = malloc(8 * sizeof(uint8_t));
-        if (tete->tab[i] == NULL)
-        {
-            free_decoupage(tete);
-            return NULL;
-        }
-        for (j = 0; j < 8; j++)
-        {
-            tete->tab[i][j] = tab2[i][j];
+MCU *decoupage(imagePGM *img)
+{ 
+    // //A FINIR QUAND Y A PLUSIEURS MCU
+    // //POUR LE GRIS UNIQUEMENT APRES FAUT ALLER NIQUER SA MERE 
+    // uint32_t **tab = img -> tab;
+    // uint32_t hauteur = entier_superieur(img -> ligne);
+    // uint32_t largeur = entier_superieur(img -> col);
+    // Mcu *tete;
+    // Mcu *actuel;
+    // Mcu *tmp;
+    // bool debut = true;
+    // for (uint32_t indice_hauteur = 0; indice_hauteur < tab[0][1]; indice_hauteur = indice_hauteur + 8){
+    //     for (uint32_t indice_largeur = 0; indice_largeur < tab[0][1]; indice_largeur = indice_largeur + 8){
+    //         tmp = (Mcu*)malloc(sizeof(Mcu));
+    //         tmp -> colonne = indice_largeur;
+    //         tmp -> ligne = indice_hauteur;
+    //         for (uint8_t i=0;i<8;i++){ //on remplit le CMU des pixels
+    //             for (uint8_t j=0;j<8;j++){
+    //                 (tmp -> tab)[i][j] = tab[indice_hauteur + i][indice_largeur + j];
+    //             }
+    //         }
+    //         if (debut){ //on marque la tete
+    //             tete = tmp;
+    //             debut = false;
+    //         }
+    //         else
+    //         {
+                
+    //         }
+    //     }
+    MCU *matrice = malloc(sizeof(MCU));
+    matrice->tab = malloc(8 * sizeof(uint8_t*));
+    for (uint8_t i = 0; i < 8; i++){
+        matrice->tab[i] = malloc(8 * sizeof(uint8_t));
+        for (uint8_t j = 0; j < 8; j++){
+            matrice->tab[i][j] = img->tab[i][j];
         }
     }
-    MCU *courant = tete;
-    for (i = 0; i < tab->ligne; i += 8)
-    {
-        for (j = 0; j < tab->col; j += 8)
-        {
-            if (i == 0 && j == 0)
-            {
-                continue;
-            }
-            courant->suiv = malloc(sizeof(MCU));
-            if (courant->suiv == NULL)
-            {
-                free_decoupage(tete);
-                return NULL;
-            }
-            courant = courant->suiv;
-            courant->tab = malloc(8 * sizeof(uint8_t *));
-            if (courant->tab == NULL)
-            {
-                free_decoupage(tete);
-                return NULL;
-            }
-            courant->ligne = i;
-            courant->colonne = j;
-            courant->suiv = NULL;
-            for (k = 0; k < 8; k++)
-            {
-                courant->tab[k] = malloc(8 * sizeof(uint8_t));
-                if (courant->tab[k] == NULL)
-                {
-                    free_decoupage(tete);
-                    return NULL;
-                }
-                for (l = 0; l < 8; l++)
-                {
-                    if (i + k < tab->ligne && j + l < tab->col)
-                    {
-                        courant->tab[k][l] = tab2[i + k][j + l];
-                    }
-                    else
-                    {
-                        courant->tab[k][l] = 0;
-                    }
-                }
-            }
-        }
-    }
-    return tete;
+    matrice->ligne = img->ligne;
+    matrice->colonne = img->col;
+    matrice->suiv = NULL;
+    return matrice;
+    // }
 }
