@@ -107,6 +107,7 @@ imagePGM* recupereimage(char* file){
         }
     }
     //fin de l'initialisation de la matrice
+    fgetc(fichier_PGM);
     for (uint32_t i = 0; i < image->ligne; i++){
         image->tab[i] = malloc(sizeof(uint8_t) * image->col); // Allocate memory for columns
         if (image->tab[i] == NULL){

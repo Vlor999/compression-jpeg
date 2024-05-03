@@ -272,7 +272,7 @@ uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux){ //attention le flux con
     res[indice] = 0;
     indice++;
     res[indice] = 88; //fin du fichier 
-    res = realloc(res,(indice)*sizeof(uint8_t));
+    res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
 }
 // int main(){

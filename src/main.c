@@ -63,9 +63,9 @@ int main(){
 
     printf("---------------------\n");
     printf("Images DCT Y : \n");
-    for(uint32_t i = 0; i < img_Y_MCU->colonne; i++)
+    for(uint32_t i = 0; i < 8; i++)
     {
-        for(uint32_t j = 0; j < img_Y_MCU->ligne; j++)
+        for(uint32_t j = 0; j < 8 ; j++)
         {
             printf("%04x\t", img_Y_DCT[i][j] & 0xFFFF);
         }
@@ -78,23 +78,23 @@ int main(){
 
     printf("---------------------\n");
     printf("Images ZigZag Y : \n");
-    for (uint8_t i = 0; i < img_Y_MCU->colonne; i++)
+    for (uint8_t i = 0; i < 8; i++)
     {
-        for (uint8_t j = 0; j < img_Y_MCU->ligne; j++)
+        for (uint8_t j = 0; j < 8 ; j++)
         {
             printf("%04x\t", img_Y_ZigZag[i * img_Y_MCU->ligne + j] & 0xFFFF);
         }
         printf("\n");
     }
 
-    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, img_Y_MCU->colonne * img_Y_MCU->ligne);
-    int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag, img_Cb_MCU->colonne * img_Cb_MCU->ligne);
-    int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag, img_Cr_MCU->colonne * img_Cr_MCU->ligne);
+    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, 64);
+    int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag, 64);
+    int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag, 64);
     printf("---------------------\n");
     printf("Images Quantifie Y : \n");
-    for (uint32_t i = 0; i < img_Y_MCU->colonne; i++)
+    for (uint32_t i = 0; i < 8 ; i++)
     {
-        for (uint32_t j = 0; j < img_Y_MCU->ligne; j++)
+        for (uint32_t j = 0; j < 8; j++)
         {
             printf("%04x\t", img_Y_quantifie[i * img_Y_MCU->ligne + j] & 0xFFFF);
         }
