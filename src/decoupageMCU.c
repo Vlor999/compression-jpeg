@@ -54,8 +54,8 @@ MCU *decoupage(imagePGM *img)
             matrice->tab[i][j] = img->tab[i][j];
         }
     }
-    matrice->ligne = img->ligne;
-    matrice->colonne = img->col;
+    matrice->ligne = 0;
+    matrice->colonne = 0;
     matrice->suiv = NULL;
     return matrice;
     // }

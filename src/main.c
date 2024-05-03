@@ -9,10 +9,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "../include/jpeg_format.h"
+#include "../include/htables.h"
+#include "../include/qtables.h"
 
-
-int main(){
-    imagePGM *img = recupereimage("../images/invader.pgm"); // cest bon 
+int main(int argc, char **argv){
+    if (argc != 3){
+        perror("Ton daron en slibard\n");
+    } 
+    imagePGM *img = recupereimage(argv[1]); // nom du fichier a preciser  
     printf("Images initales : \n");
     for (uint32_t i= 0; i < img->col; i++){
         for (uint32_t j = 0; j < img->ligne; j ++){
@@ -82,7 +87,7 @@ int main(){
     {
         for (uint8_t j = 0; j < 8 ; j++)
         {
-            printf("%04x\t", img_Y_ZigZag[i * img_Y_MCU->ligne + j] & 0xFFFF);
+            printf("%04x\t", img_Y_ZigZag[i * 8 + j] & 0xFFFF);
         }
         printf("\n");
     }
@@ -96,7 +101,7 @@ int main(){
     {
         for (uint32_t j = 0; j < 8; j++)
         {
-            printf("%04x\t", img_Y_quantifie[i * img_Y_MCU->ligne + j] & 0xFFFF);
+            printf("%04x\t", img_Y_quantifie[i * 8 + j] & 0xFFFF);
         }
         printf("\n");
     }
@@ -128,8 +133,18 @@ int main(){
             break;
         }
         printf("%d ", resultat_final[i]);
-
     }
+    char* filename = argv[2];
+    FILE* fptr = fopen(filename, "wb");
+    ecrire_debut(fptr);
+    ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
+    ecrire_SOF(fptr,8,8);
+    ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
+    ecrire_SOS(fptr,resultat_final,1);
+    ecrire_fin(fptr);
+    fclose(fptr);
+    return 0;
+    
     // for (uint8_t i=1;i<64;i++){
     //     if (img_Y_quantifie[i] != 0){
     //         magnetude_Y = trouver_magnetude(img_Y_quantifie[i]);
