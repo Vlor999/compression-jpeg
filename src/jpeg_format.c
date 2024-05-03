@@ -38,13 +38,13 @@ void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr){
     for (int8_t i = 0; i < 64; i++){
         fwrite(&table_Y[i], sizeof(uint8_t), 1, fptr);
     }
-    int8_t precision1 = 0x01;                   // Indice de table quantification pour CbCr est 1
-    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    fwrite(&length, sizeof(int16_t), 1, fptr);
-    fwrite(&precision1, sizeof(int8_t),1,fptr);
-    for (int8_t i = 0; i < 64; i++){
-        fwrite(&table_CbCr[i], sizeof(uint8_t), 1, fptr);
-    }
+    // int8_t precision1 = 0x01;                   // Indice de table quantification pour CbCr est 1
+    // fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    // fwrite(&length, sizeof(int16_t), 1, fptr);
+    // fwrite(&precision1, sizeof(int8_t),1,fptr);
+    // for (int8_t i = 0; i < 64; i++){
+    //     fwrite(&table_CbCr[i], sizeof(uint8_t), 1, fptr);
+    // }
      
 }
 
@@ -64,16 +64,16 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
     }
 
 
-    int8_t precision2 = 0x01;                //indice 1 , et type 0 car DC pour CbCr
-    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    fwrite(&length, sizeof(int16_t), 1, fptr);
-    fwrite(&precision2, sizeof(int8_t),1,fptr);
-    for (int8_t j = 0; j < 16; j++){
-        fwrite(&htable_nb_length[0][1][j], sizeof(uint8_t), 1, fptr);
-    }
-    for (int8_t i = 0; i < 12; i++){
-        fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
-    }
+    // int8_t precision2 = 0x01;                //indice 1 , et type 0 car DC pour CbCr
+    // fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    // fwrite(&length, sizeof(int16_t), 1, fptr);
+    // fwrite(&precision2, sizeof(int8_t),1,fptr);
+    // for (int8_t j = 0; j < 16; j++){
+    //     fwrite(&htable_nb_length[0][1][j], sizeof(uint8_t), 1, fptr);
+    // }
+    // for (int8_t i = 0; i < 12; i++){
+    //     fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
+    // }
 
     int16_t length2 = 0xb500;        
     int8_t precision3 = 0x12;                //indice 2 , et type 1 car AC pour Y
@@ -88,16 +88,16 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
     }
 
 
-    int8_t precision4 = 0x13;                //indice 3 , et type 1 car AC pour CbCr
-    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    fwrite(&length2, sizeof(int16_t), 1, fptr);
-    fwrite(&precision4, sizeof(int8_t),1,fptr);
-    for (int8_t j = 0; j < 16; j++){
-        fwrite(&htable_nb_length[1][1][j], sizeof(uint8_t), 1, fptr);
-    }
-    for (int i = 0; i < 162; i++){
-        fwrite(&htable_AC_CbCr[i], sizeof(uint8_t), 1, fptr);
-    }
+    // int8_t precision4 = 0x13;                //indice 3 , et type 1 car AC pour CbCr
+    // fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    // fwrite(&length2, sizeof(int16_t), 1, fptr);
+    // fwrite(&precision4, sizeof(int8_t),1,fptr);
+    // for (int8_t j = 0; j < 16; j++){
+    //     fwrite(&htable_nb_length[1][1][j], sizeof(uint8_t), 1, fptr);
+    // }
+    // for (int i = 0; i < 162; i++){
+    //     fwrite(&htable_AC_CbCr[i], sizeof(uint8_t), 1, fptr);
+    // }
      
 }   
 

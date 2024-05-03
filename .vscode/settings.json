@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "recupereimage.h": "c",
+        "qtables.h": "c"
+    }
+}
