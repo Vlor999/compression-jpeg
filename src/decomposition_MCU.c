@@ -72,7 +72,9 @@ imagePGM *nouveau_tableau(imagePGM *image)
                 }
                 else
                 {
-                    new_tab->tab[i][j] = 0;
+                    uint32_t i0 = min(i, nb_ligne - 1);
+                    uint32_t j0 = min(j, nb_colonne - 1);
+                    new_tab->tab[i][j] = image->tab[i0][j0];
                 }
             }
         }

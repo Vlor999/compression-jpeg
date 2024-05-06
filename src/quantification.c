@@ -4,31 +4,31 @@
 #include "../include/qtables.h"
 #include <math.h>
 
-int16_t* quotient(int16_t* vector1, uint8_t* vector2, int size) 
+int16_t* quotient(int16_t* vector1, uint8_t* vector2) 
 {
     /*
     Je fais ici le rapport des coefficients et l'inscrit dans le nouveau vecteur 
     Je ne sais pas si cela focntionne vraiment bien, mais je pense que oui
     */
-    int16_t* result = malloc(size * sizeof(int));
+    int16_t* result = malloc(64 * sizeof(int));
     
-    for (int i = 0; i < size; i++) {
+    for (uint8_t i = 0; i < 64; i++) 
+    {
         result[i] = (int16_t)(floor(vector1[i] / vector2[i]));
     }
-    
     return result;
 }
 
-int16_t* quotient_qtable_Y(int16_t* vect, int size)
+int16_t* quotient_qtable_Y(int16_t* vect)
 {
     uint8_t *vect2 = quantification_table_Y;
-    return quotient(vect, vect2, size);
+    return quotient(vect, vect2);
 }
 
-int16_t* quotient_qtable_CbCr(int16_t* vect, int size)
+int16_t* quotient_qtable_CbCr(int16_t* vect)
 {
     uint8_t *vect2 = quantification_table_CbCr;
-    return quotient(vect, vect2, size);
+    return quotient(vect, vect2);
 }
 
 // int main()
@@ -41,8 +41,8 @@ int16_t* quotient_qtable_CbCr(int16_t* vect, int size)
 //                     31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
 //                     45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58,
 //                     59, 60, 61, 62, 63, 64};
-//     int16_t* result_Y = quotient_qtable_Y(vect, 64);
-//     int16_t* result_CbCr = quotient_qtable_CbCr(vect, 64);
+//     int16_t* result_Y = quotient_qtable_Y(vect);
+//     int16_t* result_CbCr = quotient_qtable_CbCr(vect);
     
 //     for (int i = 0; i < 64; i++) {
 //         printf("%x ", result_Y[i]);
