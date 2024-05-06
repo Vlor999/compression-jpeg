@@ -59,8 +59,9 @@ void ecrire_SOF(FILE* fptr, uint8_t hauteur_image, uint8_t largeur_image);
 
 
 
+
 /**
-* @brief ecrit la partie SOS pplus l'ensemble des valeurs des tableaux de huffman
+* @brief ecrit la partie SOS l'en tete
 * @param file le fichier dans lequel on ecrit le format jpeg // tab_MCU_Huffman_Y tableau contenant nb_MCU et 
 *        chaque valeur est un tableau de MCU (donc 8x8 =64) et dans les MCU les 64 valeurs sont les codes de huffman sous forme de tableau
          nb_MCU_Y correspond a len(tab_MCU_Huffman_Y)
@@ -68,7 +69,19 @@ void ecrire_SOF(FILE* fptr, uint8_t hauteur_image, uint8_t largeur_image);
 *
 **/
 
-void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y);
+void ecrire_SOS_en_tete(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y);
+
+
+/**
+* @brief ecrit la partie SOS le contenue
+* @param file le fichier dans lequel on ecrit le format jpeg // tab_MCU_Huffman_Y tableau contenant nb_MCU et 
+*        chaque valeur est un tableau de MCU (donc 8x8 =64) et dans les MCU les 64 valeurs sont les codes de huffman sous forme de tableau
+         nb_MCU_Y correspond a len(tab_MCU_Huffman_Y)
+* @return rien hehe
+*
+**/
+
+void ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y);
 
 
 #endif

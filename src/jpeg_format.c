@@ -137,7 +137,7 @@ void ecrire_SOF(FILE* fptr, uint8_t hauteur_image, uint8_t largeur_image){
      
 }
 
-void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
+void ecrire_SOS_en_tete(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
     {
     int16_t marqueur = 0xdaff;
     int16_t length = 0x0800;                            //la longueur de la section vaut 2* nb_composante + 6 ici nb_composante = 1 car niveaux gris   
@@ -165,9 +165,12 @@ void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,u
     fwrite(&val_zero, sizeof(int8_t),1,fptr);
     fwrite(&val_se, sizeof(int8_t),1,fptr);
     fwrite(&val_zero, sizeof(int8_t),1,fptr);
+    }
 
+void ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y){
     // ecriture par bloc de 8x8 par nb de bloc et par ordre de composante
     // for (uint16_t i = 0; i < nb_MCU_Y; i ++){
+    int8_t val_zero = 0x00;
     uint16_t i =0;
     int8_t biffleur = 7;
     uint8_t nb = 0;
