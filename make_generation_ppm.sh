@@ -8,6 +8,7 @@ if [ $? -eq 0 ]; then
     echo "Compilation réussie. Génération des images..."
 else
     echo "Erreur lors de la compilation. Arrêt du processus."
+    echo "format : ./make_generation_ppm.sh <nb_lignes> <nb_colonnes> <nb_images>"
     exit 1
 fi
 
