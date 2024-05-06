@@ -4,6 +4,6 @@ for i in $(seq 8 15);
 do
     for j in $(seq 8 15)
     do
-        ./make_generation_pgm.sh 1 $i $j
+        ./make_generation_ppm.sh $i $j 1
     done
 done

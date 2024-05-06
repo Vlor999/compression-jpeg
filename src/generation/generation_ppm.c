@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 void generate_tete(FILE *file, int largeur, int hauteur) 
 {
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 {
 
     srand(time(NULL)); // Initialisation du générateur de nombres aléatoires avec une graine basée sur l'heure actuelle
-
+    sleep(1);
     if (argc != 4) {
         printf("Utilisation: %s <largeur> <hauteur> <nombre_images>\n", argv[0]);
         return 1;

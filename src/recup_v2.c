@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "../include/conversionRGB.h"
+#include "../include/recup_v2.h"
 
 // typedef struct Triplet_RGB{
 //     uint8_t R;
@@ -93,7 +94,7 @@ imagePGM_RGB* LecturePPM(const char* filename)
 //     }
 
 //     const char* filename = argv[1];
-//     imagePGM* img = LecturePPM(filename);
+//     imagePGM_RGB* img = LecturePPM(filename);
 //     if (!img) {
 //         printf("Failed to read PPM file: %s\n", filename);
 //         return 1;

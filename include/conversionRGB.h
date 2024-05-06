@@ -17,6 +17,12 @@ typedef struct Triplet_YCbCr{
     float Cr;
 }Triplet_YCbCr;
 
+typedef struct imagePGM_RGB{
+    uint32_t col;
+    uint32_t ligne;
+    uint32_t max;
+    Triplet_RGB** tab;
+}imagePGM_RGB;
 
 /**
  * @brief fais conversion de RGB vers YCbCr
@@ -37,5 +43,7 @@ Triplet_YCbCr conversionRGB(Triplet_RGB pixel);
  */
 
 Triplet_YCbCr** conversionRGB_2_VCrCb(imagePGM *image);
+
+Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image);
 
 #endif
