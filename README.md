@@ -12,7 +12,7 @@ Nous vous présentons ici notre projet **JPEG** qui consiste à convertir une im
 
 Il sera alors présenter l'avancement à chque étape du projet.
 
-### 1 : Le découpage des fonctionnalités du projet en module.
+#### 1 : Le découpage des fonctionnalités du projet en module.
 
 1) Module 1 : 
     1) Module 1.1 : Lecture des images **PPM/PGM**.
@@ -50,10 +50,17 @@ Il sera alors présenter l'avancement à chque étape du projet.
     1) Entrée : Notre code de compression **JPEG**.
     2) Sortie : Image compressée sous format **JPEG** optimisée, plus rapidement et en utilisant moins d'espace mémoire.
 
-### 2 : Structure de donnée du projet.
+#### 2 : Structure de donnée du projet.
 
 <img src="IMG_1181.jpg">
 
-### 3 : Répartition des tâches au sein de l'équipe.
+#### 3 : Répartition des tâches au sein de l'équipe.
 
 <img src="IMG_1182.jpg">
+
+### Compte - Rendu : 
+#### Semaine 1:
+Le but de cette première semaine était d'voir un code qui fonctionnne pour les iamges de tailles 8 x 8 afin d'avoir une structure fonctionnelle. Cette étape clés à été réussi et permet d'avoir une idée globale de comment fonctionne la compression JPEG. Nous avons aussi pu remarquer que pour des images de petites tailles alors la compression ne fait pas son travailler. Pour l'images invaders, nous avions une image de 75 bytes et après compression JPEG nous avons une image de 380 bytes. Finalement nous avons pu voir que la structure globale de l'image ne changeaient effectivement pas : 
+
+<img src="images/invader.pgm">
+<img src="inva.jpg">
