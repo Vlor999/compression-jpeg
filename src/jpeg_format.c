@@ -104,7 +104,7 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
 }   
 
 
-void ecrire_SOF(FILE* fptr, uint8_t hauteur_image, uint8_t largeur_image){
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image){
     int16_t marqueur = 0xc0ff;
     int16_t length = 0x0b00;                            //la longueur de la section
     int8_t precision = 0x08;     

@@ -196,6 +196,7 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
 
 
     //PARTIE DC 
+    printf("DC \n");
     for (uint8_t i=1;i<=code_DC_Y[magn][0];i++){
         res[indice] = code_DC_Y[magn][i];
         printf("%d" ,res[indice]);
@@ -206,7 +207,7 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
         printf("%d" ,res[indice]);
         indice ++;
     }
-    printf("\n\n\n\n");
+    // printf("\n\n\n\n");
     while (compteur <= 64){
         if (flux2[compteur]==0){
             compteur++;

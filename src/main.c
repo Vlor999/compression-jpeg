@@ -26,6 +26,8 @@ int main(int argc, char **argv){
         }
         printf("\n");
     }
+    // uint32_t nb_ligne = img->ligne;
+    // uint32_t nb_col = img->col;
 
     Triplet_YCbCr** new_image = conversionRGB_2_YCrCb(img);
     uint8_t** image_Y = malloc(img->col * sizeof(uint8_t*));
