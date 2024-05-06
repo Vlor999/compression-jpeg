@@ -111,7 +111,7 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image){
     int8_t nb_composante = 0x01;   
     //changement ordre des tailles
     uint16_t word_hauteur = hauteur_image&0xFF;
-    uint8_t word_largeur = largeur_image&(0xFF);
+    uint16_t word_largeur = largeur_image&(0xFF);
     word_hauteur = word_hauteur << 8;
     word_hauteur |= (hauteur_image >> 8)&0xFF;
 
