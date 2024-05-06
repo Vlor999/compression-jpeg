@@ -63,88 +63,128 @@ int main(int argc, char **argv){
     MCU* img_Cb_MCU = decoupage(&PGM_Cb);
     MCU* img_Cr_MCU = decoupage(&PGM_Cr);
 
-    int16_t** img_Y_DCT = dct(img_Y_MCU);
-    int16_t** img_Cb_DCT = dct(img_Cb_MCU);
-    int16_t** img_Cr_DCT = dct(img_Cr_MCU);
 
-    printf("---------------------\n");
-    printf("Images DCT Y : \n");
-    for(uint32_t i = 0; i < 8; i++)
-    {
-        for(uint32_t j = 0; j < 8 ; j++)
-        {
-            printf("%04x\t", img_Y_DCT[i][j] & 0xFFFF);
-        }
-        printf("\n");
-    }
-
-    int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
-    int16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
-    int16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
-
-    printf("---------------------\n");
-    printf("Images ZigZag Y : \n");
-    for (uint8_t i = 0; i < 8; i++)
-    {
-        for (uint8_t j = 0; j < 8 ; j++)
-        {
-            printf("%04x\t", img_Y_ZigZag[i * 8 + j] & 0xFFFF);
-        }
-        printf("\n");
-    }
-
-    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, 64);
-    int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag, 64);
-    int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag, 64);
-    printf("---------------------\n");
-    printf("Images Quantifie Y : \n");
-    for (uint32_t i = 0; i < 8 ; i++)
-    {
-        for (uint32_t j = 0; j < 8; j++)
-        {
-            printf("%04x\t", img_Y_quantifie[i * 8 + j] & 0xFFFF);
-        }
-        printf("\n");
-    }
-    printf("---------------------\n");
-    printf("Coefficient DC \n");
-    uint8_t magnetude_Y = trouver_magnetude(img_Y_quantifie[0]);
-    uint8_t *DC_Y = codage_indice_magn(img_Y_quantifie[0]);
-    printf("value : %d, magnitude : %d", img_Y_quantifie[0],magnetude_Y );
-    uint16_t DC_Y_value = 0;
-    for (int i = 0; i < magnetude_Y; i++)
-    {
-        DC_Y_value = DC_Y_value << 1 | DC_Y[i];
-    }
-    printf(", index : %d\n", DC_Y_value);
-    
-    printf("\nfinal :");
-    uint8_t *code_Y_final = codage_total_DC_Y(img_Y_quantifie[0]);
-    for (uint8_t i=1;i<=code_Y_final[0];i++){
-        printf("%d ", code_Y_final[i]);
-    }
-    //TEST AC
-    printf("\n");
-    printf("---------------------\n");
-    printf("Coefficients AC \n");
-    uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
-    uint8_t *resultat_final = codage_total_AC_Y(RLE,img_Y_quantifie);
-    for (uint64_t i = 0;i<30000; i++){ // résultat du flux de l encodage, a voir si c est bien ce qui est demandé 
-        if (resultat_final[i]==88){
-            break;
-        }
-        printf("%d ", resultat_final[i]);
-    }
     char* filename = argv[2];
     FILE* fptr = fopen(filename, "wb");
     ecrire_debut(fptr);
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
-    ecrire_SOF(fptr,8,8);
+    ecrire_SOF(fptr, 320, 320); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
-    ecrire_SOS(fptr,resultat_final,1);
+    
+    int16_t** img_Y_DCT = dct(img_Y_MCU);
+    int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
+    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, 64);
+    uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
+    uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, NULL, img_Y_quantifie, false);
+    ecrire_SOS_en_tete(fptr,resultat_final,1);  
+    
+    while (img_Y_MCU->suiv != NULL)
+    {
+        int16_t** img_Y_DCT = dct(img_Y_MCU->suiv);
+        int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
+        int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, 64);
+        bool changement_DC = img_Y_MCU->suiv->ligne == img_Y_MCU->ligne;
+
+        int16_t* img_Y_quantifie_prec = quotient_qtable_Y(zigzag_matrice(dct(img_Y_MCU)), 64);
+
+        uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
+        uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, img_Y_quantifie_prec, img_Y_quantifie, changement_DC);
+        for (uint64_t i = 0;i<30000; i++)
+        { // résultat du flux de l encodage, a voir si c est bien ce qui est demandé 
+            if (resultat_final[i]==88){
+                break;
+            }
+            printf("%d ", resultat_final[i]);
+        }
+        ecrire_SOS_contenu(fptr,resultat_final,1);
+        img_Y_MCU = img_Y_MCU->suiv;
+    }
     ecrire_fin(fptr);
     fclose(fptr);
-    return 0;
+    printf("fini\n");
+
+    // int16_t** img_Y_DCT = dct(img_Y_MCU);
+    // int16_t** img_Cb_DCT = dct(img_Cb_MCU);
+    // int16_t** img_Cr_DCT = dct(img_Cr_MCU);
+
+    // printf("---------------------\n");
+    // printf("Images DCT Y : \n");
+    // for(uint32_t i = 0; i < 8; i++)
+    // {
+    //     for(uint32_t j = 0; j < 8 ; j++)
+    //     {
+    //         printf("%04x\t", img_Y_DCT[i][j] & 0xFFFF);
+    //     }
+    //     printf("\n");
+    // }
+
+    // int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
+    // int16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
+    // int16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
+
+    // printf("---------------------\n");
+    // printf("Images ZigZag Y : \n");
+    // for (uint8_t i = 0; i < 8; i++)
+    // {
+    //     for (uint8_t j = 0; j < 8 ; j++)
+    //     {
+    //         printf("%04x\t", img_Y_ZigZag[i * 8 + j] & 0xFFFF);
+    //     }
+    //     printf("\n");
+    // }
+
+    // int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, 64);
+    // int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag, 64);
+    // int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag, 64);
+    // printf("---------------------\n");
+    // printf("Images Quantifie Y : \n");
+    // for (uint32_t i = 0; i < 8 ; i++)
+    // {
+    //     for (uint32_t j = 0; j < 8; j++)
+    //     {
+    //         printf("%04x\t", img_Y_quantifie[i * 8 + j] & 0xFFFF);
+    //     }
+    //     printf("\n");
+    // }
+    // printf("---------------------\n");
+    // printf("Coefficient DC \n");
+    // uint8_t magnetude_Y = trouver_magnetude(img_Y_quantifie[0]);
+    // uint8_t *DC_Y = codage_indice_magn(img_Y_quantifie[0]);
+    // printf("value : %d, magnitude : %d", img_Y_quantifie[0],magnetude_Y );
+    // uint16_t DC_Y_value = 0;
+    // for (int i = 0; i < magnetude_Y; i++)
+    // {
+    //     DC_Y_value = DC_Y_value << 1 | DC_Y[i];
+    // }
+    // printf(", index : %d\n", DC_Y_value);
+    
+    // printf("\nfinal :");
+    // uint8_t *code_Y_final = codage_total_DC_Y(img_Y_quantifie[0]);
+    // for (uint8_t i=1;i<=code_Y_final[0];i++){
+    //     printf("%d ", code_Y_final[i]);
+    // }
+    // //TEST AC
+    // printf("\n");
+    // printf("---------------------\n");
+    // printf("Coefficients AC \n");
+    // uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
+    // uint8_t *resultat_final = codage_total_AC_Y(RLE,img_Y_quantifie);
+    // for (uint64_t i = 0;i<30000; i++){ // résultat du flux de l encodage, a voir si c est bien ce qui est demandé 
+    //     if (resultat_final[i]==88){
+    //         break;
+    //     }
+    //     printf("%d ", resultat_final[i]);
+    // }
+    // char* filename = argv[2];
+    // FILE* fptr = fopen(filename, "wb");
+    // ecrire_debut(fptr);
+    // ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
+    // ecrire_SOF(fptr,8,8);
+    // ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
+    // ecrire_SOS(fptr,resultat_final,1);
+    // ecrire_fin(fptr);
+    // fclose(fptr);
+    // return 0;
     
     // for (uint8_t i=1;i<64;i++){
     //     if (img_Y_quantifie[i] != 0){

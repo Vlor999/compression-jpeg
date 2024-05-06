@@ -1,7 +1,7 @@
 #ifndef _MAGNETUDE_DC_H
 #define _MAGNETUDE_DC_H
 #include <stdint.h>
-#include <stdbool.h>/
+#include <stdbool.h>
 
 /**
 * @brief trouve la magnétude associée à n
