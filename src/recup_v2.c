@@ -2,29 +2,23 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
-// #include "../include/recupereimage.h"
+#include "../include/conversionRGB.h"
 
-typedef struct Triplet_RGB{
-    uint8_t R;
-    uint8_t G;
-    uint8_t B;
-}Triplet_RGB;
+// typedef struct Triplet_RGB{
+//     uint8_t R;
+//     uint8_t G;
+//     uint8_t B;
+// }Triplet_RGB;
 
-typedef struct imagePGM_RGB{
-    int32_t col;
-    int32_t ligne;
-    int8_t max;
-    Triplet_RGB** tab;
-}imagePGM_RGB;
 
-void libere_image(imagePGM_RGB* image){
-    for (int i = 0; i < image->ligne; i++)
-    {
-        free(image->tab[i]);
-    }
-    free(image->tab);
-    free(image);
-}
+// void libere_image(imagePGM_RGB* image){
+//     for (uint32_t i = 0; i < image->ligne; i++)
+//     {
+//         free(image->tab[i]);
+//     }
+//     free(image->tab);
+//     free(image);
+// }
 
 
 imagePGM_RGB* LecturePPM(const char* filename) 
@@ -65,10 +59,10 @@ imagePGM_RGB* LecturePPM(const char* filename)
 
     img->tab = (Triplet_RGB**)malloc(ligne * sizeof(Triplet_RGB*));
 
-    for (int i = 0; i < ligne; i++) 
+    for (int32_t i = 0; i < ligne; i++) 
     {
         img->tab[i] = malloc(col * sizeof(Triplet_RGB));
-        for (int j = 0; j < col; j++) 
+        for (int32_t j = 0; j < col; j++) 
         {
             if (isRGB) 
             {

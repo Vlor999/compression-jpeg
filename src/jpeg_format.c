@@ -78,7 +78,7 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
     // }
 
     int16_t length2 = 0xb500;        
-    int8_t precision3 = 0x12;                //indice 2 , et type 1 car AC pour Y
+    int8_t precision3 = 0x10;                //indice 2 , et type 1 car AC pour Y
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length2, sizeof(int16_t), 1, fptr);
     fwrite(&precision3, sizeof(int8_t),1,fptr);
@@ -118,7 +118,7 @@ void ecrire_SOF(FILE* fptr, uint8_t hauteur_image, uint8_t largeur_image){
     fwrite(&zero, sizeof(int8_t), 1, fptr); //on ecrit la hauteur
     fwrite(&largeur_image, sizeof(int8_t), 1, fptr); // on ecrit la largeur
     fwrite(&nb_composante, sizeof(int8_t),1,fptr);
-    int8_t identifiant = 0x00;
+    int8_t identifiant = 0x01;
     int8_t facteur_echantillonage = 0x11;
     int8_t table_quantification_Y = 0x00;               // indice de table quantification deY est 0 comme vu au dessus
     int8_t table_quantification_CbCr = 0x01;             // indice de table quantification de CbCr est 1 comme vu au dessus
@@ -145,8 +145,8 @@ void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,u
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
     fwrite(&nb_composante, sizeof(int8_t),1,fptr);
-    int8_t identifiant = 0x00;
-    int8_t indice_huffman_Y = 0x02;                     // 4 premier bits pour indice table DC et 4 bits pour table AC
+    int8_t identifiant = 0x01;
+    int8_t indice_huffman_Y = 0x00;                     // 4 premier bits pour indice table DC et 4 bits pour table AC
     int8_t indice_huffman_CbCr = 0x13;                     // 4 premier bits pour indice table DC et 4 bits pour table AC
     for (int i = 0; i < nb_composante; i++){       //la première composante sera pour Y et les 2 derniere pur Cb et Cr lorsque nb_composatne = 3 
         fwrite(&identifiant, sizeof(int8_t),1,fptr);
@@ -175,6 +175,10 @@ void ecrire_SOS(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_Y)  //,u
         if (biffleur==-1){ // on écrit 
             biffleur = 7;
             fwrite(&nb, sizeof(uint8_t),1,fptr);
+            if(nb == 0xff){
+                fwrite(&val_zero,sizeof(int8_t),1,fptr);
+            
+            }
             nb = 0;
         }
         else{
