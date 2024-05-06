@@ -1,6 +1,7 @@
 #ifndef _MAGNETUDE_DC_H
 #define _MAGNETUDE_DC_H
 #include <stdint.h>
+#include <stdbool.h>/
 
 /**
 * @brief trouve la magnétude associée à n
@@ -65,14 +66,15 @@ uint8_t *codage_total_DC_Y(int16_t n);
 
 uint8_t *codage_total_DC_CbCr(int16_t n);
 
-uint8_t *codage_total_AC_DC_CbCr(int16_t n);
+uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool changement_DC);
 
 
 /**
  * @brief donne le flux de bits attendus en sortie 
- * @param RLE les valeurs RLE pour les codages, flux pour les blocs 8x8 à analyser
+ * @param RLE les valeurs RLE pour les codages, flux pour les blocs 8x8 à analyser, le flux précendent si on est sur la meme ligne, flux2 le flux actuel et 
+ * le changement si on reste sur la meme ligne
  * @return le tableau avec tout le flux correspondant
  * **/
-uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux);
+uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool changement_DC);
 
 #endif
