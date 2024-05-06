@@ -109,14 +109,21 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image){
     int16_t length = 0x0b00;                            //la longueur de la section
     int8_t precision = 0x08;     
     int8_t nb_composante = 0x01;   
+    //changement ordre des tailles
+    uint16_t word_hauteur = hauteur_image&0xFF;
+    uint8_t word_largeur = largeur_image&(0xFF);
+    word_hauteur = word_hauteur << 8;
+    word_hauteur |= (hauteur_image >> 8)&0xFF;
+
+    word_largeur = word_largeur << 8;
+    word_largeur|= (largeur_image >> 8)&0xFF;
+
     int8_t zero = 0x00;                     // nb de composante de 1 pour l'instant car niveaux gris et mettre a 3 si YCbCr               
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
     fwrite(&precision, sizeof(int8_t),1,fptr);
-    fwrite(&zero, sizeof(int8_t), 1, fptr); //on ecrit la hauteur
-    fwrite(&hauteur_image, sizeof(int8_t), 1, fptr); //on ecrit la hauteur
-    fwrite(&zero, sizeof(int8_t), 1, fptr); //on ecrit la hauteur
-    fwrite(&largeur_image, sizeof(int8_t), 1, fptr); // on ecrit la largeur
+    fwrite(&word_hauteur, sizeof(int16_t), 1, fptr); //on ecrit la hauteur
+    fwrite(&word_largeur, sizeof(int16_t), 1, fptr); // on ecrit la largeur
     fwrite(&nb_composante, sizeof(int8_t),1,fptr);
     int8_t identifiant = 0x01;
     int8_t facteur_echantillonage = 0x11;
@@ -206,3 +213,4 @@ void ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, uint16_t nb_MCU_
 //     fclose(fptr);
 //     return 0;
 // }
+
