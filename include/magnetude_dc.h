@@ -65,7 +65,7 @@ uint8_t *codage_total_DC_Y(int16_t n);
 
 uint8_t *codage_total_DC_CbCr(int16_t n);
 
-uint8_t *codage_total_AC_CbCr(int16_t n);
+uint8_t *codage_total_AC_DC_CbCr(int16_t n);
 
 
 /**
@@ -73,6 +73,6 @@ uint8_t *codage_total_AC_CbCr(int16_t n);
  * @param RLE les valeurs RLE pour les codages, flux pour les blocs 8x8 à analyser
  * @return le tableau avec tout le flux correspondant
  * **/
-uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux);
+uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux);
 
 #endif

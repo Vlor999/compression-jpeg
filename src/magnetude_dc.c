@@ -32,38 +32,6 @@ uint8_t trouver_magnetude(int16_t n){
 }
 
 
-// Je ne comprends pas l interet de la fonction, je la programe au dessus.
-// uint16_t indice_magnetude(int16_t n){
-//     uint8_t magnetude = trouver_magnetude(n);
-//     if (n<0){
-//         uint16_t val_max = (pow(2,magnetude-1) -1);
-//         uint16_t val_mini = (pow(2,magnetude) -1);
-//         uint16_t indice = 0;
-//         while (val_mini != val_max){
-//             if ( abs(n)  == val_mini){
-//                 return indice;
-//             }
-//             val_mini --;
-//             indice ++;
-//         }
-//     }
-//     else{
-//         uint16_t val_max = (pow(2,magnetude) -1);
-//         uint16_t val_mini = (pow(2,magnetude - 1) -1);
-//         uint16_t indice = val_max - val_mini -1;
-//         while (val_mini != val_max){
-//             if ( n  == val_mini){
-//                 return indice;
-//             }
-//             val_mini ++;
-//             indice ++;
-//         }
-//     }
-//     perror("suspect mon chef");
-//     return 0;
-// }
-
-
 uint8_t* codage_AC_RLE(int16_t* tab){  
     uint8_t* tab_RLE = malloc(sizeof(uint8_t)*64);
     uint8_t indice = 1;
@@ -85,38 +53,6 @@ uint8_t* codage_AC_RLE(int16_t* tab){
     return tab_RLE;
 }
 
-
-uint8_t *bits_poids_forts(uint8_t *RLE)
-{
-    /*
-    input : 10 2 2 2 1 12 0 1 3 15 0
-    output : [indice 1er 0, nb_0_0
-             indice 2eme 1, nb_0_1
-            ...
-            ]
-    */
-    uint8_t taille = RLE[0];
-    uint8_t* res = malloc(sizeof(uint8_t)*taille);
-    uint8_t pos = 1;
-    uint8_t indice = 1;
-    uint8_t previous = RLE[1];
-    uint8_t current = RLE[2];
-    for (uint8_t i = 2; i < taille + 1 ; i++)
-    {
-        if (current == 0)
-        {
-            res[pos] = indice - 1;
-            res[pos + 1] = previous;
-            pos += 2;
-            indice += previous - 1;
-        }
-        previous = current;
-        current = RLE[i + 1];
-        indice++;
-    }
-    res[0] = pos;
-    return res;
-}
 
 uint8_t *codage_indice_magn(int16_t n){
     
@@ -153,12 +89,30 @@ uint8_t *codage_indice_magn(int16_t n){
     return tab;
 }
 
-uint8_t *codage_total_AC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le flux contient DC 
+
+uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le flux contient DC 
     // renvoie le flux de bits attendu 
+    printf("flux ");
     uint64_t compteur = 1;
     uint64_t compteurRLE = 1;
     uint64_t indice=0; //contient la taille, le premier element
     uint8_t *res = malloc((60000)*sizeof(uint8_t));
+    uint8_t magn = trouver_magnetude(flux[0]);
+    printf("magn %d\n",magn);
+    uint8_t *tab_temp = codage_indice_magn(flux[0]);
+
+    //PARTIE DC 
+    for (uint8_t i=1;i<=code_DC_CbCr[magn][0];i++){
+        res[indice] = code_DC_Y[magn][i];
+        printf("%d" ,res[indice]);
+        indice ++;
+    }
+    for (uint8_t i=0;i<magn;i++){
+        res[indice] = tab_temp[i];
+        printf("%d" ,res[indice]);
+        indice ++;
+    }
+    printf("\n\n\n\n");
     while (compteur <= 64){
         if (flux[compteur]==0){
             compteur++;
@@ -176,8 +130,8 @@ uint8_t *codage_total_AC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le flux 
             tab_temp = codage_indice_magn(flux[compteur]);
             uint8_t magn = trouver_magnetude(flux[compteur]);
             for (uint8_t i=0;i<magn;i++){
-                printf("%d" , res[indice]);// a commenter pour enlever les tests
                 res[indice] = tab_temp[i];
+                printf("%d" , res[indice]);
                 indice++;
             }
             printf("value %d magnetude %d huffman path %ld \ncode %d, nb bits %d\n",flux[compteur],magn,s,temp,code_AC_Y[temp][0]);// a commenter pour enlever les tests
@@ -185,20 +139,10 @@ uint8_t *codage_total_AC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le flux 
             compteur++;
         }
     }
-    //ICI endofblock
-    // res[indice] = 1;
-    // indice++;
-    // res[indice] = 0;
-    // indice++;
-    // res[indice] = 1;
-    // indice++;
-    // res[indice] = 0;
-    // indice++;
-    // res[indice] = 88; //fin du fichier 
+    res[indice] = 88; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
 }
-
 uint8_t *codage_total_DC_Y(int16_t n){
     uint8_t magn = trouver_magnetude(n);
     uint8_t *cd = codage_indice_magn(n);
@@ -230,7 +174,7 @@ uint8_t *codage_total_DC_CbCr(int16_t n){
     return res;
 }
 
-uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux){ //attention le flux contient DC 
+uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, bool changement_DC){ //attention le flux contient DC 
     // renvoie le flux de bits attendu 
     printf("flux ");
     uint64_t compteur = 1;
@@ -279,15 +223,6 @@ uint8_t *codage_total_AC_Y(uint8_t *RLE, int16_t *flux){ //attention le flux con
             compteur++;
         }
     }
-    //ICI endofblock
-    // res[indice] = 1;
-    // indice++;
-    // res[indice] = 0;
-    // indice++;
-    // res[indice] = 1;
-    // indice++;
-    // res[indice] = 0;
-    // indice++;
     res[indice] = 88; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
