@@ -32,8 +32,8 @@ int main(int argc, char **argv)
 
     imagePGM_RGB *img = LecturePPM(input); // nom du fichier a preciser   
     printf("Images initales : \n");
-    for (uint32_t i= 0; i < img->col; i++){
-        for (uint32_t j = 0; j < img->ligne; j ++){
+    for (uint32_t i= 0; i < img->ligne; i++){
+        for (uint32_t j = 0; j < img->col; j ++){
             printf("%04x\t ", img->tab[i][j].R);   
         }
         printf("\n");
@@ -57,15 +57,15 @@ int main(int argc, char **argv)
     // uint32_t nb_col = img->col;
 
     Triplet_YCbCr** new_image = conversionRGB_2_YCrCb(img);
-    uint8_t** image_Y = malloc(img->col * sizeof(uint8_t*));
-    uint8_t** image_Cb = malloc(img->col * sizeof(uint8_t*));
-    uint8_t** image_Cr = malloc(img->col * sizeof(uint8_t*));
-    for (uint32_t i = 0; i < img->col; i++)
+    uint8_t** image_Y = malloc(img->ligne * sizeof(uint8_t*));
+    uint8_t** image_Cb = malloc(img->ligne * sizeof(uint8_t*));
+    uint8_t** image_Cr = malloc(img->ligne * sizeof(uint8_t*));
+    for (uint32_t i = 0; i < img->ligne; i++)
     {
-        image_Y[i] = malloc(img->ligne * sizeof(uint8_t));
-        image_Cb[i] = malloc(img->ligne * sizeof(uint8_t));
-        image_Cr[i] = malloc(img->ligne * sizeof(uint8_t));
-        for (uint32_t j = 0; j < img->ligne; j++)
+        image_Y[i] = malloc(img->col * sizeof(uint8_t));
+        image_Cb[i] = malloc(img->col * sizeof(uint8_t));
+        image_Cr[i] = malloc(img->col * sizeof(uint8_t));
+        for (uint32_t j = 0; j < img->col; j++)
         {
             image_Y[i][j] = new_image[i][j].Y;
             image_Cb[i][j] = new_image[i][j].Cb;
@@ -95,6 +95,7 @@ int main(int argc, char **argv)
     FILE* fptr = fopen(filename, "wb");
     printf("rgnrgnreungrug\n");
     ecrire_debut(fptr); 
+    ecrire_commentaire_SOS_PC(fptr);
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
     ecrire_SOF(fptr, img->ligne, img->col); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);

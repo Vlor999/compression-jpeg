@@ -243,9 +243,11 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
                 indice++;
             }
             fin = false;
-            printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);// a commenter pour enlever les tests
+            uint8_t* indice = codage_indice_magn(magn);
+            printf("\nvalue  = %d, magnetude = %d, index = %d\n",flux2[compteur],magn, indice[0]);// a commenter pour enlever les tests
             printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_Y[temp][0]);// a commenter pour enlever les tests
             printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
+            printf("\t bitstream => writing %d over %d bits\n", indice[0],(uint16_t)log2(indice[0])+1);
             compteurRLE++;
             compteur++;
         }

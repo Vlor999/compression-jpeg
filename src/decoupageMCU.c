@@ -16,7 +16,7 @@ uint32_t entier_superieur(uint32_t l){
     }
 }
 
-MCU *decoupage(imagePGM *img)
+MCU *decoupage_2(imagePGM *img)
 { 
     // //A FINIR QUAND Y A PLUSIEURS MCU
     // //POUR LE GRIS UNIQUEMENT APRES FAUT ALLER NIQUER SA MERE 
