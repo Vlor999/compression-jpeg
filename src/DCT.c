@@ -5,15 +5,35 @@
 
 #define M_PI  3.14159265358979323846
 
-int16_t calcul_dct(MCU *m, uint8_t i, uint8_t j)
+int16_t** mvt_value(MCU* m)
+{
+    int16_t** res = calloc(8, sizeof(int16_t*));
+    for (uint8_t i=0; i<8; i++)
+    {
+        res[i] = calloc(8, sizeof(int16_t));
+        for (uint8_t j = 0; j < 8; j++)
+        {
+            res[i][j] = (m -> tab)[i][j] - 128;
+        }
+    }
+    return res;
+}
+
+int16_t calcul_dct(int16_t **m, uint8_t i, uint8_t j)
 {
     double somme = 0;
+    double values_cos_x[8];
     for (uint8_t x = 0; x < 8; x++)
     {
-        for (uint8_t y = 0; y < 8; y++)
+        values_cos_x[x] = cos((2*x+1)*i*M_PI / 16);
+    }
+    for (uint8_t y = 0; y < 8; y++)
+    {
+        double value_cos_y = cos((2*y+1)*j*M_PI / 16);
+        for (uint8_t x = 0; x < 8; x++)
         {
-            int16_t tmp = (m -> tab)[x][y] - 128;
-            somme += tmp*cos((2*x+1)*i*M_PI / 16) * cos((2*y+1)*j*M_PI / 16);
+            int16_t tmp = m[x][y];
+            somme += tmp * values_cos_x[x] * value_cos_y;
         }
     }
     somme = somme/4;
@@ -23,30 +43,27 @@ int16_t calcul_dct(MCU *m, uint8_t i, uint8_t j)
     else if (i==0 || j==0){
         somme = somme/sqrt(2);
     }
-    else{
-        somme = somme;
-    }
-
     return (int16_t)somme;
-    
 }
 
 int16_t **dct(MCU *m)
 {
-    int16_t **res = (int16_t**)malloc(8*sizeof(int16_t*));
+    int16_t **res = mvt_value(m);
+    int16_t **tab_final = malloc(8 * sizeof(int16_t*));
     for (uint8_t i=0; i<8; i++)
     {
-        res[i] = (int16_t*)malloc(8*sizeof(int16_t));
+        tab_final[i] = malloc(8 * sizeof(int16_t));
         for (uint8_t j = 0; j < 8; j++)
         {
-            res[i][j] = calcul_dct(m, i, j);
+            tab_final[i][j] = calcul_dct(res, i, j);
         }
     }
-    return res;
+    return tab_final;
 }
 
+
 // int main(){ //test 
-//     Mcu *m = (Mcu*)malloc(sizeof(Mcu));
+//     MCU *m = (MCU*)malloc(sizeof(MCU));
 //     uint8_t **tab = (uint8_t**)malloc(8*sizeof(uint8_t*));
 //     for (uint8_t i=0;i<8;i++){
 //         tab[i]= (uint8_t*)malloc(8*sizeof(uint8_t));
@@ -55,7 +72,7 @@ int16_t **dct(MCU *m)
 //         }
 //     }
 //     m -> tab = tab;
-//     uint16_t **res = dct(m);
+//     int16_t **res_2 = dct(m);
 
 
 //     for (int i=0;i<8;i++){
@@ -66,7 +83,7 @@ int16_t **dct(MCU *m)
 
 //     for (int i=0;i<8;i++){
 //         for (int j=0;j<8;j++){
-//             printf("%f ",res[i][j]);
+//             printf("%d ", res_2[i][j]);
 //         }
 //         printf("\n");
 //     }

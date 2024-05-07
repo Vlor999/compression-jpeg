@@ -14,7 +14,7 @@ int16_t* quotient(int16_t* vector1, uint8_t* vector2)
     
     for (uint8_t i = 0; i < 64; i++) 
     {
-        result[i] = (int16_t)(floor(vector1[i] / vector2[i]));
+        result[i] = floor(vector1[i] / vector2[i]);
     }
     return result;
 }

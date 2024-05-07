@@ -42,21 +42,8 @@ imagePGM *nouveau_tableau(imagePGM *image)
         // ON va créer une imagePGM avec des bords mutiples de 8
         imagePGM *new_tab = malloc(sizeof(imagePGM));
 
-        if (new_ligne != nb_ligne && new_colonne != nb_colonne)
-        {
-            new_tab->ligne = new_ligne + 8;
-            new_tab->col = new_colonne + 8;
-        }
-        else if (new_ligne != nb_ligne)
-        {
-            new_tab->ligne = new_ligne;
-            new_tab->col = nb_colonne + 8;
-        }
-        else
-        {
-            new_tab->ligne = nb_ligne + 8;
-            new_tab->col = new_colonne;
-        }
+        new_tab->ligne = (new_ligne != nb_ligne) ? new_ligne + 8 : nb_ligne;
+        new_tab->col = (new_colonne != nb_colonne) ? new_colonne + 8 : nb_colonne;
         new_tab->max = image->max;
 
         new_tab->tab = malloc(new_tab->ligne * sizeof(uint8_t *));
@@ -66,16 +53,9 @@ imagePGM *nouveau_tableau(imagePGM *image)
             new_tab->tab[i] = malloc(new_tab->col * sizeof(uint8_t));
             for (uint32_t j = 0; j < new_tab->col; j++)
             {
-                if (i < nb_ligne && j < nb_colonne)
-                {
-                    new_tab->tab[i][j] = image->tab[i][j];
-                }
-                else
-                {
-                    uint32_t i0 = min(i, nb_ligne - 1);
-                    uint32_t j0 = min(j, nb_colonne - 1);
-                    new_tab->tab[i][j] = image->tab[i0][j0];
-                }
+                uint32_t i0 = min(i, nb_ligne - 1);
+                uint32_t j0 = min(j, nb_colonne - 1);
+                new_tab->tab[i][j] = image->tab[i0][j0];   
             }
         }
         return new_tab;
@@ -152,14 +132,7 @@ MCU *decoupage(imagePGM *tab)
                 }
                 for (l = 0; l < 8; l++)
                 {
-                    if (i + k < tab->ligne && j + l < tab->col)
-                    {
-                        courant->tab[k][l] = tab2[i + k][j + l];
-                    }
-                    else
-                    {
-                        courant->tab[k][l] = 0;
-                    }
+                    courant->tab[k][l] = tab2[i + k][j + l];
                 }
             }
         }

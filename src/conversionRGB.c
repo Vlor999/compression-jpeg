@@ -54,9 +54,7 @@ Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image)
         tab_YCbCr[lig] = malloc(taille_col * sizeof(Triplet_YCbCr));
         for (int col = 0; col < taille_col; col++)
         {
-            pixel.R = image->tab[lig][col].R;
-            pixel.G = image->tab[lig][col].G;
-            pixel.B = image->tab[lig][col].B;
+            pixel = image->tab[lig][col];
             pixel_YCbCr = conversionRGB(pixel);
             tab_YCbCr[lig][col] = pixel_YCbCr;
         }
@@ -68,10 +66,10 @@ Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image)
 
 // int main(){
 //     imagePGM* image = recupereimage("../images/invader.pgm");
-//     Triplet_Y** new_image = conversionRGB_2_VCrCb(image);
-//     for (int i = 0; i < image->ligne; i++)
+//     Triplet_YCbCr** new_image = conversionRGB_2_VCrCb(image);
+//     for (uint32_t i = 0; i < image->ligne; i++)
 //     {
-//         for (int j = 0; j < image->col; j++)
+//         for (uint32_t j = 0; j < image->col; j++)
 //         {
 //             printf("Y: %f, Cb: %f, Cr: %f\n", new_image[i][j].Y, new_image[i][j].Cb, new_image[i][j].Cr);
 //         }

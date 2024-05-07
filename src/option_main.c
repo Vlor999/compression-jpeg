@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "../include/option_main.h"
+
+void print_help() 
+{
+    printf("Usage: ./program <input> [--outfile=filename] [--sample=h1xv1,h2xv2,h3xv3]\n");
+    printf("Options:\n");
+    printf("--help : pour de l'aide ;)\n");
+    printf("--outfile=filename : tu mets le blaze du fichier de sortie et surtout on oublie pas le .jpg\n");
+    printf("--sample=h1xv1,h2xv2,h3xv3 : tu me give le sous echatillonnage mon gazo \n");
+}
+
+char *copie_mot_jpeg(const char *s) 
+{
+    size_t len = strlen(s) + 1;
+    char *sortie = malloc(len);
+    if (sortie) 
+    {
+        memcpy(sortie, s, len);
+    }
+    strcat(sortie, ".jpg");
+    return sortie;
+}
+
+Arguments utilisation_argument(int argc, char *argv[]) 
+{
+    Arguments mes_arguments = {NULL, NULL, NULL};
+    if (argc < 2) 
+    {
+        printf("Error: Il me faut un fichier gros BG\n");
+        print_help();
+        return mes_arguments;
+    }
+    
+    char *input = NULL;
+    char *output = NULL;
+    char *sample_factors = NULL;
+
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "--help") == 0) 
+        {
+            print_help();
+            return mes_arguments;
+        } 
+        else if (strncmp(argv[i], "--outfile=", 10) == 0) 
+        {
+            output = argv[i] + 10;
+        } 
+        else if (strncmp(argv[i], "--sample=", 9) == 0) 
+        {
+            sample_factors = argv[i] + 9; 
+        } 
+        else 
+        {
+            input = argv[i];
+        }
+    }
+
+    if (!input) 
+    {
+        printf("Error: Il me faut quand même un fichier je t'avoue !!\n");
+        print_help();
+        return mes_arguments;
+    }
+
+    if (!output) 
+    {
+        char *point = strrchr(input, '.');
+        if (point) 
+        {
+            size_t input_len = point - input;
+            output = malloc(input_len + 5);
+            strncpy(output, input, input_len);
+            output[input_len] = '\0';
+            strcat(output, ".jpg");
+        } 
+        else 
+        {
+            output = copie_mot_jpeg(input); //n'existe pas dans la librairie standard 
+        }
+    }
+
+    mes_arguments.input = input;
+    mes_arguments.output = output;
+    mes_arguments.sample_factors = sample_factors;
+    
+    return mes_arguments;
+}
