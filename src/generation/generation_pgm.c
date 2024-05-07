@@ -109,7 +109,7 @@ void generation_checkerboard(uint16_t nombre, uint16_t ligne, uint16_t colonne) 
                 fwrite(&pixel_value, sizeof(unsigned char), 1, fichier);
                 black = !black;
             }
-            if (colonne % 2 == 0)  // If the number of columns is even, invert the first pixel of each row
+            if (colonne % 2 == 0)  // Pour avoir un vrai quadrillage
                 black = !black;
         }
         fclose(fichier);

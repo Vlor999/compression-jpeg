@@ -125,6 +125,9 @@ MCU *decoupage(imagePGM *tab)
             for (k = 0; k < 8; k++)
             {
                 courant->tab[k] = malloc(8 * sizeof(uint8_t));
+            }
+            for (k = 0; k < 8; k++)
+            {
                 if (courant->tab[k] == NULL)
                 {
                     free_decoupage(tete);
@@ -132,7 +135,7 @@ MCU *decoupage(imagePGM *tab)
                 }
                 for (l = 0; l < 8; l++)
                 {
-                    courant->tab[k][l] = tab2[i + k][j + l];
+                    courant->tab[l][k] = tab2[j + l][i + k];
                 }
             }
         }
@@ -153,17 +156,17 @@ void decoupe_1(char* file)
     printf("\nDécoupe\n");
     
     MCU *mcu = decoupage(img);
+    uint32_t i = 0, j = 0;
     while(mcu != NULL)
     {
-        for (uint32_t i = 0; i < 8; i++)
+        for (i = 0; i < 8; i++)
         {
-            for (uint32_t j = 0; j < 8; j++)
+            for (j = 0; j < 8; j++)
             {
                 printf("%d\t", mcu->tab[i][j]);
             }
             printf("\n");
         }
-        printf("\n");
         mcu = mcu->suiv;
     }
 }
