@@ -53,7 +53,7 @@ uint8_t* codage_AC_RLE(int16_t* tab){
     if (fin){
         tab_RLE[indice] = 0x00;
     }
-    tab_RLE[0] = indice+1 ; // l'indice 0 est la taille du tableau qui suit
+    tab_RLE[0] = indice; // l'indice 0 est la taille du tableau qui suit
     tab_RLE = realloc(tab_RLE, sizeof(uint8_t)*(indice +1));
     return tab_RLE;
 }
@@ -217,10 +217,12 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
         printf("%d" ,res[indice]);
         indice ++;
     }
+    bool fin = true;
     printf("\n\n\n\n");
-    while (compteur <= 64){
+    while (compteur <= 63){
         if (flux2[compteur]==0){
             compteur++;
+            fin = true;
         }
         else{
             uint8_t temp = RLE[compteurRLE];
@@ -239,10 +241,21 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
                 printf("%d" , res[indice]);
                 indice++;
             }
+            fin = false;
             printf("value %d magnetude %d huffman path %ld \ncode %d, nb bits %d\n",flux2[compteur],magn,s,temp,code_AC_Y[temp][0]);// a commenter pour enlever les tests
             compteurRLE++;
             compteur++;
         }
+    }
+    if (fin){
+        res[indice] = 1;
+        indice++;
+        res[indice] = 0;
+        indice++;
+        res[indice] = 1;
+        indice++;
+        res[indice] = 0;
+        indice++;  
     }
     res[indice] = 1;
     indice++;
@@ -257,22 +270,22 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
     return res;
 }
 
-int main(){
-    int16_t tab[64] = {0x0010,-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
-    uint8_t* tab_rle = codage_AC_RLE(tab);
+// int main(){
+//     int16_t tab[64] = {0x0010,-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
+//     uint8_t* tab_rle = codage_AC_RLE(tab);
     
-    for (int i = 0 ; i < tab_rle[0]; i++){
-        printf("%x\n ", tab_rle[i]);
-    } 
-    uint8_t* tableau_AC =  codage_total_AC_DC_Y(tab_rle, NULL, tab, false);
+//     for (int i = 0 ; i <=tab_rle[0]; i++){
+//         printf("%x\n ", tab_rle[i]);
+//     } 
+//     uint8_t* tableau_AC =  codage_total_AC_DC_Y(tab_rle, NULL, tab, false);
 
-    printf("valeur pour codaagegiejgz \n");
-    int i = 0;
-    while (tableau_AC[i] != 88){
-        printf("%d ", tableau_AC[i]);
-        i++;
-    } 
+//     printf("valeur pour codaagegiejgz \n");
+//     int i = 0;
+//     while (tableau_AC[i] != 88){
+//         printf("%d ", tableau_AC[i]);
+//         i++;
+//     } 
 
     
-    return 0;
-}
+//     return 0;
+// }
