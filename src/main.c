@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     printf("Images initales : \n");
     for (uint32_t i= 0; i < img->ligne; i++){
         for (uint32_t j = 0; j < img->col; j ++){
-            printf("%04x\t ", img->tab[i][j].R);   
+            printf("%02x\t ", img->tab[i][j].R);   
         }
         printf("\n");
     }
@@ -100,7 +100,20 @@ int main(int argc, char **argv)
     ecrire_SOF(fptr, img->ligne, img->col); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
     uint8_t *GRAND_TABLEAU = malloc(60000*sizeof(uint8_t));
+    for (int i=0;i<8;i++){
+            for (int j=0;j<8;j++){
+                printf("%04x\t ",img_Y_MCU->tab[i][j] &0xFFFF);
+            }
+            printf("\n");
+        }
+    printf("\n\n");
     int16_t** img_Y_DCT = dct(img_Y_MCU);
+        for (int i=0;i<8;i++){
+            for (int j=0;j<8;j++){
+                printf("%04x\t ",img_Y_DCT[i][j] &0xFFFF);
+            }
+            printf("\n");
+        }
     int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
     int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
     uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
@@ -113,12 +126,26 @@ int main(int argc, char **argv)
     // printf("y u bubugbrg\n"); 
     // if (plus_que_un){
     //     img_Y_MCU = img_Y_MCU -> suiv;
-    // }
-    MCU *img_Y_prec;
+    // }    
+    uint32_t compteur=1;
     while (img_Y_MCU->suiv != NULL)
     {
+        
         printf("uiuuirugrgiurgrugri\n\n");
+        for (int i=0;i<8;i++){
+            for (int j=0;j<8;j++){
+                printf("%04x\t ",img_Y_MCU->suiv->tab[i][j] &0xFFFF);
+            }
+            printf("\n");
+        }
+        printf("\n\n");
         int16_t** img_Y_DCT = dct(img_Y_MCU->suiv);
+        for (int i=0;i<8;i++){
+            for (int j=0;j<8;j++){
+                printf("%04x\t ",img_Y_DCT[i][j] &0xFFFF);
+            }
+            printf("\n");
+        }
         int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
         int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
         int16_t* img_Y_quantifie_prec = quotient_qtable_Y(zigzag_matrice(dct(img_Y_MCU)));
@@ -134,7 +161,7 @@ int main(int argc, char **argv)
 //             GRAND_TABLEAU[indice+i] = resultat_final[i];
 //             indice++;
 //         }   
-        img_Y_prec = img_Y_MCU;
+
         img_Y_MCU = img_Y_MCU->suiv;
     }
     
@@ -143,6 +170,7 @@ int main(int argc, char **argv)
     if (ecr -> compteur != -1){
         fwrite(&(ecr -> nb), sizeof(uint8_t),1,fptr);
     }
+    printf("%d \n", compteur);
     ecrire_fin(fptr);
     fclose(fptr);
     printf("fini\n");

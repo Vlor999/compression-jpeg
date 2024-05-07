@@ -67,7 +67,7 @@ MCU *decoupage(imagePGM *tab)
 {
     tab = nouveau_tableau(tab);
     // On a une image avec des bords multiples de 8
-
+    uint16_t compteur=0;
     uint32_t i, j, k, l;
     uint8_t **tab2 = tab->tab;
     MCU *tete = malloc(sizeof(MCU));
@@ -113,6 +113,7 @@ MCU *decoupage(imagePGM *tab)
                 return NULL;
             }
             courant = courant->suiv;
+            compteur++;
             courant->tab = malloc(8 * sizeof(uint8_t *));
             if (courant->tab == NULL)
             {
@@ -135,11 +136,12 @@ MCU *decoupage(imagePGM *tab)
                 }
                 for (l = 0; l < 8; l++)
                 {
-                    courant->tab[l][k] = tab2[j + l][i + k];
+                    courant->tab[l][k] = tab2[i + l][j + k];
                 }
             }
         }
     }
+    printf("QUZZZZ %d\n",compteur);
     return tete;
 }
 

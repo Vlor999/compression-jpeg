@@ -176,14 +176,14 @@ void ecrire_SOS_en_tete(FILE* fptr)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t**
 
 void ecrire_commentaire_SOS_PC(FILE* fptr)
 {
-    int16_t marqueur = 0xfeff;
-    int16_t length = 0x0004;   
-    int8_t commentaire[14] = {0x3C, 0x33, 0x20, 0x6C, 0x65, 0x20, 0x70, 0x72, 0x6F, 0x6A, 0x65, 0x74, 0x20, 0x43};
-    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    fwrite(&length, sizeof(int16_t), 1, fptr);
-    for (int i = 0; i < 14; i++){
-        fwrite(&commentaire[i], sizeof(int8_t), 1, fptr);
-    }
+    // int16_t marqueur = 0xfeff;
+    // int16_t length = 0x0004;   
+    // int8_t commentaire[14] = {0x3C, 0x33, 0x20, 0x6C, 0x65, 0x20, 0x70, 0x72, 0x6F, 0x6A, 0x65, 0x74, 0x20, 0x43};
+    // fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    // fwrite(&length, sizeof(int16_t), 1, fptr);
+    // for (int i = 0; i < 14; i++){
+    //     fwrite(&commentaire[i], sizeof(int8_t), 1, fptr);
+    // }
 }
 
 void ecrire_commentaire_SOS(FILE* fptr)
@@ -208,7 +208,7 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecriture
     uint16_t j2 = 0;
     ecritureSOS *ecr2 = ecr;
     while (tab_MCU_huffman_Y[j] != 255 ){
-        printf("%d ", tab_MCU_huffman_Y[j2]);
+        //printf("%d ", tab_MCU_huffman_Y[j2]);
         if (biffleur==-1){ // on écrit 
             biffleur = 7;
             fwrite(&nb, sizeof(uint8_t),1,fptr);
