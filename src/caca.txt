@@ -1,0 +1,5380 @@
+Images initales : 
+00d7	 009e	 00a9	 0056	 00fe	 00d5	 008b	 0013	 00dc	 006d	 00ac	 001c	 000c	 0027	 00e6	 0020	 0096	 00ce	 00dd	 0088	 00ef	 00ed	 00d1	 00fc	 00d5	 003d	 00fe	 0022	 00bf	 0004	 000a	 0096	 00a2	 00b4	 00ed	 00a0	 0089	 0078	 00b3	 0065	 00e6	 0060	 0081	 00f2	 0087	 0067	 0012	 001d	 0035	 00ef	 
+00a5	 0025	 00dc	 0076	 0021	 00b1	 00b3	 001f	 00d4	 0073	 0023	 00de	 0009	 00c5	 0092	 00f6	 0065	 001b	 006f	 0018	 0080	 0055	 0078	 0002	 0047	 0000	 0069	 005a	 001d	 009f	 0049	 00c3	 00c4	 0026	 0039	 00e5	 00d7	 00ed	 0004	 00ab	 0060	 0027	 008a	 0069	 00ec	 001c	 0060	 0051	 0038	 00cf	 
+0069	 00b8	 0024	 00e2	 00ba	 006b	 00e2	 0024	 00c5	 00ff	 00c3	 000f	 00c2	 0087	 0035	 00fc	 006c	 000c	 00e9	 0070	 00b8	 0049	 0097	 0042	 00b2	 0083	 005e	 0012	 00d4	 0096	 00e1	 003d	 004f	 0005	 001f	 0009	 0071	 0001	 002d	 0036	 0001	 00f0	 0045	 00c3	 0077	 007a	 00bf	 00e3	 0087	 00a8	 
+0053	 003f	 00f1	 00ea	 0081	 00a4	 006d	 00df	 00b6	 0041	 0076	 0098	 007f	 00c5	 009d	 009e	 00ce	 000e	 00a0	 00fc	 0045	 00a1	 00ec	 008a	 0064	 0064	 0005	 0024	 0047	 008c	 00cc	 009b	 00cb	 00be	 0085	 004c	 0062	 00f3	 002b	 0018	 0034	 00a1	 00b0	 00b3	 0066	 004e	 0052	 0035	 005c	 00f2	 
+0031	 00a1	 0093	 001d	 002c	 00f7	 0081	 0031	 001b	 00c9	 00bd	 00e8	 0064	 0088	 00a6	 00e9	 00d4	 0008	 00dc	 00ff	 0020	 0011	 00a1	 00d1	 00c4	 0007	 001f	 0016	 003c	 007b	 0008	 006d	 001d	 009b	 008b	 0049	 0093	 000c	 007a	 00ae	 00d5	 0037	 0096	 0039	 00bf	 003c	 0023	 0093	 0044	 00ff	 
+0092	 0065	 0010	 0033	 0036	 00d5	 003b	 0055	 00eb	 0077	 00d0	 00f4	 00e5	 00ed	 008f	 0070	 0036	 0022	 007c	 00b0	 00d1	 0052	 00e7	 0067	 008b	 00a6	 00a4	 00ae	 0039	 00e8	 00ae	 00cc	 004d	 00be	 00ff	 0083	 0093	 003a	 00d8	 007f	 00b2	 00a9	 0073	 0097	 0096	 0002	 0007	 00cd	 0025	 0083	 
+007d	 00f6	 00d5	 0065	 005d	 0061	 000b	 0001	 000f	 0045	 00ea	 00bd	 0011	 0037	 007c	 0010	 00bb	 000f	 004b	 0093	 008e	 00fd	 003c	 0001	 0094	 00d3	 0004	 009b	 00a0	 0029	 001e	 001d	 001f	 00f4	 0082	 007c	 0055	 008e	 007e	 0064	 00d3	 0068	 0022	 00e4	 009f	 009e	 00f4	 005a	 00ad	 003f	 
+00ee	 003c	 003c	 002a	 003d	 00d0	 00fd	 0041	 006b	 009d	 006a	 008a	 00bb	 0089	 007e	 003d	 0006	 00d3	 00cb	 0084	 0037	 009e	 00ec	 0059	 0082	 008b	 00f7	 0077	 00e6	 00a5	 00b6	 00d4	 00e1	 00f3	 00fe	 001e	 00c3	 00fc	 0060	 002f	 0099	 00ca	 00b9	 0054	 0054	 0037	 0092	 005a	 000a	 005d	 
+00de	 0041	 00fc	 00ca	 009b	 007e	 0055	 0092	 00f5	 003b	 0037	 00ac	 000f	 0018	 009f	 000e	 0037	 0062	 000a	 0097	 0091	 00a3	 0061	 004a	 00f8	 00b5	 0081	 008a	 000f	 008b	 00e7	 00ed	 00cd	 00e3	 00b7	 0068	 0062	 000d	 00fa	 0057	 0048	 0032	 0003	 0058	 004a	 00a2	 0066	 0081	 0005	 0070	 
+0018	 0096	 0013	 007a	 00e1	 000b	 002f	 0062	 0095	 003f	 00ee	 007d	 002c	 00bb	 0060	 00e4	 0023	 00c2	 00f1	 001d	 001a	 0039	 004f	 001d	 0091	 009a	 00c0	 00f7	 001b	 00c5	 0067	 0034	 005b	 007b	 00ae	 003c	 0086	 00dd	 009f	 001c	 001c	 008d	 0099	 0049	 0048	 00f9	 002d	 006b	 00bc	 001e	 
+0088	 00d6	 0057	 00d8	 00f3	 00e9	 0072	 00b3	 00e0	 008d	 0078	 0048	 00c1	 00d4	 00c3	 006f	 0010	 0049	 004d	 00af	 0065	 0069	 003c	 00fe	 00b2	 0084	 00f8	 00df	 00ef	 00b4	 00fd	 0078	 008a	 0055	 0050	 007d	 003e	 00c2	 0031	 001e	 004f	 00a9	 0066	 0011	 007d	 0029	 0080	 008e	 0073	 00cd	 
+003d	 00d8	 0037	 007a	 00d7	 00e9	 00fe	 00cf	 00c9	 00ee	 0083	 00c6	 0066	 000d	 001b	 00b6	 008a	 0059	 0078	 00bb	 0078	 00c7	 0065	 00de	 00d8	 00e2	 0008	 0059	 0070	 007b	 0026	 00ae	 0053	 005d	 0028	 002a	 0047	 0026	 00f9	 0010	 0014	 007c	 00d6	 007a	 0089	 00f2	 0030	 0014	 004b	 00a8	 
+00cf	 00c3	 0070	 0034	 00a2	 0048	 0017	 00aa	 00a1	 0087	 0025	 00c8	 0035	 0078	 0025	 005d	 00a3	 006c	 0084	 009c	 007c	 0098	 0019	 0053	 0013	 00a2	 0045	 0043	 00b6	 0090	 00ec	 0086	 0054	 005c	 00ba	 00f6	 00a4	 00d1	 00a0	 0046	 0059	 00c5	 000e	 008e	 003d	 0033	 00ec	 00e0	 00a0	 0070	 
+007d	 001c	 0008	 0096	 006f	 001b	 0038	 00b4	 005f	 00ef	 0045	 004b	 0075	 0099	 00a7	 002f	 008f	 004b	 0001	 002f	 0091	 005a	 00f4	 009f	 00e8	 0031	 00d3	 00d4	 0012	 0073	 0044	 008f	 008f	 004d	 0025	 00ff	 0068	 005d	 00b3	 00c7	 004c	 00f8	 0012	 00c1	 0091	 00b9	 00f1	 0020	 0005	 00f2	 
+004f	 0096	 004c	 0043	 0036	 0034	 0075	 0009	 0009	 0087	 007c	 004d	 0016	 000b	 009a	 003b	 000a	 0003	 0098	 00be	 00ca	 00e5	 00b6	 00dd	 00a6	 0048	 0096	 0097	 0068	 009b	 0089	 00b8	 0032	 00d5	 00fb	 0068	 000a	 0070	 0071	 0013	 00f7	 00ed	 0060	 000d	 00f8	 00fb	 0048	 0003	 00fe	 00e1	 
+00c1	 00c8	 00c6	 0077	 00a5	 006c	 00bf	 003c	 0004	 0028	 00d7	 008d	 00e0	 0009	 0063	 00db	 0071	 006d	 004c	 00e2	 0080	 0043	 00cf	 00e0	 0051	 00c8	 00db	 0099	 00cb	 00d9	 007a	 008c	 00a2	 0040	 0003	 0047	 00ad	 00c3	 0083	 00b1	 00eb	 005b	 003e	 00cb	 0064	 00a1	 00a6	 00d6	 000e	 00f2	 
+00b8	 008e	 0036	 0088	 006f	 0087	 0050	 004a	 0020	 001b	 0024	 009b	 00a7	 00c6	 00db	 00aa	 000d	 0088	 006d	 0091	 0039	 0058	 00ec	 0078	 0023	 0050	 0019	 00ca	 0026	 0028	 00bc	 00df	 00b6	 00f2	 0067	 0025	 0079	 00b7	 0070	 009a	 00d2	 0094	 0035	 0079	 005a	 0010	 0023	 0067	 0099	 0091	 
+00f8	 00d2	 00e9	 00e4	 004a	 000d	 0035	 0064	 00d7	 005b	 008c	 0093	 003a	 0042	 0086	 00a1	 0068	 00ff	 0058	 00d8	 0099	 002a	 006c	 00ce	 00a3	 00c6	 00df	 00c7	 002d	 0078	 0058	 0026	 004a	 0041	 000a	 0095	 004e	 003f	 00f9	 0025	 009b	 0085	 00b9	 00d5	 00c7	 003f	 0077	 002f	 003e	 00cf	 
+0007	 00d8	 00fa	 0073	 00a6	 009d	 0039	 0085	 0064	 0067	 00fd	 00bc	 008d	 0048	 00fe	 0097	 00dd	 004c	 00d7	 00d6	 0072	 0072	 005b	 002b	 0047	 0022	 006a	 00be	 0052	 00a8	 008e	 0059	 0080	 0088	 00cd	 0027	 0025	 0006	 00ac	 008a	 006d	 00aa	 0046	 00fa	 00f2	 0044	 0092	 00cf	 0091	 0069	 
+00a5	 0003	 00db	 0000	 002e	 0022	 0022	 0098	 00e1	 0074	 0040	 006f	 00ce	 00c1	 00f7	 009b	 00e8	 001c	 00a1	 0094	 00a6	 000f	 003e	 00ed	 0009	 0030	 0031	 009b	 00ff	 00c2	 0004	 00a4	 00c5	 00df	 00a4	 00f3	 0002	 00c7	 008b	 00e3	 003b	 00cc	 0052	 0009	 008d	 0049	 00a4	 0075	 0065	 0046	 
+0009	 000c	 0055	 0048	 00f9	 005e	 0078	 002a	 00fa	 0078	 00ed	 00fe	 001c	 00b2	 00de	 00c1	 00a6	 00e0	 0088	 0031	 00c3	 00c3	 00fd	 0015	 00cd	 008a	 005e	 0071	 00ff	 00c3	 00b7	 0009	 00cf	 000c	 0051	 00c8	 006b	 00c9	 00f3	 0065	 0041	 00e0	 0063	 005e	 0092	 0041	 001f	 0038	 0021	 00a7	 
+006a	 00e4	 006a	 0067	 00f9	 0037	 00f2	 0057	 00a9	 00f1	 001b	 0060	 00fa	 00ea	 006d	 004b	 00b3	 00d8	 0015	 00a6	 003d	 0056	 0086	 00a0	 00b4	 0018	 00e2	 00d3	 0051	 0003	 007a	 00bb	 00e8	 00e5	 0022	 00e1	 001c	 0014	 0039	 00c5	 0006	 0054	 0026	 0000	 003e	 0093	 004c	 00f1	 006b	 0061	 
+0097	 00a8	 00b7	 001d	 0048	 006c	 0036	 002a	 003f	 0087	 002e	 00ba	 0042	 0016	 009f	 0064	 00f7	 00bb	 0079	 0030	 0081	 007f	 0084	 00a7	 007f	 00c3	 003a	 00cb	 00b4	 00a5	 002c	 004c	 004d	 00e4	 0069	 0095	 0050	 009f	 00c0	 008f	 0026	 00ee	 0049	 0068	 0004	 00e8	 00cd	 00fb	 00a4	 0046	 
+002c	 0025	 00c5	 00b0	 00cc	 0044	 0073	 0006	 0010	 0028	 00ab	 003c	 0074	 00f8	 0020	 00dd	 008d	 0070	 007d	 004d	 0000	 00a3	 003b	 0049	 000c	 003f	 0032	 00d9	 003b	 00d6	 001f	 0067	 00fb	 00e4	 0017	 00c7	 0028	 008b	 00cd	 0038	 00b3	 0078	 0075	 0027	 0070	 0095	 0004	 00fd	 0006	 0081	 
+004b	 0006	 0025	 0086	 004f	 0031	 00c6	 0081	 000a	 0001	 0057	 0029	 0068	 0052	 000d	 007f	 0019	 0035	 000a	 00e6	 006e	 00bd	 005e	 00e3	 00e4	 00ce	 0078	 00e9	 00cc	 007e	 006a	 0017	 0084	 008f	 009d	 00d4	 00c0	 0063	 0055	 00ca	 0064	 00ad	 00f3	 00cc	 00ff	 0000	 004c	 0019	 0036	 0056	 
+00ff	 00a4	 0014	 005e	 0087	 00f8	 002c	 00ff	 00e1	 00f8	 007e	 004c	 000f	 0002	 00db	 00ad	 00d6	 009c	 0010	 002c	 0066	 0075	 00d9	 005a	 0041	 00d8	 005a	 008d	 00f1	 0090	 00e4	 00f1	 0034	 00f8	 004f	 00bb	 00f0	 007b	 00bb	 00d2	 0074	 0039	 001e	 0083	 003b	 00f9	 0030	 0012	 0095	 0041	 
+003e	 00fc	 00b6	 0017	 0056	 00f7	 00ef	 00b0	 0085	 00e1	 0041	 0069	 00d2	 0075	 0061	 0021	 0031	 0051	 009c	 00ec	 0023	 0010	 0025	 0041	 0094	 0060	 003b	 00c4	 0072	 00d0	 0005	 00b0	 00cc	 00bb	 00c7	 0022	 00b3	 00b7	 00d3	 0038	 0098	 0014	 00a1	 006a	 0089	 0002	 008b	 00ba	 0053	 0027	 
+00a6	 0077	 0038	 00cb	 00b8	 00cc	 002c	 00f3	 0090	 009e	 00c4	 0096	 004f	 0090	 0051	 0016	 00b3	 0004	 00cd	 0086	 003c	 0065	 009a	 00dd	 00cf	 0023	 00df	 005a	 00de	 0033	 0082	 0084	 00aa	 00ba	 0050	 0062	 0086	 007c	 0056	 0016	 001a	 001a	 00ac	 0069	 00aa	 00fe	 0080	 005d	 0002	 004d	 
+00e3	 003f	 00b3	 007d	 001c	 0082	 00a1	 00fc	 00dd	 007f	 002f	 005f	 0003	 00d9	 0019	 0053	 003b	 009f	 00cf	 0091	 00b5	 00ea	 00ab	 0062	 0053	 0056	 0060	 00d3	 00b3	 0062	 0021	 0097	 00a1	 00d4	 0014	 00be	 0056	 00b5	 00ba	 0033	 0034	 00e9	 0092	 0038	 00c2	 00ab	 008b	 00fd	 004a	 005b	 
+008f	 0000	 0045	 003a	 0062	 0098	 0090	 00c2	 006c	 0044	 0024	 008d	 00db	 00c6	 0061	 00ef	 0084	 00b7	 00a5	 003e	 00eb	 00d9	 0027	 007d	 0011	 00e9	 0029	 009d	 00e6	 0073	 00f8	 0075	 0073	 003d	 00b0	 00d5	 00d5	 0040	 0097	 0041	 0084	 00bc	 00ce	 005f	 0082	 002f	 004f	 0006	 00e7	 00f4	 
+0044	 00d2	 00cd	 006b	 004f	 00df	 0054	 0078	 007c	 003a	 00ec	 0074	 00b0	 005f	 00b1	 0060	 0035	 0086	 00a0	 00cc	 00c8	 0025	 0088	 0096	 0084	 000a	 00c6	 00d3	 0010	 00ad	 00c7	 0054	 007f	 0095	 00bf	 00ce	 0074	 0013	 0047	 00f0	 004e	 0033	 0064	 00fe	 0092	 0015	 005e	 00c7	 009b	 00fe	 
+0094	 0063	 0023	 001c	 00fa	 00a8	 0027	 00c0	 007b	 0037	 006d	 0043	 008c	 00ec	 00d8	 004b	 00ba	 004c	 005f	 0001	 003c	 00ad	 0034	 00a0	 00ab	 00c7	 00b5	 0009	 008e	 0050	 0007	 0022	 00b4	 002b	 003f	 00ae	 00d3	 0066	 006e	 004e	 009d	 00db	 0091	 0029	 00c7	 0069	 0075	 0081	 00b5	 00d4	 
+0083	 00f1	 0081	 00b7	 0091	 002c	 007e	 0046	 0035	 000d	 0097	 003c	 002f	 004b	 0067	 006e	 00f9	 003a	 00d4	 0067	 0089	 0072	 0042	 001a	 009b	 0009	 0084	 0010	 008a	 0039	 00e4	 000d	 002b	 0065	 00c5	 00bc	 0091	 0043	 0003	 00c6	 0050	 009a	 0003	 0080	 00e5	 006a	 00ee	 00de	 00a5	 00c3	 
+0045	 002e	 0035	 0087	 0048	 00d0	 0090	 00cc	 00e1	 001a	 0006	 00c5	 0028	 0031	 002b	 00ed	 00ed	 00bc	 0030	 00f0	 0083	 0081	 008a	 0086	 0001	 006f	 00f0	 00ef	 004d	 0095	 00b2	 0092	 00c3	 00e7	 0019	 000c	 00b8	 00a9	 00d8	 0099	 00c4	 00de	 005e	 00ec	 000f	 0089	 00d9	 00fd	 0046	 0009	 
+00ed	 00c9	 008a	 0078	 004f	 008b	 00e7	 003f	 007b	 0035	 00d5	 002d	 00c7	 0098	 0015	 00e1	 00a4	 00cd	 008a	 007d	 0066	 004e	 005b	 00c4	 003a	 006b	 004e	 0013	 0068	 0094	 001d	 0055	 005d	 00a7	 00cd	 00ac	 0033	 00b5	 00eb	 00ae	 00ea	 00c0	 00db	 00b1	 0059	 00f0	 0092	 00fd	 00bd	 001d	 
+007a	 0023	 006b	 00d6	 00e8	 00a6	 0041	 0036	 00b9	 00a9	 00ca	 00d6	 00fe	 0027	 007e	 00cc	 00d3	 00b1	 0081	 00be	 005f	 006b	 007f	 003a	 001c	 00d8	 002b	 00af	 00d5	 00e8	 00cc	 0050	 000c	 0037	 0026	 00f4	 00dd	 0067	 002a	 0097	 0010	 00f4	 006d	 000e	 001b	 00eb	 00da	 00ee	 009c	 005b	 
+00ac	 00fb	 00c6	 002b	 0036	 00e3	 0003	 0061	 0092	 00d9	 0049	 005e	 0029	 0055	 0095	 004f	 0049	 0073	 00b6	 0073	 000a	 00c6	 0067	 0077	 00d4	 0082	 0063	 00af	 0070	 00ff	 000a	 001d	 00fb	 00d1	 0048	 0031	 00b4	 004c	 0092	 0046	 0025	 00db	 00a4	 004e	 0031	 0039	 009d	 007a	 00ac	 0053	 
+00ee	 00b6	 0019	 0055	 002e	 00ed	 00d8	 0091	 009c	 0048	 0090	 00a7	 0065	 008b	 0078	 00ae	 00bc	 002c	 00fa	 004e	 0072	 001f	 002a	 0016	 006d	 005b	 004f	 000a	 00d5	 00fc	 005d	 00c3	 00b2	 0076	 0019	 00e0	 0063	 00f1	 0071	 0000	 0039	 0002	 00a7	 009f	 008d	 001f	 004d	 004a	 004b	 0047	 
+0098	 00bd	 0066	 00c2	 00d3	 00d3	 001d	 0022	 00dd	 00f3	 001e	 003a	 00b6	 00d1	 00b0	 00cf	 00b1	 0013	 00c0	 0023	 0013	 00fa	 0025	 00ba	 0099	 00b2	 00d9	 00e6	 00fc	 0024	 002d	 0095	 00e1	 0093	 0057	 00b4	 0066	 0075	 00d7	 0043	 0068	 00f5	 007d	 001e	 00c6	 002d	 00ee	 0078	 0040	 00ae	 
+009b	 0054	 00a8	 00c0	 000e	 0041	 0072	 00e8	 0027	 006f	 000c	 0054	 0004	 00ee	 00e7	 005b	 00a2	 004d	 00d0	 0079	 0090	 0038	 006f	 000d	 0057	 0035	 003a	 0045	 00ad	 007b	 00f3	 0048	 00cf	 009c	 0008	 00dd	 00dd	 007b	 00c5	 0005	 00ea	 00d2	 0059	 00ee	 00c0	 0041	 0049	 0062	 008e	 001a	 
+00dc	 001f	 0052	 004b	 002c	 00a9	 0080	 0067	 00ee	 002e	 00e2	 00e2	 0076	 00b1	 007e	 007f	 008e	 005b	 00fa	 0054	 0060	 00e4	 0026	 00ba	 00d2	 00e6	 00fb	 001b	 0048	 0089	 0035	 0024	 00a8	 0088	 006f	 00d5	 0031	 00f0	 003c	 0020	 001e	 001e	 0002	 0094	 00cf	 0080	 0013	 005d	 00db	 000d	 
+00b1	 003c	 00f1	 00d7	 00f6	 00c3	 00bd	 00f1	 00df	 0006	 007a	 0014	 002a	 0023	 009c	 009a	 00f8	 00ce	 008a	 0034	 00ee	 00a8	 0052	 00f0	 003c	 0021	 0070	 0050	 007e	 004b	 005d	 0030	 0087	 004f	 0007	 007d	 0012	 00c5	 006e	 00f1	 00cb	 00e9	 0006	 00f5	 000c	 00a2	 008f	 0004	 0070	 0019	 
+0038	 005e	 00c1	 008a	 004e	 00fe	 00ab	 00be	 004e	 0029	 000a	 00ab	 0059	 0091	 00fa	 0061	 000f	 000d	 0026	 007d	 00fe	 00f1	 0066	 0004	 00e6	 0072	 00a7	 0076	 0076	 0017	 008f	 00ae	 0076	 0051	 0038	 00c4	 004f	 00e3	 0083	 009d	 000d	 008d	 0048	 0066	 001e	 0043	 00c7	 002d	 0050	 00ed	 
+00ab	 004e	 00de	 0011	 0053	 00c5	 0084	 00fa	 003b	 00fa	 0011	 00ca	 00a9	 0087	 001b	 00e1	 004c	 006a	 00c5	 00cf	 0007	 00d2	 005c	 0050	 0038	 007a	 0093	 0000	 00a8	 00e3	 00ed	 0053	 0031	 00cc	 0064	 0084	 0091	 00e8	 007e	 00cc	 00e3	 0090	 0096	 008c	 0017	 00b2	 006d	 0063	 001c	 0032	 
+0032	 0024	 0004	 008e	 0074	 003d	 0009	 0007	 003d	 00b1	 00ea	 002a	 0004	 001b	 00f6	 0068	 00a0	 0087	 0051	 001e	 0053	 0034	 00ae	 00ea	 00c0	 00c6	 009c	 002d	 0029	 00b8	 0060	 005c	 00dc	 0064	 00ea	 0050	 00a1	 00f3	 0057	 00de	 00a4	 0041	 0009	 00a8	 005d	 00ff	 0011	 00fd	 0087	 0062	 
+001b	 00da	 0096	 00ca	 00c4	 0056	 0090	 0060	 0083	 00b9	 0019	 00e3	 0015	 00f5	 0048	 0000	 0046	 00e9	 00f3	 009d	 00c8	 0098	 00df	 00d1	 0040	 003c	 00d0	 0051	 0039	 0057	 00b3	 0054	 0032	 0049	 001e	 00f6	 009f	 00ae	 0057	 0023	 0068	 0070	 0006	 007d	 0065	 004e	 007d	 00ab	 0038	 0071	 
+0049	 0000	 0009	 0028	 00d1	 0049	 0064	 00a1	 009b	 009d	 00f9	 004e	 00f1	 002b	 0098	 0010	 0021	 0037	 00be	 0078	 005a	 0026	 00e8	 0061	 00a4	 004e	 00af	 0021	 00f9	 00e7	 0092	 0042	 00e7	 009b	 006a	 00b8	 00e5	 00ce	 005a	 0080	 006b	 0053	 00ce	 005d	 007e	 0066	 006d	 009f	 009e	 002b	 
+0018	 00f8	 0052	 0000	 0059	 00f6	 004e	 0009	 0017	 0048	 00f0	 00aa	 008a	 00d8	 0045	 00f5	 0090	 002a	 00c3	 00ea	 00aa	 002f	 003d	 0079	 008c	 00bb	 00df	 00f9	 005b	 007d	 0024	 0073	 0076	 0076	 0073	 00cf	 006c	 00c2	 00d8	 0084	 000a	 00c9	 002e	 0094	 00a1	 0073	 0089	 0031	 009e	 004d	 
+001c	 0048	 007c	 0059	 00c1	 0008	 0015	 00a1	 0001	 0070	 001e	 0025	 00e3	 0094	 009c	 0056	 0064	 0008	 0018	 003c	 008c	 0022	 0005	 00ba	 00b7	 00a6	 002e	 0040	 00d8	 00cc	 008d	 00f4	 0014	 0009	 004d	 00d6	 0011	 0062	 0077	 0012	 00d2	 0095	 0038	 00b5	 002a	 00d4	 000c	 008e	 00dc	 0024	 
+00ca	 0069	 0047	 00d0	 0023	 00fe	 0076	 0051	 003e	 004e	 001d	 00cc	 0042	 0032	 00d5	 0090	 0008	 00e7	 00f2	 007f	 00f9	 00c5	 0014	 0031	 007a	 003e	 0005	 0086	 00cc	 00e2	 00ab	 0097	 004b	 00f2	 0067	 006e	 00f0	 00dd	 00c0	 002e	 002c	 00dd	 00fa	 006e	 000f	 00d0	 00fe	 0017	 00b7	 00f1	 
+
+56 56
+---------------------
+rgnrgnreungrug
+flux valeur -4
+magn 3
+changement 
+DC 
+100011
+
+
+
+1101010100value 20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111000100011value 35 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101010111value 23 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001111value -16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101010100value 20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000100100value 36 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111101100011value -12 magnetude 4 huffman path 502 
+code 20, nb bits 9
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001100value 4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1111101101111value 15 magnetude 4 huffman path 502 
+code 20, nb bits 9
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111011001100value -19 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+uiuuirugrgiurgrugri
+
+flux valeur 24
+magn 5
+pas changement 
+DC 
+11011000
+
+
+
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101000000value -31 magnetude 5 huffman path 26 
+code 5, nb bits 5
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010010value 18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111101100110value -9 magnetude 4 huffman path 502 
+code 20, nb bits 9
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001100value 4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111100101value -2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+1101010111value 23 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111100101value -2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001100value 4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 1 nb 168 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -12
+magn 4
+pas changement 
+DC 
+1010011
+
+
+
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111101100111value -8 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101010111value 23 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111000110011value 51 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010100value 20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001110value 6 magnetude 3 huffman path 121 
+code 19, nb bits 7
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111000011101value -34 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101000010value -29 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11111011101value -2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 1 nb 232 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -23
+magn 5
+pas changement 
+DC 
+11001000
+
+
+
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000011010value -37 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101010011value 19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101010110value 22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000011110value -33 magnetude 6 huffman path 120 
+code 6, nb bits 7
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111101001100value 12 magnetude 4 huffman path 4084 
+code 36, nb bits 12
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111110111010value -5 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1110100value -1 magnetude 1 huffman path 58 
+code 49, nb bits 6
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+TEST compteur 4 nb 64 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 14
+magn 4
+pas changement 
+DC 
+1011110
+
+
+
+1111000100010value 34 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111000100000value 32 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011101value 29 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101011001value 25 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000101101value 45 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111101101110value 14 magnetude 4 huffman path 502 
+code 20, nb bits 9
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111000001101value -50 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 0 nb 116 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -4
+magn 3
+pas changement 
+DC 
+100011
+
+
+
+1111000100101value 37 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001111value 7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1101010010value 18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111111011010011value 19 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+111111111000100110010value 18 magnetude 5 huffman path 65417 
+code 37, nb bits 16
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001000value -7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111110111100value 4 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111100101value -2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+111111110101011value -4 magnetude 3 huffman path 4085 
+code 51, nb bits 12
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+TEST compteur 4 nb 64 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 60
+magn 6
+pas changement 
+DC 
+1110111100
+
+
+
+1111000010011value -44 magnetude 6 huffman path 120 
+code 6, nb bits 7
+111110001110100value 116 magnetude 7 huffman path 248 
+code 7, nb bits 8
+1111000010101value -42 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111000110011value 51 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1110110value -1 magnetude 1 huffman path 59 
+code 65, nb bits 6
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+TEST compteur 1 nb 168 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -54
+magn 6
+pas changement 
+DC 
+1110001001
+
+
+
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000100001value 33 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101011110value 30 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111000010110value -41 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111000101100value 44 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101010100value 20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111100100value -3 magnetude 2 huffman path 249 
+code 34, nb bits 8
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111100111value 3 magnetude 2 huffman path 249 
+code 34, nb bits 8
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 5 nb 128 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -16
+magn 5
+pas changement 
+DC 
+11001111
+
+
+
+1101011001value 25 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101011011value 27 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101000111value -24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101000000value -31 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001010value -21 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010101value 21 magnetude 5 huffman path 26 
+code 5, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111111101001000value 8 magnetude 4 huffman path 4084 
+code 36, nb bits 12
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111001101value 5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1111001101value 5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1111100110value 2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+TEST compteur 5 nb 128 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 3
+magn 2
+pas changement 
+DC 
+01111
+
+
+
+1111000001011value -52 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111000010100value -43 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101010010value 18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111011001001value -22 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111000101001value 41 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111100110value 2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111101100111value -8 magnetude 4 huffman path 502 
+code 20, nb bits 9
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 3 nb 160 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 44
+magn 6
+pas changement 
+DC 
+1110101100
+
+
+
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001100value 4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011011value 27 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001110value 6 magnetude 3 huffman path 121 
+code 19, nb bits 7
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010110value 22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11111011100value -3 magnetude 2 huffman path 503 
+code 50, nb bits 9
+11111011110value 2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+TEST compteur 2 nb 208 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -44
+magn 6
+pas changement 
+DC 
+1110010011
+
+
+
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111101101001value 9 magnetude 4 huffman path 502 
+code 20, nb bits 9
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111101101100value 12 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1111000100010value 34 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101001011value -20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111001001value -6 magnetude 3 huffman path 121 
+code 19, nb bits 7
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111000011011value -36 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001111value 7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 6 nb 0 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 3
+magn 2
+pas changement 
+DC 
+01111
+
+
+
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000000101value -58 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111101100101value -10 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1111001111value 7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011000value 24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111101100010value -13 magnetude 4 huffman path 502 
+code 20, nb bits 9
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101010010value 18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 0 nb 116 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 58
+magn 6
+pas changement 
+DC 
+1110111010
+
+
+
+1101000001value -30 magnetude 5 huffman path 26 
+code 5, nb bits 5
+111110000000011value -124 magnetude 7 huffman path 248 
+code 7, nb bits 8
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101000111value -24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111110111000value -7 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1111111110101110011value -4 magnetude 3 huffman path 65454 
+code 115, nb bits 16
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111111011100value -3 magnetude 2 huffman path 2039 
+code 82, nb bits 11
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 6 nb 0 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -70
+magn 7
+pas changement 
+DC 
+111100111001
+
+
+
+1111000101110value 46 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101010010value 18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101011100value 28 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111000011100value -35 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001111value -16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111000100101value 37 magnetude 6 huffman path 120 
+code 6, nb bits 7
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111101001001value 9 magnetude 4 huffman path 4084 
+code 36, nb bits 12
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010011value 19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111001000value -7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1110100value -1 magnetude 1 huffman path 58 
+code 49, nb bits 6
+TEST compteur 3 nb 160 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 40
+magn 6
+pas changement 
+DC 
+1110101000
+
+
+
+1111000011000value -39 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111000011001value -38 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101000001value -30 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111110111101value 5 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101001100value -19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111111011011100value 28 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111101101000value 8 magnetude 4 huffman path 502 
+code 20, nb bits 9
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111100110value 2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001100value 4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+TEST compteur 2 nb 80 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -15
+magn 4
+pas changement 
+DC 
+1010000
+
+
+
+1101011110value 30 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+TEST compteur 6 nb 0 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -16
+magn 5
+pas changement 
+DC 
+11001111
+
+
+
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101000010value -29 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101011001value 25 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111101100111value -8 magnetude 4 huffman path 502 
+code 20, nb bits 9
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001111value 7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+TEST compteur 4 nb 64 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 21
+magn 5
+pas changement 
+DC 
+11010101
+
+
+
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111110111111value 7 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000100001value 33 magnetude 6 huffman path 120 
+code 6, nb bits 7
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111100101value -2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010110value 22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1111101101011value 11 magnetude 4 huffman path 502 
+code 20, nb bits 9
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101010111value 23 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111101100101value -10 magnetude 4 huffman path 502 
+code 20, nb bits 9
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11111011101value -2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+TEST compteur 4 nb 64 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -24
+magn 5
+pas changement 
+DC 
+11000111
+
+
+
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011000value 24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000011100value -35 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101000111value -24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111101101000value 8 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011100value 28 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010011value 19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11111111100011111010value 10 magnetude 4 huffman path 65423 
+code 52, nb bits 16
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 2 nb 80 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 3
+magn 2
+pas changement 
+DC 
+01111
+
+
+
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000110101value 53 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1111111110010110001value -6 magnetude 3 huffman path 65430 
+code 67, nb bits 16
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111100111value 3 magnetude 2 huffman path 249 
+code 34, nb bits 8
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11111111011010value 2 magnetude 2 huffman path 4086 
+code 98, nb bits 12
+111111100010value 2 magnetude 2 huffman path 1016 
+code 66, nb bits 10
+1110101value 1 magnetude 1 huffman path 58 
+code 49, nb bits 6
+TEST compteur 4 nb 64 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 19
+magn 5
+pas changement 
+DC 
+11010011
+
+
+
+1111000001111value -48 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101001011value -20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111011000010value -29 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101011100value 28 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+TEST compteur 0 nb 212 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -23
+magn 5
+pas changement 
+DC 
+11001000
+
+
+
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000011101value -34 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000011111value -32 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101001100value -19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101000001value -30 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101000101value -26 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001100value 4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11111011110value 2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 5 nb 128 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 10
+magn 4
+pas changement 
+DC 
+1011010
+
+
+
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001111value -16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111101100001value -14 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1101011111value 31 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1111101101010value 10 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001111value -16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111111011001101value -18 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111101100100value -11 magnetude 4 huffman path 502 
+code 20, nb bits 9
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111100111value 3 magnetude 2 huffman path 249 
+code 34, nb bits 8
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 6 nb 0 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 17
+magn 5
+pas changement 
+DC 
+11010001
+
+
+
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000100101value 37 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111111011011110value 30 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101011000value 24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011100value 28 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+111111111000100101011value -20 magnetude 5 huffman path 65417 
+code 37, nb bits 16
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111100110value 2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111110111111value 7 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+TEST compteur -1 nb 250 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 7
+magn 3
+pas changement 
+DC 
+100111
+
+
+
+1101010101value 21 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101011101value 29 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111111011001010value -21 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+1111000011111value -32 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111111110000100011111value -32 magnetude 6 huffman path 65412 
+code 22, nb bits 16
+1101011110value 30 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101010110value 22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11111011111value 3 magnetude 2 huffman path 503 
+code 50, nb bits 9
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+TEST compteur 2 nb 208 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -26
+magn 5
+pas changement 
+DC 
+11000101
+
+
+
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001111value -16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000100011value 35 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101011110value 30 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101010100value 20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001101value 5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111100100value -3 magnetude 2 huffman path 249 
+code 34, nb bits 8
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+1111110111100value 4 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur -1 nb 106 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 13
+magn 4
+pas changement 
+DC 
+1011101
+
+
+
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+111111011001001110value -177 magnetude 8 huffman path 1014 
+code 8, nb bits 10
+1111000100110value 38 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111110000100101111value 47 magnetude 6 huffman path 65412 
+code 22, nb bits 16
+1111000011000value -39 magnetude 6 huffman path 120 
+code 6, nb bits 7
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111110111111value 7 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111111110010110010value -5 magnetude 3 huffman path 65430 
+code 67, nb bits 16
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11110100value -1 magnetude 1 huffman path 122 
+code 81, nb bits 7
+1110110value -1 magnetude 1 huffman path 59 
+code 65, nb bits 6
+TEST compteur 3 nb 160 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 4
+magn 3
+pas changement 
+DC 
+100100
+
+
+
+1101011011value 27 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000011101value -34 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101000101value -26 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101000101value -26 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 3 nb 160 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -15
+magn 4
+pas changement 
+DC 
+1010000
+
+
+
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101000000value -31 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101000100value -27 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111000011111value -32 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111110000100100110value 38 magnetude 6 huffman path 65412 
+code 22, nb bits 16
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111001001value -6 magnetude 3 huffman path 121 
+code 19, nb bits 7
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111110010110011value -4 magnetude 3 huffman path 65430 
+code 67, nb bits 16
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 6 nb 0 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -1
+magn 1
+pas changement 
+DC 
+0100
+
+
+
+111110001000000value 64 magnetude 7 huffman path 248 
+code 7, nb bits 8
+1111000100001value 33 magnetude 6 huffman path 120 
+code 6, nb bits 7
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001101value 5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1101010010value 18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1110101value 1 magnetude 1 huffman path 58 
+code 49, nb bits 6
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111110111101value 5 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 0 nb 180 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 0
+magn 0
+pas changement 
+DC 
+00
+
+
+
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101000111value -24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001000value -7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101000110value -25 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111101101011value 11 magnetude 4 huffman path 502 
+code 20, nb bits 9
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1111001101value 5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111000100000value 32 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111101100110value -9 magnetude 4 huffman path 502 
+code 20, nb bits 9
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111101101010value 10 magnetude 4 huffman path 502 
+code 20, nb bits 9
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 2 nb 208 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 17
+magn 5
+pas changement 
+DC 
+11010001
+
+
+
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111101100100value -11 magnetude 4 huffman path 502 
+code 20, nb bits 9
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111111011001011value -20 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+TEST compteur 6 nb 0 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 12
+magn 4
+pas changement 
+DC 
+1011100
+
+
+
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000101000value 40 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001001value -22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000010010value -45 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101010110value 22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001100value -19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111110111001value -6 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+1111101100111value -8 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1111000100110value 38 magnetude 6 huffman path 120 
+code 6, nb bits 7
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1111001101value 5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+TEST compteur 0 nb 212 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -82
+magn 7
+pas changement 
+DC 
+111100101101
+
+
+
+1101010100value 20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000111101value 61 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101011111value 31 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101011010value 26 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11111011101value -2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1110111value 1 magnetude 1 huffman path 59 
+code 65, nb bits 6
+TEST compteur 3 nb 160 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 49
+magn 6
+pas changement 
+DC 
+1110110001
+
+
+
+1111000011011value -36 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111000111010value 58 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101000110value -25 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111000010110value -41 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011010value 26 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010110value 22 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001101value 5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1111001111value 7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1101010011value 19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101010101value 21 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111100100value -3 magnetude 2 huffman path 249 
+code 34, nb bits 8
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1111001010value -5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+11111011101value -2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+TEST compteur 0 nb 180 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 8
+magn 4
+pas changement 
+DC 
+1011000
+
+
+
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101011000value 24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101011101value 29 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101011000value 24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111110111010value -5 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101000001value -30 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111101101011value 11 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1111001110value 6 magnetude 3 huffman path 121 
+code 19, nb bits 7
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111110111000value -7 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+TEST compteur 3 nb 160 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 12
+magn 4
+pas changement 
+DC 
+1011100
+
+
+
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011100value 28 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000100011value 35 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101000101value -26 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001011value -20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001100value 4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 4 nb 64 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -16
+magn 5
+pas changement 
+DC 
+11001111
+
+
+
+1111000100010value 34 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101000111value -24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111000100001value 33 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111101100111value -8 magnetude 4 huffman path 502 
+code 20, nb bits 9
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111110111001value -6 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+1111111101001000value 8 magnetude 4 huffman path 4084 
+code 36, nb bits 12
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111100101value -2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+TEST compteur 4 nb 64 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 24
+magn 5
+pas changement 
+DC 
+11011000
+
+
+
+1101000100value -27 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101000100value -27 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101010011value 19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101010011value 19 magnetude 5 huffman path 26 
+code 5, nb bits 5
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001111value -16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111101101010value 10 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1111111101001010value 10 magnetude 4 huffman path 4084 
+code 36, nb bits 12
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001101value 5 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111001011value -4 magnetude 3 huffman path 121 
+code 19, nb bits 7
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11111011110value 2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111100101value -2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+TEST compteur 1 nb 232 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -44
+magn 6
+pas changement 
+DC 
+1110010011
+
+
+
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1111110111010value -5 magnetude 3 huffman path 1015 
+code 35, nb bits 10
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100000value -7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10110101value -10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111100110value 2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 3 nb 160 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -39
+magn 6
+pas changement 
+DC 
+1110011000
+
+
+
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101000000value -31 magnetude 5 huffman path 26 
+code 5, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111011011001value 25 magnetude 5 huffman path 2038 
+code 21, nb bits 11
+1111000010111value -40 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111000011100value -35 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010101value 21 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101010000value 16 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111100110value 2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111001001value -6 magnetude 3 huffman path 121 
+code 19, nb bits 7
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11111011101value -2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+1111100101value -2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+11110100value -1 magnetude 1 huffman path 122 
+code 81, nb bits 7
+TEST compteur -1 nb 26 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 66
+magn 7
+pas changement 
+DC 
+111101000010
+
+
+
+110101101value 13 magnetude 4 huffman path 26 
+code 5, nb bits 5
+101101010value -21 magnetude 5 huffman path 11 
+code 4, nb bits 4
+010011value -12 magnetude 4 huffman path 1 
+code 2, nb bits 2
+0001value -2 magnetude 2 huffman path 0 
+code 1, nb bits 2
+10110value -1 magnetude 1 huffman path 11 
+code 4, nb bits 4
+001101value 13 magnetude 4 huffman path 0 
+code 1, nb bits 2
+1000value -1 magnetude 1 huffman path 4 
+code 3, nb bits 3
+1011011value -4 magnetude 3 huffman path 11 
+code 4, nb bits 4
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+010100value -11 magnetude 4 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10001value -2 magnetude 2 huffman path 4 
+code 3, nb bits 3
+111110110010value -5 magnetude 3 huffman path 502 
+code 20, nb bits 9
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+110101011value 11 magnetude 4 huffman path 26 
+code 5, nb bits 5
+10001011value -20 magnetude 5 huffman path 4 
+code 3, nb bits 3
+01011value -4 magnetude 3 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0000value -3 magnetude 2 huffman path 0 
+code 1, nb bits 2
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+110100value -1 magnetude 1 huffman path 26 
+code 5, nb bits 5
+101101101value -18 magnetude 5 huffman path 11 
+code 4, nb bits 4
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+110101111value 15 magnetude 4 huffman path 26 
+code 5, nb bits 5
+0001001value -22 magnetude 5 huffman path 0 
+code 1, nb bits 2
+010value -1 magnetude 1 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+101110value 2 magnetude 2 huffman path 11 
+code 4, nb bits 4
+000011value -12 magnetude 4 huffman path 0 
+code 1, nb bits 2
+1110110value -1 magnetude 1 huffman path 59 
+code 65, nb bits 6
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111value 1 magnetude 1 huffman path 11 
+code 4, nb bits 4
+010100value -11 magnetude 4 huffman path 1 
+code 2, nb bits 2
+10001value -2 magnetude 2 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11011101value 5 magnetude 3 huffman path 27 
+code 18, nb bits 5
+110001value -2 magnetude 2 huffman path 12 
+code 17, nb bits 4
+1111101110value -1 magnetude 1 huffman path 503 
+code 50, nb bits 9
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+110010value 2 magnetude 2 huffman path 12 
+code 17, nb bits 4
+1110100value -1 magnetude 1 huffman path 58 
+code 49, nb bits 6
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10101value 1 magnetude 1 huffman path 10 
+code 0, nb bits 4
+TEST compteur 5 nb 128 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -36
+magn 6
+pas changement 
+DC 
+1110011011
+
+
+
+111110000101001value -86 magnetude 7 huffman path 248 
+code 7, nb bits 8
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111001001value -6 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111110value 14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1110100value -1 magnetude 1 huffman path 58 
+code 49, nb bits 6
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000011110value -33 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1110111value 1 magnetude 1 huffman path 59 
+code 65, nb bits 6
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1111111011101value -2 magnetude 2 huffman path 2039 
+code 82, nb bits 11
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+TEST compteur 0 nb 180 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 41
+magn 6
+pas changement 
+DC 
+1110101001
+
+
+
+1111000110010value 50 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111000011111value -32 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101001101value -18 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000011011value -36 magnetude 6 huffman path 120 
+code 6, nb bits 7
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110010value -13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101001011value -20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001110value -17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10110111value -8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111101100110value -9 magnetude 4 huffman path 502 
+code 20, nb bits 9
+1101000111value -24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101011101value 29 magnetude 5 huffman path 26 
+code 5, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010001value 17 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101010101value 21 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101111value 3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1110111value 1 magnetude 1 huffman path 59 
+code 65, nb bits 6
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 5 nb 128 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 9
+magn 4
+pas changement 
+DC 
+1011001
+
+
+
+111110000001101value -114 magnetude 7 huffman path 248 
+code 7, nb bits 8
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101010111value 23 magnetude 5 huffman path 26 
+code 5, nb bits 5
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111101101000value 8 magnetude 4 huffman path 502 
+code 20, nb bits 9
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1111100110value 2 magnetude 2 huffman path 249 
+code 34, nb bits 8
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111001000value -7 magnetude 3 huffman path 121 
+code 19, nb bits 7
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+11000value -1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+1111111110100110001value -6 magnetude 3 huffman path 65446 
+code 99, nb bits 16
+1110110value -1 magnetude 1 huffman path 59 
+code 65, nb bits 6
+11110100value -1 magnetude 1 huffman path 122 
+code 81, nb bits 7
+TEST compteur 6 nb 0 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 10
+magn 4
+pas changement 
+DC 
+1011010
+
+
+
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000011010value -37 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1101001010value -21 magnetude 5 huffman path 26 
+code 5, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101001011value -20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101101value -2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+1101000111value -24 magnetude 5 huffman path 26 
+code 5, nb bits 5
+1101001011value -20 magnetude 5 huffman path 26 
+code 5, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101100value -3 magnetude 2 huffman path 27 
+code 18, nb bits 5
+10110001value -14 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10110000value -15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111101000010value -13 magnetude 4 huffman path 4084 
+code 36, nb bits 12
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111111value 15 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101000101value -26 magnetude 5 huffman path 26 
+code 5, nb bits 5
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10110110value -9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111100value 12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111011110value 2 magnetude 2 huffman path 2039 
+code 82, nb bits 11
+1110111value 1 magnetude 1 huffman path 59 
+code 65, nb bits 6
+TEST compteur 4 nb 64 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur -7
+magn 3
+pas changement 
+DC 
+100000
+
+
+
+1101010101value 21 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111000011100value -35 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000100110value 38 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1110101value 1 magnetude 1 huffman path 58 
+code 49, nb bits 6
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1101011100value 28 magnetude 5 huffman path 26 
+code 5, nb bits 5
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100001value -6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1111111110011110100value 4 magnetude 3 huffman path 65438 
+code 83, nb bits 16
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+100011value -4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+1101110value 2 magnetude 2 huffman path 27 
+code 18, nb bits 5
+11111011110value 2 magnetude 2 huffman path 503 
+code 50, nb bits 9
+11001value 1 magnetude 1 huffman path 12 
+code 17, nb bits 4
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+111000value -1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+TEST compteur 3 nb 160 
+
+
+uiuuirugrgiurgrugri
+
+flux valeur 117
+magn 7
+pas changement 
+DC 
+111101110101
+
+
+
+10110011value -12 magnetude 4 huffman path 11 
+code 4, nb bits 4
+111110000101111value -80 magnetude 7 huffman path 248 
+code 7, nb bits 8
+1111000010010value -45 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+0100value -3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111101value 13 magnetude 4 huffman path 11 
+code 4, nb bits 4
+1111000001100value -51 magnetude 6 huffman path 120 
+code 6, nb bits 7
+1111000010100value -43 magnetude 6 huffman path 120 
+code 6, nb bits 7
+10111000value 8 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100110value 6 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111011value 11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+10111001value 9 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100101value 5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+10110100value -11 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100010value -5 magnetude 3 huffman path 4 
+code 3, nb bits 3
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+10111010value 10 magnetude 4 huffman path 11 
+code 4, nb bits 4
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+000value -1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+111001value 1 magnetude 1 huffman path 28 
+code 33, nb bits 5
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+100111value 7 magnetude 3 huffman path 4 
+code 3, nb bits 3
+100100value 4 magnetude 3 huffman path 4 
+code 3, nb bits 3
+0110value 2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+0101value -2 magnetude 2 huffman path 1 
+code 2, nb bits 2
+1110101value 1 magnetude 1 huffman path 58 
+code 49, nb bits 6
+0111value 3 magnetude 2 huffman path 1 
+code 2, nb bits 2
+001value 1 magnetude 1 huffman path 0 
+code 1, nb bits 2
+TEST compteur 4 nb 64 
+
+
+fini

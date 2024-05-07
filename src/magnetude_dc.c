@@ -239,6 +239,14 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
             compteur++;
         }
     }
+    res[indice] = '1';
+    indice++;
+    res[indice] = '0';
+    indice++;
+    res[indice] = '1';
+    indice++;
+    res[indice] = '0';
+    indice++;
     res[indice] = 88; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;

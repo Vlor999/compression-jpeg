@@ -5,8 +5,8 @@
 
 
 struct imagePGM{
-    uint32_t col;
-    uint32_t ligne;
+    uint16_t col;
+    uint16_t ligne;
     int8_t max;
     uint8_t** tab;
 };

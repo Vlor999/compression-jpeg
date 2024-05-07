@@ -90,7 +90,7 @@ imagePGM* recupereimage(char* file){
     }
     char premiere_ligne[3];
     fgets(premiere_ligne, sizeof(premiere_ligne), fichier_PGM); // on passe la première ligne avec la version
-    fscanf(fichier_PGM, "%d %d", &image->col, &image->ligne); //on recupere le nb de colonne et ligne
+    fscanf(fichier_PGM, "%hd %hd", &image->col, &image->ligne); //on recupere le nb de colonne et ligne
     fscanf(fichier_PGM, "%hhd", &image->max); // on recupere le niveau max de gris
 
 

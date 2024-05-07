@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include "../include/conversionRGB.h"
 #include "../include/recupereimage.h"
 #include "../include/conversionRGB.h"
@@ -6,19 +9,28 @@
 #include "../include/magnetude_dc.h"
 #include "../include/MCU.h"
 #include "../include/DCT.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "../include/jpeg_format.h"
 #include "../include/htables.h"
 #include "../include/qtables.h"
 #include "../include/recup_v2.h"
+#include "../include/option_main.h"
 
-int main(int argc, char **argv){
-    if (argc != 3){
-        perror("Ton daron en slibard\n");
-    } 
-    imagePGM_RGB *img = LecturePPM(argv[1]); // nom du fichier a preciser  
+int main(int argc, char **argv)
+{
+    Arguments mes_arguments = utilisation_argument(argc, argv);
+    char* filename = mes_arguments.output;
+    char* input = mes_arguments.input;
+    char* sample_factors = mes_arguments.sample_factors;
+    if (!input)
+    {
+        return 1;
+    }
+
+    printf("input : %s\n", input);
+    printf("output : %s\n", filename);
+    printf("sample_factors : %s\n", sample_factors);
+
+    imagePGM_RGB *img = LecturePPM(input); // nom du fichier a preciser   
     printf("Images initales : \n");
     for (uint32_t i= 0; i < img->col; i++){
         for (uint32_t j = 0; j < img->ligne; j ++){
@@ -26,8 +38,10 @@ int main(int argc, char **argv){
         }
         printf("\n");
     }
+    printf("\n");
     uint16_t nb_ligne = 8*((uint16_t)img->ligne/8); 
     uint16_t nb_col = 8*((uint16_t)img->col/8);
+    
     if (nb_ligne != img->ligne)
     {
         nb_ligne += 8;
@@ -37,6 +51,7 @@ int main(int argc, char **argv){
         nb_col += 8;
     }
 
+    printf("%d %d\n", nb_ligne,nb_col);
 
     // uint32_t nb_ligne = img->ligne;
     // uint32_t nb_col = img->col;
@@ -72,16 +87,16 @@ int main(int argc, char **argv){
     imagePGM PGM_Y = {img->col, img->ligne, img->max, image_Y};
     imagePGM PGM_Cb = {img->col, img->ligne, img->max, image_Cb};
     imagePGM PGM_Cr = {img->col, img->ligne, img->max, image_Cr};
-
+    
     MCU* img_Y_MCU = decoupage(&PGM_Y);
     MCU* img_Cb_MCU = decoupage(&PGM_Cb);
     MCU* img_Cr_MCU = decoupage(&PGM_Cr);
 
-    char* filename = argv[2];
     FILE* fptr = fopen(filename, "wb");
-    ecrire_debut(fptr);
+    printf("rgnrgnreungrug\n");
+    ecrire_debut(fptr); 
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
-    ecrire_SOF(fptr, nb_ligne, nb_col); // faire en sorte qu'il change en fonction de l'image
+    ecrire_SOF(fptr, img->ligne, img->col); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
     uint8_t *GRAND_TABLEAU = malloc(60000*sizeof(uint8_t));
     int16_t** img_Y_DCT = dct(img_Y_MCU);
