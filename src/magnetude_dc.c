@@ -13,7 +13,7 @@ uint8_t code_DC_Y[12][10] ={{2,0,0},{3,0,1,0},{3,0,1,1},{3,1,0,0},{3,1,0,1},{3,1
 uint8_t code_DC_CbCr[12][12] = {{2,0,0},{2,0,1},{2,1,0},{3,1,1,0},{4,1,1,1,0},{5,1,1,1,1,0},{6,1,1,1,1,1,0},{7,1,1,1,1,1,1,0},{8,1,1,1,1,1,1,1,0},{9,1,1,1,1,1,1,1,1,0},{10,1,1,1,1,1,1,1,1,1,0},{11,1,1,1,1,1,1,1,1,1,1,0}};
 
 uint8_t trouver_magnetude(int16_t n){
-    int64_t nombre=1;
+    uint64_t nombre=1;
     uint16_t n2; //on prend la valeur absolue sinon LES PROBLEMES 
     if (n<0){
         n2=-n;
@@ -36,20 +36,25 @@ uint8_t* codage_AC_RLE(int16_t* tab){
     uint8_t* tab_RLE = malloc(sizeof(uint8_t)*64);
     uint8_t indice = 1;
     uint8_t nb_zero = 0;
-    for (uint8_t i = 0; i<64; i++){
+    bool fin = true;
+    for (uint8_t i = 1; i<64; i++){
         if (tab[i] == 0){
             nb_zero ++;
+            fin = true;
         }
         else{
             uint8_t magnetude = trouver_magnetude(tab[i]);
             tab_RLE[indice] = nb_zero*(16) + magnetude;
             indice ++;
             nb_zero = 0;
+            fin = false;
         }
     }
-    //tab_RLE[indice] = 0;
-    tab_RLE[0] = indice +1; // l'indice 0 est la taille du tableau qui suit
-    tab_RLE = realloc(tab_RLE, sizeof(uint8_t)*(indice +2));
+    if (fin){
+        tab_RLE[indice] = 0x00;
+    }
+    tab_RLE[0] = indice+1 ; // l'indice 0 est la taille du tableau qui suit
+    tab_RLE = realloc(tab_RLE, sizeof(uint8_t)*(indice +1));
     return tab_RLE;
 }
 
@@ -118,7 +123,7 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le fl
             compteur++;
         }
         else{
-            uint8_t temp = RLE[compteurRLE+1];
+            uint8_t temp = RLE[compteurRLE];
             uint8_t *tab_temp = code_AC_CbCr[temp];
             uint64_t s = 0;
             for (uint8_t i=1;i<=tab_temp[0];i++){
@@ -218,7 +223,7 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
             compteur++;
         }
         else{
-            uint8_t temp = RLE[compteurRLE+1];
+            uint8_t temp = RLE[compteurRLE];
             uint8_t *tab_temp = code_AC_Y[temp];
             uint64_t s = 0;
             for (uint8_t i=1;i<=tab_temp[0];i++){
@@ -239,33 +244,35 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
             compteur++;
         }
     }
-    res[indice] = '1';
+    res[indice] = 1;
     indice++;
-    res[indice] = '0';
+    res[indice] = 0;
     indice++;
-    res[indice] = '1';
+    res[indice] = 1;
     indice++;
-    res[indice] = '0';
+    res[indice] = 0;
     indice++;
     res[indice] = 88; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
 }
-// int main(){
-//     // int16_t tab[64] = {-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
-//     // uint8_t* tab_rle = codage_AC_RLE(tab);
+
+int main(){
+    int16_t tab[64] = {0x0010,-1,0x0001,0x0000,0x0000,0x0000,0x0001,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000,0x0000};
+    uint8_t* tab_rle = codage_AC_RLE(tab);
     
-//     // for (int i = 0 ; i < tab_rle[0]; i++){
-//     //     printf("%x ", tab_rle[i]);
-//     // }
-//     // printf("\n");
-//     // uint8_t tab[11] = {10, 2, 2, 2, 1, 12, 0, 1, 3, 15, 0};
-//     // uint8_t *res = bits_poids_forts(tab);
-//     // uint8_t taille = res[0];
-//     // for (int i = 1 ; i < taille; i++)
-//     // {
-//     //     printf("%d ", res[i]);
-//     // }
-//     // printf("\n");
-//     // return 0;
-// }
+    for (int i = 0 ; i < tab_rle[0]; i++){
+        printf("%x\n ", tab_rle[i]);
+    } 
+    uint8_t* tableau_AC =  codage_total_AC_DC_Y(tab_rle, NULL, tab, false);
+
+    printf("valeur pour codaagegiejgz \n");
+    int i = 0;
+    while (tableau_AC[i] != 88){
+        printf("%d ", tableau_AC[i]);
+        i++;
+    } 
+
+    
+    return 0;
+}
