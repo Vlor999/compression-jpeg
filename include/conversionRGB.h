@@ -18,8 +18,8 @@ typedef struct Triplet_YCbCr{
 }Triplet_YCbCr;
 
 typedef struct imagePGM_RGB{
-    uint32_t col;
-    uint32_t ligne;
+    uint16_t col;
+    uint16_t ligne;
     uint32_t max;
     Triplet_RGB** tab;
 }imagePGM_RGB;
