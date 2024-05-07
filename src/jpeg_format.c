@@ -179,8 +179,8 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureS
     // for (uint16_t i = 0; i < nb_MCU_Y; i ++){
     int8_t val_zero = 0x00;
     uint16_t j =0;
-    int8_t biffleur = ecr -> compteur;
-    uint8_t nb = ecr -> nb;
+    int8_t biffleur = 7;
+    uint8_t nb = 0;
     ecritureSOS *ecr2 = ecr;
     while (tab_MCU_huffman_Y[j] != 88 ){
         if (biffleur==-1){ // on écrit 
@@ -198,6 +198,9 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureS
             biffleur--;
         }        
     }
+    // if (biffleur != -1){
+    //     fwrite(&nb, sizeof(uint8_t),1,fptr);
+    // }
     ecr2 -> compteur = biffleur;
     ecr2 -> nb = nb;
     return ecr2; //savoir ou on est dans les bits
