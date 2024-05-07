@@ -26,6 +26,18 @@ int main(int argc, char **argv){
         }
         printf("\n");
     }
+    uint16_t nb_ligne = 8*((uint16_t)img->ligne/8); 
+    uint16_t nb_col = 8*((uint16_t)img->col/8);
+    if (nb_ligne != img->ligne)
+    {
+        nb_ligne += 8;
+    }
+    if (nb_col != img->col)
+    {
+        nb_col += 8;
+    }
+
+
     // uint32_t nb_ligne = img->ligne;
     // uint32_t nb_col = img->col;
 
@@ -47,15 +59,15 @@ int main(int argc, char **argv){
     }
 
     printf("---------------------\n");
-    printf("Images Downsampling Y : \n");
-    for (uint32_t i = 0; i < img->col; i++)
-    {
-        for (uint32_t j = 0; j < img->ligne; j++)
-        {
-            printf("%04x\t", image_Y[i][j]);
-        }
-        printf("\n");
-    }
+    // printf("Images Downsampling Y : \n");
+    // for (uint32_t i = 0; i < img->col; i++)
+    // {
+    //     for (uint32_t j = 0; j < img->ligne; j++)
+    //     {
+    //         printf("%04x\t", image_Y[i][j]);
+    //     }
+    //     printf("\n");
+    // }
 
     imagePGM PGM_Y = {img->col, img->ligne, img->max, image_Y};
     imagePGM PGM_Cb = {img->col, img->ligne, img->max, image_Cb};
@@ -65,42 +77,65 @@ int main(int argc, char **argv){
     MCU* img_Cb_MCU = decoupage(&PGM_Cb);
     MCU* img_Cr_MCU = decoupage(&PGM_Cr);
 
-
+    bool plus_que_un = (img_Y_MCU -> suiv != NULL);
+    printf("IOFNEFIUNEF %d\n\n\n",plus_que_un);
     char* filename = argv[2];
     FILE* fptr = fopen(filename, "wb");
     ecrire_debut(fptr);
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
-    ecrire_SOF(fptr, 320, 320); // faire en sorte qu'il change en fonction de l'image
+    ecrire_SOF(fptr, nb_ligne, nb_col); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
-    
+    uint8_t *GRAND_TABLEAU = malloc(60000*sizeof(uint8_t));
     int16_t** img_Y_DCT = dct(img_Y_MCU);
     int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
-    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, 64);
+    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
     uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
     uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, NULL, img_Y_quantifie, false);
-    ecrire_SOS_en_tete(fptr,resultat_final,1);  
-    
+    ecrire_SOS_en_tete(fptr);
+    ecritureSOS *ecr = malloc(sizeof(ecritureSOS));
+    ecr -> nb = 0;
+    ecr -> compteur = 7;
+    ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
+    // printf("y u bubugbrg\n"); 
+    // if (plus_que_un){
+    //     img_Y_MCU = img_Y_MCU -> suiv;
+    // }
+    MCU *img_Y_prec;
     while (img_Y_MCU->suiv != NULL)
     {
+        printf("uiuuirugrgiurgrugri\n\n");
         int16_t** img_Y_DCT = dct(img_Y_MCU->suiv);
         int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
-        int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag, 64);
-        bool changement_DC = img_Y_MCU->suiv->ligne == img_Y_MCU->ligne;
-
-        int16_t* img_Y_quantifie_prec = quotient_qtable_Y(zigzag_matrice(dct(img_Y_MCU)), 64);
-
+        int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
+        int16_t* img_Y_quantifie_prec = quotient_qtable_Y(zigzag_matrice(dct(img_Y_MCU)));
         uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
-        uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, img_Y_quantifie_prec, img_Y_quantifie, changement_DC);
-        for (uint64_t i = 0;i<30000; i++)
-        { // résultat du flux de l encodage, a voir si c est bien ce qui est demandé 
-            if (resultat_final[i]==88){
-                break;
-            }
-            printf("%d ", resultat_final[i]);
-        }
-        ecrire_SOS_contenu(fptr,resultat_final,1);
+        uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, img_Y_quantifie_prec, img_Y_quantifie, true);
+        ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
+        printf("TEST compteur %d nb %d \n\n\n", ecr -> compteur, ecr -> nb);
+//         for (uint64_t i = 0;i<30000; i++)
+//         { // résultat du flux de l encodage, a voir si c est bien ce qui est demandé 
+//             if (resultat_final[i]==88){
+//                 break;
+//             }
+//             GRAND_TABLEAU[indice+i] = resultat_final[i];
+//             indice++;
+//         }   
+        img_Y_prec = img_Y_MCU;
         img_Y_MCU = img_Y_MCU->suiv;
     }
+    
+    // if (plus_que_un){
+    //     printf("jniunrignr\n\n\n");
+    //     img_Y_DCT = dct(img_Y_MCU);
+    //     img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
+    //     img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
+    //     RLE = codage_AC_RLE(img_Y_quantifie); 
+    //     int16_t *img_Y_quantifie_prec = quotient_qtable_Y(zigzag_matrice(dct(img_Y_prec)));
+    //     resultat_final = codage_total_AC_DC_Y(RLE, img_Y_quantifie_prec, img_Y_quantifie, true);
+    //     ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
+    // }
+//     GRAND_TABLEAU[indice]=88;
+//     indice++;
     ecrire_fin(fptr);
     fclose(fptr);
     printf("fini\n");

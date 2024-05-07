@@ -174,14 +174,15 @@ void ecrire_SOS_en_tete(FILE* fptr)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t**
     fwrite(&val_zero, sizeof(int8_t),1,fptr);
     }
 
-void ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y){
+ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureSOS *ecr){
     // ecriture par bloc de 8x8 par nb de bloc et par ordre de composante
     // for (uint16_t i = 0; i < nb_MCU_Y; i ++){
     int8_t val_zero = 0x00;
-    uint16_t i =0;
-    int8_t biffleur = 7;
-    uint8_t nb = 0;
-    while (tab_MCU_huffman_Y[i] != 88 ){
+    uint16_t j =0;
+    int8_t biffleur = ecr -> compteur;
+    uint8_t nb = ecr -> nb;
+    ecritureSOS *ecr2 = ecr;
+    while (tab_MCU_huffman_Y[j] != 88 ){
         if (biffleur==-1){ // on écrit 
             biffleur = 7;
             fwrite(&nb, sizeof(uint8_t),1,fptr);
@@ -192,12 +193,14 @@ void ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y){
             nb = 0;
         }
         else{
-            nb = nb + pow(2,biffleur)*tab_MCU_huffman_Y[i];
-            i ++;
+            nb = nb + pow(2,biffleur)*tab_MCU_huffman_Y[j];
+            j ++;
             biffleur--;
         }        
     }
-    // }
+    ecr2 -> compteur = biffleur;
+    ecr2 -> nb = nb;
+    return ecr2; //savoir ou on est dans les bits
     }
 
 

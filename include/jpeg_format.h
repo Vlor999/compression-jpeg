@@ -4,7 +4,11 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-
+struct ecritureSOS{
+    int8_t compteur;
+    uint8_t nb;
+};
+typedef struct ecritureSOS ecritureSOS;
 /**
 * @brief ecrit la partie generique du debut dans le fichier
 * @param file le fichier dans lequel on ecrit le format jpeg
@@ -81,7 +85,8 @@ void ecrire_SOS_en_tete(FILE* fptr);
 *
 **/
 
-void ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y);
+ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureSOS *ecr);
+    // ecriture par bloc de 8x8 par nb de bloc et par ordre de composante
 
 
 #endif

@@ -183,14 +183,19 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
     uint8_t magn;
     uint8_t *tab_temp;
     uint8_t *res = malloc((60000)*sizeof(uint8_t));
+    
     if (!changement_DC){
         magn = trouver_magnetude(flux2[0]);
+        printf("valeur %d\n", flux2[0]); 
         printf("magn %d\n",magn);
+        printf("changement \n");
         tab_temp = codage_indice_magn(flux2[0]);
     }
     else{
         magn = trouver_magnetude(flux2[0]-flux[0]);
+        printf("valeur %d\n", flux2[0]-flux[0]); 
         printf("magn %d\n",magn);
+        printf("pas changement \n");
         tab_temp = codage_indice_magn(flux2[0]-flux[0]);
     }
 
@@ -207,7 +212,7 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
         printf("%d" ,res[indice]);
         indice ++;
     }
-    // printf("\n\n\n\n");
+    printf("\n\n\n\n");
     while (compteur <= 64){
         if (flux2[compteur]==0){
             compteur++;
