@@ -86,6 +86,37 @@ char* donne_nom(uint16_t numero, bool aleatoire, uint16_t hauteur, uint16_t larg
     return nom;
 }
 
+char* donne_nom_check(uint16_t numero, uint16_t hauteur, uint16_t largeur) {
+    /*
+    On donne un nom au fichier en fonction de son numéro et de ses dimensions
+    */
+    char* nom = malloc(100 * sizeof(char));
+    sprintf(nom, "./images/our_images/checkerboard%d_%dx%d.pgm",numero, hauteur, largeur);
+    return nom;
+}
+
+void generation_checkerboard(uint16_t nombre, uint16_t ligne, uint16_t colonne) {
+    while (nombre > 0) 
+    {   
+        char* nom_ficher = donne_nom_check(nombre, ligne, colonne);
+        FILE *fichier = fopen(nom_ficher, "w");
+        ajout_entete(fichier, ligne, colonne);
+
+        bool black = true;
+        for (int y = 0; y < ligne; y++) {
+            for (int x = 0; x < colonne; x++) {
+                unsigned char pixel_value = black ? 0 : 255;
+                fwrite(&pixel_value, sizeof(unsigned char), 1, fichier);
+                black = !black;
+            }
+            if (colonne % 2 == 0)  // If the number of columns is even, invert the first pixel of each row
+                black = !black;
+        }
+        fclose(fichier);
+        nombre--;
+    }
+}
+
 void generation_pgm(bool aleatoire, uint32_t taille, uint16_t nb_images, uint16_t ligne, uint16_t colonne)
 {
     char FIN[taille + 1];
@@ -138,18 +169,29 @@ int main(int argc, char const *argv[])
     le nombre d'images générées est définie par la variable nombre donnée ci-dessous
     on choisit soit de faire des tests aléatoires ou non. 
     */
-    if (argc != 4)
+
+    if (argc != 5)
     {
-        printf("Veuillez entrer le format : ./generation_pgm nombre ligne colonne\n");
+        printf("Veuillez entrer le format : ./generation_pgm y/n nombre ligne colonne\n");
+        printf("y : checkerboard\n");
+        printf("n : aléatoire\n");
     }
     sleep(1);
     srand(time(NULL));
-
-    uint16_t nombre = atoi(argv[1]);
-    uint16_t ligne = atoi(argv[2]);
-    uint16_t colonne = atoi(argv[3]);
+    char alea = argv[1][0];
+    uint16_t nombre = atoi(argv[2]);
+    uint16_t ligne = atoi(argv[3]);
+    uint16_t colonne = atoi(argv[4]);
     uint32_t taille = ligne * colonne;
-    bool alea = true;
-    generation_pgm(alea, taille, nombre, ligne, colonne);
+    if (alea == 'y')
+    {
+        generation_checkerboard(nombre, ligne, colonne);
+    }
+    else
+    {   
+        bool alea = true;
+        generation_pgm(alea, taille, nombre, ligne, colonne);
+    }
+
     return 0;
 }
