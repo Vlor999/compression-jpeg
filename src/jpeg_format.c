@@ -181,9 +181,10 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureS
     uint16_t j =0;
     int8_t biffleur = ecr -> compteur;
     uint8_t nb = ecr -> nb;
+    uint16_t j2 = 0;
     ecritureSOS *ecr2 = ecr;
-    while (tab_MCU_huffman_Y[j] != 88 ){
-        printf("%d ", tab_MCU_huffman_Y[j]);
+    while (tab_MCU_huffman_Y[j] != 255 ){
+        printf("%d ", tab_MCU_huffman_Y[j2]);
         if (biffleur==-1){ // on écrit 
             biffleur = 7;
             fwrite(&nb, sizeof(uint8_t),1,fptr);
@@ -198,6 +199,7 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureS
             j ++;
             biffleur--;
         }        
+        j2 ++;
     }
     
     ecr2 -> compteur = biffleur;
