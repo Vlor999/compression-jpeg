@@ -21,9 +21,9 @@ void ecrire_debut(FILE* fptr){
 
 
 void ecrire_fin(FILE* fptr){
-    int16_t prefin = 0x80e6;
+    //int16_t prefin = 0x80e6;
     int16_t fin = 0xd9ff;
-    fwrite(&prefin, sizeof(int16_t), 1, fptr);
+    //fwrite(&prefin, sizeof(int16_t), 1, fptr);
     fwrite(&fin, sizeof(int16_t), 1, fptr);
      
 }

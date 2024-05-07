@@ -77,8 +77,6 @@ int main(int argc, char **argv){
     MCU* img_Cb_MCU = decoupage(&PGM_Cb);
     MCU* img_Cr_MCU = decoupage(&PGM_Cr);
 
-    bool plus_que_un = (img_Y_MCU -> suiv != NULL);
-    printf("IOFNEFIUNEF %d\n\n\n",plus_que_un);
     char* filename = argv[2];
     FILE* fptr = fopen(filename, "wb");
     ecrire_debut(fptr);
@@ -124,16 +122,6 @@ int main(int argc, char **argv){
         img_Y_MCU = img_Y_MCU->suiv;
     }
     
-    // if (plus_que_un){
-    //     printf("jniunrignr\n\n\n");
-    //     img_Y_DCT = dct(img_Y_MCU);
-    //     img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
-    //     img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
-    //     RLE = codage_AC_RLE(img_Y_quantifie); 
-    //     int16_t *img_Y_quantifie_prec = quotient_qtable_Y(zigzag_matrice(dct(img_Y_prec)));
-    //     resultat_final = codage_total_AC_DC_Y(RLE, img_Y_quantifie_prec, img_Y_quantifie, true);
-    //     ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-    // }
 //     GRAND_TABLEAU[indice]=88;
 //     indice++;
     ecrire_fin(fptr);
