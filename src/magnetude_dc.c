@@ -189,9 +189,10 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
     uint8_t *tab_temp;
     uint8_t *res = malloc((60000)*sizeof(uint8_t));
     
-    if (!changement_DC){
+    if (!changement_DC)
+    {
         magn = trouver_magnetude(flux2[0]);
-        printf("valeur %d\n", flux2[0]); 
+        printf("\n valeur %d\n", flux2[0]); 
         printf("magn %d\n",magn);
         printf("changement \n");
         tab_temp = codage_indice_magn(flux2[0]);
@@ -242,7 +243,9 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
                 indice++;
             }
             fin = false;
-            printf("value %d magnetude %d huffman path %ld \ncode %d, nb bits %d\n",flux2[compteur],magn,s,temp,code_AC_Y[temp][0]);// a commenter pour enlever les tests
+            printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);// a commenter pour enlever les tests
+            printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_Y[temp][0]);// a commenter pour enlever les tests
+            printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
             compteurRLE++;
             compteur++;
         }

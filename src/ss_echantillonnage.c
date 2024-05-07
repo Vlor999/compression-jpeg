@@ -11,10 +11,10 @@ Triplet_YCbCr** ss_echantillonnage422(Triplet_YCbCr** tableau, uint32_t lignes, 
     Triplet_YCbCr** tab_echantillonnee = malloc(lignes * sizeof(Triplet_YCbCr*));
     float valeur_Cb;
     float valeur_Cr;
-    for (int i = 0; i < lignes; i++)
+    for (uint32_t i = 0; i < lignes; i++)
     {
         tab_echantillonnee[i] = malloc(col * sizeof(Triplet_YCbCr));
-        for (int j = 0; j < col; j++)
+        for (uint32_t j = 0; j < col; j++)
         {
             if (j%2 == 0){
                 valeur_Cb = tableau[i][j].Cb;
@@ -39,28 +39,28 @@ Triplet_YCbCr** ss_echantillonnage422(Triplet_YCbCr** tableau, uint32_t lignes, 
 
 Triplet_YCbCr** ss_echantillonnage420(Triplet_YCbCr** tableau, uint32_t lignes, uint32_t col){
     Triplet_YCbCr** tab_echantillonnee = malloc(lignes * sizeof(Triplet_YCbCr*));
-    for (int i = 0; i < lignes; i++)
+    for (uint32_t i = 0; i < lignes; i++)
     {
         tab_echantillonnee[i] = malloc(col * sizeof(Triplet_YCbCr));
 
-        for (int k=0; k < col; k++)
+        for (uint32_t k=0; k < col; k++)
         {
             if (!(i%2==0)){
                 // separation des cas pour faire les moyennes des composantes
 
-                if (i==0 & k == 0){
+                if (i==0 && k == 0){
                     tab_echantillonnee[i][k].Cb = (tableau[i+1][k].Cb + tableau[i][k+1].Cb + tableau[i+1][k+1].Cb)/3 ;
                     tab_echantillonnee[i][k].Cr = (tableau[i+1][k].Cr + tableau[i][k+1].Cr + tableau[i+1][k+1].Cr)/3 ;
                 }
-                else if(i==0 & k ==col-1){
+                else if(i==0 && k ==col-1){
                     tab_echantillonnee[i][k].Cb = (tableau[i+1][k].Cb + tableau[i][k-1].Cb + tableau[i+1][k-1].Cb)/3 ;
                     tab_echantillonnee[i][k].Cr = (tableau[i+1][k].Cr + tableau[i][k-1].Cr + tableau[i+1][k-1].Cr)/3 ;
                 }
-                else if(i==lignes-1 & k ==col-1){
+                else if(i==lignes-1 && k ==col-1){
                     tab_echantillonnee[i][k].Cb = (tableau[i-1][k].Cb + tableau[i][k-1].Cb + tableau[i-1][k-1].Cb)/3 ;
                     tab_echantillonnee[i][k].Cr = (tableau[i-1][k].Cr + tableau[i][k-1].Cr + tableau[i-1][k-1].Cr)/3 ;
                 }
-                else if(i==lignes-1 & k ==0){
+                else if(i==lignes-1 && k ==0){
                     tab_echantillonnee[i][k].Cb = (tableau[i-1][k].Cb + tableau[i][k+1].Cb + tableau[i-1][k+1].Cb)/3 ;
                     tab_echantillonnee[i][k].Cr = (tableau[i-1][k].Cr + tableau[i][k+1].Cr + tableau[i-1][k+1].Cr)/3 ;
                 }
@@ -88,7 +88,7 @@ Triplet_YCbCr** ss_echantillonnage420(Triplet_YCbCr** tableau, uint32_t lignes, 
             tab_echantillonnee[i][k].Y = tableau[i][k].Y;
 
         }
-        for (int j = 0; j < col; j++)
+        for (uint32_t j = 0; j < col; j++)
         {
             if (i%2 == 0){
                 tab_echantillonnee[i][j].Cb = 0;
@@ -140,8 +140,7 @@ bool verif_rectriction(uint8_t h1,uint8_t v1,uint8_t h2,uint8_t v2,uint8_t h3,ui
 }
 
 uint8_t echantillonage(char* sample_factors) {
-    char* saveptr;
-    char* pair = strtok_r(sample_factors, ",", &saveptr);
+    char* pair = strtok(sample_factors, ",");
     uint8_t value[6];
     uint8_t competure = 0;
 
@@ -160,7 +159,7 @@ uint8_t echantillonage(char* sample_factors) {
         value[competure] = atoi(v);
         competure++;
 
-        pair = strtok_r(NULL, ",", &saveptr);
+        pair = strtok(NULL, ",");
     }
     free(pair);
     uint8_t h1 = value[0];
@@ -178,8 +177,8 @@ uint8_t echantillonage(char* sample_factors) {
     return 1;
 }
 
-int main() {
-    char sample_factors[] = "2x2,1x1,1x1";
-    echantillonage(sample_factors);
-    return 0;
-}
+// int main() {
+//     char sample_factors[] = "2x2,1x1,1x1";
+//     echantillonage(sample_factors);
+//     return 0;
+// }

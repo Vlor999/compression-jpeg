@@ -174,7 +174,31 @@ void ecrire_SOS_en_tete(FILE* fptr)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t**
     fwrite(&val_zero, sizeof(int8_t),1,fptr);
     }
 
-ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureSOS *ecr){
+void ecrire_commentaire_SOS_PC(FILE* fptr)
+{
+    int16_t marqueur = 0xfeff;
+    int16_t length = 0x0004;   
+    int8_t commentaire[14] = {0x3C, 0x33, 0x20, 0x6C, 0x65, 0x20, 0x70, 0x72, 0x6F, 0x6A, 0x65, 0x74, 0x20, 0x43};
+    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    fwrite(&length, sizeof(int16_t), 1, fptr);
+    for (int i = 0; i < 14; i++){
+        fwrite(&commentaire[i], sizeof(int8_t), 1, fptr);
+    }
+}
+
+void ecrire_commentaire_SOS(FILE* fptr)
+{
+    int16_t marqueur = 0xfeff;
+    int16_t length = 0x0004;
+    int8_t commentaire[3] = {0x46,0x49,0x4E};
+    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    fwrite(&length, sizeof(int16_t), 1, fptr);
+    for (int i = 0; i < 4; i++){
+        fwrite(&commentaire[i], sizeof(int8_t), 1, fptr);
+    }
+}
+
+ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecritureSOS *ecr){
     // ecriture par bloc de 8x8 par nb de bloc et par ordre de composante
     // for (uint16_t i = 0; i < nb_MCU_Y; i ++){
     int8_t val_zero = 0x00;

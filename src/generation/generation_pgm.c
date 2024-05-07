@@ -95,6 +95,32 @@ char* donne_nom_check(uint16_t numero, uint16_t hauteur, uint16_t largeur) {
     return nom;
 }
 
+char* donne_nom_full_color(uint16_t numero, uint16_t hauteur, uint16_t largeur, uint16_t couleur) {
+    /*
+    On donne un nom au fichier en fonction de son numéro, de ses dimensions et de sa couleur
+    */
+    char* nom = malloc(100 * sizeof(char));
+    sprintf(nom, "./images/our_images/full_color%d_%dx%d_%d.pgm",numero, hauteur, largeur, couleur);
+    return nom;
+}
+
+void generation_full_color(uint16_t nombre, uint16_t ligne, uint16_t colonne, uint16_t couleur) {
+    while (nombre > 0) 
+    {   
+        char* nom_ficher = donne_nom_full_color(nombre, ligne, colonne, couleur);
+        FILE *fichier = fopen(nom_ficher, "w");
+        ajout_entete(fichier, ligne, colonne);
+        const unsigned char pixel_value = couleur;
+        for (int y = 0; y < ligne; y++) {
+            for (int x = 0; x < colonne; x++) {
+                fwrite(&pixel_value, sizeof(unsigned char), 1, fichier);
+            }
+        }
+        fclose(fichier);
+        nombre--;
+    }
+}
+
 void generation_checkerboard(uint16_t nombre, uint16_t ligne, uint16_t colonne) {
     while (nombre > 0) 
     {   
@@ -170,27 +196,31 @@ int main(int argc, char const *argv[])
     on choisit soit de faire des tests aléatoires ou non. 
     */
 
-    if (argc != 5)
+    if (argc != 6)
     {
-        printf("Veuillez entrer le format : ./generation_pgm y/n nombre ligne colonne\n");
+        printf("Veuillez entrer le format : ./generation_pgm num nombre ligne colonne\n");
         printf("y : checkerboard\n");
         printf("n : aléatoire\n");
     }
     sleep(1);
     srand(time(NULL));
-    char alea = argv[1][0];
+    uint8_t num = atoi(argv[1]);
     uint16_t nombre = atoi(argv[2]);
     uint16_t ligne = atoi(argv[3]);
     uint16_t colonne = atoi(argv[4]);
     uint32_t taille = ligne * colonne;
-    if (alea == 'y')
+    if (num == 1)
     {
         generation_checkerboard(nombre, ligne, colonne);
     }
-    else
+    else if (num == 2)
     {   
         bool alea = true;
         generation_pgm(alea, taille, nombre, ligne, colonne);
+    }
+    else
+    {
+        generation_full_color(nombre, ligne, colonne, num);
     }
 
     return 0;

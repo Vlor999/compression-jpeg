@@ -89,4 +89,13 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureS
     // ecriture par bloc de 8x8 par nb de bloc et par ordre de composante
 
 
+/**
+ * @brief On ecrit un commentaire à la fin des MCU pour préciser la fin
+ * @param fptr le fichier dans lequel on écrit
+ * @return rien
+ **/
+void ecrire_commentaire_SOS(FILE* fptr);
+
+void ecrire_commentaire_SOS_PC(FILE* fptr);
+
 #endif
