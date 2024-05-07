@@ -139,7 +139,7 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le fl
                 printf("%d" , res[indice]);
                 indice++;
             }
-            printf("value %d magnetude %d huffman path %ld \ncode %d, nb bits %d\n",flux[compteur],magn,s,temp,code_AC_Y[temp][0]);// a commenter pour enlever les tests
+            printf(" value %d magnetude %d huffman path %ld \ncode %d, nb bits %d\n",flux[compteur],magn,s,temp,code_AC_Y[temp][0]);// a commenter pour enlever les tests
             compteurRLE++;
             compteur++;
         }
@@ -234,10 +234,10 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
                 s += pow(2,tab_temp[0]-i)*tab_temp[i];
                 indice++;
             }
-            tab_temp = codage_indice_magn(flux2[compteur]);
+            uint8_t *tab_temp2 = codage_indice_magn(flux2[compteur]);
             uint8_t magn = trouver_magnetude(flux2[compteur]);
             for (uint8_t i=0;i<magn;i++){
-                res[indice] = tab_temp[i];
+                res[indice] = tab_temp2[i];
                 printf("%d" , res[indice]);
                 indice++;
             }
