@@ -199,6 +199,7 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureS
             biffleur--;
         }        
     }
+    
     ecr2 -> compteur = biffleur;
     ecr2 -> nb = nb;
     return ecr2; //savoir ou on est dans les bits

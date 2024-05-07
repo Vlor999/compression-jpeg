@@ -139,6 +139,9 @@ int main(int argc, char **argv)
     
 //     GRAND_TABLEAU[indice]=88;
 //     indice++;
+    if (ecr -> compteur != -1){
+        fwrite(&(ecr -> nb), sizeof(uint8_t),1,fptr);
+    }
     ecrire_fin(fptr);
     fclose(fptr);
     printf("fini\n");
