@@ -7,9 +7,12 @@
 
 Triplet_YCbCr conversionRGB(Triplet_RGB pixel){
     Triplet_YCbCr pixel_YCbCr;
-    pixel_YCbCr.Y = 0.299* pixel.R + 0.587* pixel.G + 0.114* pixel.B;
-    pixel_YCbCr.Cb = (-0.1687)* pixel.R - 0.3313* pixel.G + 0.5* pixel.B + 128;
-    pixel_YCbCr.Cr = 0.5* pixel.R - 0.4187 * pixel.G - 0.0813*pixel.B + 128;
+    float R = (float) pixel.R;
+    float G = (float) pixel.G;
+    float B = (float) pixel.B;
+    pixel_YCbCr.Y = 0.299* R+ 0.587* G + 0.114* B;
+    pixel_YCbCr.Cb = (-0.1687)* R - 0.3313* G + 0.5* B + 128;
+    pixel_YCbCr.Cr = 0.5* R - 0.4187 * G - 0.0813*B + 128;
     return pixel_YCbCr;
 }
 

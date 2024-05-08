@@ -94,21 +94,25 @@ uint8_t *codage_indice_magn(int16_t n){
     return tab;
 }
 
-
-uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le flux contient DC 
+uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2){ //attention le flux contient DC, flux2 est le suivant de flux
     // renvoie le flux de bits attendu 
     printf("flux ");
     uint64_t compteur = 1;
     uint64_t compteurRLE = 1;
     uint64_t indice=0; //contient la taille, le premier element
-    uint8_t *res = malloc((60000)*sizeof(uint8_t));
-    uint8_t magn = trouver_magnetude(flux[0]);
+    uint8_t magn;
+    uint8_t *tab_temp;
+    uint8_t *res = malloc((10000)*sizeof(uint8_t));
+    
+    magn = trouver_magnetude(flux2[0]-prec);
+    printf("valeur %d\n", flux2[0]-prec); 
     printf("magn %d\n",magn);
-    uint8_t *tab_temp = codage_indice_magn(flux[0]);
+    tab_temp = codage_indice_magn(flux2[0]-prec);
 
     //PARTIE DC 
+    printf("DC \n");
     for (uint8_t i=1;i<=code_DC_CbCr[magn][0];i++){
-        res[indice] = code_DC_Y[magn][i];
+        res[indice] = code_DC_CbCr[magn][i];
         printf("%d" ,res[indice]);
         indice ++;
     }
@@ -117,10 +121,12 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le fl
         printf("%d" ,res[indice]);
         indice ++;
     }
+    bool fin = true;
     printf("\n\n\n\n");
-    while (compteur <= 64){
-        if (flux[compteur]==0){
+    while (compteur <= 63){
+        if (flux2[compteur]==0){
             compteur++;
+            fin = true;
         }
         else{
             uint8_t temp = RLE[compteurRLE];
@@ -132,22 +138,39 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t *flux){ //attention le fl
                 s += pow(2,tab_temp[0]-i)*tab_temp[i];
                 indice++;
             }
-            tab_temp = codage_indice_magn(flux[compteur]);
-            uint8_t magn = trouver_magnetude(flux[compteur]);
+            uint8_t *tab_temp2 = codage_indice_magn(flux2[compteur]);
+            uint8_t magn = trouver_magnetude(flux2[compteur]);
             for (uint8_t i=0;i<magn;i++){
-                res[indice] = tab_temp[i];
+                res[indice] = tab_temp2[i];
                 printf("%d" , res[indice]);
                 indice++;
             }
-            printf(" value %d magnetude %d huffman path %ld \ncode %d, nb bits %d\n",flux[compteur],magn,s,temp,code_AC_Y[temp][0]);// a commenter pour enlever les tests
+            fin = false;
+            printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);// a commenter pour enlever les tests
+            printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_Y[temp][0]);// a commenter pour enlever les tests
+            printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
+            printf("\t bitstream => writing %d over %d bits\n", (uint16_t) flux2[compteur],magn);
             compteurRLE++;
             compteur++;
         }
     }
-    res[indice] = 88; //fin du fichier 
+    if (fin){
+        printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
+        res[indice] = 1;
+        indice++;
+        res[indice] = 0;
+        indice++;
+        res[indice] = 1;
+        indice++;
+        res[indice] = 0;
+        indice++;  
+    }
+    res[indice] = 255; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
 }
+
+
 uint8_t *codage_total_DC_Y(int16_t n){
     uint8_t magn = trouver_magnetude(n);
     uint8_t *cd = codage_indice_magn(n);
@@ -179,7 +202,7 @@ uint8_t *codage_total_DC_CbCr(int16_t n){
     return res;
 }
 
-uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool changement_DC){ //attention le flux contient DC, flux2 est le suivant de flux
+uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2){ //attention le flux contient DC, flux2 est le suivant de flux
     // renvoie le flux de bits attendu 
     printf("flux ");
     uint64_t compteur = 1;
@@ -189,22 +212,11 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool c
     uint8_t *tab_temp;
     uint8_t *res = malloc((60000)*sizeof(uint8_t));
     
-    if (!changement_DC)
-    {
-        magn = trouver_magnetude(flux2[0]);
-        printf("\n valeur %d\n", flux2[0]); 
-        printf("magn %d\n",magn);
-        printf("changement \n");
-        tab_temp = codage_indice_magn(flux2[0]);
-    }
-    else{
-        magn = trouver_magnetude(flux2[0]-prec);
-        printf("valeur %d\n", flux2[0]-prec); 
-        printf("magn %d\n",magn);
-        printf("pas changement \n");
-        tab_temp = codage_indice_magn(flux2[0]-prec);
-    }
-
+    magn = trouver_magnetude(flux2[0]-prec);
+    printf("valeur %d\n", flux2[0]-prec); 
+    printf("magn %d\n",magn);
+    printf("pas changement \n");
+    tab_temp = codage_indice_magn(flux2[0]-prec);
 
     //PARTIE DC 
     printf("DC \n");
@@ -243,7 +255,6 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool c
                 indice++;
             }
             fin = false;
-            uint8_t* indice = codage_indice_magn(magn);
             printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);// a commenter pour enlever les tests
             printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_Y[temp][0]);// a commenter pour enlever les tests
             printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
@@ -253,6 +264,7 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool c
         }
     }
     if (fin){
+        printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
         res[indice] = 1;
         indice++;
         res[indice] = 0;
@@ -262,15 +274,6 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool c
         res[indice] = 0;
         indice++;  
     }
-    // printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
-    // res[indice] = 1;
-    // indice++;
-    // res[indice] = 0;
-    // indice++;
-    // res[indice] = 1;
-    // indice++;
-    // res[indice] = 0;
-    // indice++;
     res[indice] = 255; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;

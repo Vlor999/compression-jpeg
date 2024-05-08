@@ -29,7 +29,7 @@ void ecrire_fin(FILE* fptr){
 }
 
 
-void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr){
+void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr,bool couleur){
     // Indice de table quantification pour Y est 0
     int16_t marqueur = 0xdbff;
     int16_t length = 0x4300;                //la longueur de la section
@@ -40,18 +40,20 @@ void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr){
     for (int8_t i = 0; i < 64; i++){
         fwrite(&table_Y[i], sizeof(uint8_t), 1, fptr);
     }
-    // int8_t precision1 = 0x01;                   // Indice de table quantification pour CbCr est 1
-    // fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    // fwrite(&length, sizeof(int16_t), 1, fptr);
-    // fwrite(&precision1, sizeof(int8_t),1,fptr);
-    // for (int8_t i = 0; i < 64; i++){
-    //     fwrite(&table_CbCr[i], sizeof(uint8_t), 1, fptr);
-    // }
-     
+
+    if (couleur){
+        int8_t precision1 = 0x01;                   // Indice de table quantification pour CbCr est 1
+        fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+        fwrite(&length, sizeof(int16_t), 1, fptr);
+        fwrite(&precision1, sizeof(int8_t),1,fptr);
+        for (int8_t i = 0; i < 64; i++){
+            fwrite(&table_CbCr[i], sizeof(uint8_t), 1, fptr);
+        }
+    }
 }
 
 
-void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16]){
+void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16],bool couleur){
     int16_t marqueur = 0xc4ff;  
     int16_t length = 0x1f00;                //la longueur de la section
     int8_t precision = 0x00;                //indice 0 , et type 0 car DC pour Y
@@ -65,17 +67,18 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
         fwrite(&htable_DC_Y[i], sizeof(uint8_t), 1, fptr);
     }
 
-
-    // int8_t precision2 = 0x01;                //indice 1 , et type 0 car DC pour CbCr
-    // fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    // fwrite(&length, sizeof(int16_t), 1, fptr);
-    // fwrite(&precision2, sizeof(int8_t),1,fptr);
-    // for (int8_t j = 0; j < 16; j++){
-    //     fwrite(&htable_nb_length[0][1][j], sizeof(uint8_t), 1, fptr);
-    // }
-    // for (int8_t i = 0; i < 12; i++){
-    //     fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
-    // }
+    if (couleur){
+        int8_t precision2 = 0x01;                //indice 1 , et type 0 car DC pour CbCr
+        fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+        fwrite(&length, sizeof(int16_t), 1, fptr);
+        fwrite(&precision2, sizeof(int8_t),1,fptr);
+        for (int8_t j = 0; j < 16; j++){
+            fwrite(&htable_nb_length[0][1][j], sizeof(uint8_t), 1, fptr);
+        }
+        for (int8_t i = 0; i < 12; i++){
+            fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
+        }
+    }
 
     int16_t length2 = 0xb500;        
     int8_t precision3 = 0x10;                //indice 2 , et type 1 car AC pour Y
@@ -89,26 +92,26 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
         fwrite(&htable_AC_Y[i], sizeof(uint8_t), 1, fptr);
     }
 
-
-    // int8_t precision4 = 0x13;                //indice 3 , et type 1 car AC pour CbCr
-    // fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    // fwrite(&length2, sizeof(int16_t), 1, fptr);
-    // fwrite(&precision4, sizeof(int8_t),1,fptr);
-    // for (int8_t j = 0; j < 16; j++){
-    //     fwrite(&htable_nb_length[1][1][j], sizeof(uint8_t), 1, fptr);
-    // }
-    // for (int i = 0; i < 162; i++){
-    //     fwrite(&htable_AC_CbCr[i], sizeof(uint8_t), 1, fptr);
-    // }
+    if (couleur){
+        int8_t precision4 = 0x13;                //indice 3 , et type 1 car AC pour CbCr
+        fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+        fwrite(&length2, sizeof(int16_t), 1, fptr);
+        fwrite(&precision4, sizeof(int8_t),1,fptr);
+        for (int8_t j = 0; j < 16; j++){
+            fwrite(&htable_nb_length[1][1][j], sizeof(uint8_t), 1, fptr);
+        }
+        for (int i = 0; i < 162; i++){
+            fwrite(&htable_AC_CbCr[i], sizeof(uint8_t), 1, fptr);
+        }
+    }
      
 }   
 
 
-void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image){
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_t nb_composante){
     int16_t marqueur = 0xc0ff;
     int16_t length = 0x0b00;                            //la longueur de la section
-    int8_t precision = 0x08;     
-    int8_t nb_composante = 0x01;   
+    int8_t precision = 0x08;       
     //changement ordre des tailles
     uint16_t word_hauteur = hauteur_image&0xFF;
     uint16_t word_largeur = largeur_image&(0xFF);
