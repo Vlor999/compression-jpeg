@@ -6,20 +6,6 @@ uint32_t entier_inferieur(uint32_t l)
     return 8 * (l / 8);
 }
 
-void free_decoupage(MCU *m)
-{
-    if (m == NULL)
-    {
-        return;
-    }
-    for (int i = 0; i < 8; i++)
-    {
-        free(m->tab[i]);
-    }
-    free(m->tab);
-    free_decoupage(m->suiv);
-    free(m);
-}
 
 int min(int a, int b)
 {
