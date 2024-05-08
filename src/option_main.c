@@ -26,7 +26,7 @@ char *copie_mot_jpeg(const char *s)
 
 Arguments utilisation_argument(int argc, char *argv[]) 
 {
-    Arguments mes_arguments = {NULL, NULL, NULL};
+    Arguments mes_arguments = {NULL, NULL, NULL, false};
     if (argc < 2) 
     {
         printf("Error: Il me faut un fichier gros BG\n");
@@ -37,6 +37,7 @@ Arguments utilisation_argument(int argc, char *argv[])
     char *input = NULL;
     char *output = NULL;
     char *sample_factors = NULL;
+    bool couleur = false;
 
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--help") == 0) 
@@ -68,6 +69,7 @@ Arguments utilisation_argument(int argc, char *argv[])
     if (!output) 
     {
         char *point = strrchr(input, '.');
+        couleur = strcmp(point, ".ppm") == 0;
         if (point) 
         {
             size_t input_len = point - input;
@@ -85,6 +87,7 @@ Arguments utilisation_argument(int argc, char *argv[])
     mes_arguments.input = input;
     mes_arguments.output = output;
     mes_arguments.sample_factors = sample_factors;
+    mes_arguments.couleur = couleur;
     
     return mes_arguments;
 }

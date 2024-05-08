@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 typedef struct {
     char* input;
     char* output;
     char* sample_factors;
+    bool couleur;
 } Arguments;
 
 /*
