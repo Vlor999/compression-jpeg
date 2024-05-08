@@ -75,7 +75,7 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_
 *
 **/
 
-void ecrire_SOS_en_tete(FILE* fptr);
+void ecrire_SOS_en_tete(FILE* fptr, bool couleur);
 
 
 /**

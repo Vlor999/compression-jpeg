@@ -153,11 +153,20 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_
      
 }
 
-void ecrire_SOS_en_tete(FILE* fptr)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
+void ecrire_SOS_en_tete(FILE* fptr, bool couleur)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
     {
+    int16_t length;
+    int8_t nb_composante ;
     int16_t marqueur = 0xdaff;
-    int16_t length = 0x0800;                            //la longueur de la section vaut 2* nb_composante + 6 ici nb_composante = 1 car niveaux gris   
-    int8_t nb_composante = 0x01;  
+    if (couleur){
+        length = 0x0c00;
+        nb_composante =  0x03;
+    }
+    else{
+        length = 0x0800;
+        nb_composante =  0x01;
+        }                            //la longueur de la section vaut 2* nb_composante + 6 ici nb_composante = 1 car niveaux gris   
+      
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
     fwrite(&nb_composante, sizeof(int8_t),1,fptr);
