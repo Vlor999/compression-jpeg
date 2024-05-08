@@ -88,10 +88,14 @@ int main(int argc, char **argv)
     imagePGM PGM_Cb = {img->col, img->ligne, img->max, image_Cb};
     imagePGM PGM_Cr = {img->col, img->ligne, img->max, image_Cr};
     
-    MCU* img_Y_MCU = decoupage(&PGM_Y);
-    MCU* img_Cb_MCU = decoupage(&PGM_Cb);
-    MCU* img_Cr_MCU = decoupage(&PGM_Cr);
+    imagePGM *PGM_Y2 = nouveau_tableau(&PGM_Y);
 
+    printf("%d %d\n",PGM_Y2->ligne,PGM_Y2->col);
+    // MCU* img_Y_MCU = decoupage(&PGM_Y);
+    // MCU* img_Cb_MCU = decoupage(&PGM_Cb);
+    // MCU* img_Cr_MCU = decoupage(&PGM_Cr);
+
+    
     FILE* fptr = fopen(filename, "wb");
     printf("rgnrgnreungrug\n");
     ecrire_debut(fptr); 
@@ -99,47 +103,48 @@ int main(int argc, char **argv)
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
     ecrire_SOF(fptr, img->ligne, img->col); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
-    uint8_t *GRAND_TABLEAU = malloc(60000*sizeof(uint8_t));
-    for (int i=0;i<8;i++){
-            for (int j=0;j<8;j++){
-                printf("%04x\t ",img_Y_MCU->tab[i][j] &0xFFFF);
-            }
-            printf("\n");
-        }
-    printf("\n\n");
-    int16_t** img_Y_DCT = dct(img_Y_MCU);
-        for (int i=0;i<8;i++){
-            for (int j=0;j<8;j++){
-                printf("%04x\t ",img_Y_DCT[i][j] &0xFFFF);
-            }
-            printf("\n");
-        }
-    int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
-    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
-    uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
-    uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, NULL, img_Y_quantifie, false);
+    // for (int i=0;i<8;i++){
+    //         for (int j=0;j<8;j++){
+    //             printf("%04x\t ",img_Y_MCU->tab[i][j] &0xFFFF);
+    //         }
+    //         printf("\n");
+    //     }
+    // printf("\n\n");
+    // int16_t** img_Y_DCT = dct(img_Y_MCU);
+    //     for (int i=0;i<8;i++){
+    //         for (int j=0;j<8;j++){
+    //             printf("%04x\t ",img_Y_DCT[i][j] &0xFFFF);
+    //         }
+    //         printf("\n");
+    //     }
+    // int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
+    // int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
+    // uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
+    // uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, NULL, img_Y_quantifie, false);
     ecrire_SOS_en_tete(fptr);
+    int16_t prec=0;
     ecritureSOS *ecr = malloc(sizeof(ecritureSOS));
     ecr -> nb = 0;
     ecr -> compteur = 7;
-    ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
+    //ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
     // printf("y u bubugbrg\n"); 
     // if (plus_que_un){
     //     img_Y_MCU = img_Y_MCU -> suiv;
     // }    
-    uint32_t compteur=1;
-    while (img_Y_MCU->suiv != NULL)
-    {
-        
-        printf("uiuuirugrgiurgrugri\n\n");
+    uint32_t compteur;
+    for (int i=0;i<PGM_Y2->ligne;i=i+8){
+        for (int j=0;j<PGM_Y2->col;j=j+8){
+            printf("COMTPEUR %d\n",compteur);
+            compteur++;
+            MCU *img_Y_MCU = decoupage(PGM_Y2,i,j);
         for (int i=0;i<8;i++){
             for (int j=0;j<8;j++){
-                printf("%04x\t ",img_Y_MCU->suiv->tab[i][j] &0xFFFF);
+                printf("%02x\t ",img_Y_MCU->tab[i][j] &0xFFFF);
             }
             printf("\n");
         }
         printf("\n\n");
-        int16_t** img_Y_DCT = dct(img_Y_MCU->suiv);
+        int16_t** img_Y_DCT = dct(img_Y_MCU);
         for (int i=0;i<8;i++){
             for (int j=0;j<8;j++){
                 printf("%04x\t ",img_Y_DCT[i][j] &0xFFFF);
@@ -148,11 +153,16 @@ int main(int argc, char **argv)
         }
         int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
         int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
-        int16_t* img_Y_quantifie_prec = quotient_qtable_Y(zigzag_matrice(dct(img_Y_MCU)));
         uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
-        uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, img_Y_quantifie_prec, img_Y_quantifie, true);
+        uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, prec, img_Y_quantifie, true);
         ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-        printf("TEST compteur %d nb %d \n\n\n", ecr -> compteur, ecr -> nb);
+        //printf("TEST compteur %d nb %d \n\n\n", ecr -> compteur, ecr -> nb);
+        prec = img_Y_quantifie[0];
+        free(RLE);
+        free(img_Y_ZigZag);
+        free(resultat_final);
+        free(img_Y_DCT);
+        free(img_Y_MCU);
 //         for (uint64_t i = 0;i<30000; i++)
 //         { // résultat du flux de l encodage, a voir si c est bien ce qui est demandé 
 //             if (resultat_final[i]==88){
@@ -161,16 +171,13 @@ int main(int argc, char **argv)
 //             GRAND_TABLEAU[indice+i] = resultat_final[i];
 //             indice++;
 //         }   
-
-        img_Y_MCU = img_Y_MCU->suiv;
+        }
     }
-    
 //     GRAND_TABLEAU[indice]=88;
 //     indice++;
     if (ecr -> compteur != -1){
         fwrite(&(ecr -> nb), sizeof(uint8_t),1,fptr);
     }
-    printf("%d \n", compteur);
     ecrire_fin(fptr);
     fclose(fptr);
     printf("fini\n");

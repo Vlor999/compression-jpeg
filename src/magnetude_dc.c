@@ -179,7 +179,7 @@ uint8_t *codage_total_DC_CbCr(int16_t n){
     return res;
 }
 
-uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool changement_DC){ //attention le flux contient DC, flux2 est le suivant de flux
+uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool changement_DC){ //attention le flux contient DC, flux2 est le suivant de flux
     // renvoie le flux de bits attendu 
     printf("flux ");
     uint64_t compteur = 1;
@@ -198,11 +198,11 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool 
         tab_temp = codage_indice_magn(flux2[0]);
     }
     else{
-        magn = trouver_magnetude(flux2[0]-flux[0]);
-        printf("valeur %d\n", flux2[0]-flux[0]); 
+        magn = trouver_magnetude(flux2[0]-prec);
+        printf("valeur %d\n", flux2[0]-prec); 
         printf("magn %d\n",magn);
         printf("pas changement \n");
-        tab_temp = codage_indice_magn(flux2[0]-flux[0]);
+        tab_temp = codage_indice_magn(flux2[0]-prec);
     }
 
 

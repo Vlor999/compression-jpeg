@@ -25,8 +25,9 @@ uint32_t entier_superieur(uint32_t l);
     *  @param la matrice des pixels
     *  @return les MCUs sous forme de liste chainee, la valeur renvoyée étant la tete
 */
-MCU *decoupage(imagePGM *tab);
+MCU *decoupage(imagePGM *tab, uint32_t i, uint32_t j);
 
+imagePGM *nouveau_tableau(imagePGM *image);
 
 /*
     *  @brief libère la mémoire

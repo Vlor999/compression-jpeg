@@ -75,6 +75,6 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t *flux, int16_t *flux2, bo
  * le changement si on reste sur la meme ligne
  * @return le tableau avec tout le flux correspondant
  * **/
-uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t *flux, int16_t *flux2, bool changement_DC);
+uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool changement_DC);
 
 #endif

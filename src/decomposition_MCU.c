@@ -63,86 +63,22 @@ imagePGM *nouveau_tableau(imagePGM *image)
     return image;
 }
 
-MCU *decoupage(imagePGM *tab)
+MCU *decoupage(imagePGM *tab,uint32_t i,uint32_t j) //tab aux bonnes dimensions
 {
-    tab = nouveau_tableau(tab);
-    // On a une image avec des bords multiples de 8
-    uint16_t compteur=0;
-    uint32_t i, j, k, l;
-    uint8_t **tab2 = tab->tab;
-    MCU *tete = malloc(sizeof(MCU));
-    if (tete == NULL)
-    {
-        return NULL;
+    MCU *mcu = malloc(sizeof(MCU));
+    uint8_t **tableau = malloc(8*sizeof(uint8_t*));
+    for (int h = 0;h< 8;h++){
+        tableau[h]=malloc(8*sizeof(uint8_t));
     }
-    tete->tab = malloc(8 * sizeof(uint8_t *));
-    if (tete->tab == NULL)
+    for (uint32_t k = 0; k < 8; k++)
     {
-        free(tete);
-        return NULL;
-    }
-    tete->ligne = 0;
-    tete->colonne = 0;
-    tete->suiv = NULL;
-    for (i = 0; i < 8; i++)
-    {
-        tete->tab[i] = malloc(8 * sizeof(uint8_t));
-        if (tete->tab[i] == NULL)
+        for (uint32_t l = 0; l < 8; l++)
         {
-            free_decoupage(tete);
-            return NULL;
-        }
-        for (j = 0; j < 8; j++)
-        {
-            tete->tab[i][j] = tab2[i][j];
+            tableau[l][k] = tab -> tab[i + l][j + k];
         }
     }
-    MCU *courant = tete;
-    for (i = 0; i < tab->ligne; i += 8)
-    {
-        for (j = 0; j < tab->col; j += 8)
-        {
-            if (i == 0 && j == 0)
-            {
-                continue;
-            }
-            courant->suiv = malloc(sizeof(MCU));
-            if (courant->suiv == NULL)
-            {
-                free_decoupage(tete);
-                return NULL;
-            }
-            courant = courant->suiv;
-            compteur++;
-            courant->tab = malloc(8 * sizeof(uint8_t *));
-            if (courant->tab == NULL)
-            {
-                free_decoupage(tete);
-                return NULL;
-            }
-            courant->ligne = i;
-            courant->colonne = j;
-            courant->suiv = NULL;
-            for (k = 0; k < 8; k++)
-            {
-                courant->tab[k] = malloc(8 * sizeof(uint8_t));
-            }
-            for (k = 0; k < 8; k++)
-            {
-                if (courant->tab[k] == NULL)
-                {
-                    free_decoupage(tete);
-                    return NULL;
-                }
-                for (l = 0; l < 8; l++)
-                {
-                    courant->tab[l][k] = tab2[i + l][j + k];
-                }
-            }
-        }
-    }
-    printf("QUZZZZ %d\n",compteur);
-    return tete;
+    mcu ->tab = tableau;
+    return mcu;
 }
 
 void decoupe_1(char* file)
@@ -157,7 +93,7 @@ void decoupe_1(char* file)
     }
     printf("\nDécoupe\n");
     
-    MCU *mcu = decoupage(img);
+    MCU *mcu = decoupage(img,0,0);
     uint32_t i = 0, j = 0;
     while(mcu != NULL)
     {
