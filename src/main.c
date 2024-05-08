@@ -19,7 +19,7 @@
 int main(int argc, char **argv)
 {
 
-    bool couleur = true; // pour mettre en couleur ou non 
+    bool couleur = false; // pour mettre en couleur ou non 
     int8_t nb_composante;
     if (couleur){
         nb_composante = 3;
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
     ecrire_debut(fptr); 
     ecrire_commentaire_SOS_PC(fptr);
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr,couleur);
-    ecrire_SOF(fptr, nb_ligne, nb_col,nb_composante); // faire en sorte qu'il change en fonction de l'image
+    ecrire_SOF(fptr, img->ligne, img -> col,nb_composante,couleur); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths,couleur);
     ecrire_SOS_en_tete(fptr);
     int16_t prec_Y=0;

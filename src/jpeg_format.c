@@ -108,9 +108,9 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
 }   
 
 
-void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_t nb_composante){
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_t nb_composante,bool couleur){
     int16_t marqueur = 0xc0ff;
-    int16_t length = 0x0b00;                            //la longueur de la section
+    int16_t length = 0x0b00;  //la longueur de la section
     int8_t precision = 0x08;       
     //changement ordre des tailles
     uint16_t word_hauteur = hauteur_image&0xFF;
@@ -121,7 +121,13 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_
     word_largeur = word_largeur << 8;
     word_largeur|= (largeur_image >> 8)&0xFF;
 
-    int8_t zero = 0x00;                     // nb de composante de 1 pour l'instant car niveaux gris et mettre a 3 si YCbCr               
+    int8_t zero ;
+    if (couleur){ // nb de composante de 1 pour l'instant car niveaux gris et mettre a 3 si YCbCr          
+        zero = 0x03;
+    }               
+    else{
+        zero = 0x00;
+    }          
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
     fwrite(&precision, sizeof(int8_t),1,fptr);
@@ -179,14 +185,14 @@ void ecrire_SOS_en_tete(FILE* fptr)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t**
 
 void ecrire_commentaire_SOS_PC(FILE* fptr)
 {
-    // int16_t marqueur = 0xfeff;
-    // int16_t length = 0x0004;   
-    // int8_t commentaire[14] = {0x3C, 0x33, 0x20, 0x6C, 0x65, 0x20, 0x70, 0x72, 0x6F, 0x6A, 0x65, 0x74, 0x20, 0x43};
-    // fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    // fwrite(&length, sizeof(int16_t), 1, fptr);
-    // for (int i = 0; i < 14; i++){
-    //     fwrite(&commentaire[i], sizeof(int8_t), 1, fptr);
-    // }
+    int16_t marqueur = 0xfeff;
+    int16_t length = 0x1000;   
+    int8_t commentaire[14] = {0x3C, 0x33, 0x20, 0x6C, 0x65, 0x20, 0x70, 0x72, 0x6F, 0x6A, 0x65, 0x74, 0x20, 0x43};
+    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    fwrite(&length, sizeof(int16_t), 1, fptr);
+    for (int i = 0; i < 14; i++){
+        fwrite(&commentaire[i], sizeof(int8_t), 1, fptr);
+    }
 }
 
 void ecrire_commentaire_SOS(FILE* fptr)
