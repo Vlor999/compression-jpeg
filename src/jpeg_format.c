@@ -108,9 +108,15 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
 }   
 
 
-void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_t nb_composante,bool couleur){
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool couleur){
     int16_t marqueur = 0xc0ff;
-    int16_t length = 0x0b00;  //la longueur de la section
+    int16_t length ; //la longueur de la section
+    if (couleur){
+        length = 0x0b00;
+    }
+    else{
+        length = 0x1100;
+    }  
     int8_t precision = 0x08;       
     //changement ordre des tailles
     uint16_t word_hauteur = hauteur_image&0xFF;
@@ -121,12 +127,12 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_
     word_largeur = word_largeur << 8;
     word_largeur|= (largeur_image >> 8)&0xFF;
 
-    int8_t zero ;
+    int8_t nb_composante ;
     if (couleur){ // nb de composante de 1 pour l'instant car niveaux gris et mettre a 3 si YCbCr          
-        zero = 0x03;
+        nb_composante = 0x03;
     }               
     else{
-        zero = 0x00;
+        nb_composante= 0x01;
     }          
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);

@@ -61,7 +61,7 @@ void ecrire_htable(FILE* fptr, uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8
 *
 **/
 
-void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,int8_t nb_composante,bool couleur);
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool couleur);
 
 
 
