@@ -101,45 +101,22 @@ int main(int argc, char **argv)
     ecrire_debut(fptr); 
     ecrire_commentaire_SOS_PC(fptr);
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
-    ecrire_SOF(fptr, img->ligne, img->col); // faire en sorte qu'il change en fonction de l'image
+    ecrire_SOF(fptr, nb_ligne, nb_col); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
-    // for (int i=0;i<8;i++){
-    //         for (int j=0;j<8;j++){
-    //             printf("%04x\t ",img_Y_MCU->tab[i][j] &0xFFFF);
-    //         }
-    //         printf("\n");
-    //     }
-    // printf("\n\n");
-    // int16_t** img_Y_DCT = dct(img_Y_MCU);
-    //     for (int i=0;i<8;i++){
-    //         for (int j=0;j<8;j++){
-    //             printf("%04x\t ",img_Y_DCT[i][j] &0xFFFF);
-    //         }
-    //         printf("\n");
-    //     }
-    // int16_t* img_Y_ZigZag = zigzag_matrice(img_Y_DCT);
-    // int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
-    // uint8_t *RLE = codage_AC_RLE(img_Y_quantifie); 
-    // uint8_t *resultat_final = codage_total_AC_DC_Y(RLE, NULL, img_Y_quantifie, false);
     ecrire_SOS_en_tete(fptr);
     int16_t prec=0;
     ecritureSOS *ecr = malloc(sizeof(ecritureSOS));
     ecr -> nb = 0;
     ecr -> compteur = 7;
-    //ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-    // printf("y u bubugbrg\n"); 
-    // if (plus_que_un){
-    //     img_Y_MCU = img_Y_MCU -> suiv;
-    // }    
     uint32_t compteur;
     for (int i=0;i<PGM_Y2->ligne;i=i+8){
         for (int j=0;j<PGM_Y2->col;j=j+8){
             printf("COMTPEUR %d\n",compteur);
             compteur++;
-            MCU *img_Y_MCU = decoupage(PGM_Y2,i,j);
+            uint8_t **img_Y_MCU = decoupage(PGM_Y2,i,j);
         for (int i=0;i<8;i++){
             for (int j=0;j<8;j++){
-                printf("%02x\t ",img_Y_MCU->tab[i][j] &0xFFFF);
+                printf("%02x\t ",img_Y_MCU[i][j] &0xFFFF);
             }
             printf("\n");
         }

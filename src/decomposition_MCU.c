@@ -63,51 +63,49 @@ imagePGM *nouveau_tableau(imagePGM *image)
     return image;
 }
 
-MCU *decoupage(imagePGM *tab,uint32_t i,uint32_t j) //tab aux bonnes dimensions
+uint8_t **decoupage(imagePGM *tab,uint32_t i,uint32_t j) //tab aux bonnes dimensions
 {
-    MCU *mcu = malloc(sizeof(MCU));
     uint8_t **tableau = malloc(8*sizeof(uint8_t*));
     for (int h = 0;h< 8;h++){
         tableau[h]=malloc(8*sizeof(uint8_t));
     }
-    for (uint32_t k = 0; k < 8; k++)
+    for (uint8_t k = 0; k < 8; k++)
     {
-        for (uint32_t l = 0; l < 8; l++)
+        for (uint8_t l = 0; l < 8; l++)
         {
             tableau[l][k] = tab -> tab[i + l][j + k];
         }
     }
-    mcu ->tab = tableau;
-    return mcu;
+    return tableau;
 }
 
-void decoupe_1(char* file)
-{
-    imagePGM *img = recupereimage(file);
+// void decoupe_1(char* file)
+// {
+//     imagePGM *img = recupereimage(file);
     
-    for(uint32_t i = 0; i < img->ligne; i++) {
-        for(uint32_t j = 0; j < img->col; j++) {
-            printf("%d \t", img->tab[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\nDécoupe\n");
+//     for(uint32_t i = 0; i < img->ligne; i++) {
+//         for(uint32_t j = 0; j < img->col; j++) {
+//             printf("%d \t", img->tab[i][j]);
+//         }
+//         printf("\n");
+//     }
+//     printf("\nDécoupe\n");
     
-    MCU *mcu = decoupage(img,0,0);
-    uint32_t i = 0, j = 0;
-    while(mcu != NULL)
-    {
-        for (i = 0; i < 8; i++)
-        {
-            for (j = 0; j < 8; j++)
-            {
-                printf("%d\t", mcu->tab[i][j]);
-            }
-            printf("\n");
-        }
-        mcu = mcu->suiv;
-    }
-}
+//     MCU *mcu = decoupage(img,0,0);
+//     uint32_t i = 0, j = 0;
+//     while(mcu != NULL)
+//     {
+//         for (i = 0; i < 8; i++)
+//         {
+//             for (j = 0; j < 8; j++)
+//             {
+//                 printf("%d\t", mcu->tab[i][j]);
+//             }
+//             printf("\n");
+//         }
+//         mcu = mcu->suiv;
+//     }
+// }
 
 // int main(int argc, char *argv[])
 // {

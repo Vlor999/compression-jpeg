@@ -10,7 +10,7 @@
  * @param le MCU
  * @return la matrice des valeurs centrées
 */
-int16_t** mvt_value(MCU* m);
+int16_t** mvt_value(uint8_t  **m);
 
 /*
     *  @brief calcule la DCT pour une valeur 
@@ -18,7 +18,7 @@ int16_t** mvt_value(MCU* m);
     *  @return la DCT 
 */
 
-int16_t calcul_dct(int16_t *m,uint8_t i, uint8_t j);
+int16_t calcul_dct(int16_t **m,uint8_t i, uint8_t j);
 
 /*
     *  @brief construit la matrice des DCT 
@@ -26,6 +26,6 @@ int16_t calcul_dct(int16_t *m,uint8_t i, uint8_t j);
     *  @return la matrice des DCT 
 */
 
-int16_t **dct(MCU *m);
+int16_t **dct(uint8_t **m);
 
 #endif

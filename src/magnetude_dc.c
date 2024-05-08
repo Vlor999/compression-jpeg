@@ -247,30 +247,30 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool c
             printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);// a commenter pour enlever les tests
             printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_Y[temp][0]);// a commenter pour enlever les tests
             printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
-            printf("\t bitstream => writing %d over %d bits\n", flux2[compteur],magn);
+            printf("\t bitstream => writing %d over %d bits\n", (uint16_t) flux2[compteur],magn);
             compteurRLE++;
             compteur++;
         }
     }
-    // if (fin){
-    //     res[indice] = 1;
-    //     indice++;
-    //     res[indice] = 0;
-    //     indice++;
-    //     res[indice] = 1;
-    //     indice++;
-    //     res[indice] = 0;
-    //     indice++;  
-    // }
-    printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
-    res[indice] = 1;
-    indice++;
-    res[indice] = 0;
-    indice++;
-    res[indice] = 1;
-    indice++;
-    res[indice] = 0;
-    indice++;
+    if (fin){
+        res[indice] = 1;
+        indice++;
+        res[indice] = 0;
+        indice++;
+        res[indice] = 1;
+        indice++;
+        res[indice] = 0;
+        indice++;  
+    }
+    // printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
+    // res[indice] = 1;
+    // indice++;
+    // res[indice] = 0;
+    // indice++;
+    // res[indice] = 1;
+    // indice++;
+    // res[indice] = 0;
+    // indice++;
     res[indice] = 255; //fin du fichier 
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;

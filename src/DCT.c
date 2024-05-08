@@ -5,7 +5,7 @@
 
 #define M_PI  3.14159265358979323846
 
-int16_t** mvt_value(MCU* m)
+int16_t** mvt_value(uint8_t **m)
 {
     int16_t** res = calloc(8, sizeof(int16_t*));
     for (uint8_t i=0; i<8; i++)
@@ -13,7 +13,7 @@ int16_t** mvt_value(MCU* m)
         res[i] = calloc(8, sizeof(int16_t));
         for (uint8_t j = 0; j < 8; j++)
         {
-            res[i][j] = (m -> tab)[i][j] - 128;
+            res[i][j] = m[i][j] - 128;
         }
     }
     return res;
@@ -46,7 +46,7 @@ int16_t calcul_dct(int16_t **m, uint8_t i, uint8_t j)
     return (int16_t)somme;
 }
 
-int16_t **dct(MCU *m)
+int16_t **dct(uint8_t **m)
 {
     int16_t **res = mvt_value(m);
     int16_t **tab_final = malloc(8 * sizeof(int16_t*));
