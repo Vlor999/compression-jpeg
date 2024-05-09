@@ -19,18 +19,12 @@
 int main(int argc, char **argv)
 {
 
-    bool couleur = true; // pour mettre en couleur ou non 
-    // int8_t nb_composante;
-    // if (couleur){
-    //     nb_composante = 3;
-    // }
-    // else{
-    //     nb_composante = 1;
-    // }
+
     Arguments mes_arguments = utilisation_argument(argc, argv);
     char* filename = mes_arguments.output;
     char* input = mes_arguments.input;
     char* sample_factors = mes_arguments.sample_factors;
+    bool couleur = mes_arguments.couleur;
     if (!input)
     {
         return 1;
@@ -139,7 +133,7 @@ int main(int argc, char **argv)
     printf("rgnrgnreungrug\n");
     ecrire_debut(fptr); 
     ecrire_commentaire_SOS_PC(fptr);
-    ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr,couleur);
+    ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr, couleur);
     ecrire_SOF(fptr, img->ligne, img -> col,couleur); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths,couleur);
     ecrire_SOS_en_tete(fptr,couleur);
@@ -156,8 +150,7 @@ int main(int argc, char **argv)
         for (int j=0;j<PGM_Y2->col;j=j+8){
             
             uint8_t **img_Y_MCU = decoupage(PGM_Y2,i,j);
-            uint8_t **img_Cb_MCU = decoupage(PGM_Cb2,i,j);
-            uint8_t **img_Cr_MCU = decoupage(PGM_Cr2,i,j);
+            
 
             //Partie Y
             int16_t **img_Y_DCT = dct(img_Y_MCU);
@@ -166,77 +159,85 @@ int main(int argc, char **argv)
             RLE = codage_AC_RLE(img_Y_quantifie); 
             resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie);
             ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
+
+
             //printf("TEST compteur %d nb %d \n\n\n", ecr -> compteur, ecr -> nb);
             prec_Y = img_Y_quantifie[0];
+    //     }
+    // }
+    // // if (ecr -> compteur != -1){
+    // // }
+    // printf("nb - compteur : %d \n", ecr -> compteur);
+    // for (int i=0;i<PGM_Y2->ligne;i=i+8){
+    //     for (int j=0;j<PGM_Y2->col;j=j+8){
+            uint8_t **img_Cb_MCU = decoupage(PGM_Cb2,i,j);
+            uint8_t **img_Cr_MCU = decoupage(PGM_Cr2,i,j);
+
+                if (couleur){ //on fait Cb et Cr 
+                    printf("enerve\n\n");
+
+                    //Partie Cb
+                    int16_t **img_Cb_DCT = dct(img_Cb_MCU);
+                    int16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
+                    int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
+                    RLE = codage_AC_RLE(img_Cb_quantifie); 
+                    resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_Cb_quantifie);
+                    ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
+                    prec_Cb = img_Cb_quantifie[0];
 
 
-            if (couleur){ //on fait Cb et Cr 
-                printf("enerve\n\n");
 
-                //Partie Cb
-                int16_t **img_Cb_DCT = dct(img_Cb_MCU);
-                int16_t* img_Cb_ZigZag = zigzag_matrice(img_Cb_DCT);
-                int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
-                RLE = codage_AC_RLE(img_Cb_quantifie); 
-                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_Cb_quantifie);
-                ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-                prec_Cb = img_Cb_quantifie[0];
+                    //Partie Cr
+                    int16_t **img_Cr_DCT = dct(img_Cr_MCU);
+                    int16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
+                    int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
+                    RLE = codage_AC_RLE(img_Cr_quantifie); 
+                    resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_Cr_quantifie);
+                    ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
+                    prec_Cr = img_Cr_quantifie[0];
+                    
+                    printf("COMTPEUR %d\n",compteur);
+                    printf("\n\nMCU Y\n\n");
+                    for (int i=0;i<8;i++){
+                        for (int j=0;j<8;j++){
+                            printf("%02x\t ",img_Y_MCU[i][j] &0xFFFF);
+                        }
+                        printf("\n");
+                    }
+                    compteur++;
+                    printf("\n\nMCU Cb\n\n");
+                    for (int i=0;i<8;i++){
+                        for (int j=0;j<8;j++){
+                            printf("%02x\t ",img_Cb_MCU[i][j] &0xFFFF);
+                        }
+                        printf("\n");
+                    }
+                    printf("\n\nMCU Cr\n\n");
+                    for (int i=0;i<8;i++){
+                        for (int j=0;j<8;j++){
+                            printf("%02x\t ",img_Cr_MCU[i][j] &0xFFFF);
+                        }
+                        printf("\n");
+                    }
+                    printf("\n\nDCT Y\n\n");
+                    
+                    printf("\n\nDCT Cb\n\n");
+                    for (int i=0;i<8;i++){
+                        for (int j=0;j<8;j++){
+                            printf("%04x\t ",img_Cb_DCT[i][j] &0xFFFF);
+                        }
+                        printf("\n");
+                    }
+                    printf("\n\nDCT Cr\n\n");
+                    for (int i=0;i<8;i++){
+                        for (int j=0;j<8;j++){
+                            printf("%04x\t ",img_Cr_DCT[i][j] &0xFFFF);
+                        }
+                        printf("\n");
+                    }
 
-                //Partie Cr
-                int16_t **img_Cr_DCT = dct(img_Cr_MCU);
-                int16_t* img_Cr_ZigZag = zigzag_matrice(img_Cr_DCT);
-                int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
-                RLE = codage_AC_RLE(img_Cr_quantifie); 
-                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_Cr_quantifie);
-                ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-                prec_Cr = img_Cr_quantifie[0];
-                printf("COMTPEUR %d\n",compteur);
-                compteur++;
-                printf("\n\nMCU Y\n\n");
-                for (int i=0;i<8;i++){
-                    for (int j=0;j<8;j++){
-                        printf("%02x\t ",img_Y_MCU[i][j] &0xFFFF);
-                    }
-                    printf("\n");
+                    printf("\n\n");
                 }
-                printf("\n\nMCU Cb\n\n");
-                for (int i=0;i<8;i++){
-                    for (int j=0;j<8;j++){
-                        printf("%02x\t ",img_Cb_MCU[i][j] &0xFFFF);
-                    }
-                    printf("\n");
-                }
-                printf("\n\nMCU Cr\n\n");
-                for (int i=0;i<8;i++){
-                    for (int j=0;j<8;j++){
-                        printf("%02x\t ",img_Cr_MCU[i][j] &0xFFFF);
-                    }
-                    printf("\n");
-                }
-                printf("\n\nDCT Y\n\n");
-                for (int i=0;i<8;i++){
-                    for (int j=0;j<8;j++){
-                        printf("%04x\t ",img_Y_DCT[i][j] &0xFFFF);
-                    }
-                    printf("\n");
-                }
-                printf("\n\nDCT Cb\n\n");
-                for (int i=0;i<8;i++){
-                    for (int j=0;j<8;j++){
-                        printf("%04x\t ",img_Cb_DCT[i][j] &0xFFFF);
-                    }
-                    printf("\n");
-                }
-                printf("\n\nDCT Cr\n\n");
-                for (int i=0;i<8;i++){
-                    for (int j=0;j<8;j++){
-                        printf("%04x\t ",img_Cr_DCT[i][j] &0xFFFF);
-                    }
-                    printf("\n");
-                }
-
-                printf("\n\n");
-            }
         
         //prec_Cr = img_Cr_quantifie[0];
 
@@ -253,9 +254,8 @@ int main(int argc, char **argv)
     }
 //     GRAND_TABLEAU[indice]=88;
 //     indice++;
-    if (ecr -> compteur != -1){
-        fwrite(&(ecr -> nb), sizeof(uint8_t),1,fptr);
-    }
+    fwrite(&(ecr -> nb), sizeof(uint8_t),1,fptr);
+
     ecrire_fin(fptr);
     fclose(fptr);
     printf("fini\n");

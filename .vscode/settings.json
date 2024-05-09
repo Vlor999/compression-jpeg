@@ -3,6 +3,8 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "recupereimage.h": "c",
-        "qtables.h": "c"
+        "qtables.h": "c",
+        "conversionrgb.h": "c",
+        "recup_v2.h": "c"
     }
 }

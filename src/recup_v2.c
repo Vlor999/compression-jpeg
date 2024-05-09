@@ -109,7 +109,7 @@ imagePGM_RGB* LecturePPM(const char* filename)
 //         printf("\n");
 //     }
 
-//     libere_image(img);
+//     // libere_image(img);
 //     return 0;
 // }
 

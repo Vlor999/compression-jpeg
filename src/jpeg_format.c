@@ -53,153 +53,180 @@ void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr,bool coule
 }
 
 
-void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16],bool couleur){
-    int16_t marqueur = 0xc4ff;  
-    int16_t length = 0x1f00;                //la longueur de la section
-    int8_t precision = 0x00;                //indice 0 , et type 0 car DC pour Y
+void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16],bool couleur)
+{
+    int16_t marqueur = 0xc4ff;
+    int16_t length = 0x1f00; // la longueur de la section
+    int8_t precision = 0x00; // indice 0 , et type 0 car DC pour Y
+
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
-    fwrite(&precision, sizeof(int8_t),1,fptr);
-    for (int8_t j = 0; j < 16; j++){
+    fwrite(&precision, sizeof(int8_t), 1, fptr);
+    for (int8_t j = 0; j < 16; j++)
+    {
         fwrite(&htable_nb_length[0][0][j], sizeof(uint8_t), 1, fptr);
     }
-    for (int8_t i = 0; i < 12; i++){
+    for (int8_t i = 0; i < 12; i++)
+    {
         fwrite(&htable_DC_Y[i], sizeof(uint8_t), 1, fptr);
     }
 
-    if (couleur){
-        int8_t precision2 = 0x01;                //indice 1 , et type 0 car DC pour CbCr
+    // if (couleur)
+    // {
+    //     int8_t precision2 = 0x10;                //indice 1 , et type 0 car DC pour CbCr
+    //     length = 0xB500;
+    //     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    //     fwrite(&length, sizeof(int16_t), 1, fptr);
+    //     fwrite(&precision2, sizeof(int8_t),1,fptr);
+    //     for (int8_t j = 0; j < 16; j++)
+    //     {
+    //         fwrite(&htable_nb_length[0][1][j], sizeof(uint8_t), 1, fptr);
+    //     }
+    //     for (int8_t i = 0; i < 12; i++)
+    //     {
+    //         fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
+    //     }
+    // }
+
+    int16_t length2 = 0xb500;
+    int8_t precision3 = 0x10; // indice 2 , et type 1 car AC pour Y
+    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
+    fwrite(&length2, sizeof(int16_t), 1, fptr);
+    fwrite(&precision3, sizeof(int8_t), 1, fptr);
+    for (int j = 0; j < 16; j++)
+    {
+        fwrite(&htable_nb_length[1][0][j], sizeof(uint8_t), 1, fptr);
+    }
+    for (int i = 0; i < 162; i++)
+    {
+        fwrite(&htable_AC_Y[i], sizeof(uint8_t), 1, fptr);
+    }
+
+    if (couleur)
+    {
+        int8_t precision2 = 0x01; // indice 1 , et type 0 car DC pour CbCr
+        length = 0x1F00;
         fwrite(&marqueur, sizeof(int16_t), 1, fptr);
         fwrite(&length, sizeof(int16_t), 1, fptr);
-        fwrite(&precision2, sizeof(int8_t),1,fptr);
-        for (int8_t j = 0; j < 16; j++){
+        fwrite(&precision2, sizeof(int8_t), 1, fptr);
+        // ecrire_commentaire_SOS_PC(fptr);
+        for (int8_t j = 0; j < 16; j++)
+        {
             fwrite(&htable_nb_length[0][1][j], sizeof(uint8_t), 1, fptr);
         }
-        for (int8_t i = 0; i < 12; i++){
+        for (int8_t i = 0; i < 12; i++)
+        {
             fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
         }
     }
 
-    int16_t length2 = 0xb500;        
-    int8_t precision3 = 0x10;                //indice 2 , et type 1 car AC pour Y
-    fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    fwrite(&length2, sizeof(int16_t), 1, fptr);
-    fwrite(&precision3, sizeof(int8_t),1,fptr);
-    for (int j = 0; j < 16; j++){
-        fwrite(&htable_nb_length[1][0][j], sizeof(uint8_t), 1, fptr);
-    }
-    for (int i = 0; i < 162; i++){
-        fwrite(&htable_AC_Y[i], sizeof(uint8_t), 1, fptr);
-    }
-
-    if (couleur){
-        int8_t precision4 = 0x11;                //indice 3 , et type 1 car AC pour CbCr
+    if (couleur)
+    {
+        int8_t precision4 = 0x11; // indice 3 , et type 1 car AC pour CbCr
         fwrite(&marqueur, sizeof(int16_t), 1, fptr);
         fwrite(&length2, sizeof(int16_t), 1, fptr);
-        fwrite(&precision4, sizeof(int8_t),1,fptr);
-        for (int8_t j = 0; j < 16; j++){
+        fwrite(&precision4, sizeof(int8_t), 1, fptr);
+        for (int8_t j = 0; j < 16; j++)
+        {
             fwrite(&htable_nb_length[1][1][j], sizeof(uint8_t), 1, fptr);
         }
-        for (int i = 0; i < 162; i++){
+        for (int i = 0; i < 162; i++)
+        {
             fwrite(&htable_AC_CbCr[i], sizeof(uint8_t), 1, fptr);
         }
     }
-     
-}   
+}
 
 
 void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool couleur){
     int16_t marqueur = 0xc0ff;
-    int16_t length ; //la longueur de la section
-    if (couleur){
+    int16_t length = 0x0b00; // la longueur de la section
+    int8_t precision = 0x08;
+    int8_t nb_composante = 0x01;
+    if (couleur)
+    {
         length = 0x1100;
+        nb_composante = 0x03;
     }
-    else{
-        length = 0x0b00;
-    }
-      
-    int8_t precision = 0x08;       
-    //changement ordre des tailles
-    uint16_t word_hauteur = hauteur_image&0xFF;
-    uint16_t word_largeur = largeur_image&(0xFF);
+    // changement ordre des tailles
+    uint16_t word_hauteur = hauteur_image & 0xFF;
+    uint16_t word_largeur = largeur_image & (0xFF);
     word_hauteur = word_hauteur << 8;
-    word_hauteur |= (hauteur_image >> 8)&0xFF;
+    word_hauteur |= (hauteur_image >> 8) & 0xFF;
 
     word_largeur = word_largeur << 8;
-    word_largeur|= (largeur_image >> 8)&0xFF;
+    word_largeur |= (largeur_image >> 8) & 0xFF;
 
-    int8_t nb_composante ;
-    if (couleur){ // nb de composante de 1 pour l'instant car niveaux gris et mettre a 3 si YCbCr          
-        nb_composante = 0x03;
-    }               
-    else{
-        nb_composante= 0x01;
-    }          
+    int8_t zero = 0x00; // nb de composante de 1 pour l'instant car niveaux gris et mettre a 3 si YCbCr
+    // ecrire_commentaire_SOS_PC(fptr); //commentaire
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
-    fwrite(&precision, sizeof(int8_t),1,fptr);
-    fwrite(&word_hauteur, sizeof(int16_t), 1, fptr); //on ecrit la hauteur
+    fwrite(&precision, sizeof(int8_t), 1, fptr);
+    fwrite(&word_hauteur, sizeof(int16_t), 1, fptr); // on ecrit la hauteur
     fwrite(&word_largeur, sizeof(int16_t), 1, fptr); // on ecrit la largeur
-    fwrite(&nb_composante, sizeof(int8_t),1,fptr);
+    fwrite(&nb_composante, sizeof(int8_t), 1, fptr);
     int8_t identifiant = 0x01;
     int8_t facteur_echantillonage = 0x11;
-    int8_t table_quantification_Y = 0x00;               // indice de table quantification deY est 0 comme vu au dessus
-    int8_t table_quantification_CbCr = 0x01;             // indice de table quantification de CbCr est 1 comme vu au dessus
-    for (int i = 0; i < nb_composante; i++){         //la première composante sera pour Y et les 2 derniere pur Cb et Cr lorsque nb_composatne = 3
-        fwrite(&identifiant, sizeof(int8_t),1,fptr);
+    int8_t table_quantification_Y = 0x00;    // indice de table quantification deY est 0 comme vu au dessus
+    int8_t table_quantification_CbCr = 0x01; // indice de table quantification de CbCr est 1 comme vu au dessus
+    for (int i = 0; i < nb_composante; i++)
+    { // la première composante sera pour Y et les 2 derniere pur Cb et Cr lorsque nb_composatne = 3
+        fwrite(&identifiant, sizeof(int8_t), 1, fptr);
         identifiant += 0x01;
-        fwrite(&facteur_echantillonage, sizeof(int8_t),1,fptr);        // facteur à 4 car pour l'instant pas de ss-echantillonage
+        fwrite(&facteur_echantillonage, sizeof(int8_t), 1, fptr); // facteur à 4 car pour l'instant pas de ss-echantillonage
 
-        if (i > 0){
-            fwrite(&table_quantification_CbCr, sizeof(int8_t),1,fptr);
+        if (i > 0)
+        {
+            fwrite(&table_quantification_CbCr, sizeof(int8_t), 1, fptr);
         }
-        else{
-            fwrite(&table_quantification_Y, sizeof(int8_t),1,fptr);
+        else
+        {
+            fwrite(&table_quantification_Y, sizeof(int8_t), 1, fptr);
         }
     }
      
 }
 
-
 void ecrire_SOS_en_tete(FILE* fptr, bool couleur)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
-    {
-    int16_t length;
-    int8_t nb_composante ;
+{
     int16_t marqueur = 0xdaff;
-    if (couleur){
+    int16_t length = 0x0800; // la longueur de la section vaut 2* nb_composante + 6 ici nb_composante = 1 car niveaux gris
+    int8_t nb_composante = 0x01;
+    int8_t identifiant = 0x01;
+    int8_t indice_huffman_Y = 0x00;    // 4 premier bits pour indice table DC et 4 bits pour table AC
+    int8_t indice_huffman_CbCr = 0x13; // 4 premier bits pour indice table DC et 4 bits pour table AC
+    if (couleur)
+    {
         length = 0x0c00;
-        nb_composante =  0x03;
+        nb_composante = 0x03;
+        indice_huffman_CbCr = 0x11;
     }
-    else{
-        length = 0x0800;
-        nb_composante =  0x01;
-        }                            //la longueur de la section vaut 2* nb_composante + 6 ici nb_composante = 1 car niveaux gris   
-      
+
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
-    fwrite(&nb_composante, sizeof(int8_t),1,fptr);
-    int8_t identifiant = 0x01;
-    int8_t indice_huffman_Y = 0x00;                     // 4 premier bits pour indice table DC et 4 bits pour table AC
-    int8_t indice_huffman_CbCr = 0x11;                     // 4 premier bits pour indice table DC et 4 bits pour table AC
-    for (int i = 0; i < nb_composante; i++){       //la première composante sera pour Y et les 2 derniere pur Cb et Cr lorsque nb_composatne = 3 
-        fwrite(&identifiant, sizeof(int8_t),1,fptr);
+    fwrite(&nb_composante, sizeof(int8_t), 1, fptr);
+
+    for (int i = 0; i < nb_composante; i++)
+    { // la première composante sera pour Y et les 2 derniere pur Cb et Cr lorsque nb_composatne = 3
+        fwrite(&identifiant, sizeof(int8_t), 1, fptr);
         identifiant += 0x01;
-        if (i > 0){
-            fwrite(&indice_huffman_CbCr, sizeof(int8_t),1,fptr);
+        if (i > 0)
+        {
+            fwrite(&indice_huffman_CbCr, sizeof(int8_t), 1, fptr);
         }
-        else{
-            fwrite(&indice_huffman_Y, sizeof(int8_t),1,fptr);
+        else
+        {
+            fwrite(&indice_huffman_Y, sizeof(int8_t), 1, fptr);
         }
-        }
+    }
 
     // juste par convention la suite
     int8_t val_zero = 0x00;
     int8_t val_se = 0x3f;
-    fwrite(&val_zero, sizeof(int8_t),1,fptr);
-    fwrite(&val_se, sizeof(int8_t),1,fptr);
-    fwrite(&val_zero, sizeof(int8_t),1,fptr);
-    }
-
+    fwrite(&val_zero, sizeof(int8_t), 1, fptr);
+    fwrite(&val_se, sizeof(int8_t), 1, fptr);
+    fwrite(&val_zero, sizeof(int8_t), 1, fptr);
+}
 
 void ecrire_commentaire_SOS_PC(FILE* fptr)
 {
@@ -236,12 +263,14 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecriture
     ecritureSOS *ecr2 = ecr;
     while (tab_MCU_huffman_Y[j] != 255 ){
         //printf("%d ", tab_MCU_huffman_Y[j2]);
+        
         if (biffleur==-1){ // on écrit 
             biffleur = 7;
             fwrite(&nb, sizeof(uint8_t),1,fptr);
+            printf("nb : %02x \n",nb);
             if(nb == 0xff){
                 fwrite(&val_zero,sizeof(int8_t),1,fptr);
-            
+
             }
             nb = 0;
         }
@@ -271,4 +300,3 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecriture
 //     fclose(fptr);
 //     return 0;
 // }
-
