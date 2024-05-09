@@ -10,6 +10,7 @@ void print_help()
     printf("--help : pour de l'aide ;)\n");
     printf("--outfile=filename : tu mets le blaze du fichier de sortie et surtout on oublie pas le .jpg\n");
     printf("--sample=h1xv1,h2xv2,h3xv3 : tu me give le sous echatillonnage mon gazo \n");
+    printf("--v : pour activer le mode verbose\n");
 }
 
 char *copie_mot_jpeg(const char *s) 
@@ -26,7 +27,7 @@ char *copie_mot_jpeg(const char *s)
 
 Arguments utilisation_argument(int argc, char *argv[]) 
 {
-    Arguments mes_arguments = {NULL, NULL, NULL, false};
+    Arguments mes_arguments = {NULL, NULL, NULL, false, false};
     if (argc < 2) 
     {
         printf("Error: Il me faut un fichier gros BG\n");
@@ -38,6 +39,7 @@ Arguments utilisation_argument(int argc, char *argv[])
     char *output = NULL;
     char *sample_factors = NULL;
     bool couleur = false;
+    bool verbose = false;
 
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--help") == 0) 
@@ -53,6 +55,10 @@ Arguments utilisation_argument(int argc, char *argv[])
         {
             sample_factors = argv[i] + 9; 
         } 
+        else if (strcmp(argv[i], "--v") == 0)
+        {
+            verbose = true;
+        }
         else 
         {
             input = argv[i];
@@ -88,6 +94,7 @@ Arguments utilisation_argument(int argc, char *argv[])
     mes_arguments.output = output;
     mes_arguments.sample_factors = sample_factors;
     mes_arguments.couleur = couleur;
+    mes_arguments.verbose = verbose;
     
     return mes_arguments;
 }

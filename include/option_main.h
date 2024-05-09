@@ -8,6 +8,7 @@ typedef struct {
     char* output;
     char* sample_factors;
     bool couleur;
+    bool verbose;
 } Arguments;
 
 /*

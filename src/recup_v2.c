@@ -2,25 +2,120 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 #include "../include/conversionRGB.h"
 #include "../include/recup_v2.h"
 
-// typedef struct Triplet_RGB{
-//     uint8_t R;
-//     uint8_t G;
-//     uint8_t B;
-// }Triplet_RGB;
+data_frame Lecture_Init(const char* filename)
+{
+    FILE* file = fopen(filename, "rb");
 
+    if (file == NULL) 
+    {
+        fprintf(stderr, "Erreur d'ouverture: %s\n", filename);
+        data_frame data = {0, 0, 0, 0, false};
+        return data;
+    }
 
-// void libere_image(imagePGM_RGB* image){
-//     for (uint32_t i = 0; i < image->ligne; i++)
-//     {
-//         free(image->tab[i]);
-//     }
-//     free(image->tab);
-//     free(image);
-// }
+    char input[3];
+    fscanf(file, "%2s\n", input);
 
+    if (input[0] != 'P' || (input[1] != '6' && input[1] != '5')) 
+    {
+        fprintf(stderr, "Le fromat n'est ni PGM ni PPM\n");
+        fclose(file);
+        data_frame data = {0, 0, 0, 0, false};
+        return data;
+    }
+
+    uint16_t col, ligne, max;
+    uint8_t header = 9;
+    bool isRGB = input[1] == '6';
+    fscanf(file, "%hd %hd\n%hd\n", &col, &ligne, &max);
+
+    header = header + (uint8_t)log10(max) + (uint8_t)log10(col) + (uint8_t)log10(ligne);
+
+    data_frame data = {col, ligne, max, header, isRGB};
+    fclose(file);
+    return data;
+}
+
+MCU_RGB Read_File(const char* filename, data_frame data, uint16_t number)
+{
+    uint32_t nb_colonne = data.nb_colonne;
+    uint32_t nb_ligne = data.nb_ligne;
+
+    nb_colonne = ((nb_colonne + 7) / 8) * 8;
+    nb_ligne = ((nb_ligne + 7) / 8) * 8;
+
+    uint8_t sous_matrice_par_ligne = nb_colonne / MCU_TAILLE;
+    uint32_t debut_ligne = ((number - 1) / sous_matrice_par_ligne) * 8 + 1;
+    uint32_t debut_colonne = ((number - 1) % sous_matrice_par_ligne) * 8 + 1;
+
+    bool ligne_ok = debut_ligne + 7 <= data.nb_ligne;
+    bool colonne_ok = debut_colonne + 7 <= data.nb_colonne;
+
+    uint8_t max_value_i = MCU_TAILLE;
+    uint8_t max_value_j = MCU_TAILLE;
+
+    if (!ligne_ok)
+    {
+        max_value_i = data.nb_ligne - debut_ligne + 1;
+    }
+    if (!colonne_ok)
+    {
+        max_value_j = data.nb_colonne - debut_colonne + 1;
+    }
+
+    MCU_RGB mcu;
+    FILE* file = fopen(filename, "rb");
+    
+    uint32_t position_debut = data.header*sizeof(uint8_t) + (debut_ligne - 1) * nb_colonne * sizeof(uint8_t) * 3 + (debut_colonne - 1) * sizeof(uint8_t) * 3;
+    fseek(file, position_debut, SEEK_SET);
+    Triplet_RGB last_triplet_RGB = {0, 0, 0};
+    uint8_t taille = sizeof(Triplet_RGB);
+    uint8_t decalage = debut_colonne + 7 - MCU_TAILLE; 
+    if (!data.isRGB)
+    {
+        taille = sizeof(uint8_t);
+    }
+    for (uint8_t i = 0; i < MCU_TAILLE; i++)
+    {
+        for (uint8_t j = 0; j < MCU_TAILLE; j++)
+        {
+            
+            if (data.isRGB)
+            {
+                if (i < max_value_i && j < max_value_j)
+                {
+                    fread(&mcu.tab[i][j], taille, 1, file);
+                }    
+                else
+                {
+                    mcu.tab[i][j] = last_triplet_RGB;
+                }    
+            }
+            else
+            {
+                uint8_t pixel;
+                if (i < max_value_i && j < max_value_j)
+                {
+                    fread(&pixel, taille, 1, file);
+                }
+                else
+                {
+                    pixel = last_triplet_RGB.R;
+                }
+                mcu.tab[i][j].R = pixel;
+                mcu.tab[i][j].G = pixel;
+                mcu.tab[i][j].B = pixel;
+            } 
+            last_triplet_RGB = mcu.tab[i][j];   
+        }
+        fseek(file, (decalage) * taille, SEEK_CUR);
+    }
+    return mcu;
+} 
 
 imagePGM_RGB* LecturePPM(const char* filename) 
 {
@@ -100,16 +195,33 @@ imagePGM_RGB* LecturePPM(const char* filename)
 //         return 1;
 //     }
 
-//     for(uint8_t i = 0; i < img->ligne; i++)
+//     for(uint8_t i = 0; i < 8; i++)
 //     {
-//         for(uint8_t j = 0; j < img->col; j++)
+//         for(uint8_t j = 8; j < 14; j++)
 //         {
-//             printf("%02x%02x%02x\t", img->tab[i][j].R, img->tab[i][j].G, img->tab[i][j].B);
+//             printf("%d %d %d \t", img->tab[i][j].R, img->tab[i][j].G, img->tab[i][j].B);
 //         }
 //         printf("\n");
 //     }
 
+//     printf("\n\n\n");
+
+//     data_frame data = Lecture_Init(filename);
+
+//     MCU_RGB mcu;
+    
+//     mcu = Read_File(filename, data, 2);
+//     for(uint8_t i = 0; i < MCU_TAILLE; i++)
+//     {
+//         for(uint8_t j = 0; j < MCU_TAILLE; j++)
+//         {
+//             printf("%d %d %d \t", mcu.tab[i][j].R, mcu.tab[i][j].G, mcu.tab[i][j].B);
+//         }
+//         printf("\n");
+//     }
+    
 //     // libere_image(img);
 //     return 0;
 // }
+
 

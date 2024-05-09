@@ -52,9 +52,13 @@ void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr,bool coule
     }
 }
 
-
-void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16],bool couleur)
+void ecrire_htable(FILE* fptr, uint8_t htable_nb_length[][3][16], bool couleur)
 {
+    uint8_t* htable_DC_Y = htables_symbols[0][0];
+    uint8_t* htable_AC_Y = htables_symbols[1][0];
+    uint8_t* htable_DC_CbCr = htables_symbols[0][1];
+    uint8_t* htable_AC_CbCr = htables_symbols[1][1];
+    
     int16_t marqueur = 0xc4ff;
     int16_t length = 0x1f00; // la longueur de la section
     int8_t precision = 0x00; // indice 0 , et type 0 car DC pour Y
@@ -70,23 +74,6 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
     {
         fwrite(&htable_DC_Y[i], sizeof(uint8_t), 1, fptr);
     }
-
-    // if (couleur)
-    // {
-    //     int8_t precision2 = 0x10;                //indice 1 , et type 0 car DC pour CbCr
-    //     length = 0xB500;
-    //     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
-    //     fwrite(&length, sizeof(int16_t), 1, fptr);
-    //     fwrite(&precision2, sizeof(int8_t),1,fptr);
-    //     for (int8_t j = 0; j < 16; j++)
-    //     {
-    //         fwrite(&htable_nb_length[0][1][j], sizeof(uint8_t), 1, fptr);
-    //     }
-    //     for (int8_t i = 0; i < 12; i++)
-    //     {
-    //         fwrite(&htable_DC_CbCr[i], sizeof(uint8_t), 1, fptr);
-    //     }
-    // }
 
     int16_t length2 = 0xb500;
     int8_t precision3 = 0x10; // indice 2 , et type 1 car AC pour Y
@@ -157,8 +144,6 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool 
     word_largeur = word_largeur << 8;
     word_largeur |= (largeur_image >> 8) & 0xFF;
 
-    int8_t zero = 0x00; // nb de composante de 1 pour l'instant car niveaux gris et mettre a 3 si YCbCr
-    // ecrire_commentaire_SOS_PC(fptr); //commentaire
     fwrite(&marqueur, sizeof(int16_t), 1, fptr);
     fwrite(&length, sizeof(int16_t), 1, fptr);
     fwrite(&precision, sizeof(int8_t), 1, fptr);
@@ -262,12 +247,10 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecriture
     uint16_t j2 = 0;
     ecritureSOS *ecr2 = ecr;
     while (tab_MCU_huffman_Y[j] != 255 ){
-        //printf("%d ", tab_MCU_huffman_Y[j2]);
         
         if (biffleur==-1){ // on écrit 
             biffleur = 7;
             fwrite(&nb, sizeof(uint8_t),1,fptr);
-            printf("nb : %02x \n",nb);
             if(nb == 0xff){
                 fwrite(&val_zero,sizeof(int8_t),1,fptr);
 

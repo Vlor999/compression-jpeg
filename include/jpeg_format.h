@@ -49,8 +49,8 @@ void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr,bool coule
 * @return rien hehe
 *
 **/
-
-void ecrire_htable(FILE* fptr, uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16],bool couleur);
+// FILE* fptr, uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint8_t* htable_DC_CbCr, uint8_t* htable_AC_CbCr, uint8_t htable_nb_length[][3][16],bool couleur
+void ecrire_htable(FILE* fptr,uint8_t htable_nb_length[][3][16], bool couleur);
 
 
 

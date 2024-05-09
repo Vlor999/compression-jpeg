@@ -94,9 +94,11 @@ uint8_t *codage_indice_magn(int16_t n){
     return tab;
 }
 
-uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2){ //attention le flux contient DC, flux2 est le suivant de flux
+uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2, bool verbose){ //attention le flux contient DC, flux2 est le suivant de flux
     // renvoie le flux de bits attendu 
-    printf("flux ");
+    if (verbose){
+        printf("flux : ");
+    }
     uint64_t compteur = 1;
     uint64_t compteurRLE = 1;
     uint64_t indice=0; //contient la taille, le premier element
@@ -105,24 +107,34 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2){ //
     uint8_t *res = malloc((10000)*sizeof(uint8_t));
     
     magn = trouver_magnetude(flux2[0]-prec);
-    printf("valeur %d\n", flux2[0]-prec); 
-    printf("magn %d\n",magn);
+    if (verbose){
+        printf("valeur : %d\n", flux2[0]-prec); 
+        printf("magnitude : %d\n",magn);
+    }
     tab_temp = codage_indice_magn(flux2[0]-prec);
 
     //PARTIE DC 
-    printf("DC \n");
+    if (verbose){
+        printf("DC \n");
+    }
     for (uint8_t i=1;i<=code_DC_CbCr[magn][0];i++){
         res[indice] = code_DC_CbCr[magn][i];
-        printf("%d" ,res[indice]);
+        if (verbose){
+            printf("%d" ,res[indice]);
+        }
         indice ++;
     }
     for (uint8_t i=0;i<magn;i++){
         res[indice] = tab_temp[i];
-        printf("%d" ,res[indice]);
+        if (verbose){
+            printf("%d" ,res[indice]);
+        }
         indice ++;
     }
     bool fin = true;
-    printf("\n\n\n\n");
+    if (verbose){
+        printf("\n\n\n\n");
+    }
     while (compteur <= 63){
         if (flux2[compteur]==0){
             compteur++;
@@ -134,7 +146,10 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2){ //
             uint64_t s = 0;
             for (uint8_t i=1;i<=tab_temp[0];i++){
                 res[indice] =tab_temp[i];
-                printf("%d" , res[indice]); // a commenter pour enlever les tests
+                if (verbose)
+                {
+                    printf("%d" , res[indice]);
+                }
                 s += pow(2,tab_temp[0]-i)*tab_temp[i];
                 indice++;
             }
@@ -142,20 +157,29 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2){ //
             uint8_t magn = trouver_magnetude(flux2[compteur]);
             for (uint8_t i=0;i<magn;i++){
                 res[indice] = tab_temp2[i];
-                printf("%d" , res[indice]);
+                if (verbose)
+                {
+                    printf("%d" , res[indice]);
+                }
                 indice++;
             }
             fin = false;
-            printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);// a commenter pour enlever les tests
-            printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_CbCr[temp][0]);// a commenter pour enlever les tests
-            printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
-            printf("\t bitstream => writing %d over %d bits\n", (uint16_t) flux2[compteur],magn);
+            if (verbose)
+            {
+                printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);
+                printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_CbCr[temp][0]);
+                printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
+                printf("\t bitstream => writing %d over %d bits\n", (uint16_t) flux2[compteur],magn);
+            }
             compteurRLE++;
             compteur++;
         }
     }
     if (fin){
-        printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
+        if (verbose)
+        {
+            printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
+        }
         res[indice] = 0;
         indice++;
         res[indice] = 0;
@@ -198,9 +222,12 @@ uint8_t *codage_total_DC_CbCr(int16_t n){
     return res;
 }
 
-uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2){ //attention le flux contient DC, flux2 est le suivant de flux
+uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool verbose){ //attention le flux contient DC, flux2 est le suivant de flux
     // renvoie le flux de bits attendu 
-    printf("flux ");
+    if (verbose)
+    {
+        printf("flux ");
+    }
     uint64_t compteur = 1;
     uint64_t compteurRLE = 1;
     uint64_t indice=0; //contient la taille, le premier element
@@ -209,25 +236,40 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2){ //att
     uint8_t *res = malloc((60000)*sizeof(uint8_t));
     
     magn = trouver_magnetude(flux2[0]-prec);
-    printf("valeur %d\n", flux2[0]-prec); 
-    printf("magn %d\n",magn);
-    printf("pas changement \n");
+    if (verbose)
+    {
+        printf("valeur %d\n", flux2[0]-prec); 
+        printf("magn %d\n",magn);
+        printf("pas changement \n");
+    }    
     tab_temp = codage_indice_magn(flux2[0]-prec);
 
     //PARTIE DC 
-    printf("DC \n");
+    if (verbose)
+    {
+        printf("DC \n");
+    }
     for (uint8_t i=1;i<=code_DC_Y[magn][0];i++){
         res[indice] = code_DC_Y[magn][i];
-        printf("%d" ,res[indice]);
+        if (verbose)
+        {
+            printf("%d" ,res[indice]);
+        }    
         indice ++;
     }
     for (uint8_t i=0;i<magn;i++){
         res[indice] = tab_temp[i];
-        printf("%d" ,res[indice]);
+        if (verbose)
+        {
+            printf("%d" ,res[indice]);
+        }    
         indice ++;
     }
     bool fin = true;
-    printf("\n\n\n\n");
+    if (verbose)
+    {
+        printf("\n\n\n\n");
+    }
     while (compteur <= 63){
         if (flux2[compteur]==0){
             compteur++;
@@ -239,7 +281,10 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2){ //att
             uint64_t s = 0;
             for (uint8_t i=1;i<=tab_temp[0];i++){
                 res[indice] =tab_temp[i];
-                printf("%d" , res[indice]); // a commenter pour enlever les tests
+                if (verbose)
+                {
+                    printf("%d" , res[indice]);
+                }
                 s += pow(2,tab_temp[0]-i)*tab_temp[i];
                 indice++;
             }
@@ -247,20 +292,29 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2){ //att
             uint8_t magn = trouver_magnetude(flux2[compteur]);
             for (uint8_t i=0;i<magn;i++){
                 res[indice] = tab_temp2[i];
-                printf("%d" , res[indice]);
+                if (verbose)
+                {
+                    printf("%d" , res[indice]);
+                }    
                 indice++;
             }
             fin = false;
-            printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);// a commenter pour enlever les tests
-            printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_Y[temp][0]);// a commenter pour enlever les tests
-            printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
-            printf("\t bitstream => writing %d over %d bits\n", (uint16_t) flux2[compteur],magn);
+            if (verbose)
+            {
+                printf("\nvalue  = %d, magnetude = %d\n",flux2[compteur],magn);// a commenter pour enlever les tests
+                printf("RLE code = %d, huffman path = %ld, nb bits = %d\n", temp, s,code_AC_Y[temp][0]);// a commenter pour enlever les tests
+                printf("\t bitstream => writing %ld over %d bits\n", s,(uint16_t)log2(s)+1);
+                printf("\t bitstream => writing %d over %d bits\n", (uint16_t) flux2[compteur],magn);
+            }    
             compteurRLE++;
             compteur++;
         }
     }
     if (fin){
-        printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
+        if (verbose)
+        {
+            printf("value = endofblock, huffman_path = 10, nb_bits = 4\nbitstream => writing 10 over 4 bits\n");
+        }
         res[indice] = 1;
         indice++;
         res[indice] = 0;
