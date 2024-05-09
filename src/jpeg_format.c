@@ -93,7 +93,7 @@ void ecrire_htable(FILE* fptr , uint8_t* htable_DC_Y, uint8_t* htable_AC_Y, uint
     }
 
     if (couleur){
-        int8_t precision4 = 0x13;                //indice 3 , et type 1 car AC pour CbCr
+        int8_t precision4 = 0x11;                //indice 3 , et type 1 car AC pour CbCr
         fwrite(&marqueur, sizeof(int16_t), 1, fptr);
         fwrite(&length2, sizeof(int16_t), 1, fptr);
         fwrite(&precision4, sizeof(int8_t),1,fptr);
@@ -112,11 +112,12 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool 
     int16_t marqueur = 0xc0ff;
     int16_t length ; //la longueur de la section
     if (couleur){
-        length = 0x0b00;
+        length = 0x1100;
     }
     else{
-        length = 0x1100;
-    }  
+        length = 0x0b00;
+    }
+      
     int8_t precision = 0x08;       
     //changement ordre des tailles
     uint16_t word_hauteur = hauteur_image&0xFF;
@@ -159,6 +160,7 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool 
      
 }
 
+
 void ecrire_SOS_en_tete(FILE* fptr, bool couleur)  //,uint8_t*** tab_MCU_huffman_Cb, uint8_t*** tab_MCU_huffman_Cr )
     {
     int16_t length;
@@ -178,7 +180,7 @@ void ecrire_SOS_en_tete(FILE* fptr, bool couleur)  //,uint8_t*** tab_MCU_huffman
     fwrite(&nb_composante, sizeof(int8_t),1,fptr);
     int8_t identifiant = 0x01;
     int8_t indice_huffman_Y = 0x00;                     // 4 premier bits pour indice table DC et 4 bits pour table AC
-    int8_t indice_huffman_CbCr = 0x13;                     // 4 premier bits pour indice table DC et 4 bits pour table AC
+    int8_t indice_huffman_CbCr = 0x11;                     // 4 premier bits pour indice table DC et 4 bits pour table AC
     for (int i = 0; i < nb_composante; i++){       //la première composante sera pour Y et les 2 derniere pur Cb et Cr lorsque nb_composatne = 3 
         fwrite(&identifiant, sizeof(int8_t),1,fptr);
         identifiant += 0x01;
@@ -197,6 +199,7 @@ void ecrire_SOS_en_tete(FILE* fptr, bool couleur)  //,uint8_t*** tab_MCU_huffman
     fwrite(&val_se, sizeof(int8_t),1,fptr);
     fwrite(&val_zero, sizeof(int8_t),1,fptr);
     }
+
 
 void ecrire_commentaire_SOS_PC(FILE* fptr)
 {

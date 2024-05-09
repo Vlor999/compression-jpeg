@@ -19,8 +19,14 @@
 int main(int argc, char **argv)
 {
 
-    bool couleur = false; // pour mettre en couleur ou non 
-
+    bool couleur = true; // pour mettre en couleur ou non 
+    // int8_t nb_composante;
+    // if (couleur){
+    //     nb_composante = 3;
+    // }
+    // else{
+    //     nb_composante = 1;
+    // }
     Arguments mes_arguments = utilisation_argument(argc, argv);
     char* filename = mes_arguments.output;
     char* input = mes_arguments.input;
