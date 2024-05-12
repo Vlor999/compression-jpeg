@@ -47,6 +47,7 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     Correction à effectuer :
     - Il y a un porblème si le fichier n'est pas de taille divisible par 8
     - Je ne retrourne aps bien à la ligne et donc cela créer un décalage à chaque fois
+    - Quelques effets de bords à voir
     */
     uint32_t bla = number;
     FILE *file = data.file;

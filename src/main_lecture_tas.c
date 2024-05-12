@@ -44,7 +44,7 @@
 //     printf("maximum_value : %d\n", our_datas.maximum_value);
 //     printf("header : %d\n", our_datas.header);
 //     printf("isRGB : %d\n", our_datas.isRGB);
-
+ 
 
 //     FILE *fptr = fopen(filename, "wb");
 //     ecrire_debut(fptr);
