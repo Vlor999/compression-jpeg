@@ -16,7 +16,6 @@
 #include "../include/recup_v2.h"
 #include "../include/option_main.h"
 
-
 int main(int argc, char **argv)
 {
     Arguments mes_arguments = utilisation_argument(argc, argv);
@@ -39,7 +38,7 @@ int main(int argc, char **argv)
 
     imagePGM_RGB *img = LecturePPM(input); // nom du fichier a preciser   
 
-    Triplet_YCbCr** new_image = conversionRGB_2_YCrCb(img); 
+    Triplet_YCbCr** new_image = conversionRGB_2_YCrCb(img); //violent le passage à l'entier ?
     uint8_t** image_Y = malloc(img->ligne * sizeof(uint8_t*));
     uint8_t** image_Cb = malloc(img->ligne * sizeof(uint8_t*));
     uint8_t** image_Cr = malloc(img->ligne * sizeof(uint8_t*));
@@ -98,50 +97,52 @@ int main(int argc, char **argv)
     uint8_t *RLE;
     uint8_t *resultat_final;
     ecr -> compteur = 7;
-    uint8_t **img_MCU;
-    int16_t* img_ZigZag;
-    int16_t* img_quantifie;
-    int16_t **img_DCT;
+    uint32_t compteur;
     for (int i=0;i<PGM_Y2->ligne;i=i+8){
         for (int j=0;j<PGM_Y2->col;j=j+8){
             
-            img_MCU = decoupage(PGM_Y2,i,j);
+            uint8_t **img_Y_MCU = decoupage(PGM_Y2,i,j);
             
             //Partie Y
-            img_DCT = dct(img_MCU);
-            img_ZigZag = zigzag_matrice1(img_DCT);
-            img_quantifie = quotient_qtable_Y(img_ZigZag);
-            RLE = codage_AC_RLE(img_quantifie); 
-            resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_quantifie, verbose);
+            int16_t **img_Y_DCT = dct(img_Y_MCU);
+            int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
+            int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
+            RLE = codage_AC_RLE(img_Y_quantifie); 
+            resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie, verbose);
             ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-            prec_Y = img_quantifie[0]; //on sauvegarde en mémoire pour la magnétude
+
+
+            prec_Y = img_Y_quantifie[0];
+
+            uint8_t **img_Cb_MCU = decoupage(PGM_Cb2,i,j);
+            uint8_t **img_Cr_MCU = decoupage(PGM_Cr2,i,j);
 
             if (couleur)
             { //on fait Cb et Cr 
-                img_MCU = decoupage(PGM_Cb2,i,j);
+
                 //Partie Cb
-                img_DCT = dct(img_MCU);
-                img_ZigZag = zigzag_matrice1(img_DCT);
-                img_quantifie = quotient_qtable_CbCr(img_ZigZag);
-                RLE = codage_AC_RLE(img_quantifie); 
-                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_quantifie, verbose);
+                int16_t **img_Cb_DCT = dct(img_Cb_MCU);
+                int16_t* img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
+                int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
+                RLE = codage_AC_RLE(img_Cb_quantifie); 
+                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_Cb_quantifie, verbose);
                 ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-                prec_Cb = img_quantifie[0];
+                prec_Cb = img_Cb_quantifie[0];
 
                 //Partie Cr
-                img_MCU = decoupage(PGM_Cr2,i,j);
-                img_DCT = dct(img_MCU);
-                img_ZigZag = zigzag_matrice1(img_DCT);
-                img_quantifie = quotient_qtable_CbCr(img_ZigZag);
-                RLE = codage_AC_RLE(img_quantifie); 
-                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_quantifie, verbose);
+                int16_t **img_Cr_DCT = dct(img_Cr_MCU);
+                int16_t* img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
+                int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
+                RLE = codage_AC_RLE(img_Cr_quantifie); 
+                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_Cr_quantifie, verbose);
                 ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-                prec_Cr = img_quantifie[0];
+                prec_Cr = img_Cr_quantifie[0];
+                compteur++;
             } 
         }
     }
 
-    //fwrite(&(ecr -> nb), sizeof(uint8_t),1,fptr);
+    fwrite(&(ecr -> nb), sizeof(uint8_t),1,fptr);
 
     ecrire_fin(fptr);
     fclose(fptr);
