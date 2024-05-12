@@ -63,7 +63,26 @@ Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image)
         }
     }
     return tab_YCbCr;
+}
 
+Triplet_YCbCr** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)
+{
+    Triplet_RGB pixel;
+    Triplet_YCbCr pixel_YCbCr;
+
+    Triplet_YCbCr **tab_YCbCr = malloc(MCU_TAILLE * sizeof(Triplet_YCbCr *));
+    
+    for (int lig = 0; lig < MCU_TAILLE; lig++)
+    {
+        tab_YCbCr[lig] = malloc(MCU_TAILLE * sizeof(Triplet_YCbCr));
+        for (int col = 0; col < MCU_TAILLE; col++)
+        {
+            pixel = mcu->tab[lig][col];
+            pixel_YCbCr = conversionRGB(pixel);
+            tab_YCbCr[lig][col] = pixel_YCbCr;
+        }
+    }
+    return tab_YCbCr;
 }
 
 

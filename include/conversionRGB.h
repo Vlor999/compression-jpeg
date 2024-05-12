@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#define MCU_TAILLE 8
 
 typedef struct Triplet_RGB{
     uint8_t R;
@@ -23,6 +24,11 @@ typedef struct imagePGM_RGB{
     uint32_t max;
     Triplet_RGB** tab;
 }imagePGM_RGB;
+
+typedef struct MCU_RGB
+{
+    Triplet_RGB tab[MCU_TAILLE][MCU_TAILLE];
+}MCU_RGB;
 
 /**
  * @brief fais conversion de RGB vers YCbCr
@@ -45,5 +51,7 @@ Triplet_YCbCr conversionRGB(Triplet_RGB pixel);
 Triplet_YCbCr** conversionRGB_2_VCrCb(imagePGM *image);
 
 Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image);
+
+Triplet_YCbCr** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu);
 
 #endif
