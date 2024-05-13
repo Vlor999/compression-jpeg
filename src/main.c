@@ -98,49 +98,64 @@ int main(int argc, char **argv)
     uint8_t *resultat_final;
     ecr -> compteur = 7;
     uint32_t compteur;
+    uint8_t **img_MCU = malloc(8*sizeof(uint8_t*));
+    for (uint8_t i=0;i<8;i++){
+        img_MCU[i] = malloc(8*sizeof(uint8_t));
+    }
+    int16_t **img_DCT = malloc(8*sizeof(int16_t*));
+    for (uint8_t i=0;i<8;i++){
+        img_DCT[i] = malloc(8*sizeof(int16_t));
+    }
+    int16_t* img_ZigZag = malloc(64*sizeof(int16_t));
+    int16_t* img_quantifie = malloc(64*sizeof(int16_t));
     for (int i=0;i<PGM_Y2->ligne;i=i+8){
         for (int j=0;j<PGM_Y2->col;j=j+8){
             
-            uint8_t **img_Y_MCU = decoupage(PGM_Y2,i,j);
+            img_MCU = decoupage(PGM_Y2,i,j,img_MCU);
             
             //Partie Y
-            int16_t **img_Y_DCT = dct(img_Y_MCU);
-            int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
-            int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
-            RLE = codage_AC_RLE(img_Y_quantifie); 
-            resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie, verbose);
+            img_DCT = dct(img_MCU,img_DCT);
+            img_ZigZag = zigzag_matrice1(img_DCT,img_ZigZag);
+            img_quantifie = quotient_qtable_Y(img_ZigZag,img_quantifie);
+            RLE = codage_AC_RLE(img_quantifie); 
+            resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_quantifie, verbose);
             ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
 
 
-            prec_Y = img_Y_quantifie[0];
+            prec_Y = img_quantifie[0];
 
-            uint8_t **img_Cb_MCU = decoupage(PGM_Cb2,i,j);
-            uint8_t **img_Cr_MCU = decoupage(PGM_Cr2,i,j);
+            
+            
 
             if (couleur)
             { //on fait Cb et Cr 
 
+                img_MCU = decoupage(PGM_Cb2,i,j,img_MCU);
                 //Partie Cb
-                int16_t **img_Cb_DCT = dct(img_Cb_MCU);
-                int16_t* img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
-                int16_t* img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
-                RLE = codage_AC_RLE(img_Cb_quantifie); 
-                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_Cb_quantifie, verbose);
+                img_DCT = dct(img_MCU,img_DCT);
+                img_ZigZag = zigzag_matrice1(img_DCT,img_ZigZag);
+                img_quantifie = quotient_qtable_CbCr(img_ZigZag,img_quantifie);
+                RLE = codage_AC_RLE(img_quantifie); 
+                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_quantifie, verbose);
                 ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-                prec_Cb = img_Cb_quantifie[0];
 
+                prec_Cb = img_quantifie[0];
+
+                img_MCU = decoupage(PGM_Cr2,i,j,img_MCU);
                 //Partie Cr
-                int16_t **img_Cr_DCT = dct(img_Cr_MCU);
-                int16_t* img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
-                int16_t* img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
-                RLE = codage_AC_RLE(img_Cr_quantifie); 
-                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_Cr_quantifie, verbose);
+                img_DCT = dct(img_MCU,img_DCT);
+                img_ZigZag = zigzag_matrice1(img_DCT,img_ZigZag);
+                img_quantifie = quotient_qtable_CbCr(img_ZigZag,img_quantifie);
+                RLE = codage_AC_RLE(img_quantifie); 
+                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_quantifie, verbose);
                 ecr = ecrire_SOS_contenu(fptr,resultat_final,ecr);
-                prec_Cr = img_Cr_quantifie[0];
+                prec_Cr = img_quantifie[0];
+                
                 compteur++;
             } 
         }
     }
+    
 
     fwrite(&(ecr -> nb), sizeof(uint8_t),1,fptr);
 
