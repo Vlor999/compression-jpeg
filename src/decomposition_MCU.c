@@ -49,8 +49,12 @@ imagePGM *nouveau_tableau(imagePGM *image)
     return image;
 }
 
-uint8_t **decoupage(imagePGM *tab,uint32_t i,uint32_t j,uint8_t **tableau) //tab aux bonnes dimensions
+uint8_t **decoupage(imagePGM *tab,uint32_t i,uint32_t j) //tab aux bonnes dimensions
 {
+    uint8_t **tableau = malloc(8*sizeof(uint8_t*));
+    for (int h = 0;h< 8;h++){
+        tableau[h]=malloc(8*sizeof(uint8_t));
+    }
     for (uint8_t k = 0; k < 8; k++)
     {
         for (uint8_t l = 0; l < 8; l++)

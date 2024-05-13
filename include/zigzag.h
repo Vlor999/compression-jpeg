@@ -17,7 +17,7 @@ int16_t* zigzag_matrice(int16_t** matrice);
  * @return un tableau 1D de taille 64
  * **/
 
-int16_t* zigzag_matrice1(int16_t** matrice,int16_t* zigzag);
+int16_t* zigzag_matrice1(int16_t** matrice);
 
 
 #endif
