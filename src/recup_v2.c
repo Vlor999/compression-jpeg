@@ -58,22 +58,22 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     nb_ligne = ((nb_ligne + 7) / 8) * 8;
 
     uint32_t sous_matrice_par_ligne = nb_colonne / MCU_TAILLE;
-    uint32_t debut_ligne = ((number - 1) / sous_matrice_par_ligne) * 8 + 1;
-    uint32_t debut_colonne = ((number - 1) % sous_matrice_par_ligne) * 8 + 1;
+    uint32_t debut_ligne = ((number - 1) / sous_matrice_par_ligne) * 8;
+    uint32_t debut_colonne = ((number - 1) % sous_matrice_par_ligne) * 8;
 
-    bool ligne_ok = debut_ligne + 7 <= data.nb_ligne;
-    bool colonne_ok = debut_colonne + 7 <= data.nb_colonne;
+    bool ligne_ok = debut_ligne + 7 < data.nb_ligne;
+    bool colonne_ok = debut_colonne + 7 < data.nb_colonne;
 
     uint8_t max_value_i = MCU_TAILLE;
     uint8_t max_value_j = MCU_TAILLE;
 
     if (!ligne_ok)
     {
-        max_value_i = data.nb_ligne - debut_ligne + 1;
+        max_value_i = data.nb_ligne - debut_ligne;
     }
     if (!colonne_ok)
     {
-        max_value_j = data.nb_colonne - debut_colonne + 1;
+        max_value_j = data.nb_colonne - debut_colonne;
     }
 
     MCU_RGB *mcu = malloc(sizeof(MCU_RGB));
@@ -83,10 +83,9 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
         taille = sizeof(uint8_t);
     }
 
-    long int position_debut = data.header * sizeof(uint8_t) + (debut_ligne - 1) * data.nb_colonne * sizeof(uint8_t) * taille + (debut_colonne - 1) * sizeof(uint8_t) * taille;
+    long int position_debut = data.header * sizeof(uint8_t) + debut_ligne * data.nb_colonne * sizeof(uint8_t) * taille + debut_colonne * sizeof(uint8_t) * taille;
     fseek(file, position_debut, SEEK_SET);
 
-    Triplet_RGB last_triplet_RGB = {0, 0, 0};
     uint8_t decalage = debut_colonne + 7 - MCU_TAILLE;
 
     for (uint8_t i = 0; i < MCU_TAILLE; i++)
@@ -95,33 +94,60 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
         {
             if (data.isRGB)
             {
-                if (i < max_value_i && j < max_value_j)
+                if (i < max_value_i)
                 {
-                    fread(&mcu->tab[i][j], taille, 1, file);
+                    if (j < max_value_j)
+                    {
+                        fread(&mcu->tab[i][j], taille, 1, file);
+                    }
+                    else
+                    {
+                        mcu->tab[i][j] = mcu->tab[i][max_value_j - 1];
+                    }
                 }
                 else
                 {
-                    mcu->tab[i][j] = last_triplet_RGB;
+                    if(j < max_value_j)
+                    {
+                        mcu->tab[i][j] = mcu->tab[max_value_i - 1][j];
+                    }
+                    else
+                    {
+                        mcu->tab[i][j] = mcu->tab[max_value_i - 1][max_value_j - 1];
+                    }
                 }
             }
             else
             {
                 uint8_t pixel;
-                if (i < max_value_i && j < max_value_j)
+                if (i < max_value_i)
                 {
-                    fread(&pixel, taille, 1, file);
+                    if (j < max_value_j)
+                    {
+                        fread(&pixel, taille, 1, file);
+                    }
+                    else
+                    {
+                        pixel = mcu->tab[i][max_value_j - 1].R;
+                    }
                 }
                 else
                 {
-                    pixel = last_triplet_RGB.R;
+                    if(j < max_value_j)
+                    {
+                        pixel = mcu->tab[max_value_i - 1][j].R;
+                    }
+                    else
+                    {
+                        pixel = mcu->tab[max_value_i - 1][max_value_j - 1].R;
+                    }
                 }
                 mcu->tab[i][j].R = pixel;
                 mcu->tab[i][j].G = pixel;
                 mcu->tab[i][j].B = pixel;
             }
-            last_triplet_RGB = mcu->tab[i][j];
         }
-        fseek(file, (data.nb_colonne - 8) * taille, SEEK_CUR);
+        fseek(file, (data.nb_colonne - max_value_j) * taille, SEEK_CUR);
     }
     return mcu;
 }
