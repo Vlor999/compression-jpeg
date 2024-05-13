@@ -15,6 +15,7 @@
 #include "../include/qtables.h"
 #include "../include/recup_v2.h"
 #include "../include/option_main.h"
+#include "../include/ss_echantillonnage.h"
 
 int main(int argc, char **argv)
 {
@@ -29,6 +30,20 @@ int main(int argc, char **argv)
     {
         return 1;
     }
+
+    if(sample_factors == NULL)
+    {
+        sample_factors = "1x1,1x1,1x1";
+    }
+    uint8_t* value = echantillonage(sample_factors);
+    uint8_t h1 = value[0];
+    uint8_t v1 = value[1];
+    uint8_t h2 = value[2];
+    uint8_t v2 = value[3];
+    uint8_t h3 = value[4];
+    uint8_t v3 = value[5];
+
+
 
     printf("input : %s\n", input);
     printf("output : %s\n", filename);
@@ -167,7 +182,6 @@ int main(int argc, char **argv)
             }
         }
         
-
         int16_t** img_Y_DCT = dct(mcu_Y);
         int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
         int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
@@ -180,7 +194,8 @@ int main(int argc, char **argv)
             { // on fait Cb et Cr
 
                 // Partie Cb
-                int16_t **img_Cb_DCT = dct(mcu_Cb);
+                uint16_t **mcu_Cb_ech = ss_echantillonnage(mcu_Cb, h2, v2);
+                int16_t **img_Cb_DCT = dct(mcu_Cb_ech);
                 int16_t *img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
                 int16_t *img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
                 RLE = codage_AC_RLE(img_Cb_quantifie);
@@ -189,7 +204,8 @@ int main(int argc, char **argv)
                 prec_Cb = img_Cb_quantifie[0];
 
                 // Partie Cr
-                int16_t **img_Cr_DCT = dct(mcu_Cr);
+                uint16_t **mcu_Cr_ech = ss_echantillonnage(mcu_Cr, h3, v3);
+                int16_t **img_Cr_DCT = dct(mcu_Cr_ech);
                 int16_t *img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
                 int16_t *img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
                 RLE = codage_AC_RLE(img_Cr_quantifie);
