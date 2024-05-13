@@ -26,6 +26,6 @@ int16_t calcul_dct(int16_t **m,uint8_t i, uint8_t j);
     *  @return la matrice des DCT 
 */
 
-int16_t **dct(uint8_t **m);
+int16_t **dct(uint8_t **m, int16_t **tab_final);
 
 #endif

@@ -46,13 +46,11 @@ int16_t calcul_dct(int16_t **m, uint8_t i, uint8_t j)
     return (int16_t)somme;
 }
 
-int16_t **dct(uint8_t **m)
+int16_t **dct(uint8_t **m,int16_t **tab_final)
 {
     int16_t **res = mvt_value(m);
-    int16_t **tab_final = malloc(8 * sizeof(int16_t*));
     for (uint8_t i=0; i<8; i++)
     {
-        tab_final[i] = malloc(8 * sizeof(int16_t));
         for (uint8_t j = 0; j < 8; j++)
         {
             tab_final[i][j] = calcul_dct(res, i, j);

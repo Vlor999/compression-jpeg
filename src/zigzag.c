@@ -57,13 +57,12 @@ int16_t* zigzag_matrice(int16_t** matrice)
     return zigzag;
 }
 
-int16_t* zigzag_matrice1(int16_t** matrice) 
+int16_t* zigzag_matrice1(int16_t** matrice,int16_t* zigzag) 
 {   /*
     Fonction qui prend en paramètre une matrice 8x8 et qui retourne un tableau 1D de taille 64.
     Cette version est plus effcicace que le précédente car il n'y a aucune condition mais beaucoup plus grande. 
     Nous avons obtenu cette version en observant les indices de la matrice 8x8 et en les mettant dans l'ordre du zigzag. Ceci grace à la fonction précédente.
     */
-    int16_t* zigzag = malloc(64 * sizeof(int16_t));
     zigzag[0] = matrice[0][0];
     zigzag[1] = matrice[0][1];
     zigzag[2] = matrice[1][0];
