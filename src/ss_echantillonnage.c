@@ -5,7 +5,69 @@
 #include <stdbool.h>
 
 #include "../include/conversionRGB.h"
+#include "../include/recup_v2.h"
 
+
+MCU_YCbCr* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
+{
+    uint8_t h1 = value[0];
+    uint8_t v1 = value[1];
+    uint8_t h2 = value[2];
+    uint8_t v2 = value[3];
+    uint8_t h3 = value[4];
+    uint8_t v3 = value[5];
+
+    uint8_t nombre_MCU_sample = h1 * v1 + h2 * v2 + h3 * v3;
+    uint64_t* liste_numero_MCU = malloc(nombre_MCU_sample * sizeof(uint64_t));
+    MCU_YCbCr* liste_mcu_YCbCr = malloc(nombre_MCU_sample * sizeof(MCU_YCbCr));
+    uint8_t compteur = 0;
+    uint64_t last_num = 0;
+    bool is_dangerous_horizontal;
+    bool is_dangerous_vertical;
+    for (uint8_t l = 0; l < h1; l++)
+    {
+        for (uint8_t c = 0; c < v1; c++)
+        {
+            is_dangerous_horizontal = (numero_premiere_mcu % (our_datas.sous_matrice_par_ligne + 1)) + l > our_datas.sous_matrice_par_ligne;  
+            is_dangerous_vertical = (numero_premiere_mcu % (our_datas.sous_matrice_par_colonne + 1)) + c > our_datas.sous_matrice_par_colonne;
+            if(is_dangerous_horizontal || is_dangerous_vertical)
+            {
+                liste_numero_MCU[compteur] = last_num;
+            }
+            else
+            {
+                liste_numero_MCU[compteur] = numero_premiere_mcu + l * our_datas.sous_matrice_par_ligne + c;
+                last_num = liste_numero_MCU[compteur];
+            }
+            compteur++;
+        }
+    }
+    for(uint8_t i = 0; i < compteur; i++)
+    {
+        printf("%d\n", liste_numero_MCU[i]);
+    }
+}
+
+int main()
+{
+    uint8_t value[6] = {2, 2, 2, 2, 2, 2};
+    data_frame our_datas = {64, 64, 64, 255, 0, false, NULL, 8, 8};
+    sous_echantilonnage(value, our_datas, 1);
+    return 0;
+}
+
+// typedef struct data_frame
+// {
+//     uint16_t nb_colonne;
+//     uint16_t nb_ligne;
+//     uint32_t nb_MCU;
+//     uint16_t maximum_value;
+//     uint8_t header;
+//     bool isRGB;
+//     FILE* file;
+//     uint32_t sous_matrice_par_ligne;
+//     uint32_t sous_matrice_par_colonne;
+// } data_frame;
 
 Triplet_YCbCr** ss_echantillonnage422(Triplet_YCbCr** tableau, uint32_t lignes, uint32_t col, bool facteurs_hor){ //le facteurs_hor definie si on echantillonne horizontalement ou verticalement
     Triplet_YCbCr** tab_echantillonnee = malloc(lignes * sizeof(Triplet_YCbCr*));
@@ -182,8 +244,6 @@ uint8_t *echantillonage(char* sample_factors) {
 
 
 
-
-
 uint8_t** ss_echantillonnage(uint8_t** tableau, uint8_t h, uint8_t v)
 {
     uint32_t somme = 0;
@@ -269,17 +329,12 @@ Triplet_YCbCr** main_ss_echantillonnage(Triplet_YCbCr** tableau, uint32_t lignes
 //         for (int j = 0; j < 8; j ++)
 //         {
 //             tab[i][j] = i * 8 + j;
-//         }
-//     }
-//     for(int i = 0; i < 8; i++)
-//     {
-//         for(int j = 0; j < 8; j++)
-//         {
 //             printf("%d\t", tab[i][j]);
 //         }
 //         printf("\n");
 //     }
-//     uint8_t** new_tab = ss_echantillonnage(tab, facteurs[2], facteurs[3]);
+//     data_frame data = {8, 8, 1, 255, 0, false, NULL, 8};
+//     uint8_t** new_tab = sous_echantillonnage(facteurs, data, 1);
 //     for(int i = 0; i < 8; i++)
 //     {
 //         for(int j = 0; j < 8; j++)

@@ -13,7 +13,7 @@ data_frame Lecture_Init(const char *filename)
     if (file == NULL)
     {
         fprintf(stderr, "Erreur d'ouverture: %s\n", filename);
-        data_frame data = {0, 0, 0, 0, 0, false, file};
+        data_frame data = {0, 0, 0, 0, 0, false, file, 0, 0};
         return data;
     }
 
@@ -24,7 +24,7 @@ data_frame Lecture_Init(const char *filename)
     {
         fprintf(stderr, "Le fromat n'est ni PGM ni PPM\n");
         fclose(file);
-        data_frame data = {0, 0, 0, 0, 0, false, file};
+        data_frame data = {0, 0, 0, 0, 0, false, file, 0, 0};
         return data;
     }
 
@@ -36,8 +36,10 @@ data_frame Lecture_Init(const char *filename)
 
     header = header + (uint8_t)log10(max) + (uint8_t)log10(col) + (uint8_t)log10(ligne);
     nb_MCU = ((col + 7) / 8) * 8 * ((ligne + 7) / 8) * 8 / (MCU_TAILLE * MCU_TAILLE);
+    uint32_t sous_matrice_par_ligne = col / MCU_TAILLE;
+    uint32_t sous_matrice_par_col = ligne / MCU_TAILLE;
 
-    data_frame data = {col, ligne, nb_MCU, max, header, isRGB, file};
+    data_frame data = {col, ligne, nb_MCU, max, header, isRGB, file, sous_matrice_par_ligne, sous_matrice_par_col};
     return data;
 }
 
@@ -53,11 +55,11 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     FILE *file = data.file;
     uint32_t nb_colonne = data.nb_colonne;
     uint32_t nb_ligne = data.nb_ligne;
+    uint32_t sous_matrice_par_ligne = data.sous_matrice_par_ligne;
 
     nb_colonne = ((nb_colonne + 7) / 8) * 8;
     nb_ligne = ((nb_ligne + 7) / 8) * 8;
 
-    uint32_t sous_matrice_par_ligne = nb_colonne / MCU_TAILLE;
     uint32_t debut_ligne = ((number - 1) / sous_matrice_par_ligne) * 8;
     uint32_t debut_colonne = ((number - 1) % sous_matrice_par_ligne) * 8;
 

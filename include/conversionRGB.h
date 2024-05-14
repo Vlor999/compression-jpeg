@@ -30,6 +30,13 @@ typedef struct MCU_RGB
     Triplet_RGB tab[MCU_TAILLE][MCU_TAILLE];
 }MCU_RGB;
 
+typedef struct MCU_YCbCr
+{
+    Triplet_YCbCr tab[MCU_TAILLE][MCU_TAILLE];
+}MCU_YCbCr;
+
+
+
 /**
  * @brief fais conversion de RGB vers YCbCr
  *

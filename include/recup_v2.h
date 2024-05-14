@@ -13,6 +13,8 @@ typedef struct data_frame
     uint8_t header;
     bool isRGB;
     FILE* file;
+    uint32_t sous_matrice_par_ligne;
+    uint32_t sous_matrice_par_colonne;
 } data_frame;
 
 
