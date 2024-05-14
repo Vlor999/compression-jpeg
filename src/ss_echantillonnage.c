@@ -7,6 +7,49 @@
 #include "../include/conversionRGB.h"
 #include "../include/recup_v2.h"
 
+uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v)
+{
+    uint8_t** matrice_finale = malloc(8 * h * sizeof(uint8_t*));
+    for (uint8_t i = 0; i < 8 * h; i++)
+    {
+        matrice_finale[i] = malloc(8 * v * sizeof(uint8_t));
+    }
+    uint8_t compteur = 0;
+    for(uint8_t l = 0; l < h; l++)
+    {
+        for(uint8_t c = 0; c < v; c++)
+        {
+            for(uint8_t i = 0; i < 8; i++)
+            {
+                for(uint8_t j = 0; j < 8; j++)
+                {
+                    matrice_finale[l * 8 + i][c * 8 + j] = liste_matrice[compteur][i][j];
+                }
+            }
+            compteur++;
+        }
+    }
+    return matrice_finale;
+}
+
+uint8_t*** sous_echantillonnage_CbCr(uint8_t*** liste_matrice, uint8_t h1, uint8_t v1, uint8_t h, uint8_t v)
+{
+    uint8_t compteur = 0;
+    uint8_t max = h * v;
+    uint8_t*** liste_mcu = malloc(h1/h * sizeof(uint8_t**));
+    uint8_t** new_matrice = concat_matrice(liste_matrice, h, v);
+    uint16_t buffer = 0;
+    while (compteur < max)
+    {
+        // liste_mcu[compteur] = malloc(8 * v/v1 * sizeof(uint8_t*));
+        uint8_t** mcu = malloc(8 * v1/v * (sizeof(uint8_t*)));
+        for (uin32_t l = 0; l  < 8 * h; l += 1)
+        {
+            
+        }
+    }
+
+}
 
 MCU_YCbCr* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
 {
@@ -17,42 +60,61 @@ MCU_YCbCr* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t nu
     uint8_t h3 = value[4];
     uint8_t v3 = value[5];
 
+    uint32_t sous_matrice_par_ligne = our_datas.nb_colonne / MCU_TAILLE;
+    uint32_t sous_matrice_par_colonne = our_datas.nb_ligne / MCU_TAILLE;
+
     uint8_t nombre_MCU_sample = h1 * v1 + h2 * v2 + h3 * v3;
     uint64_t* liste_numero_MCU = malloc(nombre_MCU_sample * sizeof(uint64_t));
-    MCU_YCbCr* liste_mcu_YCbCr = malloc(nombre_MCU_sample * sizeof(MCU_YCbCr));
     uint8_t compteur = 0;
     uint64_t last_num = 0;
     bool is_dangerous_horizontal;
     bool is_dangerous_vertical;
-    for (uint8_t l = 0; l < h1; l++)
+    uint16_t valeur_fin_ligne = sous_matrice_par_ligne * ((numero_premiere_mcu / sous_matrice_par_ligne) + 1);
+    uint16_t valeur_fin_colonne = sous_matrice_par_colonne * ((numero_premiere_mcu / sous_matrice_par_colonne) + 1);
+    for (uint8_t l = 0; l < v1; l++)
     {
-        for (uint8_t c = 0; c < v1; c++)
+        valeur_fin_ligne = valeur_fin_ligne + l * sous_matrice_par_ligne - l;
+        for (uint8_t c = 0; c < h1; c++)
         {
-            is_dangerous_horizontal = (numero_premiere_mcu % (our_datas.sous_matrice_par_ligne + 1)) + l > our_datas.sous_matrice_par_ligne;  
-            is_dangerous_vertical = (numero_premiere_mcu % (our_datas.sous_matrice_par_colonne + 1)) + c > our_datas.sous_matrice_par_colonne;
+            is_dangerous_horizontal = numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) >= valeur_fin_ligne;
+            is_dangerous_vertical = numero_premiere_mcu / sous_matrice_par_ligne + l >= our_datas.nb_MCU / sous_matrice_par_colonne;
             if(is_dangerous_horizontal || is_dangerous_vertical)
             {
                 liste_numero_MCU[compteur] = last_num;
             }
             else
             {
-                liste_numero_MCU[compteur] = numero_premiere_mcu + l * our_datas.sous_matrice_par_ligne + c;
+                liste_numero_MCU[compteur] = numero_premiere_mcu + l * sous_matrice_par_ligne + c;
                 last_num = liste_numero_MCU[compteur];
             }
             compteur++;
         }
     }
-    for(uint8_t i = 0; i < compteur; i++)
+    uint8_t*** liste_mcu_Y = malloc(nombre_MCU_sample * sizeof(MCU_YCbCr**));
+    uint8_t*** liste_mcu_Cb = malloc(nombre_MCU_sample * sizeof(MCU_YCbCr**));
+    uint8_t*** liste_mcu_Cr = malloc(nombre_MCU_sample * sizeof(MCU_YCbCr**));
+
+    for(uint8_t k = 0; k < compteur; k++)
     {
-        printf("%d\n", liste_numero_MCU[i]);
+        printf("%d\n", liste_numero_MCU[k]);
+        MCU_RGB* matrice = Read_File(our_datas, liste_numero_MCU[k] + 1);
+        uint8_t*** mcu_YCbCr = conversionRGB_2_YCrCb_MCU(matrice);
+        liste_mcu_Y[k] = mcu_YCbCr[0];
+        liste_mcu_Cb[k] = mcu_YCbCr[1];
+        liste_mcu_Cr[k] = mcu_YCbCr[2];
     }
+    sous_echantillonnage_CbCr(liste_mcu_Cb, h2, v2, h1*v1);
+    sous_echantillonnage_CbCr(liste_mcu_Cr, h3, v3, h1*v1);
+
+
 }
 
-// int main()
+// int main(int argc, char **argv)
 // {
-//     uint8_t value[6] = {2, 2, 2, 2, 2, 2};
-//     data_frame our_datas = {64, 64, 64, 255, 0, false, NULL, 8, 8};
-//     sous_echantilonnage(value, our_datas, 1);
+//     data_frame our_datas = Lecture_Init(argv[1]);
+//     uint8_t value[6] = {2, 2, 2, 1, 2, 1};
+//     sous_echantilonnage(value, our_datas, atoi(argv[2]));
+
 //     return 0;
 // }
 
