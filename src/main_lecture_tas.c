@@ -12,6 +12,7 @@
 #include "../include/jpeg_format.h"
 #include "../include/htables.h"
 #include <math.h>
+#include <time.h> 
 #include "../include/qtables.h"
 #include "../include/recup_v2.h"
 #include "../include/option_main.h"
@@ -83,7 +84,7 @@ int main(int argc, char **argv)
     printf("nb_MCU : %d\n", our_datas.nb_MCU);
     while (numero_MCU <= our_datas.nb_MCU)
     {
-        printf("MCU numéro %d\n", numero_MCU);
+        //printf("MCU numéro %d\n", numero_MCU);
         //LECTURE
             MCU_RGB* mcu = Read_File(our_datas, numero_MCU);
             if (verbose)
@@ -133,7 +134,6 @@ int main(int argc, char **argv)
                     printf("\n"); 
                 }
             }
-            printf("fini\n");
             if (verbose)
             {
                 printf("MCU_Y numéro %d: \n", numero_MCU);
@@ -239,5 +239,5 @@ int main(int argc, char **argv)
     fwrite(&(ecr->nb), sizeof(uint8_t), 1, fptr);
     ecrire_fin(fptr);
     fclose(fptr);
-    printf("fini\n");
+    printf("fini \n");
 }
