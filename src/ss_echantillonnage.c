@@ -38,17 +38,53 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t*** liste_matrice, uint8_t h1, uint8
     uint8_t max = h * v;
     uint8_t*** liste_mcu = malloc(h1/h * sizeof(uint8_t**));
     uint8_t** new_matrice = concat_matrice(liste_matrice, h, v);
-    uint16_t buffer = 0;
-    while (compteur < max)
+    for(uint8_t i = 0; i < 8 * h1; i++)
     {
-        // liste_mcu[compteur] = malloc(8 * v/v1 * sizeof(uint8_t*));
-        uint8_t** mcu = malloc(8 * v1/v * (sizeof(uint8_t*)));
-        for (uin32_t l = 0; l  < 8 * h; l += 1)
+        for(uint8_t j = 0; j < 8 * v1; j++)
         {
-            
+            printf("%02x \t", new_matrice[i][j]);
         }
+        printf("\n");
     }
 
+    for (uint32_t l = 0; l < 8 * h1; l += 8 * h)
+    {
+        uint8_t** mcu = malloc(8 * h1/h * (sizeof(uint8_t*)));
+        for(uint8_t i = 0; i < 8 * h1/h; i++)
+        {
+            mcu[i] = malloc(8 * v1/v * sizeof(uint8_t));
+        }
+        uint32_t pos_x = l / 8 / h;
+        for(uint32_t c = 0; c < 8 * v1; c += 8 * v)
+        {
+            uint32_t pos_y = 0;
+            
+            for(uint16_t i = 0; i < h * 8; i+=h)
+            {
+                pos_x += 1;
+                for(uint16_t j = 0; j < v * 8; j+=v)
+                {
+                    pos_y += 1;
+                    uint32_t somme = 0;
+                    for(uint16_t k = 0; k < h; k++)
+                    {
+                        for(uint16_t m = 0; m < v; m++)
+                        {
+                            printf("pos_x = %d, pos_y = %d\n", pos_x, pos_y);
+                            somme += new_matrice[l + i + k][c + j + m];
+                        }
+                    }
+                    somme = somme / (h * v);
+                    printf("somme = %d\n", somme);
+                    mcu[pos_x][pos_y] = somme;
+                }
+            }
+            
+        }
+        liste_mcu[compteur] = mcu;
+        compteur++;
+    }
+    return liste_mcu;
 }
 
 MCU_YCbCr* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
@@ -96,16 +132,34 @@ MCU_YCbCr* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t nu
 
     for(uint8_t k = 0; k < compteur; k++)
     {
-        printf("%d\n", liste_numero_MCU[k]);
         MCU_RGB* matrice = Read_File(our_datas, liste_numero_MCU[k] + 1);
         uint8_t*** mcu_YCbCr = conversionRGB_2_YCrCb_MCU(matrice);
         liste_mcu_Y[k] = mcu_YCbCr[0];
         liste_mcu_Cb[k] = mcu_YCbCr[1];
         liste_mcu_Cr[k] = mcu_YCbCr[2];
     }
-    sous_echantillonnage_CbCr(liste_mcu_Cb, h2, v2, h1*v1);
-    sous_echantillonnage_CbCr(liste_mcu_Cr, h3, v3, h1*v1);
-
+    uint8_t*** liste_mcu_comp_Cb = sous_echantillonnage_CbCr(liste_mcu_Cb, h1, v1, h2, v2);
+    uint8_t*** liste_mcu_comp_Cr = sous_echantillonnage_CbCr(liste_mcu_Cr, h1, v1, h3, v3);
+    for(uint16_t i; i < compteur; i++)
+    {
+        uint8_t** matrice_cb_i = liste_mcu_comp_Cb[i];
+        for(uint16_t x = 0; x < 8 * h2; x++)
+        {
+            for(uint16_t y = 0; y < 8 * v2; y++)
+            {
+                printf("%d",matrice_cb_i[x][y]);
+            }
+            printf("\n");
+        }
+        uint8_t** matrice_cr_i = liste_mcu_comp_Cr[i];
+        for(uint16_t x = 0; x < 8 * h2; x++)
+        {
+            for(uint16_t y = 0; y < 8 * v2; y++)
+            {
+                printf("%d",matrice_cr_i[x][y]);
+            }
+        }
+    }
 
 }
 
