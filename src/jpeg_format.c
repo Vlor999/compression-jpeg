@@ -124,6 +124,13 @@ void ecrire_htable(FILE* fptr, uint8_t htable_nb_length[][3][16], bool couleur)
     }
 }
 
+uint8_t reverse_hexa(uint8_t valeur){
+    uint8_t reverse = 0;
+    for (int i = 0; i < 2; i++){
+        reverse = (reverse << 4) | ((valeur >> 4*i) & 0x0F);
+    }
+    return reverse;
+}
 
 void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image, uint8_t* facteurs , bool couleur){
     int16_t marqueur = 0xc0ff;
@@ -168,9 +175,10 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image, uint
             val_h = reverse_hexa(facteurs[i*2]);
             facteur_echantillonage = facteurs[i*2 +1] & 0x0F;
             facteur_echantillonage |= val_h & 0xF0;
-            fwrite(&facteur_echantillonage, sizeof(uint8_t), 1, fptr); // facteur à 4 car pour l'instant pas de ss-echantillonage
+            
         }
-        
+        fwrite(&facteur_echantillonage, sizeof(uint8_t), 1, fptr); // facteur à 4 car pour l'instant pas de ss-echantillonage
+
         if (i > 0)
         {
             fwrite(&table_quantification_CbCr, sizeof(int8_t), 1, fptr);
@@ -282,13 +290,7 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecriture
     }
 
 
-uint8_t reverse_hexa(uint8_t valeur){
-    uint8_t reverse = 0;
-    for (int i = 0; i < 2; i++){
-        reverse = (reverse << 4) | ((valeur >> 4*i) & 0x0F);
-    }
-    return reverse;
-}
+
 
 
 
