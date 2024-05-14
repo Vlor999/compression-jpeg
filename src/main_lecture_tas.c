@@ -65,7 +65,7 @@ int main(int argc, char **argv)
     ecrire_debut(fptr);
     ecrire_commentaire_SOS_PC(fptr);
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr, couleur);
-    ecrire_SOF(fptr, our_datas.nb_ligne, our_datas.nb_colonne, couleur); // faire en sorte qu'il change en fonction de l'image
+    ecrire_SOF(fptr, our_datas.nb_ligne, our_datas.nb_colonne,NULL, couleur); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr, htables_nb_symb_per_lengths, couleur);
     ecrire_SOS_en_tete(fptr, couleur);
 

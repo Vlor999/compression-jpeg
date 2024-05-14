@@ -48,13 +48,13 @@ MCU_YCbCr* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t nu
     }
 }
 
-int main()
-{
-    uint8_t value[6] = {2, 2, 2, 2, 2, 2};
-    data_frame our_datas = {64, 64, 64, 255, 0, false, NULL, 8, 8};
-    sous_echantilonnage(value, our_datas, 1);
-    return 0;
-}
+// int main()
+// {
+//     uint8_t value[6] = {2, 2, 2, 2, 2, 2};
+//     data_frame our_datas = {64, 64, 64, 255, 0, false, NULL, 8, 8};
+//     sous_echantilonnage(value, our_datas, 1);
+//     return 0;
+// }
 
 // typedef struct data_frame
 // {
