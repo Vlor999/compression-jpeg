@@ -60,4 +60,7 @@ Il sera alors présenter l'avancement à chque étape du projet.
 
 ### Compte - Rendu : 
 #### Semaine 1:
-Le but de cette première semaine était d'voir un code qui fonctionnne pour les iamges de tailles 8 x 8 afin d'avoir une structure fonctionnelle. Cette étape clés à été réussi et permet d'avoir une idée globale de comment fonctionne la compression JPEG. Nous avons aussi pu remarquer que pour des images de petites tailles alors la compression ne fait pas son travailler. Pour l'images invaders, nous avions une image de 75 bytes et après compression JPEG nous avons une image de 380 bytes. Finalement nous avons pu voir que la structure globale de l'image ne changeaient effectivement pas : <img src="src/inva.jpeg">
+Le but de cette première semaine était d'voir un code qui fonctionnne pour les iamges de tailles 8 x 8 afin d'avoir une structure fonctionnelle. Cette étape clés à été réussi et permet d'avoir une idée globale de comment fonctionne la compression JPEG. Nous avons aussi pu remarquer que pour des images de petites tailles alors la compression ne fait pas son travailler. Pour l'images invaders, nous avions une image de 75 bytes et après compression JPEG nous avons une image de 380 bytes. Finalement nous avons pu voir que la structure globale de l'image ne changeaient effectivement pas : <img src="images/invader.jpg">
+
+#### Semaine 2:
+Nous avons en cette deuxième semaine réussi à encoder toutes les images, mêmes celles en couleur. La compression est efficace avec un gain de rapport 10 mais est assez lent. Il est alors nécessaire d'améliorer l'efficacité et de faire le sous-échantillonage.
