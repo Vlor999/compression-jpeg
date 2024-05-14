@@ -56,12 +56,12 @@ void ecrire_htable(FILE* fptr,uint8_t htable_nb_length[][3][16], bool couleur);
 
 /**
 * @brief ecrit la partie SOF pour donner les specifications sur l'image
-* @param file le fichier dans lequel on ecrit le format jpeg // hauteur de l'imgae // largeur de l'image
+* @param file le fichier dans lequel on ecrit le format jpeg // hauteur de l'imgae // largeur de l'image // facteurs qui sont les facteurs d'echantillonnages peut valoir NULL si onp rend facteurs par defaut
 * @return rien hehe
 *
 **/
 
-void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool couleur);
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,uint8_t* facteurs,bool couleur);
 
 
 

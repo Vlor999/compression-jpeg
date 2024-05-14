@@ -125,7 +125,7 @@ void ecrire_htable(FILE* fptr, uint8_t htable_nb_length[][3][16], bool couleur)
 }
 
 
-void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool couleur){
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image, uint8_t* facteurs , bool couleur){
     int16_t marqueur = 0xc0ff;
     int16_t length = 0x0b00; // la longueur de la section
     int8_t precision = 0x08;
@@ -151,15 +151,26 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,bool 
     fwrite(&word_largeur, sizeof(int16_t), 1, fptr); // on ecrit la largeur
     fwrite(&nb_composante, sizeof(int8_t), 1, fptr);
     int8_t identifiant = 0x01;
-    int8_t facteur_echantillonage = 0x11;
+    uint8_t facteur_echantillonage;
+    uint8_t val_h;
     int8_t table_quantification_Y = 0x00;    // indice de table quantification deY est 0 comme vu au dessus
     int8_t table_quantification_CbCr = 0x01; // indice de table quantification de CbCr est 1 comme vu au dessus
     for (int i = 0; i < nb_composante; i++)
     { // la première composante sera pour Y et les 2 derniere pur Cb et Cr lorsque nb_composatne = 3
         fwrite(&identifiant, sizeof(int8_t), 1, fptr);
         identifiant += 0x01;
-        fwrite(&facteur_echantillonage, sizeof(int8_t), 1, fptr); // facteur à 4 car pour l'instant pas de ss-echantillonage
 
+        if (facteurs == NULL){
+            facteur_echantillonage = 0x11;
+        }
+
+        else{
+            val_h = reverse_hexa(facteurs[i*2]);
+            facteur_echantillonage = facteurs[i*2 +1] & 0x0F;
+            facteur_echantillonage |= val_h & 0xF0;
+            fwrite(&facteur_echantillonage, sizeof(uint8_t), 1, fptr); // facteur à 4 car pour l'instant pas de ss-echantillonage
+        }
+        
         if (i > 0)
         {
             fwrite(&table_quantification_CbCr, sizeof(int8_t), 1, fptr);
@@ -271,15 +282,32 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecriture
     }
 
 
+uint8_t reverse_hexa(uint8_t valeur){
+    uint8_t reverse = 0;
+    for (int i = 0; i < 2; i++){
+        reverse = (reverse << 4) | ((valeur >> 4*i) & 0x0F);
+    }
+    return reverse;
+}
+
+
 
 // int main(){
-//     char* filename = "test_image.jpeg";
-//     FILE* fptr = fopen(filename, "wb");
-//     ecrire_debut(fptr);
-//     ecrire_SOF(fptr,8,8);
-//     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
-//     ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
-//     ecrire_fin(fptr);
-//     fclose(fptr);
+//     // char* filename = "test_image.jpeg";
+//     // FILE* fptr = fopen(filename, "wb");
+//     // ecrire_debut(fptr);
+//     // ecrire_SOF(fptr,8,8);
+//     // ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
+//     // ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
+//     // ecrire_fin(fptr);
+//     // fclose(fptr);
+
+//     uint8_t val1 = 0x03;
+//     uint8_t val2 = 0x02;
+//     val2 = reverse_hexa(val2);   
+//     uint8_t final;
+//     final = val1 & 0x0F;
+//     final |= val2 & 0xF0;
+//     printf("%02x\n", final);
 //     return 0;
 // }
