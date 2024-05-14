@@ -96,6 +96,8 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureS
  * @param fptr le fichier dans lequel on écrit
  * @return rien
  **/
+
+uint8_t reverse_hexa(uint8_t valeur);
 void ecrire_commentaire_SOS(FILE* fptr);
 
 void ecrire_commentaire_SOS_PC(FILE* fptr);
