@@ -3,6 +3,7 @@
 #include "../include/conversionRGB.h"
 #include "../include/recupereimage.h"
 #include <stdlib.h>
+#include <math.h>
 #include "../include/recup_v2.h"
 
 Triplet_YCbCr conversionRGB(Triplet_RGB pixel){
@@ -59,30 +60,57 @@ Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image)
         {
             pixel = image->tab[lig][col];
             pixel_YCbCr = conversionRGB(pixel);
-            tab_YCbCr[lig][col] = pixel_YCbCr;
+            pixel_YCbCr = pixel_YCbCr;
         }
     }
     return tab_YCbCr;
 }
 
-Triplet_YCbCr** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)
+uint8_t ***conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)
 {
     Triplet_RGB pixel;
     Triplet_YCbCr pixel_YCbCr;
-
-    Triplet_YCbCr **tab_YCbCr = malloc(MCU_TAILLE * sizeof(Triplet_YCbCr *));
+    uint8_t ***res = malloc(3*sizeof(uint8_t**));    
+    res[0] = malloc(MCU_TAILLE * sizeof(uint8_t*));
+    res[1] = malloc(MCU_TAILLE * sizeof(uint8_t*));
+    res[2] = malloc(MCU_TAILLE * sizeof(uint8_t*));
     
-    for (int lig = 0; lig < MCU_TAILLE; lig++)
+    for (uint8_t lig = 0; lig < MCU_TAILLE; lig++)
     {
-        tab_YCbCr[lig] = malloc(MCU_TAILLE * sizeof(Triplet_YCbCr));
-        for (int col = 0; col < MCU_TAILLE; col++)
+        res[0][lig] = malloc(MCU_TAILLE * sizeof(uint8_t));
+        res[1][lig] = malloc(MCU_TAILLE * sizeof(uint8_t));
+        res[2][lig] = malloc(MCU_TAILLE * sizeof(uint8_t));
+        for (uint8_t col = 0; col < MCU_TAILLE; col++)
         {
             pixel = mcu->tab[lig][col];
-            pixel_YCbCr = conversionRGB(pixel);
-            tab_YCbCr[lig][col] = pixel_YCbCr;
+            pixel_YCbCr = conversionRGB(pixel); 
+            if (pixel_YCbCr.Y - floor(pixel_YCbCr.Y) < 0.5)
+            {
+                res[0][lig][col] = (uint8_t)pixel_YCbCr.Y;
+            }
+            else
+            {
+                res[0][lig][col] = ((uint8_t)pixel_YCbCr.Y) + 1;
+            }
+            if (pixel_YCbCr.Cb - floor(pixel_YCbCr.Cb) < 0.5)
+            {
+                res[1][lig][col] = (uint8_t)pixel_YCbCr.Cb;
+            }
+            else
+            {
+                res[1][lig][col] = ((uint8_t)pixel_YCbCr.Cb) + 1;
+            }
+            if (pixel_YCbCr.Cr - floor(pixel_YCbCr.Cr) < 0.5)
+            {
+                res[2][lig][col] = (uint8_t)pixel_YCbCr.Cr;
+            }
+            else
+            {
+                res[2][lig][col] = ((uint8_t)pixel_YCbCr.Cr) + 1;
+            }
         }
     }
-    return tab_YCbCr;
+    return res;
 }
 
 

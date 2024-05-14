@@ -57,8 +57,8 @@ Triplet_YCbCr conversionRGB(Triplet_RGB pixel);
 
 Triplet_YCbCr** conversionRGB_2_VCrCb(imagePGM *image);
 
-Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image);
+Triplet_YCbCr**conversionRGB_2_YCrCb(imagePGM_RGB *image); 
 
-Triplet_YCbCr** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu);
+uint8_t ***conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu);//dans le premier tableau tous les Y puis tous les Cb puis tous les Cr 
 
 #endif
