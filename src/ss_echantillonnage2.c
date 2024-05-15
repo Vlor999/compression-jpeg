@@ -3,109 +3,194 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 
 #include "../include/conversionRGB.h"
 #include "../include/recup_v2.h"
 
-uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v)
+uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v,uint8_t decalage)
 {
-    uint8_t** matrice_finale = malloc(8 * h * sizeof(uint8_t*));
-    for (uint8_t i = 0; i < 8 * h; i++)
+    uint8_t** matrice_finale = malloc(8 * v * sizeof(uint8_t*));
+    for (uint8_t i = 0; i < 8 * v; i++)
     {
-        matrice_finale[i] = malloc(8 * v * sizeof(uint8_t));
+        matrice_finale[i] = malloc(8 * h * sizeof(uint8_t));
     }
     
+    uint8_t compteur_v = 0;
+    uint8_t compteur_h = 0;
     uint8_t compteur = 0;
-    
-    for(uint8_t l = 0; l < h; l++)
-    {
-        for(uint8_t c = 0; c < v; c++)
+    while (compteur < h*v){
+        
+        for(uint8_t i = 0; i < 8; i++)
         {
-            for(uint8_t i = 0; i < 8; i++)
+            for(uint8_t j = 0; j < 8; j++)
             {
-                
-                for(uint8_t j = 0; j < 8; j++)
-                {
-                    matrice_finale[l * 8 + i][c * 8 + j] = liste_matrice[compteur][i][j];
-                    
-                }
+                matrice_finale[compteur_v * 8 + i][compteur_h * 8 + j] = liste_matrice[compteur+decalage][i][j];
             }
-            compteur++;
+            //printf("\n");
+
         }
+        
+        if (compteur_h + 1 == h){
+            compteur_v ++;
+            compteur_h = 0;
+            compteur ++;
+        }
+        else{
+            compteur_h ++;
+            compteur ++;
+        }
+
     }
-    
     return matrice_finale;
 }
 
-uint8_t** sous_echantillonnage_CbCr(uint8_t*** liste_matrice, uint8_t h1, uint8_t v1, uint8_t h, uint8_t v)
+uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8_t v1, uint8_t h, uint8_t v) //pour l'instant je prends la grande matrice
 {
-    
+    uint8_t ***result = malloc((h*v)*sizeof(uint8_t**));
+    for (uint8_t i=0;i<h*v;i++){
+        result[i]=malloc(8*sizeof(uint8_t*));
+        for (uint8_t j=0;j<8;j++){
+            result[i][j] = malloc(8*sizeof(uint8_t));
+        }
+    }
+    uint8_t pas_v = v1/v;
+    uint8_t pas_h = h1/h;
+    uint8_t compteur_v = 0;
+    uint8_t compteur_h = 0;
     uint8_t compteur = 0;
-    uint8_t sens;
-    uint8_t*** liste_mcu = malloc(h1/h * sizeof(uint8_t**));
-    uint8_t** new_matrice = concat_matrice(liste_matrice, h, v);
-    uint16_t buffer = 0;
-    uint16_t indice_i = 0;
-    uint16_t indice_j = 0;
-    printf("%d %d\n",h1,v1);
-    if (h1 > v1){
-        sens = 0; //horizontal 
-    }
-    else if (h1 == v1){
-        sens = 1; //carre 
-    }
-    else{
-        sens = 2; //vertical 
-    }
-    if (sens == 0){ // cas horizontal 
-        for (uint16_t i = 0; i < v1*8;i += v){
-            for (uint16_t j = 0;j < h1*8; j += h){
-                uint32_t somme = 0;
-                
-                for (uint16_t l = 0; l < (h1/h); l++){
-                    somme += new_matrice[i][j+l];
+    for (uint16_t i=0;i<v1*8;i=i+pas_v){
+        for (uint16_t j=0;j<h1*8;j=j+pas_h){
+            uint16_t somme = 0;
+            for (uint16_t k=0;k<pas_v;k++){
+                for (uint16_t l=0;l<pas_h;l++){
+                    somme+=grande_matrice[i+k][j+l];
+                    //printf("%d \n", somme);
                 }
-                
-                new_matrice[indice_i][indice_j] = somme/(h1/h);
-                printf("%d \n", new_matrice[indice_i][indice_j]);
-                if (indice_j == 8*h - 1 && indice_i == 8*v - 1){
-                    return new_matrice;
-                }
-                else if (indice_j == 8*h-1){
-                    indice_j = 0;
-                    indice_i ++;
-                }
-                else{
-                    indice_j ++;
-                }
-
-            }   
+            }
+            //printf("fef %d %d %d\n",compteur_v,compteur_h, somme/(pas_v*pas_h));
+            result[compteur][compteur_v][compteur_h] = somme/(pas_v*pas_h);
+            //printf("res %d\n", result[compteur][compteur_v][compteur_h]);
+            
+            if (compteur_h  == 7 && compteur_v  == 7){
+                compteur++;
+                compteur_v=0;
+                compteur_h=0;
+            }
+            else if (compteur_h == 7){
+                compteur_v++;
+                compteur_h=0;
+            }
+            else{
+                compteur_h++;
+            }
         }
     }
-    else if (sens == 2){ // cas vertical 
-        for (uint16_t i = 0; i < h1*8;i += h){
-            for (uint16_t j = 0;j < v1*8; j += v){
-                uint32_t somme = 0;
-                for (uint16_t l = 0; l < (v1/v); l++){
-                    somme += new_matrice[j+l][i];
-                }
-                new_matrice[indice_j][indice_i] = somme/(v1/v);
-                if (indice_j == 8*v - 1 && indice_i == 8*h - 1){
-                    return new_matrice;
-                }
-                else if (indice_j == 8*v-1){
-                    indice_j = 0;
-                    indice_i ++;
-                }
-                else{
-                    indice_j ++;
-                }
-            }   
-        }
-    }
-    return NULL;
+    return result;
 }
 
+
+uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t *facteurs){ //dans liste_matrice tous les Y puis tous les Cb puis tous les Cr
+
+    // uint8_t ***resultat_Cb = malloc((facteurs[3]*facteurs[2])*sizeof(uint8_t**));
+    // for (uint8_t l=0;l<facteurs[3]*facteurs[2];l++){
+    //     resultat_Cb[l]=malloc(8*sizeof(uint8_t*));
+    //     for (uint8_t i=0;i<8;i++){
+    //         resultat_Cb[l][i]=malloc(8*sizeof(uint8_t));
+    //         for (uint8_t j=0;j<8;j++){
+    //             resultat_Cb[l][i][j] = liste_matrice[l+facteurs[0]*facteurs[1]][i][j];
+    //         }
+    //     }
+    // }
+    printf("inter \n");
+    uint8_t **temp_Cb = concat_matrice(liste_matrice,facteurs[0],facteurs[1],facteurs[1]*facteurs[0]);
+    for (int i=0;i<8*facteurs[1];i++){
+        for (int j=0;j<8*facteurs[0];j++){
+            printf("%d\t", temp_Cb[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n resultat CB\n");
+    uint8_t ***liste_Cb = sous_echantillonnage_CbCr(temp_Cb,facteurs[0],facteurs[1],facteurs[2],facteurs[3]);
+    for (int i=0;i<facteurs[3]*facteurs[2];i++){
+        for (int j=0;j<8;j++){
+            for (int k=0;k<8;k++){
+            printf("%d\t", liste_Cb[i][j][k]);
+            }
+            printf("\n");
+        }
+        
+    }
+    printf("\n");
+    printf("fini Cb\n");
+    
+    // uint8_t ***resultat_Cr = malloc((facteurs[5]*facteurs[4])*sizeof(uint8_t**));
+    // for (uint8_t l=0;l<facteurs[5]*facteurs[4];l++){
+    //     resultat_Cr[l]=malloc(8*sizeof(uint8_t*));
+    //     for (uint8_t i=0;i<8;i++){
+    //         resultat_Cr[l][i]=malloc(8*sizeof(uint8_t));
+    //         for (uint8_t j=0;j<8;j++){
+    //             resultat_Cr[l][i][j] = liste_matrice[l+facteurs[3]*facteurs[2]+facteurs[0]*facteurs[1]][i][j];
+    //         }
+    //     }
+    // }
+    uint8_t **temp_Cr = concat_matrice(liste_matrice,facteurs[0],facteurs[1],2*facteurs[1]*facteurs[0]);
+    printf("inter \n");
+    for (int i=0;i<8*facteurs[1];i++){
+        for (int j=0;j<8*facteurs[0];j++){
+            printf("%d\t", temp_Cr[i][j]);
+        }
+        printf("\n");
+    }
+    uint8_t ***liste_Cr = sous_echantillonnage_CbCr(temp_Cr,facteurs[0],facteurs[1],facteurs[4],facteurs[5]);
+    printf("\n resultat CR\n");
+    for (int i=0;i<facteurs[3]*facteurs[2];i++){
+        for (int j=0;j<8;j++){
+            for (int k=0;k<8;k++){
+            printf("%d\t", liste_Cr[i][j][k]);
+            }
+            printf("\n");
+        }
+        
+    }
+    printf("\n");
+    printf("fini Cr\n");
+    
+
+    //TRUC FINAL
+    uint8_t ***resultat = malloc((facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]+facteurs[5]*facteurs[4])*sizeof(uint8_t**));
+    for (uint8_t l=0;l<facteurs[0]*facteurs[1];l++){
+        resultat[l] = malloc(8*sizeof(uint8_t*));
+        for (uint8_t i=0;i<8;i++){
+            resultat[l][i]=malloc(8*sizeof(uint8_t));
+            for (uint8_t j=0;j<8;j++){
+                resultat[l][i][j] = liste_matrice[l][i][j];
+            }
+        }
+    } // On a tous les Y
+
+    for (uint8_t l=0;l<facteurs[3]*facteurs[2];l++){
+        resultat[l+facteurs[0]*facteurs[1]] = malloc(8*sizeof(uint8_t*));
+        for (uint8_t i=0;i<8;i++){
+            resultat[l+facteurs[0]*facteurs[1]][i]=malloc(8*sizeof(uint8_t));
+            for (uint8_t j=0;j<8;j++){
+                resultat[l+facteurs[0]*facteurs[1]][i][j] = liste_Cb[l][i][j];
+            }
+        }
+    } // On a tous les CB
+
+    for (uint8_t l=0;l<facteurs[5]*facteurs[4];l++){
+        resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]] = malloc(8*sizeof(uint8_t*));
+        for (uint8_t i=0;i<8;i++){
+            resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]][i]=malloc(8*sizeof(uint8_t));
+            for (uint8_t j=0;j<8;j++){
+                resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]][i][j] = liste_Cb[l][i][j];
+            }
+        }
+    } // On a tous les Cr
+    return resultat; 
+
+}
 // MCU_YCbCr* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
 // {
 //     uint8_t h1 = value[0];
@@ -429,30 +514,73 @@ Triplet_YCbCr** main_ss_echantillonnage(Triplet_YCbCr** tableau, uint32_t lignes
 
 
 int main() {
-    char *sample_factors = "3x3,3x3,3x1";
-    uint8_t ***test=malloc(2*sizeof(uint8_t**));
+    srand( time( NULL ) );
+    char *sample_factors = "1x2,1x1,1x1";
+    uint8_t *factors = echantillonage(sample_factors);
+    uint8_t ***test=malloc(6*sizeof(uint8_t**));
     test[0] = malloc(8*sizeof(uint8_t*));
+    printf("\n Y \n");
     for (int i=0;i<8;i++){
         test[0][i] = malloc(8*sizeof(uint8_t));
         for (int j=0;j<8;j++){
-            test[0][i][j] = j+1;
+            test[0][i][j] = rand()%10;
+            printf("%d\t", test[0][i][j]);
         }
+        printf("\n");
     }
+    printf("\n");
     test[1] = malloc(8*sizeof(uint8_t*));
     for (int i=0;i<8;i++){
         test[1][i] = malloc(8*sizeof(uint8_t));
         for (int j=0;j<8;j++){
-            test[1][i][j] = j+1;
-        }
-    }
-    printf("fini\n");
-    uint8_t **retour =  sous_echantillonnage_CbCr(test,2,1,2,1);
-    for (int i=0;i<8;i++){
-        for (int j=0;j<8;j++){
-            printf("%d\n", retour[i][j]);
+            test[1][i][j] = rand()%10;
+            printf("%d\t", test[1][i][j]);
         }
         printf("\n");
     }
+    printf("\n CB \n");
+    test[2] = malloc(8*sizeof(uint8_t*));
+    for (int i=0;i<8;i++){
+        test[2][i] = malloc(8*sizeof(uint8_t));
+        for (int j=0;j<8;j++){
+            test[2][i][j] = rand()%10;
+            printf("%d\t", test[2][i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    test[3] = malloc(8*sizeof(uint8_t*));
+    for (int i=0;i<8;i++){
+        test[3][i] = malloc(8*sizeof(uint8_t));
+        for (int j=0;j<8;j++){
+            test[3][i][j] = rand()%10;
+            printf("%d\t", test[3][i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n Cr \n");
+    test[4] = malloc(8*sizeof(uint8_t*));
+    for (int i=0;i<8;i++){
+        test[4][i] = malloc(8*sizeof(uint8_t));
+        for (int j=0;j<8;j++){
+            test[4][i][j] = rand()%10;
+            printf("%d\t", test[4][i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    test[5] = malloc(8*sizeof(uint8_t*));
+    for (int i=0;i<8;i++){
+        test[5][i] = malloc(8*sizeof(uint8_t));
+        for (int j=0;j<8;j++){
+            test[5][i][j] = rand()%10;
+            printf("%d\t", test[5][i][j]);
+        }
+        printf("\n");
+    }
+    printf("fini\n");
+    uint8_t ***retour =  echantillonnage_complet_depuis_YCbCr(test,factors);
+    
     // imagePGM_RGB *img = LecturePPM("images/thumbs.ppm"); // nom du fichier a preciser   
     // Triplet_YCbCr** new_image = conversionRGB_2_YCrCb(img); //violent le passage à l'entier ?
     // Triplet_YCbCr** img_echantillonner =  main_ss_echantillonnage(new_image, img->ligne, img->col,facteurs);
