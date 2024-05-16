@@ -101,21 +101,21 @@ uint32_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
 }
 
 
-int main(char *argv[])
-{
-    data_frame our_datas = {65, 64, 72, 255, 0, true, NULL};
-    uint8_t value[6] = {3, 3, 1, 1, 1, 1};
-    // uint64_t* val = sous_echantilonnage(value, our_datas, 69);
-    // for (uint8_t i = 0; i < 2; i++)
-    // {
-    //     printf("%d\n", val[i]);
-    // }
-    uint32_t* liste_valeur = ensemble_valeur(value, our_datas);
-    // uint32_t i = 0;
-    // while(liste_valeur[i] != 2147483648)
-    // {
-    //     printf("%d %d\n", liste_valeur[i], liste_valeur[i+1]);
-    //     i+=2;
-    // }
-    return 0;
-}
+// int main(char *argv[])
+// {
+//     data_frame our_datas = {65, 64, 72, 255, 0, true, NULL};
+//     uint8_t value[6] = {3, 3, 1, 1, 1, 1};
+//     uint64_t* val = sous_echantilonnage(value, our_datas, 69);
+//     for (uint8_t i = 0; i < 2; i++)
+//     {
+//         printf("%d\n", val[i]);
+//     }
+//     uint32_t* liste_valeur = ensemble_valeur(value, our_datas);
+//     uint32_t i = 0;
+//     while(liste_valeur[i] != 2147483648)
+//     {
+//         printf("%d %d\n", liste_valeur[i], liste_valeur[i+1]);
+//         i+=2;
+//     }
+//     return 0;
+// }
