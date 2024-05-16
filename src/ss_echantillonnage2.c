@@ -124,7 +124,7 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
     
 
     //TRUC FINAL
-    printf("RESULT Y\n");
+    printf("\n\nRESULT Y\n");
     uint8_t ***resultat = malloc((facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]+facteurs[5]*facteurs[4])*sizeof(uint8_t**));
     for (uint8_t l=0;l<facteurs[0]*facteurs[1];l++){
         resultat[l] = malloc(8*sizeof(uint8_t*));
@@ -132,10 +132,11 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
             resultat[l][i]=malloc(8*sizeof(uint8_t));
             for (uint8_t j=0;j<8;j++){
                 resultat[l][i][j] = liste_matrice[l][i][j];
-                printf("%d\t", liste_matrice[l][i][j]);
+                printf("%02x\t", liste_matrice[l][i][j]);
             }
             printf("\n");
         }
+        printf("FIN MCU\n");
     } // On a tous les Y
     printf("\nRESULT Cb\n");
     for (uint8_t l=0;l<facteurs[3]*facteurs[2];l++){
@@ -144,10 +145,11 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
             resultat[l+facteurs[0]*facteurs[1]][i]=malloc(8*sizeof(uint8_t));
             for (uint8_t j=0;j<8;j++){
                 resultat[l+facteurs[0]*facteurs[1]][i][j] = liste_Cb[l][i][j];
-                printf("%d\t", liste_Cb[l][i][j]);
+                printf("%02x\t", liste_Cb[l][i][j]);
             }
             printf("\n");
         }
+        printf("FIN MCU\n");
     } // On a tous les CB
     printf("\nRESULT Cr\n");
     for (uint8_t l=0;l<facteurs[5]*facteurs[4];l++){
@@ -156,10 +158,11 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
             resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]][i]=malloc(8*sizeof(uint8_t));
             for (uint8_t j=0;j<8;j++){
                 resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]][i][j] = liste_Cr[l][i][j];
-                printf("%d\t", liste_Cr[l][i][j]);
+                printf("%02x\t", liste_Cr[l][i][j]);
             }
             printf("\n");
         }
+        printf("FIN MCU\n");
     } // On a tous les Cr
     return resultat; 
 

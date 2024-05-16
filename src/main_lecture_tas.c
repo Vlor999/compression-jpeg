@@ -66,7 +66,7 @@ int main(int argc, char **argv)
     ecrire_debut(fptr);
     ecrire_commentaire_SOS_PC(fptr);
     ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr, couleur);
-    ecrire_SOF(fptr, our_datas.nb_ligne, our_datas.nb_colonne, NULL,couleur); // faire en sorte qu'il change en fonction de l'image
+    ecrire_SOF(fptr, our_datas.nb_ligne, our_datas.nb_colonne, tableau_coeffs_sous_echantillonage,couleur); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr, htables_nb_symb_per_lengths, couleur);
     ecrire_SOS_en_tete(fptr, couleur);
 
@@ -104,7 +104,7 @@ int main(int argc, char **argv)
                 while (indice<our_datas.nb_MCU/(h1*v1)){
                     for (uint8_t j=0;j<v1;j++){
                         for (uint8_t k=0;k<h1;k++){
-                            tab_lecture_mcu[compteur]=1+j*nb_MCU_ligne+k+indice;
+                            tab_lecture_mcu[compteur]=1+j*nb_MCU_colonne+k+indice;
                             printf("%d %d\n",compteur,tab_lecture_mcu[compteur]);
                             compteur++;
                             
@@ -125,10 +125,9 @@ int main(int argc, char **argv)
             while (tab_lecture_mcu[i+h1*v1] != 2147483648){
                 //initialisation de la liste des MCU  //ICI PROBLEME DE MALLOC JE NE SAIS PAS POURQUOI
                 
-                
+                printf("%d %d %d %d\n", tab_lecture_mcu[i], tab_lecture_mcu[i+1], tab_lecture_mcu[i+2], tab_lecture_mcu[i+3]);
                 for (uint32_t j = 0; j< h1*v1 ; j++){ //on remplit comme il faut la liste des MCU
                     MCU_RGB* mcu = Read_File(our_datas, tab_lecture_mcu[i+j]);
-                    printf("iofueife\n");
                     if (verbose)
                     {
                         printf("MCU_RGB numéro %d: \n", numero_MCU);
