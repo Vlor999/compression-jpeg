@@ -66,7 +66,7 @@ Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image)
     return tab_YCbCr;
 }
 
-uint8_t ***conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)
+uint8_t*** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)
 {
     Triplet_RGB pixel;
     Triplet_YCbCr pixel_YCbCr;

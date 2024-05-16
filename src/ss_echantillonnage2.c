@@ -8,6 +8,85 @@
 #include "../include/conversionRGB.h"
 #include "../include/recup_v2.h"
 
+uint32_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
+{
+    uint8_t h1 = value[0];
+    uint8_t v1 = value[1];
+    uint8_t h2 = value[2];
+    uint8_t v2 = value[3];
+    uint8_t h3 = value[4];
+    uint8_t v3 = value[5];
+
+    uint32_t sous_matrice_par_ligne = our_datas.nb_colonne / MCU_TAILLE;
+    uint32_t sous_matrice_par_colonne = our_datas.nb_ligne / MCU_TAILLE;
+
+    uint8_t nombre_MCU_sample = h1 * v1;
+    uint64_t* liste_numero_MCU = malloc(nombre_MCU_sample * sizeof(uint64_t));
+    uint8_t compteur = 0;
+    uint64_t last_num = 0;
+    bool is_dangerous_horizontal;
+    bool is_dangerous_vertical;
+    uint16_t valeur_fin_ligne = sous_matrice_par_ligne * ((numero_premiere_mcu / sous_matrice_par_ligne) + 1);
+    uint16_t valeur_fin_colonne = sous_matrice_par_colonne * ((numero_premiere_mcu / sous_matrice_par_colonne) + 1);
+    for (uint8_t l = 0; l < v1; l++)
+    {
+        valeur_fin_ligne = valeur_fin_ligne + l * sous_matrice_par_ligne - l;
+        for (uint8_t c = 0; c < h1; c++)
+        {
+            is_dangerous_horizontal = numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) >= valeur_fin_ligne;
+            is_dangerous_vertical = numero_premiere_mcu / sous_matrice_par_ligne + l >= our_datas.nb_MCU / sous_matrice_par_colonne;
+            if(is_dangerous_horizontal || is_dangerous_vertical)
+            {
+                liste_numero_MCU[compteur] = last_num;
+            }
+            else
+            {
+                liste_numero_MCU[compteur] = numero_premiere_mcu + l * sous_matrice_par_ligne + c;
+                last_num = liste_numero_MCU[compteur];
+            }
+            compteur++;
+        }
+    }
+    return liste_numero_MCU;
+}
+
+uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
+{
+    uint64_t* liste_valeur = malloc((our_datas.nb_MCU + 1) * sizeof(uint32_t));
+    uint32_t numero = 1;
+    uint32_t compteur = 0;
+    uint8_t h1 = value[0];
+    uint8_t v1 = value[1];
+    uint8_t h2 = value[2];
+    uint8_t v2 = value[3];
+    uint8_t h3 = value[4];
+    uint8_t v3 = value[5];
+    uint32_t x = (our_datas.nb_colonne/MCU_TAILLE);
+
+    while (numero < our_datas.nb_MCU)
+    {
+        uint32_t* liste_numero_MCU = sous_echantilonnage(value, our_datas, numero);
+        for (uint8_t i = 0; i < h1 * v1; i++)
+        {
+            liste_valeur[compteur] = liste_numero_MCU[i];
+        
+        }
+        if (numero % x + h1 == 1)
+        {
+            numero = numero + x * (v1 - 1) + 1;
+        }
+        else
+        {
+            numero = numero + h1;
+        }
+        compteur++;
+    }
+    liste_valeur[our_datas.nb_MCU] = 2147483648;
+    return liste_valeur;
+}
+
+
+
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v,uint8_t decalage)
 {
     uint8_t** matrice_finale = malloc(8 * v * sizeof(uint8_t*)); 

@@ -87,7 +87,7 @@
 //     return liste_mcu;
 // }
 
-// MCU_YCbCr* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
+// uint32_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
 // {
 //     uint8_t h1 = value[0];
 //     uint8_t v1 = value[1];
@@ -126,6 +126,40 @@
 //             compteur++;
 //         }
 //     }
+//     return liste_numero_MCU;
+// }
+
+// uint32_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
+// {
+//     uint32_t* liste_valeur = malloc(our_datas.nb_MCU * sizeof(uint32_t) + 1);
+//     uint32_t numero = 1;
+//     uint8_t h1 = value[0];
+//     uint8_t v1 = value[1];
+//     uint8_t h2 = value[2];
+//     uint8_t v2 = value[3];
+//     uint8_t h3 = value[4];
+//     uint8_t v3 = value[5];
+//     uint32_t x = (our_datas.nb_colonne/MCU_TAILLE);
+
+//     while (numero <= our_datas.nb_MCU)
+//     {
+//         uint32_t* liste_numero_MCU = sous_echantilonnage(value, our_datas, numero);
+//         for (uint8_t i = 0; i < h1 * v1; i++)
+//         {
+//             liste_valeur[i] = liste_numero_MCU[i];
+//         }
+//         if (numero % our_datas.nb_colonne/MCU_TAILLE == 0)
+//         {
+//             numero = numero + x * (v1 - 1) + 1;
+//         }
+//         else
+//         {
+//             numero = numero + h1;
+//         }
+//     }
+//     liste_valeur[our_datas.nb_MCU] = 2147483648;
+//     return liste_valeur;
+// }
 //     uint8_t*** liste_mcu_Y = malloc(nombre_MCU_sample * sizeof(MCU_YCbCr**));
 //     uint8_t*** liste_mcu_Cb = malloc(nombre_MCU_sample * sizeof(MCU_YCbCr**));
 //     uint8_t*** liste_mcu_Cr = malloc(nombre_MCU_sample * sizeof(MCU_YCbCr**));
