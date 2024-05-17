@@ -41,7 +41,7 @@ uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t num
         valeur_fin_ligne = valeur_fin_ligne + l * sous_matrice_par_ligne - l;
         for (uint8_t c = 0; c < h1; c++)
         {
-            is_dangerous_horizontal = (numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) >= valeur_fin_ligne) || numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) > our_datas.nb_MCU;
+            is_dangerous_horizontal = (l * (sous_matrice_par_ligne - 1) >= valeur_fin_ligne - c - numero_premiere_mcu) || numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) > our_datas.nb_MCU;
             is_dangerous_vertical = (numero_premiere_mcu / sous_matrice_par_ligne + l >= our_datas.nb_MCU / sous_matrice_par_ligne);
             // printf("is_dangerous_horizontal %d\n", is_dangerous_horizontal);
             // printf("is_dangerous_vertical %d\n", is_dangerous_vertical);
