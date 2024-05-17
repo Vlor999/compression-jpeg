@@ -71,18 +71,17 @@ Arguments utilisation_argument(int argc, char *argv[])
         print_help();
         return mes_arguments;
     }
-
+    char *point = strrchr(input, '.');
+    couleur = strcmp(point, ".ppm") == 0;
     if (!output) 
     {
-        char *point = strrchr(input, '.');
-        couleur = strcmp(point, ".ppm") == 0;
-        if (point) 
+        if(point) 
         {
             size_t input_len = point - input;
             output = malloc(input_len + 5);
             strncpy(output, input, input_len);
             output[input_len] = '\0';
-            strcat(output, ".jpg");
+            output = strcat(output, ".jpg");
         } 
         else 
         {
