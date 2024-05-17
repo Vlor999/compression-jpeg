@@ -91,7 +91,7 @@ int main(int argc, char **argv)
     // printf("nb_MCU : %d\n", our_datas.nb_MCU);
         //printf("MCU numéro %d\n", numero_MCU);
         //LECTURE
-    if (couleur){
+    if (couleur && !(h1 == 1) & !(v1==1)){
         uint32_t buffer=0;
         uint32_t nb_MCU_ligne = ceil(((float) our_datas.nb_ligne) / 8);
         uint32_t nb_MCU_colonne = ceil(((float) our_datas.nb_colonne) / 8);
@@ -173,7 +173,7 @@ int main(int argc, char **argv)
     else{
         while (numero_MCU <= our_datas.nb_MCU)
         {
-            printf("MCU numéro %d\n", numero_MCU);
+            // printf("MCU numéro %d\n", numero_MCU);
             //LECTURE
             MCU_RGB* mcu = Read_File(our_datas, numero_MCU);
             if (verbose)
@@ -192,16 +192,45 @@ int main(int argc, char **argv)
             //CONVERSION
             uint8_t ***mcu_YCbCr = conversionRGB_2_YCrCb_MCU(mcu);
             uint8_t **mcu_Y = malloc(MCU_TAILLE*sizeof(uint8_t*));
+            uint8_t **mcu_Cb =malloc(MCU_TAILLE*sizeof(uint8_t*));
+            uint8_t **mcu_Cr =malloc(MCU_TAILLE*sizeof(uint8_t*));
+            
 
-            for (int i = 0; i < MCU_TAILLE; i++)
+
+           for (int i = 0; i < MCU_TAILLE; i++)
                 {
                     mcu_Y[i]=malloc(MCU_TAILLE*sizeof(uint8_t));
+                    if (couleur){
+                        mcu_Cb[i]=malloc(MCU_TAILLE*sizeof(uint8_t));
+                        mcu_Cr[i]=malloc(MCU_TAILLE*sizeof(uint8_t));
+                    }
                     for (int j = 0; j < MCU_TAILLE; j++)
+                    
                     {
                         
                         mcu_Y[i][j] = mcu_YCbCr[0][i][j];
+                        if (couleur){
+                            mcu_Cb[i][j] = mcu_YCbCr[1][i][j];
+                            mcu_Cr[i][j] = mcu_YCbCr[2][i][j];
+                        }
                     }
                 }
+
+            if (verbose)
+            {
+                printf("MCU_YCbCr numéro %d: \n", numero_MCU);
+                for (int i = 0; i < MCU_TAILLE; i++)
+                {
+                    
+                    for (int j = 0; j < MCU_TAILLE; j++)
+                    {
+                        printf("test\n");
+                        //printf("%02x%02x%02x\t\n", mcu_Y[i][j], mcu_Cb[i][j], mcu_Cr[i][j]);
+                    }
+                    printf("\n"); 
+                }
+            }
+            // printf("fini\n");
             if (verbose)
             {
                 printf("MCU_Y numéro %d: \n", numero_MCU);
@@ -213,31 +242,96 @@ int main(int argc, char **argv)
                     }
                     printf("\n");
                 }
+                if(couleur)
+                {
+                    printf("MCU_Cb numéro %d: \n", numero_MCU);
+                    for (int i = 0; i < MCU_TAILLE; i++)
+                    {
+                        for (int j = 0; j < MCU_TAILLE; j++)
+                        {
+                            printf("%02x\t", mcu_Cb[i][j]);
+                        }
+                        printf("\n");
+                    }
+                    printf("MCU_Cr numéro %d: \n", numero_MCU);
+                    for (int i = 0; i < MCU_TAILLE; i++)
+                    {
+                        for (int j = 0; j < MCU_TAILLE; j++)
+                        {
+                            printf("%02x\t", mcu_Cr[i][j]);
+                        }
+                        printf("\n");
+                    }
+                }
             }
-            int16_t** img_Y_DCT = dct(mcu_Y);
-            int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
-            int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
-            RLE = codage_AC_RLE(img_Y_quantifie);
-            resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie, verbose);
-            ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
-            prec_Y = img_Y_quantifie[0];
-            numero_MCU++;
-            compteur++;     
-            
-            free(mcu);
-            free(mcu_YCbCr);
-            for (uint32_t i = 0; i < MCU_TAILLE; i++)
-            {
-                free(mcu_Y[i]);
-            }
-            free(mcu_Y);
-            free(img_Y_DCT);
-            free(img_Y_ZigZag);
-            free(img_Y_quantifie);
-            free(RLE);
-            free(resultat_final);
+            //MCU_YCbCr *tableau_MCU = fonction(willem);
+            //for (uint8_t nb_Y=0;nb_Y<tableau_coeffs_sous_echantillonage[0]*tableau_coeffs_sous_echantillonage[1];nb_Y++){
+                //if (tableau_MCU[nb_Y] != NULL){
+                    int16_t** img_Y_DCT = dct(mcu_Y);
+                    int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
+                    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
+                    RLE = codage_AC_RLE(img_Y_quantifie);
+                    resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie, verbose);
+                    ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
+                    prec_Y = img_Y_quantifie[0];
+                    //numero_MCU++;
+                //}
+            //}
 
+            if (couleur)
+                { // on fait Cb et Cr
+                    // Partie Cb
+                    //for (uint8_t nb_Cb=0;nb_Cb<tableau_coeffs_sous_echantillonage[2]*tableau_coeffs_sous_echantillonage[3];nb_Cb++){
+                      //  if ((tableau_MCU[tableau_coeffs_sous_echantillonage[0]*tableau_coeffs_sous_echantillonage[1]+nb_Cb]) != NULL){
+                            //uint16_t **mcu_Cb_ech = ss_echantillonnage(mcu_Cb, h2, v2);
+                            int16_t **img_Cb_DCT = dct(mcu_Cb);//tableau_MCU[nb_Cb]);
+                            int16_t *img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
+                            int16_t *img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
+                            RLE = codage_AC_RLE(img_Cb_quantifie);
+                            resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_Cb_quantifie, verbose);
+                            ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
+                            prec_Cb = img_Cb_quantifie[0];
+                      //      numero_MCU++;
+                        //}
+                    //}
+
+                    // Partie Cr
+                    //for (uint8_t nb_Cr=0;nb_Cr<tableau_coeffs_sous_echantillonage[4]*tableau_coeffs_sous_echantillonage[5];nb_Cr++){
+                        //if ((tableau_MCU[tableau_coeffs_sous_echantillonage[0]*tableau_coeffs_sous_echantillonage[1]+tableau_coeffs_sous_echantillonage[2]*tableau_coeffs_sous_echantillonage[3]+nb_Cr]) != NULL){
+                            //uint16_t **mcu_Cr_ech = ss_echantillonnage(mcu_Cr, h3, v3);
+                            int16_t **img_Cr_DCT = dct(mcu_Cr);//tableau_MCU[nb_Cr]);
+                            int16_t *img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
+                            int16_t *img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
+                            RLE = codage_AC_RLE(img_Cr_quantifie);
+                            resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_Cr_quantifie, verbose);
+                            ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
+                            prec_Cr = img_Cr_quantifie[0];
+                            //numero_MCU++;
+                        //}
+                    //}
+                }
+        numero_MCU++;
+        compteur++;     
+        
+        free(mcu);
+        free(mcu_YCbCr);
+        for (uint32_t i = 0; i < MCU_TAILLE; i++)
+        {
+            free(mcu_Y[i]);
+            free(mcu_Cb[i]);
+            free(mcu_Cr[i]);
         }
+        free(mcu_Y);
+        free(mcu_Cb);
+        free(mcu_Cr);
+        free(img_Y_DCT);
+        free(img_Y_ZigZag);
+        free(img_Y_quantifie);
+        free(RLE);
+        free(resultat_final);
+
+    }
+
     }
 
     Fermeture_fichier(our_datas);
