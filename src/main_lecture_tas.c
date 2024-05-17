@@ -88,16 +88,18 @@ int main(int argc, char **argv)
             liste_MCU[k][l] = malloc(8*sizeof(uint8_t));
         }
     }
-    printf("nb_MCU : %d\n", our_datas.nb_MCU);
+    // printf("nb_MCU : %d\n", our_datas.nb_MCU);
         //printf("MCU numéro %d\n", numero_MCU);
         //LECTURE
     if (couleur){
         uint32_t buffer=0;
         uint32_t nb_MCU_ligne = ceil(((float) our_datas.nb_ligne) / 8);
         uint32_t nb_MCU_colonne = ceil(((float) our_datas.nb_colonne) / 8);
-        printf("h1 %d v1 %d\n"  , h1,v1);
-        printf("nb_MCU_ligne %d nb_MCU_colonne %d\n", nb_MCU_ligne,nb_MCU_colonne);
-        printf("%d\n", nb_MCU_colonne*nb_MCU_ligne);
+        if (verbose){
+            printf("h1 %d v1 %d\n"  , h1,v1);
+            printf("nb_MCU_ligne %d nb_MCU_colonne %d\n", nb_MCU_ligne,nb_MCU_colonne);
+            printf("%d\n", nb_MCU_colonne*nb_MCU_ligne);
+        }
         uint32_t indice=0;
         uint32_t temp;
         uint64_t *tab_lecture_mcu = ensemble_valeur(tableau_coeffs_sous_echantillonage, our_datas); //ordre des mcu a lire 
@@ -106,7 +108,7 @@ int main(int argc, char **argv)
             while (tab_lecture_mcu[i] != 2147483648){
                 //initialisation de la liste des MCU  //ICI PROBLEME DE MALLOC JE NE SAIS PAS POURQUOI
                 
-                printf("%d %d %d %d\n", tab_lecture_mcu[i], tab_lecture_mcu[i+1], tab_lecture_mcu[i+2], tab_lecture_mcu[i+3]);
+                // printf("%d %d %d %d\n", tab_lecture_mcu[i], tab_lecture_mcu[i+1], tab_lecture_mcu[i+2], tab_lecture_mcu[i+3]);
                 for (uint32_t j = 0; j< h1*v1 ; j++){ //on remplit comme il faut la liste des MCU
                     MCU_RGB* mcu = Read_File(our_datas, tab_lecture_mcu[i+j] + 1);
                     if (verbose)
@@ -167,6 +169,75 @@ int main(int argc, char **argv)
 
             }
 
+    }
+    else{
+        while (numero_MCU <= our_datas.nb_MCU)
+        {
+            printf("MCU numéro %d\n", numero_MCU);
+            //LECTURE
+            MCU_RGB* mcu = Read_File(our_datas, numero_MCU);
+            if (verbose)
+            {
+                printf("MCU_RGB numéro %d: \n", numero_MCU);
+                for (int i = 0; i < MCU_TAILLE; i++)
+                {
+                    for (int j = 0; j < MCU_TAILLE; j++)
+                    {
+                        printf("%02x\t", mcu->tab[i][j].R);
+                    }
+                    printf("\n");
+                }
+            }
+            
+            //CONVERSION
+            uint8_t ***mcu_YCbCr = conversionRGB_2_YCrCb_MCU(mcu);
+            uint8_t **mcu_Y = malloc(MCU_TAILLE*sizeof(uint8_t*));
+
+            for (int i = 0; i < MCU_TAILLE; i++)
+                {
+                    mcu_Y[i]=malloc(MCU_TAILLE*sizeof(uint8_t));
+                    for (int j = 0; j < MCU_TAILLE; j++)
+                    {
+                        
+                        mcu_Y[i][j] = mcu_YCbCr[0][i][j];
+                    }
+                }
+            if (verbose)
+            {
+                printf("MCU_Y numéro %d: \n", numero_MCU);
+                for (int i = 0; i < MCU_TAILLE; i++)
+                {
+                    for (int j = 0; j < MCU_TAILLE; j++)
+                    {
+                        printf("%02x\t", mcu_Y[i][j]);
+                    }
+                    printf("\n");
+                }
+            }
+            int16_t** img_Y_DCT = dct(mcu_Y);
+            int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
+            int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
+            RLE = codage_AC_RLE(img_Y_quantifie);
+            resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie, verbose);
+            ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
+            prec_Y = img_Y_quantifie[0];
+            numero_MCU++;
+            compteur++;     
+            
+            free(mcu);
+            free(mcu_YCbCr);
+            for (uint32_t i = 0; i < MCU_TAILLE; i++)
+            {
+                free(mcu_Y[i]);
+            }
+            free(mcu_Y);
+            free(img_Y_DCT);
+            free(img_Y_ZigZag);
+            free(img_Y_quantifie);
+            free(RLE);
+            free(resultat_final);
+
+        }
     }
 
     Fermeture_fichier(our_datas);

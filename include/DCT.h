@@ -18,7 +18,7 @@ int16_t** mvt_value(uint8_t  **m);
     *  @return la DCT 
 */
 
-int16_t calcul_dct(int16_t **m,uint8_t i, uint8_t j);
+int16_t calcul_dct(int16_t **m,uint8_t i, uint8_t j, uint16_t compteur);
 
 /*
     *  @brief construit la matrice des DCT 
