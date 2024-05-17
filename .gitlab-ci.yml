@@ -17,7 +17,7 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
 stages:          # List of 2x2-2x1-2x1.jpg # on vérifie que le fichier de sortie existe
-stages for jobs, and their order of execution
+#stages for jobs, and their order of execution
   - build
   - test
 
