@@ -318,8 +318,10 @@ int main(int argc, char **argv)
         for (uint32_t i = 0; i < MCU_TAILLE; i++)
         {
             free(mcu_Y[i]);
-            free(mcu_Cb[i]);
-            free(mcu_Cr[i]);
+            if (couleur){
+                free(mcu_Cb[i]);
+                free(mcu_Cr[i]);
+            }
         }
         free(mcu_Y);
         free(mcu_Cb);
