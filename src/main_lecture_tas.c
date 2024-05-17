@@ -100,47 +100,8 @@ int main(int argc, char **argv)
         printf("%d\n", nb_MCU_colonne*nb_MCU_ligne);
         uint32_t indice=0;
         uint32_t temp;
-        uint32_t *tab_lecture_mcu = malloc((2*nb_MCU_colonne*nb_MCU_ligne)*sizeof(uint32_t)); //ordre des mcu a lire 
-        while (indice<our_datas.nb_MCU){
-            for (uint8_t j=0;j<v1;j++){ 
-                for (uint8_t k=0;k<h1;k++){
-                    if ((1+k+indice%(nb_MCU_colonne)) > nb_MCU_colonne){
-                        printf("gnreign\n");
-                        uint8_t value = nb_MCU_colonne % h1;
-                        for (uint8_t p = 0; p< value; p++){
-                            tab_lecture_mcu[compteur] = 1+indice+j*nb_MCU_colonne;
-                            printf("%d %d value %d k %d 1+indice %d buffer %d\n",compteur,tab_lecture_mcu[compteur],value,k,1+indice,buffer) ;
-                            compteur++;
-                        }
-                    }
-                    else if (1+j*nb_MCU_colonne+k+(indice%(nb_MCU_colonne-1)) > nb_MCU_ligne*nb_MCU_colonne){
-                        printf("gnreign2\n");
-                        printf("%d\n", 1+j*nb_MCU_colonne+k+indice);
-                        uint8_t value = nb_MCU_ligne % v1;
-                        for (uint8_t p = 0; p < value; p++){
-                            tab_lecture_mcu[compteur] = 1+k+indice ; //faire attention ca marche pas pour tous les découpages
-                            printf("%d %d\n",compteur,tab_lecture_mcu[compteur]);
-                            compteur++;
-                        }
-                    }
-                    else{
-                        tab_lecture_mcu[compteur]=1+j*nb_MCU_colonne+k+indice;
-                        printf("%d %d value %d 1+indice %d buffer %d\n",compteur,tab_lecture_mcu[compteur],k,1+indice,buffer) ;
-                        compteur++;
-                    }
-                    
-                }
-            }
-            if (buffer >= nb_MCU_colonne-h1){
-                indice=indice+(v1-1)*nb_MCU_colonne+h1;
-                buffer=0;
-            }
-            else{
-                buffer+=h1;
-                indice=indice+h1;
-            }
-        }
-        tab_lecture_mcu[compteur] = 2147483648;
+        uint64_t *tab_lecture_mcu = ensemble_valeur(tableau_coeffs_sous_echantillonage, our_datas); //ordre des mcu a lire 
+        
             
             
             uint32_t i = 0;
@@ -149,7 +110,7 @@ int main(int argc, char **argv)
                 
                 printf("%d %d %d %d\n", tab_lecture_mcu[i], tab_lecture_mcu[i+1], tab_lecture_mcu[i+2], tab_lecture_mcu[i+3]);
                 for (uint32_t j = 0; j< h1*v1 ; j++){ //on remplit comme il faut la liste des MCU
-                    MCU_RGB* mcu = Read_File(our_datas, tab_lecture_mcu[i+j]);
+                    MCU_RGB* mcu = Read_File(our_datas, tab_lecture_mcu[i+j] + 1);
                     if (verbose)
                     {
                         printf("MCU_RGB numéro %d: \n", numero_MCU);

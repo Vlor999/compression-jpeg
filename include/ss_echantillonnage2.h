@@ -8,6 +8,12 @@
 #include <stdbool.h>
 #include <time.h>
 #include "conversionRGB.h"
+#include "recup_v2.h"
+
+uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu);
+
+uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas);
+
 
 // Crée une plus grosse matrice dans la liste de matrices donnée 
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v,uint8_t decalage);
@@ -28,6 +34,8 @@ bool verif_rectriction(uint8_t h1,uint8_t v1,uint8_t h2,uint8_t v2,uint8_t h3,ui
 void probleme_echantillonnage();
 
 void free_tab_echantillonnee(Triplet_YCbCr** tab);
+
+
 
 
 #endif

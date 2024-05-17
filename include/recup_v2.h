@@ -1,3 +1,5 @@
+#ifndef _RECUP_V2_H
+#define _RECUP_V2_H
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -26,3 +28,5 @@ data_frame Lecture_Init(const char* filename);
 MCU_RGB* Read_File(data_frame data, uint64_t number);
 
 void Fermeture_fichier(data_frame data);
+
+#endif
