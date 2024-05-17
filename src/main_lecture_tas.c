@@ -102,10 +102,8 @@ int main(int argc, char **argv)
         uint32_t temp;
         uint64_t *tab_lecture_mcu = ensemble_valeur(tableau_coeffs_sous_echantillonage, our_datas); //ordre des mcu a lire 
         
-            
-            
             uint32_t i = 0;
-            while (tab_lecture_mcu[i+h1*v1] != 2147483648){
+            while (tab_lecture_mcu[i] != 2147483648){
                 //initialisation de la liste des MCU  //ICI PROBLEME DE MALLOC JE NE SAIS PAS POURQUOI
                 
                 printf("%d %d %d %d\n", tab_lecture_mcu[i], tab_lecture_mcu[i+1], tab_lecture_mcu[i+2], tab_lecture_mcu[i+3]);

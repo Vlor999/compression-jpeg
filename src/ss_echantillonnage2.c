@@ -107,7 +107,7 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
 
 
 
-uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v,uint8_t decalage)
+uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t decalage)
 {
     uint8_t** matrice_finale = malloc(8 * v * sizeof(uint8_t*)); 
     for (uint8_t i = 0; i < 8 * v; i++)
@@ -118,17 +118,18 @@ uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v,uint8_t 
     uint8_t compteur_v = 0;
     uint8_t compteur_h = 0;
     uint8_t compteur = 0;
+    printf("debut matrice \n");
     while (compteur < h*v){
-        
         for(uint8_t i = 0; i < 8; i++)
         {
             for(uint8_t j = 0; j < 8; j++)
             {
                 matrice_finale[compteur_v * 8 + i][compteur_h * 8 + j] = liste_matrice[compteur+decalage][i][j];
+                printf("%02x\t", matrice_finale[compteur_v * 8 + i][compteur_h * 8 + j]);
             }
-            //printf("\n");
-
+            printf("\n");
         }
+        printf("\n");
         
         if (compteur_h + 1 == h){
             compteur_v ++;
@@ -171,17 +172,35 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8
             result[compteur][compteur_v][compteur_h] = somme/(pas_v*pas_h);
             //printf("res %d\n", result[compteur][compteur_v][compteur_h]);
             
-            if (compteur_h  == 7 && compteur_v  == 7){
-                compteur++;
-                compteur_v=0;
-                compteur_h=0;
+            if(h >= v)
+            {    
+                if (compteur_h  == 7 && compteur == h * v - 1){
+                    compteur = 0;
+                    compteur_v++;
+                    compteur_h=0;
+                }
+                else if (compteur_h == 7){
+                    compteur++;
+                    compteur_h=0;
+                }
+                else{
+                    compteur_h++;
+                }
             }
-            else if (compteur_h == 7){
-                compteur_v++;
-                compteur_h=0;
-            }
-            else{
-                compteur_h++;
+            else
+            {
+                if (compteur_h  == 7 && compteur_v == 7){
+                    compteur++;
+                    compteur_v = 0;
+                    compteur_h=0;
+                }
+                else if (compteur_h == 7){
+                    compteur_v++;
+                    compteur_h=0;
+                }
+                else{
+                    compteur_h++;
+                }
             }
         }
     }
