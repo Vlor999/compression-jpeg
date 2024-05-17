@@ -42,7 +42,8 @@ uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t num
         for (uint8_t c = 0; c < h1; c++)
         {
             is_dangerous_horizontal = (numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) >= valeur_fin_ligne) || numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) > our_datas.nb_MCU;
-            is_dangerous_vertical = (numero_premiere_mcu / sous_matrice_par_ligne + l >= our_datas.nb_MCU / sous_matrice_par_colonne);
+            is_dangerous_vertical = (numero_premiere_mcu / sous_matrice_par_ligne + l >= our_datas.nb_MCU / sous_matrice_par_ligne) ;
+        
             if(is_dangerous_horizontal || is_dangerous_vertical)
             {
                 liste_numero_MCU[compteur] = last_num;
@@ -60,16 +61,19 @@ uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t num
 
 uint32_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
 {
-    uint32_t* liste_valeur = malloc(our_datas.nb_MCU * sizeof(uint32_t) + 1);
     uint32_t numero = 0;
     uint32_t compteur = 0;
     uint8_t h1 = value[0];
     uint8_t v1 = value[1];
+    uint32_t* liste_valeur = malloc(our_datas.nb_MCU * sizeof(uint32_t) * h1 * v1);
     uint32_t x = (our_datas.nb_colonne/MCU_TAILLE);
     uint32_t nb_calcul = x / h1;
     if(our_datas.nb_colonne % MCU_TAILLE != 0)
     {
         x = x + 1;
+    }
+    if(x % h1 != 0)
+    {
         nb_calcul = nb_calcul + 1;
     }
     printf("nb_calcul %d\n", nb_calcul);
@@ -77,6 +81,7 @@ uint32_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
 
     while (numero < our_datas.nb_MCU)
     {
+        printf("numero %d\n", numero);
         uint64_t* liste_numero_MCU = sous_echantilonnage(value, our_datas, numero);
         for (uint8_t i = 0; i < h1 * v1; i++)
         {
@@ -94,28 +99,36 @@ uint32_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         {
             numero = numero + h1;
         }
-        printf("numero %d\n", numero);
     }
     liste_valeur[compteur] = 2147483648;
     return liste_valeur;
 }
 
 
-// int main(char *argv[])
-// {
-//     data_frame our_datas = {65, 64, 72, 255, 0, true, NULL};
-//     uint8_t value[6] = {3, 3, 1, 1, 1, 1};
-//     uint64_t* val = sous_echantilonnage(value, our_datas, 69);
-//     for (uint8_t i = 0; i < 2; i++)
-//     {
-//         printf("%d\n", val[i]);
-//     }
-//     uint32_t* liste_valeur = ensemble_valeur(value, our_datas);
-//     uint32_t i = 0;
-//     while(liste_valeur[i] != 2147483648)
-//     {
-//         printf("%d %d\n", liste_valeur[i], liste_valeur[i+1]);
-//         i+=2;
-//     }
-//     return 0;
-// }
+int main(char *argv[])
+{
+    data_frame our_datas = {64, 64, 64, 255, 0, true, NULL};
+    for(uint8_t i = 1; i <= 3; i++)
+    {
+        for(uint8_t j = 1; j <= 3; j++)
+        {
+    
+            uint8_t value[6] = {i, j, 1, 1, 1, 1};
+            printf("i %d\n", i);    
+            printf("j %d\n", j);
+            // uint64_t* val = sous_echantilonnage(value, our_datas, 64);
+            // for (uint8_t i = 0; i < 1; i++)
+            // {
+            //     printf("%d\n", val[i]);
+            // }
+            uint32_t* liste_valeur = ensemble_valeur(value, our_datas);
+            uint32_t i = 0;
+            // while(liste_valeur[i] != 2147483648)
+            // {
+            //     printf("%d\n", liste_valeur[i]);
+            //     i+=1;
+            // }
+        }
+    }
+    return 0;
+}
