@@ -108,7 +108,6 @@ int main(int argc, char **argv)
             while (tab_lecture_mcu[i] != 2147483648){
                 //initialisation de la liste des MCU  //ICI PROBLEME DE MALLOC JE NE SAIS PAS POURQUOI
                 
-                // printf("%d %d %d %d\n", tab_lecture_mcu[i], tab_lecture_mcu[i+1], tab_lecture_mcu[i+2], tab_lecture_mcu[i+3]);
                 for (uint32_t j = 0; j< h1*v1 ; j++){ //on remplit comme il faut la liste des MCU
                     MCU_RGB* mcu = Read_File(our_datas, tab_lecture_mcu[i+j] + 1);
                     if (verbose)
@@ -230,7 +229,6 @@ int main(int argc, char **argv)
                     printf("\n"); 
                 }
             }
-            // printf("fini\n");
             if (verbose)
             {
                 printf("MCU_Y numéro %d: \n", numero_MCU);
@@ -264,9 +262,6 @@ int main(int argc, char **argv)
                     }
                 }
             }
-            //MCU_YCbCr *tableau_MCU = fonction(willem);
-            //for (uint8_t nb_Y=0;nb_Y<tableau_coeffs_sous_echantillonage[0]*tableau_coeffs_sous_echantillonage[1];nb_Y++){
-                //if (tableau_MCU[nb_Y] != NULL){
                     int16_t** img_Y_DCT = dct(mcu_Y);
                     int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
                     int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
@@ -274,16 +269,10 @@ int main(int argc, char **argv)
                     resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie, verbose);
                     ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
                     prec_Y = img_Y_quantifie[0];
-                    //numero_MCU++;
-                //}
-            //}
 
             if (couleur)
                 { // on fait Cb et Cr
                     // Partie Cb
-                    //for (uint8_t nb_Cb=0;nb_Cb<tableau_coeffs_sous_echantillonage[2]*tableau_coeffs_sous_echantillonage[3];nb_Cb++){
-                      //  if ((tableau_MCU[tableau_coeffs_sous_echantillonage[0]*tableau_coeffs_sous_echantillonage[1]+nb_Cb]) != NULL){
-                            //uint16_t **mcu_Cb_ech = ss_echantillonnage(mcu_Cb, h2, v2);
                             int16_t **img_Cb_DCT = dct(mcu_Cb);//tableau_MCU[nb_Cb]);
                             int16_t *img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
                             int16_t *img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
@@ -291,14 +280,8 @@ int main(int argc, char **argv)
                             resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_Cb_quantifie, verbose);
                             ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
                             prec_Cb = img_Cb_quantifie[0];
-                      //      numero_MCU++;
-                        //}
-                    //}
 
                     // Partie Cr
-                    //for (uint8_t nb_Cr=0;nb_Cr<tableau_coeffs_sous_echantillonage[4]*tableau_coeffs_sous_echantillonage[5];nb_Cr++){
-                        //if ((tableau_MCU[tableau_coeffs_sous_echantillonage[0]*tableau_coeffs_sous_echantillonage[1]+tableau_coeffs_sous_echantillonage[2]*tableau_coeffs_sous_echantillonage[3]+nb_Cr]) != NULL){
-                            //uint16_t **mcu_Cr_ech = ss_echantillonnage(mcu_Cr, h3, v3);
                             int16_t **img_Cr_DCT = dct(mcu_Cr);//tableau_MCU[nb_Cr]);
                             int16_t *img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
                             int16_t *img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
@@ -306,9 +289,6 @@ int main(int argc, char **argv)
                             resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_Cr_quantifie, verbose);
                             ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
                             prec_Cr = img_Cr_quantifie[0];
-                            //numero_MCU++;
-                        //}
-                    //}
                 }
         numero_MCU++;
         compteur++;     
