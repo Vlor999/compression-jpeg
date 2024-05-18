@@ -102,7 +102,6 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
 }
 
 
-
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t decalage)
 {
     uint8_t** matrice_finale = malloc(8 * v * sizeof(uint8_t*)); 

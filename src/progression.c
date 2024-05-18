@@ -3,14 +3,24 @@
 #include <../include/recup_v2.h>
 #include <../include/option_main.h>
 
+char* modif_titre(char* titre)
+{
+    if (strlen(titre) > 20)
+    {
+        titre = titre + strlen(titre) - 20;
+    }
+    return titre;
+}
 
 void affiche_data(data_frame our_datas, Arguments mes_arguments)
 {
+    char* titre_input = modif_titre(mes_arguments.input);
+    char* titre_output = modif_titre(mes_arguments.output);
     printf("+------------------+-----------------------+\n");
-    printf("| Property         | Value                 |\n");
+    printf("| Propriété        | Valeur                |\n");
     printf("+------------------+-----------------------+\n");
-    printf("| Input            | %20s  |\n", mes_arguments.input);
-    printf("| Output           | %20s  |\n", mes_arguments.output);
+    printf("| Input            | %20s  |\n", titre_input);
+    printf("| Output           | %20s  |\n", titre_output);
     printf("| Sample Factors   | %20s  |\n", mes_arguments.sample_factors);
     printf("| Couleur          | %20d  |\n", mes_arguments.couleur);
     printf("| Verbose          | %20d  |\n", mes_arguments.verbose);
@@ -57,7 +67,7 @@ uint64_t taille_fichier(const char *nom_fichier)
 
 void affichage_fin(char* input, char* filename)
 {
-    printf("\nCompression terminée\n");
+    printf("\n");
     uint64_t taille_input = taille_fichier(input);
     uint64_t taille_output = taille_fichier(filename);
     printf("Compression ratio : %ld\n", (uint64_t)taille_input / taille_output);
