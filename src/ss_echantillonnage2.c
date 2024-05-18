@@ -32,15 +32,14 @@ uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t num
     bool is_dangerous_vertical;
     uint16_t valeur_fin_ligne = sous_matrice_par_ligne * ((numero_premiere_mcu / sous_matrice_par_ligne) + 1);
     uint16_t valeur_fin_colonne = sous_matrice_par_colonne * ((numero_premiere_mcu / sous_matrice_par_colonne) + 1);
+    uint16_t nb_ligne = numero_premiere_mcu / sous_matrice_par_ligne;
     for (uint8_t l = 0; l < v1; l++)
     {
-        valeur_fin_ligne = valeur_fin_ligne + l * sous_matrice_par_ligne - l;
+        valeur_fin_ligne = (l + 1 + nb_ligne) * sous_matrice_par_ligne - 1;
         for (uint8_t c = 0; c < h1; c++)
         {
-            is_dangerous_horizontal = (l * (sous_matrice_par_ligne - 1) >= valeur_fin_ligne - c - numero_premiere_mcu) || numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) > our_datas.nb_MCU;
+            is_dangerous_horizontal = ( numero_premiere_mcu + c > valeur_fin_ligne - l * sous_matrice_par_ligne) || numero_premiere_mcu + c + l * (sous_matrice_par_ligne - 1) > our_datas.nb_MCU;
             is_dangerous_vertical = (numero_premiere_mcu / sous_matrice_par_ligne + l >= our_datas.nb_MCU / sous_matrice_par_ligne);
-            // printf("is_dangerous_horizontal %d\n", is_dangerous_horizontal);
-            // printf("is_dangerous_vertical %d\n", is_dangerous_vertical);
         
             if(is_dangerous_horizontal || is_dangerous_vertical)
             {
@@ -82,7 +81,7 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         for (uint8_t i = 0; i < h1 * v1; i++)
         {
             liste_valeur[compteur] = liste_numero_MCU[i];
-            // printf("%d\t", liste_valeur[compteur] + 1);
+            // printf("%d\t", liste_valeur[compteur]);
             compteur++;
         }
         // printf("\n");
@@ -101,6 +100,26 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
     return liste_valeur;
 }
 
+// int main(int argc, char *argv[])
+// {
+//     uint8_t value[6] = {2, 2, 1, 1, 1, 1};
+//     data_frame our_datas = {65, 64, 72, 255, 0, false, NULL};
+//     // uint64_t* values = sous_echantilonnage(value, our_datas, atoi(argv[1]));
+//     // for(uint8_t i = 0; i < 6; i++)
+//     // {
+//     //     printf("%d\t", values[i]);
+//     // }
+//     // printf("\n");
+//     uint64_t* liste_valeur = ensemble_valeur(value, our_datas);
+//     uint16_t i = 0;
+//     while(liste_valeur[i] != 2147483648)
+//     {
+//         printf("%d\t", liste_valeur[i]);
+//         i++;
+//     }
+//     printf("\n");
+//     return 0;
+// }
 
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t decalage)
 {
