@@ -1,3 +1,5 @@
+#ifndef OPTION_MAIN_H
+#define OPTION_MAIN_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,3 +33,5 @@ void print_help();
 * @brief : permet de récuérer les arguments de la ligne de commande utiliser dans le main
 */
 Arguments utilisation_argument(int argc, char *argv[]);
+
+#endif

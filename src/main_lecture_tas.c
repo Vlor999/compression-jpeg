@@ -1,22 +1,23 @@
+#include <math.h>
+#include <time.h> 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "../include/MCU.h"
+#include "../include/DCT.h"
+#include "../include/zigzag.h"
+#include "../include/htables.h"
+#include "../include/qtables.h"
+#include "../include/recup_v2.h"
+#include "../include/progression.h"
+#include "../include/option_main.h"
+#include "../include/jpeg_format.h"
+#include "../include/magnetude_dc.h"
 #include "../include/conversionRGB.h"
 #include "../include/recupereimage.h"
 #include "../include/conversionRGB.h"
-#include "../include/zigzag.h"
 #include "../include/quantification.h"
-#include "../include/magnetude_dc.h"
-#include "../include/MCU.h"
-#include "../include/DCT.h"
-#include "../include/jpeg_format.h"
-#include "../include/htables.h"
-#include <math.h>
-#include <time.h> 
-#include "../include/qtables.h"
-#include "../include/recup_v2.h"
 #include "../include/ss_echantillonnage2.h"
-#include "../include/option_main.h"
 
 int main(int argc, char **argv)
 {
@@ -35,6 +36,7 @@ int main(int argc, char **argv)
     if(sample_factors == NULL)
     {
         sample_factors = "1x1,1x1,1x1";
+        mes_arguments.sample_factors = sample_factors;
     }
     uint8_t* tableau_coeffs_sous_echantillonage = echantillonage(sample_factors);
     uint8_t h1 = tableau_coeffs_sous_echantillonage[0];
@@ -45,21 +47,9 @@ int main(int argc, char **argv)
     uint8_t v3 = tableau_coeffs_sous_echantillonage[5];
 
 
-
-    printf("input : %s\n", input);
-    printf("output : %s\n", filename);
-    printf("sample_factors : %s\n", sample_factors);
-    printf("couleur : %d\n", couleur);
-    printf("verbose : %d\n", verbose);
-
     data_frame our_datas = Lecture_Init(input);
-    printf("data_frame : \n");
-    printf("nb_colonne : %d\n", our_datas.nb_colonne);
-    printf("nb_ligne : %d\n", our_datas.nb_ligne);
-    printf("nb_MCU : %d\n", our_datas.nb_MCU);
-    printf("maximum_value : %d\n", our_datas.maximum_value);
-    printf("header : %d\n", our_datas.header);
-    printf("isRGB : %d\n", our_datas.isRGB);
+    affiche_data(our_datas, mes_arguments);
+
  
 
     FILE *fptr = fopen(filename, "wb");
@@ -92,7 +82,6 @@ int main(int argc, char **argv)
         //printf("MCU numéro %d\n", numero_MCU);
         //LECTURE
     if (couleur && !(h1 == 1) & !(v1==1)){
-        uint32_t buffer=0;
         uint32_t nb_MCU_ligne = ceil(((float) our_datas.nb_ligne) / 8);
         uint32_t nb_MCU_colonne = ceil(((float) our_datas.nb_colonne) / 8);
         if (verbose){
@@ -100,8 +89,6 @@ int main(int argc, char **argv)
             printf("nb_MCU_ligne %d nb_MCU_colonne %d\n", nb_MCU_ligne,nb_MCU_colonne);
             printf("%d\n", nb_MCU_colonne*nb_MCU_ligne);
         }
-        uint32_t indice=0;
-        uint32_t temp;
         uint64_t *tab_lecture_mcu = ensemble_valeur(tableau_coeffs_sous_echantillonage, our_datas); //ordre des mcu a lire 
         
             uint32_t i = 0;
@@ -112,7 +99,7 @@ int main(int argc, char **argv)
                     MCU_RGB* mcu = Read_File(our_datas, tab_lecture_mcu[i+j] + 1);
                     if (verbose)
                     {
-                        printf("MCU_RGB numéro %d: \n", numero_MCU);
+                        printf("MCU_RGB numéro %ld: \n", numero_MCU);
                         for (int i = 0; i < MCU_TAILLE; i++)
                         {
                             for (int j = 0; j < MCU_TAILLE; j++)
@@ -177,7 +164,7 @@ int main(int argc, char **argv)
             MCU_RGB* mcu = Read_File(our_datas, numero_MCU);
             if (verbose)
             {
-                printf("MCU_RGB numéro %d: \n", numero_MCU);
+                printf("MCU_RGB numéro %ld: \n", numero_MCU);
                 for (int i = 0; i < MCU_TAILLE; i++)
                 {
                     for (int j = 0; j < MCU_TAILLE; j++)
@@ -217,10 +204,9 @@ int main(int argc, char **argv)
 
             if (verbose)
             {
-                printf("MCU_YCbCr numéro %d: \n", numero_MCU);
+                printf("MCU_YCbCr numéro %ld: \n", numero_MCU);
                 for (int i = 0; i < MCU_TAILLE; i++)
                 {
-                    
                     for (int j = 0; j < MCU_TAILLE; j++)
                     {
                         printf("test\n");
@@ -231,7 +217,7 @@ int main(int argc, char **argv)
             }
             if (verbose)
             {
-                printf("MCU_Y numéro %d: \n", numero_MCU);
+                printf("MCU_Y numéro %ld: \n", numero_MCU);
                 for (int i = 0; i < MCU_TAILLE; i++)
                 {
                     for (int j = 0; j < MCU_TAILLE; j++)
@@ -242,7 +228,7 @@ int main(int argc, char **argv)
                 }
                 if(couleur)
                 {
-                    printf("MCU_Cb numéro %d: \n", numero_MCU);
+                    printf("MCU_Cb numéro %ld: \n", numero_MCU);
                     for (int i = 0; i < MCU_TAILLE; i++)
                     {
                         for (int j = 0; j < MCU_TAILLE; j++)
@@ -251,7 +237,7 @@ int main(int argc, char **argv)
                         }
                         printf("\n");
                     }
-                    printf("MCU_Cr numéro %d: \n", numero_MCU);
+                    printf("MCU_Cr numéro %ld: \n", numero_MCU);
                     for (int i = 0; i < MCU_TAILLE; i++)
                     {
                         for (int j = 0; j < MCU_TAILLE; j++)
@@ -290,6 +276,7 @@ int main(int argc, char **argv)
                             ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
                             prec_Cr = img_Cr_quantifie[0];
                 }
+        affiche_progression(our_datas.nb_MCU, numero_MCU);
         numero_MCU++;
         compteur++;     
         
@@ -320,5 +307,8 @@ int main(int argc, char **argv)
     fwrite(&(ecr->nb), sizeof(uint8_t), 1, fptr);
     ecrire_fin(fptr);
     fclose(fptr);
+    uint64_t taille_input = taille_fichier(input);
+    uint64_t taille_output = taille_fichier(filename);
+    printf("Compression ratio : %3f\n", round((float)taille_input / taille_output));
     printf("fini \n");
 }
