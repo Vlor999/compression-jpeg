@@ -11,6 +11,7 @@ typedef struct {
     char* sample_factors;
     bool couleur;
     bool verbose;
+    bool progression;
 } Arguments;
 
 /*

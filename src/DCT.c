@@ -5,28 +5,14 @@
 
 #define M_PI  3.14159265358979323846
 
-int16_t** mvt_value(uint8_t **m)
-{
-    int16_t** res = calloc(8, sizeof(int16_t*));
-    for (uint8_t i=0; i<8; i++)
-    {
-        res[i] = calloc(8, sizeof(int16_t));
-        for (uint8_t j = 0; j < 8; j++)
-        {
-            res[i][j] = m[i][j] - 128;
-        }
-    }
-    return res;
-}
-
-int16_t calcul_dct(int16_t **m, uint8_t i, uint8_t j, uint16_t compteur)
+int16_t calcul_dct(uint8_t **m, uint8_t i, uint8_t j, uint16_t compteur)
 {
     double somme = 0;
     for (uint8_t y = 0; y < 8; y++)
     {
         for (uint8_t x = 0; x < 8; x++)
         {
-            int16_t tmp = m[x][y];
+            int16_t tmp = m[x][y] - 128;
             somme += tmp * tab_DCT[compteur];
             compteur ++;
         }
@@ -44,14 +30,13 @@ int16_t calcul_dct(int16_t **m, uint8_t i, uint8_t j, uint16_t compteur)
 int16_t **dct(uint8_t **m)
 {
     uint64_t compteur= 0;
-    int16_t **res = mvt_value(m);
     int16_t **tab_final = malloc(8 * sizeof(int16_t*));
     for (uint8_t i=0; i<8; i++)
     {
         tab_final[i] = malloc(8 * sizeof(int16_t));
         for (uint8_t j = 0; j < 8; j++)
         {
-            tab_final[i][j] = calcul_dct(res, i, j, compteur);
+            tab_final[i][j] = calcul_dct(m, i, j, compteur);
             compteur += 64;
         }
     }

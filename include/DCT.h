@@ -3,14 +3,6 @@
 #include "MCU.h"
 #include <stdint.h>
 
-#include <stdint.h>
-
-/*
- * @brief centre les valeures sur 0
- * @param le MCU
- * @return la matrice des valeurs centrées
-*/
-int16_t** mvt_value(uint8_t  **m);
 
 /*
     *  @brief calcule la DCT pour une valeur 
@@ -18,7 +10,7 @@ int16_t** mvt_value(uint8_t  **m);
     *  @return la DCT 
 */
 
-int16_t calcul_dct(int16_t **m,uint8_t i, uint8_t j, uint16_t compteur);
+int16_t calcul_dct(uint8_t **m,uint8_t i, uint8_t j, uint16_t compteur);
 
 /*
     *  @brief construit la matrice des DCT 

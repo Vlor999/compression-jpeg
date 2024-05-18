@@ -27,6 +27,7 @@ int main(int argc, char **argv)
     char *sample_factors = mes_arguments.sample_factors;
     bool couleur = mes_arguments.couleur;
     bool verbose = mes_arguments.verbose;
+    bool progression = mes_arguments.progression;
 
     if (!input)
     {
@@ -49,8 +50,6 @@ int main(int argc, char **argv)
 
     data_frame our_datas = Lecture_Init(input);
     affiche_data(our_datas, mes_arguments);
-
- 
 
     FILE *fptr = fopen(filename, "wb");
     ecrire_debut(fptr);
@@ -94,7 +93,10 @@ int main(int argc, char **argv)
             uint32_t i = 0;
             while (tab_lecture_mcu[i] != 2147483648){
                 //initialisation de la liste des MCU  //ICI PROBLEME DE MALLOC JE NE SAIS PAS POURQUOI
-                affiche_progression(our_datas.nb_MCU, i);
+                if(progression)
+                {
+                    affiche_progression(our_datas.nb_MCU, i);
+                }
                 for (uint32_t j = 0; j< h1*v1 ; j++){ //on remplit comme il faut la liste des MCU
                     MCU_RGB* mcu = Read_File(our_datas, tab_lecture_mcu[i+j] + 1);
                     if (verbose)
@@ -273,7 +275,10 @@ int main(int argc, char **argv)
                             ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
                             prec_Cr = img_Cr_quantifie[0];
                 }
-        affiche_progression(our_datas.nb_MCU, numero_MCU);
+        if(progression)
+        {
+            affiche_progression(our_datas.nb_MCU, numero_MCU);
+        }
         numero_MCU++;
         compteur++;     
         

@@ -17,7 +17,7 @@ void affiche_data(data_frame our_datas, Arguments mes_arguments)
     char* titre_input = modif_titre(mes_arguments.input);
     char* titre_output = modif_titre(mes_arguments.output);
     printf("+------------------+-----------------------+\n");
-    printf("| Propriété        | Valeur                |\n");
+    printf("| Propriétés       | Valeurs               |\n");
     printf("+------------------+-----------------------+\n");
     printf("| Input            | %20s  |\n", titre_input);
     printf("| Output           | %20s  |\n", titre_output);
