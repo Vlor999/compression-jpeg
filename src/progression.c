@@ -45,23 +45,24 @@ uint64_t taille_fichier(const char *nom_fichier)
     fseek(fichier, 0, SEEK_END);
     uint64_t taille = ftell(fichier);
     fclose(fichier);
+    uint64_t val = taille;
     char* cond = "o";
-    if (taille > 1000)
+    if (val > 1000)
     {
-        taille /= 1000;
+        val /= 1000;
         cond = "kb";
     }
-    if (taille > 1000)
+    if (val > 1000)
     {
-        taille /= 1000;
+        val /= 1000;
         cond = "Mb";
     }
-    if (taille > 1000)
+    if (val > 1000)
     {
-        taille /= 1000;
+        val /= 1000;
         cond = "Gb";
     }
-    printf("Taille du fichier %s : %4lu %s\n", nom_fichier, taille, cond);
+    printf("Taille du fichier %s : %4lu %s\n", nom_fichier, val, cond);
     return taille;
 }
 
