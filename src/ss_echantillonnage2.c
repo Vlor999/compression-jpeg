@@ -100,26 +100,6 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
     return liste_valeur;
 }
 
-// int main(int argc, char *argv[])
-// {
-//     uint8_t value[6] = {2, 2, 1, 1, 1, 1};
-//     data_frame our_datas = {65, 64, 72, 255, 0, false, NULL};
-//     // uint64_t* values = sous_echantilonnage(value, our_datas, atoi(argv[1]));
-//     // for(uint8_t i = 0; i < 6; i++)
-//     // {
-//     //     printf("%d\t", values[i]);
-//     // }
-//     // printf("\n");
-//     uint64_t* liste_valeur = ensemble_valeur(value, our_datas);
-//     uint16_t i = 0;
-//     while(liste_valeur[i] != 2147483648)
-//     {
-//         printf("%d\t", liste_valeur[i]);
-//         i++;
-//     }
-//     printf("\n");
-//     return 0;
-// }
 
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t decalage)
 {

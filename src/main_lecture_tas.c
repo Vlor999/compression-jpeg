@@ -80,7 +80,8 @@ int main(int argc, char **argv)
     // printf("nb_MCU : %d\n", our_datas.nb_MCU);
         //printf("MCU numéro %d\n", numero_MCU);
         //LECTURE
-    if (couleur && !(h1 == 1) & !(v1==1)){
+    if (couleur && (!(h1 == 1) || !(v1==1)))
+    {
         uint32_t nb_MCU_ligne = ceil(((float) our_datas.nb_ligne) / 8);
         uint32_t nb_MCU_colonne = ceil(((float) our_datas.nb_colonne) / 8);
         if (verbose){
@@ -89,7 +90,6 @@ int main(int argc, char **argv)
             printf("%d\n", nb_MCU_colonne*nb_MCU_ligne);
         }
         uint64_t *tab_lecture_mcu = ensemble_valeur(tableau_coeffs_sous_echantillonage, our_datas); //ordre des mcu a lire 
-        
             uint32_t i = 0;
             while (tab_lecture_mcu[i] != 2147483648){
                 //initialisation de la liste des MCU  //ICI PROBLEME DE MALLOC JE NE SAIS PAS POURQUOI
@@ -161,6 +161,7 @@ int main(int argc, char **argv)
             // printf("MCU numéro %d\n", numero_MCU);
             //LECTURE
             MCU_RGB* mcu = Read_File(our_datas, numero_MCU);
+            // printf("MCU numéro %ld\n", numero_MCU);
             if (verbose)
             {
                 printf("MCU_RGB numéro %ld: \n", numero_MCU);
