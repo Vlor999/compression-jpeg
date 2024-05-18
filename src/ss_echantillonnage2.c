@@ -30,8 +30,8 @@ uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t num
     uint64_t last_num = 0;
     bool is_dangerous_horizontal;
     bool is_dangerous_vertical;
-    uint16_t valeur_fin_ligne = sous_matrice_par_ligne * ((numero_premiere_mcu / sous_matrice_par_ligne) + 1);
-    uint16_t valeur_fin_colonne = sous_matrice_par_colonne * ((numero_premiere_mcu / sous_matrice_par_colonne) + 1);
+    uint32_t valeur_fin_ligne = sous_matrice_par_ligne * ((numero_premiere_mcu / sous_matrice_par_ligne) + 1);
+    uint32_t valeur_fin_colonne = sous_matrice_par_colonne * ((numero_premiere_mcu / sous_matrice_par_colonne) + 1);
     uint16_t nb_ligne = numero_premiere_mcu / sous_matrice_par_ligne;
     for (uint8_t l = 0; l < v1; l++)
     {
@@ -73,6 +73,10 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
     {
         nb_calcul = nb_calcul + 1;
     }
+    if(h1 == 1)
+    {
+        nb_calcul = x / h1;
+    }
     uint32_t nb = 0;
 
     while (numero < our_datas.nb_MCU)
@@ -99,6 +103,35 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
     liste_valeur[compteur] = 2147483648;
     return liste_valeur;
 }
+
+// int main()
+// {
+//     uint8_t value[6] = {1, 3, 1, 1, 1, 1};
+//     data_frame our_datas = {439, 324, 2255, 255, 0, false, NULL};
+//     // uint64_t* liste = sous_echantilonnage(value, our_datas, 54);
+//     // for (uint8_t i = 0; i < 3; i++)
+//     // {
+//     //     printf("%d\t", liste[i]);
+//     // }
+//     uint64_t* liste_valeur = ensemble_valeur(value, our_datas);
+//     uint16_t i = 0;
+//     while (liste_valeur[i] != 2147483648)
+//     {
+//         printf("%d", liste_valeur[i]);
+//         i++;
+//         if(i % 3 == 0)
+//         {
+//             printf("\n");
+//         }
+//         else
+//         {
+//             printf("\t");
+//         }
+//     }
+    
+//     printf("\n");
+//     return 0;
+// }
 
 
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t decalage)
