@@ -22,27 +22,13 @@ int16_t** mvt_value(uint8_t **m)
 int16_t calcul_dct(int16_t **m, uint8_t i, uint8_t j, uint16_t compteur)
 {
     double somme = 0;
-    double values_cos_x[8];
-    // for (uint8_t x = 0; x < 8; x++)
-    // {
-    //     values_cos_x[x] = tab_DCT[compteur];
-    //     compteur ++;
-    //     // cos((2*x+1)*i*M_PI / 16);
-
-    // }
     for (uint8_t y = 0; y < 8; y++)
     {
-        // double value_cos_y = tab_DCT[compteur];
-        // compteur ++;
-        // cos((2*y+1)*j*M_PI / 16);
-
-
         for (uint8_t x = 0; x < 8; x++)
         {
             int16_t tmp = m[x][y];
             somme += tmp * tab_DCT[compteur];
             compteur ++;
-            // values_cos_x[x] * value_cos_y;
         }
     }
     somme = somme/4;

@@ -94,7 +94,7 @@ int main(int argc, char **argv)
             uint32_t i = 0;
             while (tab_lecture_mcu[i] != 2147483648){
                 //initialisation de la liste des MCU  //ICI PROBLEME DE MALLOC JE NE SAIS PAS POURQUOI
-                
+                affiche_progression(our_datas.nb_MCU, i);
                 for (uint32_t j = 0; j< h1*v1 ; j++){ //on remplit comme il faut la liste des MCU
                     MCU_RGB* mcu = Read_File(our_datas, tab_lecture_mcu[i+j] + 1);
                     if (verbose)
@@ -150,11 +150,8 @@ int main(int argc, char **argv)
                         ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
                         prec_Cr = img_Cr_quantifie[0];
                 }
-
                 i = i + h1*v1;
-
             }
-
     }
     else{
         while (numero_MCU <= our_datas.nb_MCU)
@@ -248,13 +245,13 @@ int main(int argc, char **argv)
                     }
                 }
             }
-                    int16_t** img_Y_DCT = dct(mcu_Y);
-                    int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
-                    int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
-                    RLE = codage_AC_RLE(img_Y_quantifie);
-                    resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie, verbose);
-                    ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
-                    prec_Y = img_Y_quantifie[0];
+            int16_t** img_Y_DCT = dct(mcu_Y);
+            int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
+            int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
+            RLE = codage_AC_RLE(img_Y_quantifie);
+            resultat_final = codage_total_AC_DC_Y(RLE, prec_Y, img_Y_quantifie, verbose);
+            ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
+            prec_Y = img_Y_quantifie[0];
 
             if (couleur)
                 { // on fait Cb et Cr
@@ -307,8 +304,5 @@ int main(int argc, char **argv)
     fwrite(&(ecr->nb), sizeof(uint8_t), 1, fptr);
     ecrire_fin(fptr);
     fclose(fptr);
-    uint64_t taille_input = taille_fichier(input);
-    uint64_t taille_output = taille_fichier(filename);
-    printf("Compression ratio : %3f\n", round((float)taille_input / taille_output));
-    printf("fini \n");
+    affichage_fin(input, filename);
 }

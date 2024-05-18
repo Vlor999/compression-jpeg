@@ -3,6 +3,7 @@
 #include <../include/recup_v2.h>
 #include <../include/option_main.h>
 
+
 void affiche_data(data_frame our_datas, Arguments mes_arguments)
 {
     printf("+------------------+-----------------------+\n");
@@ -54,9 +55,21 @@ uint64_t taille_fichier(const char *nom_fichier)
     return taille;
 }
 
+void affichage_fin(char* input, char* filename)
+{
+    printf("\nCompression terminée\n");
+    uint64_t taille_input = taille_fichier(input);
+    uint64_t taille_output = taille_fichier(filename);
+    printf("Compression ratio : %ld\n", (uint64_t)taille_input / taille_output);
+}
+
 void affiche_progression(uint64_t max_valeur, uint64_t nb_valeur)
 {
     uint16_t progress = (int)((nb_valeur * 100) / max_valeur);
+    if (progress > 100)
+    {
+        progress = 100;
+    }
 
     switch (progress % 4)
     {
@@ -85,12 +98,5 @@ void affiche_progression(uint64_t max_valeur, uint64_t nb_valeur)
     }
     printf("[%3d%%]", progress);
     
-    if (progress == 100)
-    {
-        printf("\n");
-    }
-    else
-    {
-        printf("\r");
-    }
+    printf("\r");
 }

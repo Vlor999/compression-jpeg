@@ -9,6 +9,8 @@ void affiche_data(data_frame our_datas, Arguments mes_arguments);
 
 uint64_t taille_fichier(const char *nom_fichier);
 
+void affichage_fin(char* input, char* filename);
+
 void affiche_progression(uint64_t max_valeur, uint64_t nb_valeur);
 
 #endif

@@ -49,7 +49,6 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     - Je ne retrourne aps bien à la ligne et donc cela créer un décalage à chaque fois
     - Quelques effets de bords à voir
     */
-    uint32_t bla = number;
     FILE *file = data.file;
     uint32_t nb_colonne = data.nb_colonne;
     uint32_t nb_ligne = data.nb_ligne;
@@ -85,8 +84,6 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
 
     long int position_debut = data.header * sizeof(uint8_t) + debut_ligne * data.nb_colonne * sizeof(uint8_t) * taille + debut_colonne * sizeof(uint8_t) * taille;
     fseek(file, position_debut, SEEK_SET);
-
-    uint8_t decalage = debut_colonne + 7 - MCU_TAILLE;
 
     for (uint8_t i = 0; i < MCU_TAILLE; i++)
     {

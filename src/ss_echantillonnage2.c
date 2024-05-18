@@ -12,10 +12,6 @@ uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t num
 {
     uint8_t h1 = value[0];
     uint8_t v1 = value[1];
-    uint8_t h2 = value[2];
-    uint8_t v2 = value[3];
-    uint8_t h3 = value[4];
-    uint8_t v3 = value[5];
 
     uint32_t sous_matrice_par_ligne = our_datas.nb_colonne / MCU_TAILLE;
     uint32_t sous_matrice_par_colonne = our_datas.nb_ligne / MCU_TAILLE;
