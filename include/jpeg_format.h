@@ -11,14 +11,13 @@ struct ecritureSOS{
     uint8_t nb;
 };
 typedef struct ecritureSOS ecritureSOS;
+
 /**
 * @brief ecrit la partie generique du debut dans le fichier
 * @param file le fichier dans lequel on ecrit le format jpeg
 * @return rien hehe
 *
 **/
-
-
 void ecrire_debut(FILE* fptr);
 
 
@@ -28,7 +27,6 @@ void ecrire_debut(FILE* fptr);
 * @return rien hehe
 *
 **/
-
 void ecrire_fin(FILE* fptr);
 
 
@@ -38,7 +36,6 @@ void ecrire_fin(FILE* fptr);
 * @return rien hehe
 *
 **/
-
 void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr,bool couleur);
 
 
@@ -60,7 +57,6 @@ void ecrire_htable(FILE* fptr,uint8_t htable_nb_length[][3][16], bool couleur);
 * @return rien hehe
 *
 **/
-
 void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,uint8_t* facteurs,bool couleur);
 
 
@@ -72,9 +68,7 @@ void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image,uint8
 *        chaque valeur est un tableau de MCU (donc 8x8 =64) et dans les MCU les 64 valeurs sont les codes de huffman sous forme de tableau
          nb_MCU_Y correspond a len(tab_MCU_Huffman_Y)
 * @return rien hehe
-*
 **/
-
 void ecrire_SOS_en_tete(FILE* fptr, bool couleur);
 
 
@@ -84,9 +78,7 @@ void ecrire_SOS_en_tete(FILE* fptr, bool couleur);
 *        chaque valeur est un tableau de MCU (donc 8x8 =64) et dans les MCU les 64 valeurs sont les codes de huffman sous forme de tableau
          nb_MCU_Y correspond a len(tab_MCU_Huffman_Y)
 * @return rien hehe
-*
 **/
-
 ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureSOS *ecr);
     // ecriture par bloc de 8x8 par nb de bloc et par ordre de composante
 
@@ -96,7 +88,6 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y,ecritureS
  * @param fptr le fichier dans lequel on écrit
  * @return rien
  **/
-
 uint8_t reverse_hexa(uint8_t valeur);
 void ecrire_commentaire_SOS(FILE* fptr);
 

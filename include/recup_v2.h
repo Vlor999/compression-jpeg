@@ -21,7 +21,6 @@ typedef struct data_frame
 
 imagePGM_RGB* LecturePPM(const char* filename);
 
-/****/
 
 data_frame Lecture_Init(const char* filename);
 
