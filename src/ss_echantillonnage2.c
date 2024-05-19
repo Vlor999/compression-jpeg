@@ -103,35 +103,6 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
     return liste_valeur;
 }
 
-// int main()
-// {
-//     uint8_t value[6] = {1, 3, 1, 1, 1, 1};
-//     data_frame our_datas = {439, 324, 2255, 255, 0, false, NULL};
-//     // uint64_t* liste = sous_echantilonnage(value, our_datas, 54);
-//     // for (uint8_t i = 0; i < 3; i++)
-//     // {
-//     //     printf("%d\t", liste[i]);
-//     // }
-//     uint64_t* liste_valeur = ensemble_valeur(value, our_datas);
-//     uint16_t i = 0;
-//     while (liste_valeur[i] != 2147483648)
-//     {
-//         printf("%d", liste_valeur[i]);
-//         i++;
-//         if(i % 3 == 0)
-//         {
-//             printf("\n");
-//         }
-//         else
-//         {
-//             printf("\t");
-//         }
-//     }
-    
-//     printf("\n");
-//     return 0;
-// }
-
 
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t decalage)
 {
@@ -249,8 +220,13 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
 
     uint8_t **temp_Cb = concat_matrice(liste_matrice,facteurs[0],facteurs[1],facteurs[1]*facteurs[0]);
 
+
     uint8_t ***liste_Cb = sous_echantillonnage_CbCr(temp_Cb,facteurs[0],facteurs[1],facteurs[2],facteurs[3]);
     
+    for (uint16_t i=0;i<MCU_TAILLE*facteurs[1];i++){
+        free(temp_Cb[i]);
+    }
+    free(temp_Cb);
 
     uint8_t ***resultat_Cr = malloc((facteurs[5]*facteurs[4])*sizeof(uint8_t**));
     for (uint8_t l=0;l<facteurs[5]*facteurs[4];l++){
@@ -264,8 +240,15 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
     }
     uint8_t **temp_Cr = concat_matrice(liste_matrice,facteurs[0],facteurs[1],2*facteurs[1]*facteurs[0]);
 
+
+
     uint8_t ***liste_Cr = sous_echantillonnage_CbCr(temp_Cr,facteurs[0],facteurs[1],facteurs[4],facteurs[5]);
     
+    
+    for (uint16_t i=0;i<MCU_TAILLE*facteurs[1];i++){
+        free(temp_Cr[i]);
+    }
+    free(temp_Cr);
 
     //TRUC FINAL
     // printf("\n\nRESULT Y\n");
@@ -291,10 +274,15 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
                 resultat[l+facteurs[0]*facteurs[1]][i][j] = liste_Cb[l][i][j];
                 // printf("%02x\t", liste_Cb[l][i][j]);
             }
+            free(liste_Cb[l][i]);
             // printf("\n");
         }
+        free(liste_Cb[l]);
         // printf("FIN MCU\n");
     } // On a tous les CB
+
+    free(liste_Cb);
+
     // printf("\nRESULT Cr\n");
     for (uint8_t l=0;l<facteurs[5]*facteurs[4];l++){
         resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]] = malloc(MCU_TAILLE*sizeof(uint8_t*));
@@ -304,17 +292,16 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
                 resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]][i][j] = liste_Cr[l][i][j];
                 // printf("%02x\t", liste_Cr[l][i][j]);
             }
+            free(liste_Cr[l][i]);
             // printf("\n");
         }
+        free(liste_Cr[l]);
         // printf("FIN MCU\n");
     } // On a tous les Cr
+
+    free(liste_Cr);
+
     return resultat; 
-
-}
-
-
-void free_tab_echantillonnee(Triplet_YCbCr** tab){
-    free(tab);
 }
 
 void probleme_echantillonnage()
