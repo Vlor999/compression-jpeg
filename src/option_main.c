@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 #include "../include/option_main.h"
 
 void print_help() 
@@ -26,6 +27,40 @@ char *copie_mot_jpeg(const char *s)
     return sortie;
 }
 
+char* transfo_titre(char* output, bool st, char* sample_factors) 
+{ 
+    if(st)
+    {
+        char* end = ".jpg";
+        uint8_t taille = strlen(output);
+        char final[taille + strlen(sample_factors) + 1];
+        for (uint16_t i = 0; i < strlen(output) - 4; i++)
+        {
+            final[i] = output[i];
+        }
+        final[taille - 4] = '_';
+
+        for (uint16_t i = 0; i < strlen(sample_factors); i++)
+        {
+            final[i + taille - 3] = sample_factors[i];
+        }
+        for(uint8_t i = 0; i < 4; i++)
+        {
+            final[i + taille + 8] = end[i];
+        }
+        output = realloc(output, taille + strlen(sample_factors) + 1);
+        for(uint8_t i = 0; i < taille + strlen(sample_factors) + 1; i++)
+        {
+            output[i] = final[i];
+        }
+        return output;
+    }
+    else
+    {
+        return output;
+    }
+}
+
 Arguments utilisation_argument(int argc, char *argv[]) 
 {
     Arguments mes_arguments = {NULL, NULL, NULL, false, false, false};
@@ -42,6 +77,7 @@ Arguments utilisation_argument(int argc, char *argv[])
     bool couleur = false;
     bool verbose = false;
     bool progression = false;
+    bool st = false;
 
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--help") == 0) 
@@ -64,6 +100,10 @@ Arguments utilisation_argument(int argc, char *argv[])
         else if (strcmp(argv[i], "--t") == 0)
         {
             progression = true;
+        }
+        else if (strcmp(argv[i], "--st") == 0)
+        {
+            st = true;
         }
         else 
         {
@@ -99,8 +139,10 @@ Arguments utilisation_argument(int argc, char *argv[])
         sample_factors = "1x1,1x1,1x1";
     }
 
+    char* new_titre = transfo_titre(output, st, sample_factors);
+
     mes_arguments.input = input;
-    mes_arguments.output = output;
+    mes_arguments.output = new_titre;
     mes_arguments.sample_factors = sample_factors;
     mes_arguments.couleur = couleur;
     mes_arguments.verbose = verbose;
