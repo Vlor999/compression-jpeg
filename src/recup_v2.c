@@ -35,7 +35,7 @@ data_frame Lecture_Init(const char *filename)
     fscanf(file, "%hd %hd\n%hd\n", &col, &ligne, &max);
 
     header = header + (uint8_t)log10(max) + (uint8_t)log10(col) + (uint8_t)log10(ligne);
-    nb_MCU = ((col + 7) / 8) * 8 * ((ligne + 7) / 8) * 8 / (MCU_TAILLE * MCU_TAILLE);
+    nb_MCU = ((col + 7) / MCU_TAILLE) * MCU_TAILLE * ((ligne + 7) / MCU_TAILLE) * MCU_TAILLE / (MCU_TAILLE * MCU_TAILLE);
 
     data_frame data = {col, ligne, nb_MCU, max, header, isRGB, file};
     return data;
@@ -53,12 +53,12 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     uint32_t nb_colonne = data.nb_colonne;
     uint32_t nb_ligne = data.nb_ligne;
 
-    nb_colonne = ((nb_colonne + 7) / 8) * 8;
-    nb_ligne = ((nb_ligne + 7) / 8) * 8;
+    nb_colonne = ((nb_colonne + 7) / MCU_TAILLE) * MCU_TAILLE;
+    nb_ligne = ((nb_ligne + 7) / MCU_TAILLE) * MCU_TAILLE;
 
     uint32_t sous_matrice_par_ligne = nb_colonne / MCU_TAILLE;
-    uint32_t debut_ligne = ((number - 1) / sous_matrice_par_ligne) * 8;
-    uint32_t debut_colonne = ((number - 1) % sous_matrice_par_ligne) * 8;
+    uint32_t debut_ligne = ((number) / sous_matrice_par_ligne) * MCU_TAILLE;
+    uint32_t debut_colonne = ((number) % sous_matrice_par_ligne) * MCU_TAILLE;
 
     bool ligne_ok = debut_ligne + 7 < data.nb_ligne;
     bool colonne_ok = debut_colonne + 7 < data.nb_colonne;

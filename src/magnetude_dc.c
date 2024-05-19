@@ -68,7 +68,7 @@ uint8_t *codage_indice_magn(int16_t n){
     
     uint8_t magn = trouver_magnetude(n);
     int64_t nombre = 1;
-    uint64_t res;
+    uint64_t res = 0;
     int64_t tmp;
     uint8_t *tab;
     for (uint8_t k = 0;k<magn;k++){

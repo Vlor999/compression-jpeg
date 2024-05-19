@@ -5,12 +5,13 @@
 
 void print_help() 
 {
-    printf("Usage: ./program <input> [--outfile=filename] [--sample=h1xv1,h2xv2,h3xv3]\n");
+    printf("Usage: ./program <input> [--outfile=filename] [--sample=h1xv1,h2xv2,h3xv3] [--t] [--v] [--help]\n");
     printf("Options:\n");
     printf("--help : pour de l'aide ;)\n");
     printf("--outfile=filename : tu mets le blaze du fichier de sortie et surtout on oublie pas le .jpg\n");
     printf("--sample=h1xv1,h2xv2,h3xv3 : tu me give le sous echatillonnage mon gazo \n");
     printf("--v : pour activer le mode verbose\n");
+    printf("--t : pour activer le mode téléchargement\n");
 }
 
 char *copie_mot_jpeg(const char *s) 
@@ -30,7 +31,7 @@ Arguments utilisation_argument(int argc, char *argv[])
     Arguments mes_arguments = {NULL, NULL, NULL, false, false, false};
     if (argc < 2) 
     {
-        printf("Error: Il me faut un fichier gros BG\n");
+        printf("Erreur : Il me faut un fichier gros BG\n");
         print_help();
         return mes_arguments;
     }
@@ -92,6 +93,10 @@ Arguments utilisation_argument(int argc, char *argv[])
         {
             output = copie_mot_jpeg(input); //n'existe pas dans la librairie standard 
         }
+    }
+    if(sample_factors == NULL) 
+    {
+        sample_factors = "1x1,1x1,1x1";
     }
 
     mes_arguments.input = input;
