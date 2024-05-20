@@ -124,7 +124,7 @@ Arguments utilisation_argument(int argc, char *argv[])
         if(point) 
         {
             size_t input_len = point - input;
-            output = malloc(input_len + 5);
+            output = malloc((input_len + 5)*sizeof(char));
             strncpy(output, input, input_len);
             output[input_len] = '\0';
             output = strcat(output, ".jpg");
@@ -132,6 +132,7 @@ Arguments utilisation_argument(int argc, char *argv[])
         else 
         {
             output = copie_mot_jpeg(input); //n'existe pas dans la librairie standard 
+            
         }
     }
     if(sample_factors == NULL) 
@@ -140,13 +141,11 @@ Arguments utilisation_argument(int argc, char *argv[])
     }
 
     char* new_titre = transfo_titre(output, st, sample_factors);
-
     mes_arguments.input = input;
     mes_arguments.output = new_titre;
     mes_arguments.sample_factors = sample_factors;
     mes_arguments.couleur = couleur;
     mes_arguments.verbose = verbose;
     mes_arguments.progression = progression;
-    
     return mes_arguments;
 }

@@ -72,7 +72,9 @@ uint8_t approx_value(float value)
     {
         return (uint8_t)value;
     }
-    return ((uint8_t)value) + 1;
+    else{
+        return ((uint8_t)value) + 1;
+    }
 }
 
 uint8_t*** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)

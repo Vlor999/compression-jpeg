@@ -98,7 +98,9 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         {
             numero = numero + h1;
         }
+        free(liste_numero_MCU);
     }
+    
     liste_valeur[compteur] = 2147483648;
     return liste_valeur;
 }
@@ -207,17 +209,6 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8
 
 uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t *facteurs){ //dans liste_matrice tous les Y puis tous les Cb puis tous les Cr
 
-    uint8_t ***resultat_Cb = malloc((facteurs[3]*facteurs[2])*sizeof(uint8_t**));
-    for (uint8_t l=0;l<facteurs[3]*facteurs[2];l++){
-        resultat_Cb[l]=malloc(MCU_TAILLE*sizeof(uint8_t*));
-        for (uint8_t i=0;i<MCU_TAILLE;i++){
-            resultat_Cb[l][i]=malloc(MCU_TAILLE*sizeof(uint8_t));
-            for (uint8_t j=0;j<MCU_TAILLE;j++){
-                resultat_Cb[l][i][j] = liste_matrice[l+facteurs[0]*facteurs[1]][i][j];
-            }
-        }
-    }
-
     uint8_t **temp_Cb = concat_matrice(liste_matrice,facteurs[0],facteurs[1],facteurs[1]*facteurs[0]);
 
 
@@ -228,16 +219,6 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
     }
     free(temp_Cb);
 
-    uint8_t ***resultat_Cr = malloc((facteurs[5]*facteurs[4])*sizeof(uint8_t**));
-    for (uint8_t l=0;l<facteurs[5]*facteurs[4];l++){
-        resultat_Cr[l]=malloc(MCU_TAILLE*sizeof(uint8_t*));
-        for (uint8_t i=0;i<MCU_TAILLE;i++){
-            resultat_Cr[l][i]=malloc(MCU_TAILLE*sizeof(uint8_t));
-            for (uint8_t j=0;j<MCU_TAILLE;j++){
-                resultat_Cr[l][i][j] = liste_matrice[l+facteurs[3]*facteurs[2]+facteurs[0]*facteurs[1]][i][j];
-            }
-        }
-    }
     uint8_t **temp_Cr = concat_matrice(liste_matrice,facteurs[0],facteurs[1],2*facteurs[1]*facteurs[0]);
 
 
