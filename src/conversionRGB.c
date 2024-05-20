@@ -73,7 +73,7 @@ uint8_t approx_value(float value)
         return (uint8_t)value;
     }
     else{
-        return ((uint8_t)value) + 1;
+        return (uint8_t)value + 1;
     }
 }
 

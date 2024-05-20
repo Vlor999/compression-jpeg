@@ -66,17 +66,17 @@ int main(int argc, char **argv)
     ecr->compteur = 7;
 
     
-    if (h1 != 1 || v1 != 1)
+    if ((h1 != 1 || v1 != 1) && couleur == true)
     {
         uint8_t ***liste_MCU = malloc((3 * h1 * v1) * sizeof(uint8_t**));
         for (uint8_t k = 0; k < h1 * v1 * 3; k++)
-    {
-        liste_MCU[k] = malloc(MCU_TAILLE * sizeof(uint8_t*));
-        for (uint8_t l = 0; l < MCU_TAILLE; l++)
         {
-            liste_MCU[k][l] = malloc(MCU_TAILLE * sizeof(uint8_t));
+            liste_MCU[k] = malloc(MCU_TAILLE * sizeof(uint8_t*));
+            for (uint8_t l = 0; l < MCU_TAILLE; l++)
+            {
+                liste_MCU[k][l] = malloc(MCU_TAILLE * sizeof(uint8_t));
+            }
         }
-    }
         uint32_t nb_MCU_ligne = ceil(((float) our_datas.nb_ligne) / MCU_TAILLE);
         uint32_t nb_MCU_colonne = ceil(((float) our_datas.nb_colonne) / MCU_TAILLE);
         if (verbose)
@@ -132,7 +132,6 @@ int main(int argc, char **argv)
                 free(mcu_YCbCr[2]);
                 free(mcu_YCbCr);
             }
-            
             uint8_t ***liste_echantillonnee = echantillonnage_complet_depuis_YCbCr(liste_MCU, tableau_coeffs_sous_echantillonage);
 
             for (uint8_t k = 0; k < h1 * v1; k++)
@@ -156,49 +155,52 @@ int main(int argc, char **argv)
                 free(resultat_final);
                 free(liste_echantillonnee[k]);
             }
-            for (uint8_t k = 0; k < h2 * v2; k++)
+            if(couleur)
             {
-                int16_t **img_Cb_DCT = dct(liste_echantillonnee[k + h1 * v1]);//tableau_MCU[nb_Cb]);
-                int16_t *img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
-                int16_t *img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
-                RLE = codage_AC_RLE(img_Cb_quantifie);
-                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_Cb_quantifie, verbose);
-                ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
-                prec_Cb = img_Cb_quantifie[0];
+                for (uint8_t k = 0; k < h2 * v2; k++)
+                {
+                    int16_t **img_Cb_DCT = dct(liste_echantillonnee[k + h1 * v1]);//tableau_MCU[nb_Cb]);
+                    int16_t *img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
+                    int16_t *img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
+                    RLE = codage_AC_RLE(img_Cb_quantifie);
+                    resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cb, img_Cb_quantifie, verbose);
+                    ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
+                    prec_Cb = img_Cb_quantifie[0];
 
-                free(img_Cb_ZigZag);
-                free(img_Cb_quantifie);
-                free(RLE);
-                free(resultat_final);
-                for (uint8_t b=0;b<MCU_TAILLE;b++){
-                    free(img_Cb_DCT[b]);
-                    free(liste_echantillonnee[k+h1 * v1][b]);
-                }
-                free(img_Cb_DCT);
-                free(liste_echantillonnee[k+h1 * v1]);
-            }
-            for (uint8_t k = 0; k < h3 * v3; k++)
-            {
-                int16_t **img_Cr_DCT = dct(liste_echantillonnee[h1*v1 + h2*v2 + k]);//tableau_MCU[nb_Cb]);
-                int16_t *img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
-                int16_t *img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
-                RLE = codage_AC_RLE(img_Cr_quantifie);
-                resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_Cr_quantifie, verbose);
-                ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
-                prec_Cr = img_Cr_quantifie[0];
+                    free(img_Cb_ZigZag);
+                    free(img_Cb_quantifie);
+                    free(RLE);
+                    free(resultat_final);
 
-                free(img_Cr_ZigZag);
-                free(img_Cr_quantifie);
-                free(RLE);
-                free(resultat_final);
-                for (uint8_t b=0;b<MCU_TAILLE;b++){
-                    free(img_Cr_DCT[b]);
-                    free(liste_echantillonnee[h1*v1 + h2*v2 + k][b]);
+                    for (uint8_t b=0;b<MCU_TAILLE;b++){
+                        free(img_Cb_DCT[b]);
+                        free(liste_echantillonnee[k+h1 * v1][b]);
+                    }
+                    free(img_Cb_DCT);
+                    free(liste_echantillonnee[k+h1 * v1]);
                 }
-                free(img_Cr_DCT);
-                free(liste_echantillonnee[h1*v1 + h2*v2 + k]);
+                for (uint8_t k = 0; k < h3 * v3; k++)
+                {
+                    int16_t **img_Cr_DCT = dct(liste_echantillonnee[h1*v1 + h2*v2 + k]);//tableau_MCU[nb_Cb]);
+                    int16_t *img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
+                    int16_t *img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
+                    RLE = codage_AC_RLE(img_Cr_quantifie);
+                    resultat_final = codage_total_AC_DC_CbCr(RLE, prec_Cr, img_Cr_quantifie, verbose);
+                    ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
+                    prec_Cr = img_Cr_quantifie[0];
+
+                    free(img_Cr_ZigZag);
+                    free(img_Cr_quantifie);
+                    free(RLE);
+                    free(resultat_final);
+                    for (uint8_t b=0;b<MCU_TAILLE;b++){
+                        free(img_Cr_DCT[b]);
+                        free(liste_echantillonnee[h1*v1 + h2*v2 + k][b]);
+                    }
+                    free(img_Cr_DCT);
+                    free(liste_echantillonnee[h1*v1 + h2*v2 + k]);
+                }
             }
-        
             free(liste_echantillonnee);
             i = i + h1 * v1;
         }
@@ -212,7 +214,6 @@ int main(int argc, char **argv)
             free(liste_MCU[k]);
         }
         free(liste_MCU);
-        free(tableau_coeffs_sous_echantillonage);
     }
     else
     {
@@ -336,7 +337,7 @@ int main(int argc, char **argv)
                 free(img_Cb_DCT);
                 free(img_Cb_ZigZag);
                 free(img_Cb_quantifie);
-                free(resultat_final);
+                // free(resultat_final);
 
                 // Partie Cr
                 int16_t **img_Cr_DCT = dct(mcu_Cr);//tableau_MCU[nb_Cr]);
@@ -352,7 +353,7 @@ int main(int argc, char **argv)
                 free(img_Cr_DCT);
                 free(img_Cr_ZigZag);
                 free(img_Cr_quantifie);
-                free(resultat_final);
+                // free(resultat_final);
             }
             if(progression)
             {
@@ -384,12 +385,13 @@ int main(int argc, char **argv)
             free(resultat_final);
         }
     }
-    
     Fermeture_fichier(our_datas);
     fwrite(&(ecr->nb), sizeof(uint8_t), 1, fptr);
     free(ecr);
     ecrire_fin(fptr);
     fclose(fptr);
     affichage_fin(input, filename);
+    free(filename);
+    free(tableau_coeffs_sous_echantillonage);
     return 0;
 }

@@ -4,9 +4,9 @@
 #include <string.h>
 #include <stdbool.h>
 #include <time.h>
-#include "../include/ss_echantillonnage2.h"
-#include "../include/conversionRGB.h"
 #include "../include/recup_v2.h"
+#include "../include/conversionRGB.h"
+#include "../include/ss_echantillonnage2.h"
 
 uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
 {
@@ -84,10 +84,9 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         for (uint8_t i = 0; i < h1 * v1; i++)
         {
             liste_valeur[compteur] = liste_numero_MCU[i];
-            // printf("%d\t", liste_valeur[compteur]);
             compteur++;
         }
-        // printf("\n");
+        
         nb += 1;
         if (nb >= nb_calcul)
         {
@@ -98,9 +97,7 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         {
             numero = numero + h1;
         }
-        free(liste_numero_MCU);
     }
-    
     liste_valeur[compteur] = 2147483648;
     return liste_valeur;
 }
@@ -328,8 +325,8 @@ uint8_t *echantillonage(char* sample_factors) {
     if (!possible) 
     {
         probleme_echantillonnage();
+        free(value);
     }
-    // printf("Good\n");
     
     return value;
 }
