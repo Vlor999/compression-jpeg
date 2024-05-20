@@ -21,12 +21,12 @@ typedef struct data_frame
 
 imagePGM_RGB* LecturePPM(const char* filename);
 
+/****/
 
 data_frame Lecture_Init(const char* filename);
 
 MCU_RGB* Read_File(data_frame data, uint64_t number);
 
 void Fermeture_fichier(data_frame data);
-
 
 #endif

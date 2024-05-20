@@ -9,6 +9,9 @@
 * @return la magnétude, une erreur si n est trop grand
 *
 **/
+
+
+
 uint8_t trouver_magnetude(int16_t n);
 
 
@@ -35,6 +38,7 @@ uint8_t *bits_poids_forts(uint8_t *RLE);
  * @param tab le tableau donnée après zigzag !! l'indice 0 correspond à la taille du tableau
  * @return un tableau 1D plus court sous forme 1222130 ou 30 veut dire 3 zero d'affilé
  * **/
+
 uint8_t* codage_AC_RLE(int16_t* tab);
 
 /*
@@ -42,6 +46,8 @@ uint8_t* codage_AC_RLE(int16_t* tab);
 * @entree n l entier choisi 
 * @sortie le code dc 
 */
+
+
 uint8_t *codage_indice_magn(int16_t n);
 
 
@@ -54,6 +60,7 @@ extern uint8_t code_DC_CbCr[12][11];
  * @param n l'entier, code_associe le code de Huffman associe 
  * @return un tableau qui contient l'entete puis l indice de n 
  * **/
+
 //ATTENTION PREMIERE VALEUR CONTIENT LA TAILLE
 uint8_t *codage_total_DC_Y(int16_t n);
 

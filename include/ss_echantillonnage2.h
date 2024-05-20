@@ -33,6 +33,7 @@ bool verif_rectriction(uint8_t h1,uint8_t v1,uint8_t h2,uint8_t v2,uint8_t h3,ui
 
 void probleme_echantillonnage();
 
+void free_tab_echantillonnee(Triplet_YCbCr** tab);
 
 
 

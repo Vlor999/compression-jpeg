@@ -1,10 +1,9 @@
 #include "../include/MCU.h"
 #include "../include/recupereimage.h"
-#include "../include/conversionRGB.h"
 
 uint32_t entier_inferieur(uint32_t l)
 {
-    return MCU_TAILLE * (l / MCU_TAILLE);
+    return 8 * (l / 8);
 }
 
 
@@ -29,8 +28,8 @@ imagePGM *nouveau_tableau(imagePGM *image)
         // ON va créer une imagePGM avec des bords mutiples de 8
         imagePGM *new_tab = malloc(sizeof(imagePGM));
 
-        new_tab->ligne = (new_ligne != nb_ligne) ? new_ligne + MCU_TAILLE : nb_ligne;
-        new_tab->col = (new_colonne != nb_colonne) ? new_colonne + MCU_TAILLE : nb_colonne;
+        new_tab->ligne = (new_ligne != nb_ligne) ? new_ligne + 8 : nb_ligne;
+        new_tab->col = (new_colonne != nb_colonne) ? new_colonne + 8 : nb_colonne;
         new_tab->max = image->max;
 
         new_tab->tab = malloc(new_tab->ligne * sizeof(uint8_t *));
@@ -50,16 +49,15 @@ imagePGM *nouveau_tableau(imagePGM *image)
     return image;
 }
 
-uint8_t **decoupage(imagePGM *tab, uint32_t i, uint32_t j) //tab aux bonnes dimensions
+uint8_t **decoupage(imagePGM *tab,uint32_t i,uint32_t j) //tab aux bonnes dimensions
 {
-    uint8_t **tableau = malloc(MCU_TAILLE * sizeof(uint8_t*));
-    for (uint8_t h = 0; h < MCU_TAILLE; h++)
-    {
-        tableau[h] = malloc(MCU_TAILLE * sizeof(uint8_t));
+    uint8_t **tableau = malloc(8*sizeof(uint8_t*));
+    for (int h = 0;h< 8;h++){
+        tableau[h]=malloc(8*sizeof(uint8_t));
     }
-    for (uint8_t k = 0; k < MCU_TAILLE; k++)
+    for (uint8_t k = 0; k < 8; k++)
     {
-        for (uint8_t l = 0; l < MCU_TAILLE; l++)
+        for (uint8_t l = 0; l < 8; l++)
         {
             tableau[l][k] = tab -> tab[i + l][j + k];
         }

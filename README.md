@@ -52,7 +52,7 @@ Il sera alors présenter l'avancement à chque étape du projet.
 
 #### 2 : Structure de donnée du projet.
 
-<img src="IMG_1210.jpg">
+<img src="IMG_1181.jpg">
 
 #### 3 : Répartition des tâches au sein de l'équipe.
 

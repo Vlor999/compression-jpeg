@@ -68,7 +68,7 @@ uint8_t *codage_indice_magn(int16_t n){
     
     uint8_t magn = trouver_magnetude(n);
     int64_t nombre = 1;
-    uint64_t res = 0;
+    uint64_t res;
     int64_t tmp;
     uint8_t *tab;
     for (uint8_t k = 0;k<magn;k++){
@@ -185,7 +185,6 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2, boo
                 }    
                 indice++;
             }
-            free(tab_temp2);
             fin = false;
             if (verbose)
             {
@@ -209,7 +208,6 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2, boo
         indice++; 
     }
     res[indice] = 255; //fin du fichier 
-    free(tab_temp);
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
 }
@@ -228,8 +226,6 @@ uint8_t *codage_total_DC_Y(int16_t n){
     for (uint8_t i=1;i<=magn;i++){
         res[i+entete[0]] = cd[i-1];
     }
-    free(cd);
-    free(entete);
     return res;
 }
 
@@ -245,8 +241,6 @@ uint8_t *codage_total_DC_CbCr(int16_t n){
     for (uint8_t i=1;i<=magn;i++){
         res[i+entete[0]] = cd[i-1];
     }
-    free(cd);
-    free(entete);
     return res;
 }
 
@@ -321,7 +315,7 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool v
                 temp = RLE[compteurRLE];
                 tab_temp = code_AC_Y[temp];
             }
-            s = 0;
+             s = 0;
             for (uint8_t i=1;i<=tab_temp[0];i++){
                 res[indice] =tab_temp[i];
                 if (verbose)
@@ -342,7 +336,6 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool v
                 }    
                 indice++;
             }
-            free(tab_temp2);
             fin = false;
             if (verbose)
             {
@@ -370,7 +363,6 @@ uint8_t *codage_total_AC_DC_Y(uint8_t *RLE, int16_t prec, int16_t *flux2, bool v
         indice++;
     }
     res[indice] = 255; //fin du fichier 
-    free(tab_temp);
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
 }
