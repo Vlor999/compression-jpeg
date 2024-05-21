@@ -140,6 +140,9 @@ Arguments utilisation_argument(int argc, char *argv[])
     {
         sample_factors = "1x1,1x1,1x1";
     }
+    else{
+        output = copie_mot_jpeg(output);
+    }
 
     char* new_titre = transfo_titre(output, st, sample_factors);
     mes_arguments.input = input;

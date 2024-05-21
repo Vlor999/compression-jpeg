@@ -70,14 +70,13 @@ uint8_t *codage_indice_magn(int16_t n){
     int64_t nombre = 1;
     uint64_t res = 0;
     int64_t tmp;
-    uint8_t *tab;
+    uint8_t* tab =  malloc((magn+1)*sizeof(uint8_t));
     for (uint8_t k = 0;k<magn;k++){
         nombre = nombre * 2;   
     }
     nombre = nombre - 1;
     if (n==0)
     {
-        tab = malloc(sizeof(uint8_t));
         tab[0]=0; 
     }
     else if (n<0){
@@ -89,7 +88,8 @@ uint8_t *codage_indice_magn(int16_t n){
     }
     //on transforme res en binaire
     // on a magn qui nous dit sur combien de bits on code res  
-    tab = malloc(magn*sizeof(uint8_t));
+    
+
     for (uint8_t i=0;i<magn;i++){
         tab[magn-i-1]= res%2;
         res = res/2;
@@ -109,7 +109,7 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2, boo
     uint64_t compteurRLE = 1;
     uint64_t indice=0; //contient la taille, le premier element
     uint8_t magn;
-    uint8_t *tab_temp;
+    
     uint8_t *res = malloc((10000)*sizeof(uint8_t));
     
     magn = trouver_magnetude(flux2[0]-prec);
@@ -117,7 +117,7 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2, boo
         printf("valeur : %d\n", flux2[0]-prec); 
         printf("magnitude : %d\n",magn);
     }
-    tab_temp = codage_indice_magn(flux2[0]-prec);
+    uint8_t *tab_temp1 = codage_indice_magn(flux2[0]-prec);
 
     //PARTIE DC 
     if (verbose){
@@ -131,16 +131,18 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2, boo
         indice ++;
     }
     for (uint8_t i=0;i<magn;i++){
-        res[indice] = tab_temp[i];
+        res[indice] = tab_temp1[i];
         if (verbose){
             printf("%d" ,res[indice]);
         }
         indice ++;
     }
+    free(tab_temp1);
     bool fin = true;
     if (verbose){
         printf("\n\n\n\n");
     }
+    
     while (compteur <= 63){
         if (flux2[compteur]==0){
             compteur++;
@@ -210,7 +212,7 @@ uint8_t *codage_total_AC_DC_CbCr(uint8_t *RLE, int16_t prec, int16_t *flux2, boo
         indice++; 
     }
     res[indice] = 255; //fin du fichier 
-    free(tab_temp);
+    
     res = realloc(res,(indice+1)*sizeof(uint8_t));
     return res;
 }
