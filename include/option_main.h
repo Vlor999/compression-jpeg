@@ -19,7 +19,7 @@ typedef struct {
 * @return : char *
 * @brief : permet de dupliquer une chaine de caractère et de rajouter.jpeg à la fin
 */
-char *copie_mot_jpeg(const char *s);
+char *copie_mot_jpeg(const char *s, bool extention);
 
 /*
 * @param : pas d'argument

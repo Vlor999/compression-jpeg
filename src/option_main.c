@@ -15,7 +15,7 @@ void print_help()
     printf("--t : pour activer le mode téléchargement\n");
 }
 
-char *copie_mot_jpeg(const char *s) 
+char *copie_mot_jpeg(const char *s, bool extention) 
 {
     size_t len = strlen(s) + 1;
     char *sortie = malloc(len);
@@ -23,7 +23,10 @@ char *copie_mot_jpeg(const char *s)
     {
         memcpy(sortie, s, len);
     }
-    strcat(sortie, ".jpg");
+    if(extention)
+    {
+        strcat(sortie, ".jpg");
+    }
     return sortie;
 }
 
@@ -132,16 +135,17 @@ Arguments utilisation_argument(int argc, char *argv[])
         } 
         else 
         {
-            output = copie_mot_jpeg(input); //n'existe pas dans la librairie standard 
+            output = copie_mot_jpeg(input, true); //n'existe pas dans la librairie standard 
             
         }
+    }
+    else
+    {
+        output = copie_mot_jpeg(output, false);
     }
     if(sample_factors == NULL) 
     {
         sample_factors = "1x1,1x1,1x1";
-    }
-    else{
-        output = copie_mot_jpeg(output);
     }
 
     char* new_titre = transfo_titre(output, st, sample_factors);
