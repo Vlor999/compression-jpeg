@@ -19,6 +19,10 @@
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
+  - perso_test_thumbs
+  - perso_test_vertical
+  - perso_test_horizontal
+  - peros_test_shaun_the_sheep
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
@@ -52,3 +56,87 @@ test-couleur-ssech:
     - ./ppm2jpeg --outfile=./out/thumbs-2x2-2x1-2x1.jpg --sample=2x2,2x1,2x1 ./images/thumbs.ppm
     - test -f ./out/thumbs-2x2-2x1-2x1.jpg # on vérifie que le fichier de sortie existe
 
+test-ssech-all-thumbs:
+  stage: perso_test_thumbs
+  script:
+    - mkdir -p our_test
+    - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/thumbs.ppm --st
+    - test -f ./our_test/thumbs_1x1,1x1,1x1.jpg
+
+    - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/thumbs.ppm --st
+    - test -f ./our_test/thumbs_1x2,1x1,1x2.jpg
+
+    - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/thumbs.ppm --st
+    - test -f ./our_test/thumbs_2x1,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/thumbs.ppm --st
+    - test -f ./our_test/thumbs_2x2,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/thumbs.ppm --st
+    - test -f ./our_test/thumbs_3x1,3x1,3x1.jpg
+
+    - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/thumbs.ppm --st
+    - test -f ./our_test/thumbs_3x2,1x2,1x2.jpg
+
+test-ssech-all-vertical:
+  stage: perso_test_vertical
+  script:
+    - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/vertical.ppm --st
+    - test -f ./our_test/vertical_1x1,1x1,1x1.jpg
+
+    - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/vertical.ppm --st
+    - test -f ./our_test/vertical_1x2,1x1,1x2.jpg
+
+    - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/vertical.ppm --st
+    - test -f ./our_test/vertical_2x1,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/vertical.ppm --st
+    - test -f ./our_test/vertical_2x2,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/vertical.ppm --st
+    - test -f ./our_test/vertical_3x1,3x1,3x1.jpg
+
+    - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/vertical.ppm --st
+    - test -f ./our_test/vertical_3x2,1x2,1x2.jpg
+  
+test-ssech-all-horizontal:
+  stage: perso_test_horizontal
+  script:
+    - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/horizontal.ppm --st
+    - test -f ./our_test/horizontal_1x1,1x1,1x1.jpg
+
+    - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/horizontal.ppm --st
+    - test -f ./our_test/horizontal_1x2,1x1,1x2.jpg
+
+    - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/horizontal.ppm --st
+    - test -f ./our_test/horizontal_2x1,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/horizontal.ppm --st
+    - test -f ./our_test/horizontal_2x2,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/horizontal.ppm --st
+    - test -f ./our_test/horizontal_3x1,3x1,3x1.jpg
+
+    - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/horizontal.ppm --st
+    - test -f ./our_test/horizontal_3x2,1x2,1x2.jpg
+  
+test-ssech-all-shaun_the_sheep:
+  stage: perso_test_shaun_the_sheep
+  script:
+    - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/shaun_the_sheep.ppm --st
+    - test -f ./our_test/shaun_the_sheep_1x1,1x1,1x1.jpg
+
+    - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/shaun_the_sheep.ppm --st
+    - test -f ./our_test/shaun_the_sheep_1x2,1x1,1x2.jpg
+
+    - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/shaun_the_sheep.ppm --st
+    - test -f ./our_test/shaun_the_sheep_2x1,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/shaun_the_sheep.ppm --st
+    - test -f ./our_test/shaun_the_sheep_2x2,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/shaun_the_sheep.ppm --st
+    - test -f ./our_test/shaun_the_sheep_3x1,3x1,3x1.jpg
+
+    - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/shaun_the_sheep.ppm --st
+    - test -f ./our_test/shaun_the_sheep_3x2,1x2,1x2.jpg
