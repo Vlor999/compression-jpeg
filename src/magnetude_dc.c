@@ -79,6 +79,7 @@ uint8_t *codage_indice_magn(int16_t n){
     {
         tab = malloc(sizeof(uint8_t));
         tab[0]=0; 
+        return tab;
     }
     else if (n<0){
         res = (nombre + n) ;
