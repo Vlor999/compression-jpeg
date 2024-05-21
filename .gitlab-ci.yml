@@ -59,84 +59,83 @@ test-couleur-ssech:
 test-ssech-all-thumbs:
   stage: perso_test_thumbs
   script:
-    - mkdir -p our_test
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/thumbs.ppm --st
-    - test -f ./our_test/thumbs_1x1,1x1,1x1.jpg
+    - test -f ./thumbs_1x1,1x1,1x1.jpg
 
     - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/thumbs.ppm --st
-    - test -f ./our_test/thumbs_1x2,1x1,1x2.jpg
+    - test -f ./thumbs_1x2,1x1,1x2.jpg
 
     - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/thumbs.ppm --st
-    - test -f ./our_test/thumbs_2x1,2x1,2x1.jpg
+    - test -f ./thumbs_2x1,2x1,2x1.jpg
 
     - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/thumbs.ppm --st
-    - test -f ./our_test/thumbs_2x2,2x1,2x1.jpg
+    - test -f ./thumbs_2x2,2x1,2x1.jpg
 
     - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/thumbs.ppm --st
-    - test -f ./our_test/thumbs_3x1,3x1,3x1.jpg
+    - test -f ./thumbs_3x1,3x1,3x1.jpg
 
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/thumbs.ppm --st
-    - test -f ./our_test/thumbs_3x2,1x2,1x2.jpg
+    - test -f ./thumbs_3x2,1x2,1x2.jpg
 
 test-ssech-all-vertical:
   stage: perso_test_vertical
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/vertical.ppm --st
-    - test -f ./our_test/vertical_1x1,1x1,1x1.jpg
+    - test -f ./vertical_1x1,1x1,1x1.jpg
 
     - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/vertical.ppm --st
-    - test -f ./our_test/vertical_1x2,1x1,1x2.jpg
+    - test -f ./vertical_1x2,1x1,1x2.jpg
 
     - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/vertical.ppm --st
-    - test -f ./our_test/vertical_2x1,2x1,2x1.jpg
+    - test -f ./vertical_2x1,2x1,2x1.jpg
 
     - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/vertical.ppm --st
-    - test -f ./our_test/vertical_2x2,2x1,2x1.jpg
+    - test -f ./vertical_2x2,2x1,2x1.jpg
 
     - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/vertical.ppm --st
-    - test -f ./our_test/vertical_3x1,3x1,3x1.jpg
+    - test -f ./vertical_3x1,3x1,3x1.jpg
 
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/vertical.ppm --st
-    - test -f ./our_test/vertical_3x2,1x2,1x2.jpg
+    - test -f ./vertical_3x2,1x2,1x2.jpg
   
 test-ssech-all-horizontal:
   stage: perso_test_horizontal
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/horizontal.ppm --st
-    - test -f ./our_test/horizontal_1x1,1x1,1x1.jpg
+    - test -f ./horizontal_1x1,1x1,1x1.jpg
 
     - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/horizontal.ppm --st
-    - test -f ./our_test/horizontal_1x2,1x1,1x2.jpg
+    - test -f ./horizontal_1x2,1x1,1x2.jpg
 
     - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/horizontal.ppm --st
-    - test -f ./our_test/horizontal_2x1,2x1,2x1.jpg
+    - test -f ./horizontal_2x1,2x1,2x1.jpg
 
     - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/horizontal.ppm --st
-    - test -f ./our_test/horizontal_2x2,2x1,2x1.jpg
+    - test -f ./horizontal_2x2,2x1,2x1.jpg
 
     - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/horizontal.ppm --st
-    - test -f ./our_test/horizontal_3x1,3x1,3x1.jpg
+    - test -f ./horizontal_3x1,3x1,3x1.jpg
 
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/horizontal.ppm --st
-    - test -f ./our_test/horizontal_3x2,1x2,1x2.jpg
+    - test -f ./horizontal_3x2,1x2,1x2.jpg
   
 test-ssech-all-shaun_the_sheep:
   stage: perso_test_shaun_the_sheep
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/shaun_the_sheep.ppm --st
-    - test -f ./our_test/shaun_the_sheep_1x1,1x1,1x1.jpg
+    - test -f ./shaun_the_sheep_1x1,1x1,1x1.jpg
 
     - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/shaun_the_sheep.ppm --st
-    - test -f ./our_test/shaun_the_sheep_1x2,1x1,1x2.jpg
+    - test -f ./shaun_the_sheep_1x2,1x1,1x2.jpg
 
     - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/shaun_the_sheep.ppm --st
-    - test -f ./our_test/shaun_the_sheep_2x1,2x1,2x1.jpg
+    - test -f ./shaun_the_sheep_2x1,2x1,2x1.jpg
 
     - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/shaun_the_sheep.ppm --st
-    - test -f ./our_test/shaun_the_sheep_2x2,2x1,2x1.jpg
+    - test -f ./shaun_the_sheep_2x2,2x1,2x1.jpg
 
     - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/shaun_the_sheep.ppm --st
-    - test -f ./our_test/shaun_the_sheep_3x1,3x1,3x1.jpg
+    - test -f ./shaun_the_sheep_3x1,3x1,3x1.jpg
 
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/shaun_the_sheep.ppm --st
-    - test -f ./our_test/shaun_the_sheep_3x2,1x2,1x2.jpg
+    - test -f ./shaun_the_sheep_3x2,1x2,1x2.jpg
