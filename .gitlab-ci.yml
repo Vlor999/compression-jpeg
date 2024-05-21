@@ -19,11 +19,7 @@
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
-  - perso_test_thumbs
-  - perso_test_vertical
-  - perso_test_horizontal
-  - perso_test_shaun_the_sheep
-  - perso_test_zig-zag
+  - perso_test
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
@@ -58,7 +54,7 @@ test-couleur-ssech:
     - test -f ./out/thumbs-2x2-2x1-2x1.jpg # on vérifie que le fichier de sortie existe
 
 test-ssech-all-thumbs:
-  stage: perso_test_thumbs
+  stage: perso_test
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/thumbs.ppm --st
     - test -f ./images/thumbs_1x1,1x1,1x1.jpg
@@ -79,7 +75,7 @@ test-ssech-all-thumbs:
     - test -f ./images/thumbs_3x2,1x2,1x2.jpg
 
 test-ssech-all-vertical:
-  stage: perso_test_vertical
+  stage: perso_test
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/vertical.ppm --st
     - test -f ./images/vertical_1x1,1x1,1x1.jpg
@@ -100,7 +96,7 @@ test-ssech-all-vertical:
     - test -f ./images/vertical_3x2,1x2,1x2.jpg
   
 test-ssech-all-horizontal:
-  stage: perso_test_horizontal
+  stage: perso_test
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/horizontal.ppm --st
     - test -f ./images/horizontal_1x1,1x1,1x1.jpg
@@ -121,7 +117,7 @@ test-ssech-all-horizontal:
     - test -f ./images/horizontal_3x2,1x2,1x2.jpg
   
 test-ssech-all-shaun_the_sheep:
-  stage: perso_test_shaun_the_sheep
+  stage: perso_test
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/shaun_the_sheep.ppm --st
     - test -f ./images/shaun_the_sheep_1x1,1x1,1x1.jpg
@@ -142,7 +138,7 @@ test-ssech-all-shaun_the_sheep:
     - test -f ./images/shaun_the_sheep_3x2,1x2,1x2.jpg
 
 test-ssech-all-zig-zag:
-  stage: perso_test_zig-zag
+  stage: perso_test
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/zig-zag.ppm --st
     - test -f ./images/zig-zag_1x1,1x1,1x1.jpg
