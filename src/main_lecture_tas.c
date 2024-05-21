@@ -207,7 +207,7 @@ int main(int argc, char **argv)
             
         }
 
-        free(tab_lecture_mcu);
+        // free(tab_lecture_mcu);
         // for (uint8_t k = 0; k < h1 * v1 * 3; k++)
         // {
         //     for (uint8_t l = 0; l < MCU_TAILLE; l++)
