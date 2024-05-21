@@ -23,6 +23,7 @@ stages:          # List of stages for jobs, and their order of execution
   - perso_test_vertical
   - perso_test_horizontal
   - perso_test_shaun_the_sheep
+  - perso_test_zig-zag
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
@@ -139,3 +140,24 @@ test-ssech-all-shaun_the_sheep:
 
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/shaun_the_sheep.ppm --st
     - test -f ./images/shaun_the_sheep_3x2,1x2,1x2.jpg
+
+test-ssech-all-zig-zag:
+  stage: perso_test_zig-zag
+  script:
+    - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/zig-zag.ppm --st
+    - test -f ./images/zig-zag_1x1,1x1,1x1.jpg
+
+    - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/zig-zag.ppm --st
+    - test -f ./images/zig-zag_1x2,1x1,1x2.jpg
+
+    - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/zig-zag.ppm --st
+    - test -f ./images/zig-zag_2x1,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/zig-zag.ppm --st
+    - test -f ./images/zig-zag_2x2,2x1,2x1.jpg
+
+    - ./ppm2jpeg --sample=3x1,3x1,3x1 ./images/zig-zag.ppm --st
+    - test -f ./images/zig-zag_3x1,3x1,3x1.jpg
+
+    - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/zig-zag.ppm --st
+    - test -f ./images/zig-zag_3x2,1x2,1x2.jpg
