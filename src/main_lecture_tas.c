@@ -201,10 +201,13 @@ int main(int argc, char **argv)
                     free(liste_echantillonnee[h1*v1 + h2*v2 + k]);
                 }
             }
+            
             free(liste_echantillonnee);
             i = i + h1 * v1;
+            
         }
-        // free(tab_lecture_mcu);
+
+        free(tab_lecture_mcu);
         // for (uint8_t k = 0; k < h1 * v1 * 3; k++)
         // {
         //     for (uint8_t l = 0; l < MCU_TAILLE; l++)
@@ -390,7 +393,7 @@ int main(int argc, char **argv)
     ecrire_fin(fptr);
     fclose(fptr);
     affichage_fin(input, filename);
-    // free(filename);
+    free(filename);
     free(tableau_coeffs_sous_echantillonage);
     return 0;
 }
