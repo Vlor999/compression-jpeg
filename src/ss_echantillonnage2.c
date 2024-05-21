@@ -4,9 +4,9 @@
 #include <string.h>
 #include <stdbool.h>
 #include <time.h>
-#include "../include/ss_echantillonnage2.h"
-#include "../include/conversionRGB.h"
 #include "../include/recup_v2.h"
+#include "../include/conversionRGB.h"
+#include "../include/ss_echantillonnage2.h"
 
 uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t numero_premiere_mcu)
 {
@@ -31,7 +31,6 @@ uint64_t* sous_echantilonnage(uint8_t* value, data_frame our_datas, uint64_t num
     bool is_dangerous_horizontal;
     bool is_dangerous_vertical;
     uint32_t valeur_fin_ligne = sous_matrice_par_ligne * ((numero_premiere_mcu / sous_matrice_par_ligne) + 1);
-    uint32_t valeur_fin_colonne = sous_matrice_par_colonne * ((numero_premiere_mcu / sous_matrice_par_colonne) + 1);
     uint16_t nb_ligne = numero_premiere_mcu / sous_matrice_par_ligne;
     for (uint8_t l = 0; l < v1; l++)
     {
@@ -78,17 +77,16 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         nb_calcul = x / h1;
     }
     uint32_t nb = 0;
-    uint64_t* liste_numero_MCU;
+    // = malloc(h1*v1*sizeof(uint64_t));
     while (numero < our_datas.nb_MCU)
     {
-        liste_numero_MCU = sous_echantilonnage(value, our_datas, numero);
+         uint64_t* liste_numero_MCU= sous_echantilonnage(value, our_datas, numero);
         for (uint8_t i = 0; i < h1 * v1; i++)
         {
             liste_valeur[compteur] = liste_numero_MCU[i];
-            // printf("%d\t", liste_valeur[compteur]);
             compteur++;
         }
-        // printf("\n");
+        
         nb += 1;
         if (nb >= nb_calcul)
         {
@@ -99,51 +97,19 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         {
             numero = numero + h1;
         }
-        
     }
-
-    free(liste_numero_MCU);
-    
+    // free(liste_numero_MCU);
     liste_valeur[compteur] = 2147483648;
     return liste_valeur;
 }
 
-// int main()
-// {
-//     uint8_t value[6] = {1, 3, 1, 1, 1, 1};
-//     data_frame our_datas = {439, 324, 2255, 255, 0, false, NULL};
-//     // uint64_t* liste = sous_echantilonnage(value, our_datas, 54);
-//     // for (uint8_t i = 0; i < 3; i++)
-//     // {
-//     //     printf("%d\t", liste[i]);
-//     // }
-//     uint64_t* liste_valeur = ensemble_valeur(value, our_datas);
-//     uint16_t i = 0;
-//     while (liste_valeur[i] != 2147483648)
-//     {
-//         printf("%d", liste_valeur[i]);
-//         i++;
-//         if(i % 3 == 0)
-//         {
-//             printf("\n");
-//         }
-//         else
-//         {
-//             printf("\t");
-//         }
-//     }
-    
-//     printf("\n");
-//     return 0;
-// }
-
 
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t decalage)
 {
-    uint8_t** matrice_finale = malloc(8 * v * sizeof(uint8_t*)); 
-    for (uint8_t i = 0; i < 8 * v; i++)
+    uint8_t** matrice_finale = malloc(MCU_TAILLE * v * sizeof(uint8_t*)); 
+    for (uint8_t i = 0; i < MCU_TAILLE * v; i++)
     {
-        matrice_finale[i] = malloc(8 * h * sizeof(uint8_t));
+        matrice_finale[i] = malloc(MCU_TAILLE * h * sizeof(uint8_t));
     }
     
     uint8_t compteur_v = 0;
@@ -151,12 +117,12 @@ uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t
     uint8_t compteur = 0;
     // printf("debut matrice \n");
     while (compteur < h*v){
-        for(uint8_t i = 0; i < 8; i++)
+        for(uint8_t i = 0; i < MCU_TAILLE; i++)
         {
-            for(uint8_t j = 0; j < 8; j++)
+            for(uint8_t j = 0; j < MCU_TAILLE; j++)
             {
-                matrice_finale[compteur_v * 8 + i][compteur_h * 8 + j] = liste_matrice[compteur+decalage][i][j];
-                // printf("%02x\t", matrice_finale[compteur_v * 8 + i][compteur_h * 8 + j]);
+                matrice_finale[compteur_v * MCU_TAILLE + i][compteur_h * MCU_TAILLE + j] = liste_matrice[compteur+decalage][i][j];
+                // printf("%02x\t", matrice_finale[compteur_v * MCU_TAILLE + i][compteur_h * MCU_TAILLE + j]);
             }
             // printf("\n");
         }
@@ -180,9 +146,9 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8
 {
     uint8_t ***result = malloc((h*v)*sizeof(uint8_t**));
     for (uint8_t i=0;i<h*v;i++){
-        result[i]=malloc(8*sizeof(uint8_t*));
-        for (uint8_t j=0;j<8;j++){
-            result[i][j] = malloc(8*sizeof(uint8_t));
+        result[i]=malloc(MCU_TAILLE*sizeof(uint8_t*));
+        for (uint8_t j=0;j<MCU_TAILLE;j++){
+            result[i][j] = malloc(MCU_TAILLE*sizeof(uint8_t));
         }
     }
     uint8_t pas_v = v1/v;
@@ -190,8 +156,8 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8
     uint8_t compteur_v = 0;
     uint8_t compteur_h = 0;
     uint8_t compteur = 0;
-    for (uint16_t i=0;i<v1*8;i=i+pas_v){
-        for (uint16_t j=0;j<h1*8;j=j+pas_h){
+    for (uint16_t i=0;i<v1*MCU_TAILLE;i=i+pas_v){
+        for (uint16_t j=0;j<h1*MCU_TAILLE;j=j+pas_h){
             uint16_t somme = 0;
             for (uint16_t k=0;k<pas_v;k++){
                 for (uint16_t l=0;l<pas_h;l++){
@@ -241,45 +207,36 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8
 
 uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t *facteurs){ //dans liste_matrice tous les Y puis tous les Cb puis tous les Cr
 
-    uint8_t ***resultat_Cb = malloc((facteurs[3]*facteurs[2])*sizeof(uint8_t**));
-    for (uint8_t l=0;l<facteurs[3]*facteurs[2];l++){
-        resultat_Cb[l]=malloc(8*sizeof(uint8_t*));
-        for (uint8_t i=0;i<8;i++){
-            resultat_Cb[l][i]=malloc(8*sizeof(uint8_t));
-            for (uint8_t j=0;j<8;j++){
-                resultat_Cb[l][i][j] = liste_matrice[l+facteurs[0]*facteurs[1]][i][j];
-            }
-        }
-    }
-
     uint8_t **temp_Cb = concat_matrice(liste_matrice,facteurs[0],facteurs[1],facteurs[1]*facteurs[0]);
+
 
     uint8_t ***liste_Cb = sous_echantillonnage_CbCr(temp_Cb,facteurs[0],facteurs[1],facteurs[2],facteurs[3]);
     
-
-    uint8_t ***resultat_Cr = malloc((facteurs[5]*facteurs[4])*sizeof(uint8_t**));
-    for (uint8_t l=0;l<facteurs[5]*facteurs[4];l++){
-        resultat_Cr[l]=malloc(8*sizeof(uint8_t*));
-        for (uint8_t i=0;i<8;i++){
-            resultat_Cr[l][i]=malloc(8*sizeof(uint8_t));
-            for (uint8_t j=0;j<8;j++){
-                resultat_Cr[l][i][j] = liste_matrice[l+facteurs[3]*facteurs[2]+facteurs[0]*facteurs[1]][i][j];
-            }
-        }
+    for (uint16_t i=0;i<MCU_TAILLE*facteurs[1];i++){
+        free(temp_Cb[i]);
     }
+    free(temp_Cb);
+
     uint8_t **temp_Cr = concat_matrice(liste_matrice,facteurs[0],facteurs[1],2*facteurs[1]*facteurs[0]);
+
+
 
     uint8_t ***liste_Cr = sous_echantillonnage_CbCr(temp_Cr,facteurs[0],facteurs[1],facteurs[4],facteurs[5]);
     
+    
+    for (uint16_t i=0;i<MCU_TAILLE*facteurs[1];i++){
+        free(temp_Cr[i]);
+    }
+    free(temp_Cr);
 
     //TRUC FINAL
     // printf("\n\nRESULT Y\n");
     uint8_t ***resultat = malloc((facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]+facteurs[5]*facteurs[4])*sizeof(uint8_t**));
     for (uint8_t l=0;l<facteurs[0]*facteurs[1];l++){
-        resultat[l] = malloc(8*sizeof(uint8_t*));
-        for (uint8_t i=0;i<8;i++){
-            resultat[l][i]=malloc(8*sizeof(uint8_t));
-            for (uint8_t j=0;j<8;j++){
+        resultat[l] = malloc(MCU_TAILLE*sizeof(uint8_t*));
+        for (uint8_t i=0;i<MCU_TAILLE;i++){
+            resultat[l][i]=malloc(MCU_TAILLE*sizeof(uint8_t));
+            for (uint8_t j=0;j<MCU_TAILLE;j++){
                 resultat[l][i][j] = liste_matrice[l][i][j];
                 // printf("%02x\t", liste_matrice[l][i][j]);
             }
@@ -289,37 +246,41 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
     } // On a tous les Y
     // printf("\nRESULT Cb\n");
     for (uint8_t l=0;l<facteurs[3]*facteurs[2];l++){
-        resultat[l+facteurs[0]*facteurs[1]] = malloc(8*sizeof(uint8_t*));
-        for (uint8_t i=0;i<8;i++){
-            resultat[l+facteurs[0]*facteurs[1]][i]=malloc(8*sizeof(uint8_t));
-            for (uint8_t j=0;j<8;j++){
+        resultat[l+facteurs[0]*facteurs[1]] = malloc(MCU_TAILLE*sizeof(uint8_t*));
+        for (uint8_t i=0;i<MCU_TAILLE;i++){
+            resultat[l+facteurs[0]*facteurs[1]][i]=malloc(MCU_TAILLE*sizeof(uint8_t));
+            for (uint8_t j=0;j<MCU_TAILLE;j++){
                 resultat[l+facteurs[0]*facteurs[1]][i][j] = liste_Cb[l][i][j];
                 // printf("%02x\t", liste_Cb[l][i][j]);
             }
+            free(liste_Cb[l][i]);
             // printf("\n");
         }
+        free(liste_Cb[l]);
         // printf("FIN MCU\n");
     } // On a tous les CB
+
+    free(liste_Cb);
+
     // printf("\nRESULT Cr\n");
     for (uint8_t l=0;l<facteurs[5]*facteurs[4];l++){
-        resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]] = malloc(8*sizeof(uint8_t*));
-        for (uint8_t i=0;i<8;i++){
-            resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]][i]=malloc(8*sizeof(uint8_t));
-            for (uint8_t j=0;j<8;j++){
+        resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]] = malloc(MCU_TAILLE*sizeof(uint8_t*));
+        for (uint8_t i=0;i<MCU_TAILLE;i++){
+            resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]][i]=malloc(MCU_TAILLE*sizeof(uint8_t));
+            for (uint8_t j=0;j<MCU_TAILLE;j++){
                 resultat[l+facteurs[0]*facteurs[1]+facteurs[3]*facteurs[2]][i][j] = liste_Cr[l][i][j];
                 // printf("%02x\t", liste_Cr[l][i][j]);
             }
+            free(liste_Cr[l][i]);
             // printf("\n");
         }
+        free(liste_Cr[l]);
         // printf("FIN MCU\n");
     } // On a tous les Cr
+
+    free(liste_Cr);
+
     return resultat; 
-
-}
-
-
-void free_tab_echantillonnee(Triplet_YCbCr** tab){
-    free(tab);
 }
 
 void probleme_echantillonnage()
@@ -365,8 +326,8 @@ uint8_t *echantillonage(char* sample_factors) {
     if (!possible) 
     {
         probleme_echantillonnage();
+        free(value);
     }
-    // printf("Good\n");
     
     return value;
 }
@@ -379,61 +340,61 @@ uint8_t *echantillonage(char* sample_factors) {
 //     char *sample_factors = "1x1,1x1,1x1";
 //     uint8_t *factors = echantillonage(sample_factors);
 //     uint8_t ***test=malloc(6*sizeof(uint8_t**));
-//     test[0] = malloc(8*sizeof(uint8_t*));
+//     test[0] = malloc(MCU_TAILLE*sizeof(uint8_t*));
 //     printf("\n Y \n");
-//     for (int i=0;i<8;i++){
-//         test[0][i] = malloc(8*sizeof(uint8_t));
-//         for (int j=0;j<8;j++){
+//     for (int i=0;i<MCU_TAILLE;i++){
+//         test[0][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
+//         for (int j=0;j<MCU_TAILLE;j++){
 //             test[0][i][j] = rand()%10;
 //             printf("%d\t", test[0][i][j]);
 //         }
 //         printf("\n");
 //     }
 //     printf("\n Cb \n");
-//     test[1] = malloc(8*sizeof(uint8_t*));
-//     for (int i=0;i<8;i++){
-//         test[1][i] = malloc(8*sizeof(uint8_t));
-//         for (int j=0;j<8;j++){
+//     test[1] = malloc(MCU_TAILLE*sizeof(uint8_t*));
+//     for (int i=0;i<MCU_TAILLE;i++){
+//         test[1][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
+//         for (int j=0;j<MCU_TAILLE;j++){
 //             test[1][i][j] = rand()%10;
 //             printf("%d\t", test[1][i][j]);
 //         }
 //         printf("\n");
 //     }
 //     printf("\n CR \n");
-//     test[2] = malloc(8*sizeof(uint8_t*));
-//     for (int i=0;i<8;i++){
-//         test[2][i] = malloc(8*sizeof(uint8_t));
-//         for (int j=0;j<8;j++){
+//     test[2] = malloc(MCU_TAILLE*sizeof(uint8_t*));
+//     for (int i=0;i<MCU_TAILLE;i++){
+//         test[2][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
+//         for (int j=0;j<MCU_TAILLE;j++){
 //             test[2][i][j] = rand()%10;
 //             printf("%d\t", test[2][i][j]);
 //         }
 //         printf("\n");
 //     }
 //     // printf("\n");
-//     // test[3] = malloc(8*sizeof(uint8_t*));
-//     // for (int i=0;i<8;i++){
-//     //     test[3][i] = malloc(8*sizeof(uint8_t));
-//     //     for (int j=0;j<8;j++){
+//     // test[3] = malloc(MCU_TAILLE*sizeof(uint8_t*));
+//     // for (int i=0;i<MCU_TAILLE;i++){
+//     //     test[3][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
+//     //     for (int j=0;j<MCU_TAILLE;j++){
 //     //         test[3][i][j] = rand()%10;
 //     //         printf("%d\t", test[3][i][j]);
 //     //     }
 //     //     printf("\n");
 //     // }
 //     // printf("\n Cr \n");
-//     // test[4] = malloc(8*sizeof(uint8_t*));
-//     // for (int i=0;i<8;i++){
-//     //     test[4][i] = malloc(8*sizeof(uint8_t));
-//     //     for (int j=0;j<8;j++){
+//     // test[4] = malloc(MCU_TAILLE*sizeof(uint8_t*));
+//     // for (int i=0;i<MCU_TAILLE;i++){
+//     //     test[4][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
+//     //     for (int j=0;j<MCU_TAILLE;j++){
 //     //         test[4][i][j] = rand()%10;
 //     //         printf("%d\t", test[4][i][j]);
 //     //     }
 //     //     printf("\n");
 //     // }
 //     // printf("\n");
-//     // test[5] = malloc(8*sizeof(uint8_t*));
-//     // for (int i=0;i<8;i++){
-//     //     test[5][i] = malloc(8*sizeof(uint8_t));
-//     //     for (int j=0;j<8;j++){
+//     // test[5] = malloc(MCU_TAILLE*sizeof(uint8_t*));
+//     // for (int i=0;i<MCU_TAILLE;i++){
+//     //     test[5][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
+//     //     for (int j=0;j<MCU_TAILLE;j++){
 //     //         test[5][i][j] = rand()%10;
 //     //         printf("%d\t", test[5][i][j]);
 //     //     }
@@ -445,13 +406,13 @@ uint8_t *echantillonage(char* sample_factors) {
 //     // imagePGM_RGB *img = LecturePPM("images/thumbs.ppm"); // nom du fichier a preciser   
 //     // Triplet_YCbCr** new_image = conversionRGB_2_YCrCb(img); //violent le passage à l'entier ?
 //     // Triplet_YCbCr** img_echantillonner =  main_ss_echantillonnage(new_image, img->ligne, img->col,facteurs);
-//     // uint8_t **tab = (uint8_t**)malloc(8*sizeof(uint8_t*));
-//     // for (int i = 0 ; i < 8; i++)
+//     // uint8_t **tab = (uint8_t**)malloc(MCU_TAILLE*sizeof(uint8_t*));
+//     // for (int i = 0 ; i < MCU_TAILLE; i++)
 //     // {
-//     //     tab[i] = (uint8_t*)malloc(8*sizeof(uint8_t));
-//     //     for (int j = 0; j < 8; j ++)
+//     //     tab[i] = (uint8_t*)malloc(MCU_TAILLE*sizeof(uint8_t));
+//     //     for (int j = 0; j < MCU_TAILLE; j ++)
 //     //     {
-//     //         tab[i][j] = i * 8 + j;
+//     //         tab[i][j] = i * MCU_TAILLE + j;
 //     //         printf("%d\t", tab[i][j]);
 //     //     }
 //     //     printf("\n");
