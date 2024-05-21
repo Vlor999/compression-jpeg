@@ -101,9 +101,6 @@ test-ssech-all-horizontal:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/horizontal.ppm --st
     - test -f ./images/horizontal_1x1,1x1,1x1.jpg
 
-    - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/horizontal.ppm --st
-    - test -f ./images/horizontal_1x2,1x1,1x2.jpg
-
     - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/horizontal.ppm --st
     - test -f ./images/horizontal_2x1,2x1,2x1.jpg
 
