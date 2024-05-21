@@ -390,7 +390,7 @@ int main(int argc, char **argv)
     ecrire_fin(fptr);
     fclose(fptr);
     affichage_fin(input, filename);
-    free(filename);
+    // free(filename);
     free(tableau_coeffs_sous_echantillonage);
     return 0;
 }
