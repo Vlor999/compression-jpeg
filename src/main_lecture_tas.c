@@ -204,16 +204,16 @@ int main(int argc, char **argv)
             free(liste_echantillonnee);
             i = i + h1 * v1;
         }
-        // free(tab_lecture_mcu);
-        // for (uint8_t k = 0; k < h1 * v1 * 3; k++)
-        // {
-        //     for (uint8_t l = 0; l < MCU_TAILLE; l++)
-        //     {
-        //         free(liste_MCU[k][l]);
-        //     }
-        //     free(liste_MCU[k]);
-        // }
-        // free(liste_MCU);
+        for (uint8_t k = 0; k < h1 * v1 * 3; k++)
+        {
+            for (uint8_t l = 0; l < MCU_TAILLE; l++)
+            {
+                free(liste_MCU[k][l]);
+            }
+            free(liste_MCU[k]);
+        }
+        free(liste_MCU);
+        free(tab_lecture_mcu);
     }
     else
     {

@@ -77,10 +77,10 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         nb_calcul = x / h1;
     }
     uint32_t nb = 0;
-    // = malloc(h1*v1*sizeof(uint64_t));
+    uint64_t* liste_numero_MCU= sous_echantilonnage(value, our_datas, numero);
     while (numero < our_datas.nb_MCU)
     {
-         uint64_t* liste_numero_MCU= sous_echantilonnage(value, our_datas, numero);
+        liste_numero_MCU= sous_echantilonnage(value, our_datas, numero);
         for (uint8_t i = 0; i < h1 * v1; i++)
         {
             liste_valeur[compteur] = liste_numero_MCU[i];
@@ -98,7 +98,7 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
             numero = numero + h1;
         }
     }
-    // free(liste_numero_MCU);
+    free(liste_numero_MCU);
     liste_valeur[compteur] = 2147483648;
     return liste_valeur;
 }
