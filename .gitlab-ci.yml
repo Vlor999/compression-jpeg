@@ -57,11 +57,14 @@ test-couleur-ssech:
     - ./ppm2jpeg --outfile=./out/thumbs-2x2-2x1-2x1.jpg --sample=2x2,2x1,2x1 ./images/thumbs.ppm
     - test -f ./out/thumbs-2x2-2x1-2x1.jpg # on vérifie que le fichier de sortie existe
 
-test-ssech-all-thumbs:
+test-ssech-all:
   stage: perso_test_thumbs
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/thumbs.ppm --st
     - test -f ./images/thumbs_1x1,1x1,1x1.jpg
+
+    - ./ppm2jpeg --sample=1x2,1x1,1x1 ./images/thumbs.ppm --st
+    - test -f ./images/thumbs_1x2,1x1,1x1.jpg
 
     - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/thumbs.ppm --st
     - test -f ./images/thumbs_1x2,1x1,1x2.jpg
@@ -78,7 +81,7 @@ test-ssech-all-thumbs:
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/thumbs.ppm --st
     - test -f ./images/thumbs_3x2,1x2,1x2.jpg
 
-test-ssech-all-vertical:
+test-ssech-all:
   stage: perso_test_vertical
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/vertical.ppm --st
@@ -99,7 +102,7 @@ test-ssech-all-vertical:
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/vertical.ppm --st
     - test -f ./images/vertical_3x2,1x2,1x2.jpg
   
-test-ssech-all-horizontal:
+test-ssech-all:
   stage: perso_test_horizontal
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/horizontal.ppm --st
@@ -111,6 +114,9 @@ test-ssech-all-horizontal:
     - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/horizontal.ppm --st
     - test -f ./images/horizontal_2x1,2x1,2x1.jpg
 
+    - ./ppm2jpeg --sample=2x1,1x1,1x1 ./images/horizontal.ppm --st
+    - test -f ./images/horizontal_2x1,1x1,1x1.jpg
+
     - ./ppm2jpeg --sample=2x2,2x1,2x1 ./images/horizontal.ppm --st
     - test -f ./images/horizontal_2x2,2x1,2x1.jpg
 
@@ -120,7 +126,7 @@ test-ssech-all-horizontal:
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/horizontal.ppm --st
     - test -f ./images/horizontal_3x2,1x2,1x2.jpg
   
-test-ssech-all-shaun_the_sheep:
+test-ssech-all:
   stage: perso_test_shaun_the_sheep
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/shaun_the_sheep.ppm --st
@@ -141,13 +147,16 @@ test-ssech-all-shaun_the_sheep:
     - ./ppm2jpeg --sample=3x2,1x2,1x2 ./images/shaun_the_sheep.ppm --st
     - test -f ./images/shaun_the_sheep_3x2,1x2,1x2.jpg
 
-test-ssech-all-zig-zag:
+test-ssech-all:
   stage: perso_test_zig-zag
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/zig-zag.ppm --st
     - test -f ./images/zig-zag_1x1,1x1,1x1.jpg
 
     - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/zig-zag.ppm --st
+    - test -f ./images/zig-zag_1x2,1x1,1x2.jpg
+
+    - ./ppm2jpeg --sample=1x2,1x1,1x1 ./images/zig-zag.ppm --st
     - test -f ./images/zig-zag_1x2,1x1,1x2.jpg
 
     - ./ppm2jpeg --sample=2x1,2x1,2x1 ./images/zig-zag.ppm --st
