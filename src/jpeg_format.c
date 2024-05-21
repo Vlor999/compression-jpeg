@@ -29,7 +29,7 @@ void ecrire_fin(FILE* fptr){
 }
 
 
-void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr,bool couleur){
+void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr, bool couleur){
     // Indice de table quantification pour Y est 0
     int16_t marqueur = 0xdbff;
     int16_t length = 0x4300;                //la longueur de la section
@@ -132,7 +132,7 @@ uint8_t reverse_hexa(uint8_t valeur){
     return reverse;
 }
 
-void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image, uint8_t* facteurs , bool couleur){
+void ecrire_SOF(FILE* fptr, uint16_t hauteur_image, uint16_t largeur_image, uint8_t* facteurs, bool couleur){
     int16_t marqueur = 0xc0ff;
     int16_t length = 0x0b00; // la longueur de la section
     int8_t precision = 0x08;

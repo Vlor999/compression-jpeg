@@ -76,7 +76,7 @@ void affichage_fin(char* input, char* filename)
 
 void affiche_progression(uint64_t max_valeur, uint64_t nb_valeur)
 {
-    uint16_t progress = (int)((nb_valeur * 100) / max_valeur);
+    uint16_t progress = (uint16_t)((nb_valeur * 100) / max_valeur);
     if (progress > 100)
     {
         progress = 100;

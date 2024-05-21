@@ -18,8 +18,7 @@ data_frame Lecture_Init(const char *filename)
     }
 
     char input[3];
-    fscanf(file, "%2s\n", input);
-
+    bool erreur = fscanf(file, "%2s\n", input);
     if (input[0] != 'P' || (input[1] != '6' && input[1] != '5'))
     {
         fprintf(stderr, "Le fromat n'est ni PGM ni PPM\n");
@@ -32,10 +31,11 @@ data_frame Lecture_Init(const char *filename)
     uint8_t header = 9;
     bool isRGB = input[1] == '6';
     uint32_t nb_MCU = 0;
-    fscanf(file, "%hd %hd\n%hd\n", &col, &ligne, &max);
+    erreur = fscanf(file, "%hd %hd\n%hd\n", &col, &ligne, &max);
+    
 
     header = header + (uint8_t)log10(max) + (uint8_t)log10(col) + (uint8_t)log10(ligne);
-    nb_MCU = ((col + 7) / 8) * 8 * ((ligne + 7) / 8) * 8 / (MCU_TAILLE * MCU_TAILLE);
+    nb_MCU = ((col + 7) / MCU_TAILLE) * MCU_TAILLE * ((ligne + 7) / MCU_TAILLE) * MCU_TAILLE / (MCU_TAILLE * MCU_TAILLE);
 
     data_frame data = {col, ligne, nb_MCU, max, header, isRGB, file};
     return data;
@@ -53,12 +53,12 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     uint32_t nb_colonne = data.nb_colonne;
     uint32_t nb_ligne = data.nb_ligne;
 
-    nb_colonne = ((nb_colonne + 7) / 8) * 8;
-    nb_ligne = ((nb_ligne + 7) / 8) * 8;
+    nb_colonne = ((nb_colonne + 7) / MCU_TAILLE) * MCU_TAILLE;
+    nb_ligne = ((nb_ligne + 7) / MCU_TAILLE) * MCU_TAILLE;
 
     uint32_t sous_matrice_par_ligne = nb_colonne / MCU_TAILLE;
-    uint32_t debut_ligne = ((number - 1) / sous_matrice_par_ligne) * 8;
-    uint32_t debut_colonne = ((number - 1) % sous_matrice_par_ligne) * 8;
+    uint32_t debut_ligne = ((number) / sous_matrice_par_ligne) * MCU_TAILLE;
+    uint32_t debut_colonne = ((number) % sous_matrice_par_ligne) * MCU_TAILLE;
 
     bool ligne_ok = debut_ligne + 7 < data.nb_ligne;
     bool colonne_ok = debut_colonne + 7 < data.nb_colonne;
@@ -75,7 +75,7 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
         max_value_j = data.nb_colonne - debut_colonne;
     }
 
-    MCU_RGB *mcu = malloc(sizeof(MCU_RGB));
+    MCU_RGB *mcu = calloc(1, sizeof(MCU_RGB));
     uint8_t taille = sizeof(Triplet_RGB);
     if (!data.isRGB)
     {
@@ -83,7 +83,11 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     }
 
     long int position_debut = data.header * sizeof(uint8_t) + debut_ligne * data.nb_colonne * sizeof(uint8_t) * taille + debut_colonne * sizeof(uint8_t) * taille;
-    fseek(file, position_debut, SEEK_SET);
+    bool erreur = fseek(file, position_debut, SEEK_SET);
+    if(erreur != 0)
+    {
+        printf("erreur fseek\n");
+    }
 
     for (uint8_t i = 0; i < MCU_TAILLE; i++)
     {
@@ -95,7 +99,7 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
                 {
                     if (j < max_value_j)
                     {
-                        fread(&mcu->tab[i][j], taille, 1, file);
+                        erreur = fread(&mcu->tab[i][j], taille, 1, file);
                     }
                     else
                     {
@@ -121,7 +125,7 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
                 {
                     if (j < max_value_j)
                     {
-                        fread(&pixel, taille, 1, file);
+                        erreur = fread(&pixel, taille, 1, file);
                     }
                     else
                     {
@@ -165,8 +169,8 @@ imagePGM_RGB *LecturePPM(const char *filename)
     }
 
     char input[3];
-    fscanf(file, "%2s\n", input);
-
+    bool erreur = fscanf(file, "%2s\n", input);
+    
     if (input[0] != 'P' || (input[1] != '6' && input[1] != '5'))
     {
         fprintf(stderr, "Invalid PPM file format\n");
@@ -175,8 +179,8 @@ imagePGM_RGB *LecturePPM(const char *filename)
     }
 
     int32_t col, ligne, max;
-    fscanf(file, "%d %d\n%d\n", &col, &ligne, &max);
-
+    erreur = fscanf(file, "%d %d\n%d\n", &col, &ligne, &max);
+    
     imagePGM_RGB *img = malloc(sizeof(imagePGM_RGB));
     if (img == NULL)
     {
@@ -199,20 +203,23 @@ imagePGM_RGB *LecturePPM(const char *filename)
         {
             if (isRGB)
             {
-                fread(&img->tab[i][j], sizeof(Triplet_RGB), 1, file);
+                erreur = fread(&img->tab[i][j], sizeof(Triplet_RGB), 1, file);
             }
             else
             {
                 uint8_t *pixel = malloc(sizeof(uint8_t));
-                fread(pixel, sizeof(uint8_t), 1, file);
+                erreur = fread(pixel, sizeof(uint8_t), 1, file);
                 img->tab[i][j].R = *pixel;
                 img->tab[i][j].G = *pixel;
                 img->tab[i][j].B = *pixel;
             }
         }
     }
-
     fclose(file);
+    if(erreur == 0)
+    {
+        printf("erreur fichier\n");
+    }
     return img;
 }
 

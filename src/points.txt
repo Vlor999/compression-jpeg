@@ -1,0 +1,9 @@
+if (number == 3467 || number == 3573 || number == 3886 || number == 4736 || number == 4845 || number == 4915 || number == 4976)
+{
+    printf("%d, %d : ", i, j);
+    Triplet_RGB test = {255, 255, 255};
+    fread(&mcu->tab[i][j], taille, 1, file);
+    // mcu->tab[i][j].R = 255;
+    printf("%d %d %d\n", mcu->tab[i][j].R, mcu->tab[i][j].G, mcu->tab[i][j].B);
+    // mcu->tab[i][j] = test;
+}

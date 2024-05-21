@@ -11,9 +11,9 @@ Triplet_YCbCr conversionRGB(Triplet_RGB pixel){
     float R = (float) pixel.R;
     float G = (float) pixel.G;
     float B = (float) pixel.B;
-    pixel_YCbCr.Y = 0.299* R+ 0.587* G + 0.114* B;
-    pixel_YCbCr.Cb = (-0.1687)* R - 0.3313* G + 0.5* B + 128;
-    pixel_YCbCr.Cr = 0.5* R - 0.4187 * G - 0.0813*B + 128;
+    pixel_YCbCr.Y = 0.299 * R + 0.587 * G + 0.114 * B;
+    pixel_YCbCr.Cb = (-0.1687) * R - 0.3313 * G + 0.5 * B + 128;
+    pixel_YCbCr.Cr = 0.5 * R - 0.4187 * G - 0.0813 * B + 128;
     return pixel_YCbCr;
 }
 
@@ -66,11 +66,22 @@ Triplet_YCbCr** conversionRGB_2_YCrCb(imagePGM_RGB *image)
     return tab_YCbCr;
 }
 
+uint8_t approx_value(float value)
+{
+    if (value - floor(value) < 0.5)
+    {
+        return (uint8_t)value;
+    }
+    else{
+        return (uint8_t)value + 1;
+    }
+}
+
 uint8_t*** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)
 {
     Triplet_RGB pixel;
     Triplet_YCbCr pixel_YCbCr;
-    uint8_t ***res = malloc(3*sizeof(uint8_t**));    
+    uint8_t ***res = malloc(3 * sizeof(uint8_t**));    
     res[0] = malloc(MCU_TAILLE * sizeof(uint8_t*));
     res[1] = malloc(MCU_TAILLE * sizeof(uint8_t*));
     res[2] = malloc(MCU_TAILLE * sizeof(uint8_t*));
@@ -84,30 +95,9 @@ uint8_t*** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)
         {
             pixel = mcu->tab[lig][col];
             pixel_YCbCr = conversionRGB(pixel); 
-            if (pixel_YCbCr.Y - floor(pixel_YCbCr.Y) < 0.5)
-            {
-                res[0][lig][col] = (uint8_t)pixel_YCbCr.Y;
-            }
-            else
-            {
-                res[0][lig][col] = ((uint8_t)pixel_YCbCr.Y) + 1;
-            }
-            if (pixel_YCbCr.Cb - floor(pixel_YCbCr.Cb) < 0.5)
-            {
-                res[1][lig][col] = (uint8_t)pixel_YCbCr.Cb;
-            }
-            else
-            {
-                res[1][lig][col] = ((uint8_t)pixel_YCbCr.Cb) + 1;
-            }
-            if (pixel_YCbCr.Cr - floor(pixel_YCbCr.Cr) < 0.5)
-            {
-                res[2][lig][col] = (uint8_t)pixel_YCbCr.Cr;
-            }
-            else
-            {
-                res[2][lig][col] = ((uint8_t)pixel_YCbCr.Cr) + 1;
-            }
+            res[0][lig][col] = approx_value(pixel_YCbCr.Y);
+            res[1][lig][col] = approx_value(pixel_YCbCr.Cb);
+            res[2][lig][col] = approx_value(pixel_YCbCr.Cr);
         }
     }
     return res;

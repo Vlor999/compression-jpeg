@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "../include/recupereimage.h"
 
 
@@ -89,9 +90,10 @@ imagePGM* recupereimage(char* file){
         exit(1);
     }
     char premiere_ligne[3];
-    fgets(premiere_ligne, sizeof(premiere_ligne), fichier_PGM); // on passe la première ligne avec la version
-    fscanf(fichier_PGM, "%hd %hd", &image->col, &image->ligne); //on recupere le nb de colonne et ligne
-    fscanf(fichier_PGM, "%hhd", &image->max); // on recupere le niveau max de gris
+    bool existe = true;
+    existe = fgets(premiere_ligne, sizeof(premiere_ligne), fichier_PGM); // on passe la première ligne avec la version
+    existe = fscanf(fichier_PGM, "%hd %hd", &image->col, &image->ligne); //on recupere le nb de colonne et ligne
+    existe = fscanf(fichier_PGM, "%hhd", &image->max); // on recupere le niveau max de gris
 
 
     image->tab = malloc(sizeof(uint8_t*)*image->ligne); //on va initialiser la matrice
@@ -114,9 +116,13 @@ imagePGM* recupereimage(char* file){
             perror("Allocation de mémoire échouée");
             exit(1);
         }
-        fread(image->tab[i], sizeof(uint8_t), image->col, fichier_PGM); // Read row data
+        existe = fread(image->tab[i], sizeof(uint8_t), image->col, fichier_PGM); // Read row data
     }
     fclose(fichier_PGM);
+    if(!existe){
+        perror("Erreur de lecture du fichier\n");
+        return NULL;
+    }
     return image;
 }
 
