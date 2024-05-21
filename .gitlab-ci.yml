@@ -22,7 +22,7 @@ stages:          # List of stages for jobs, and their order of execution
   - perso_test_thumbs
   - perso_test_vertical
   - perso_test_horizontal
-  - peros_test_shaun_the_sheep
+  - perso_test_shaun_the_sheep
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
