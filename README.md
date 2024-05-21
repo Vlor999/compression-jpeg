@@ -52,7 +52,7 @@ Il sera alors présenter l'avancement à chque étape du projet.
 
 #### 2 : Structure de donnée du projet.
 
-<img src="IMG_1181.jpg">
+<img src="IMG_1210.jpg">
 
 #### 3 : Répartition des tâches au sein de l'équipe.
 
@@ -64,3 +64,6 @@ Le but de cette première semaine était d'voir un code qui fonctionnne pour les
 
 #### Semaine 2:
 Nous avons en cette deuxième semaine réussi à encoder toutes les images, mêmes celles en couleur. La compression est efficace avec un gain de rapport 10 mais est assez lent. Il est alors nécessaire d'améliorer l'efficacité et de faire le sous-échantillonage.
+
+#### Semaine 3:
+Nous avons gérer toutes les erreurs la semaine dernière, nous avons toutes les images en couleur et sans couleur. De plus, l'optimisation a permisde gagner beaucoup de temps de calcul sur les grands images. Nous avons libérer au mieux l'espace mémoire mais il y a toujours des problèmes.
