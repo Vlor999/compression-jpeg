@@ -56,7 +56,7 @@ test-nb-all:
     - ./ppm2jpeg --outfile=./images/gris.jpg ./images/gris.pgm
     - test -f ./images/gris.jpg
 
-    - ./ppm2jpeg --outfile=./images/complexite.jpg ./images/comlexite.pgm
+    - ./ppm2jpeg --outfile=./images/complexite.jpg ./images/complexite.pgm
     - test -f ./images/complexite.jpg
 
     - ./ppm2jpeg --outfile=./images/bisou.jpg ./images/bisou.pgm
