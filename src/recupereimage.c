@@ -133,27 +133,3 @@ void libere_image(imagePGM* image){
     free(image->tab);
     free(image);
 }
-
-// int main(int argc, char* argv[]) {
-//     if (argc != 2) 
-//     {
-//         printf("Mettre sous la forme : %s <filename>\n", argv[0]);
-//         return 1;
-//     }
-
-//     char* filename = argv[1];
-//     imagePGM* img = recupereimage(filename);
-//     if (!img) {
-//         printf("Failed to read PPM file: %s\n", filename);
-//         return 1;
-//     }
-
-//     for(uint32_t i = 0; i < img->ligne; i++) {
-//         for(uint32_t j = 0; j < img->col; j++) {
-//             printf("%d \t", img->tab[i][j]);
-//         }
-//         printf("\n");
-//     }
-//     libere_image(img);
-//     return 0;
-// }

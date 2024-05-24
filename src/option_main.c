@@ -53,7 +53,6 @@ char* transfo_titre(char* output, bool st, char* sample_factors)
             final[i + taille + 8] = end[i];
         }
         output = malloc(taille + strlen(sample_factors) + 1);
-        // output = realloc(output, taille + strlen(sample_factors) + 1);
         for(uint8_t i = 0; i < taille + strlen(sample_factors) + 1; i++)
         {
             output[i] = final[i];

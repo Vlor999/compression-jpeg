@@ -289,27 +289,3 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecriture
     return ecr2; //savoir ou on est dans les bits
     }
 
-
-
-
-
-
-// int main(){
-//     // char* filename = "test_image.jpeg";
-//     // FILE* fptr = fopen(filename, "wb");
-//     // ecrire_debut(fptr);
-//     // ecrire_SOF(fptr,8,8);
-//     // ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr);
-//     // ecrire_htable(fptr,htables_symbols[0][0],htables_symbols[1][0],htables_symbols[0][1],htables_symbols[1][1],htables_nb_symb_per_lengths);
-//     // ecrire_fin(fptr);
-//     // fclose(fptr);
-
-//     uint8_t val1 = 0x03;
-//     uint8_t val2 = 0x02;
-//     val2 = reverse_hexa(val2);   
-//     uint8_t final;
-//     final = val1 & 0x0F;
-//     final |= val2 & 0xF0;
-//     printf("%02x\n", final);
-//     return 0;
-// }

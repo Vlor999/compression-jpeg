@@ -104,23 +104,3 @@ uint8_t*** conversionRGB_2_YCrCb_MCU(MCU_RGB *mcu)
 }
 
 
-// int main()
-// {
-//     for (uint16_t i = 0; i <= 255; i++)
-//     {
-//         for(uint16_t j = 0; j <= 255; j++)
-//         {
-//             for(uint16_t k = 0; k <= 255; k++)
-//             {
-//                 Triplet_RGB pixel;
-//                 pixel.R = i;
-//                 pixel.G = j;
-//                 pixel.B = k;
-//                 Triplet_YCbCr pixel_YCbCr = conversionRGB(pixel);
-//                 printf("%02x%02x%02x, %f, %f, %f\n", pixel.R, pixel.G, pixel.B, pixel_YCbCr.Y, pixel_YCbCr.Cb, pixel_YCbCr.Cr);
-//             }
-//         }
-        
-//     }
-// }
-

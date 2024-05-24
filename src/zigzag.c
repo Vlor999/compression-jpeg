@@ -131,36 +131,3 @@ int16_t* zigzag_matrice1(int16_t** matrice)
     zigzag[63] = matrice[7][7];
     return zigzag;
 }
-
-// int main(void)
-// {
-//     int16_t** matrice = malloc(8 * sizeof(int16_t*));
-//     for (int i = 0; i < 8; i++)
-//     {
-//         matrice[i] = malloc(8 * sizeof(int16_t));
-//     }
-//     for (int i = 0; i < 8; i++)
-//     {
-//         for (int j = 0; j < 8; j++)
-//         {
-//             matrice[i][j] = i * 8 + j;
-//             printf("%f ", matrice[i][j]);
-//         }
-//         printf("\n");
-//     }
-//     int16_t* zigzag = zigzag_matrice(matrice);
-//     for (int i = 0; i < 64; i++)
-//     {
-//         printf("%f\n", zigzag[i]);
-//     }
-//     free(zigzag);
-//     for (int i = 0; i < 8; i++)
-//     {
-//         free(matrice[i]);
-//     }
-//     return 0;
-// }
-
-
-
-
