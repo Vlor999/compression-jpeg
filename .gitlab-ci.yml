@@ -19,7 +19,8 @@
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
-  - perso_test
+  - perso_test_nb
+  - perso_test_couleur
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
@@ -46,14 +47,30 @@ test-nb-absolu:
     - ./ppm2jpeg --outfile=$(pwd)/out/invader.jpg $(pwd)/images/invader.pgm 
     - test -f ./out/invader.jpg # on vérifie que le fichier de sortie existe
 
+test-nb-all:
+  stage: perso_test_nb
+  script:
+    - ./ppm2jpeg --outfile=./images/invader.jpg ./images/invader.pgm
+    - test -f ./images/invader.jpg
+
+    - ./ppm2jpeg --outfile=./images/gris.jpg ./images/gris.pgm
+    - test -f ./images/gris.jpg
+
+    - ./ppm2jpeg --outfile=./images/complexite.jpg ./images/comlexite.pgm
+    - test -f ./images/complexite.jpg
+
+    - ./ppm2jpeg --outfile=./images/bisou.jpg ./images/bisou.pgm
+    - test -f ./images/bisou.jpg
+  
 test-couleur-ssech:
   stage: test       # s'exécute à l'étape 'test'
   script:
     - mkdir -p out  # on crée le répertoire de sortie
     - ./ppm2jpeg --outfile=./out/thumbs-2x2-2x1-2x1.jpg --sample=2x2,2x1,2x1 ./images/thumbs.ppm
     - test -f ./out/thumbs-2x2-2x1-2x1.jpg # on vérifie que le fichier de sortie existe
+
 test-ssech-all-vertical:
-  stage: perso_test
+  stage: perso_test_couleur
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/vertical.ppm --st
     - test -f ./images/vertical_1x1,1x1,1x1.jpg
@@ -243,7 +260,7 @@ test-ssech-all-vertical:
 
 
 test-ssech-all-biiiiiig:
-  stage: perso_test
+  stage: perso_test_couleur
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/biiiiiig.ppm --st
     - test -f ./images/biiiiiig_1x1,1x1,1x1.jpg
@@ -433,7 +450,7 @@ test-ssech-all-biiiiiig:
 
 
 test-ssech-all-horizontal:
-  stage: perso_test
+  stage: perso_test_couleur
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/horizontal.ppm --st
     - test -f ./images/horizontal_1x1,1x1,1x1.jpg
@@ -623,7 +640,7 @@ test-ssech-all-horizontal:
 
 
 test-ssech-all-shaun_the_sheep:
-  stage: perso_test
+  stage: perso_test_couleur
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/shaun_the_sheep.ppm --st
     - test -f ./images/shaun_the_sheep_1x1,1x1,1x1.jpg
@@ -813,7 +830,7 @@ test-ssech-all-shaun_the_sheep:
 
 
 test-ssech-all-thumbs:
-  stage: perso_test
+  stage: perso_test_couleur
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/thumbs.ppm --st
     - test -f ./images/thumbs_1x1,1x1,1x1.jpg
@@ -1003,7 +1020,7 @@ test-ssech-all-thumbs:
 
 
 test-ssech-all-zig-zag:
-  stage: perso_test
+  stage: perso_test_couleur
   script:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/zig-zag.ppm --st
     - test -f ./images/zig-zag_1x1,1x1,1x1.jpg

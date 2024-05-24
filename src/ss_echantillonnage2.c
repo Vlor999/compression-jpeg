@@ -61,7 +61,12 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
     uint64_t compteur = 0;
     uint8_t h1 = value[0];
     uint8_t v1 = value[1];
-    uint64_t* liste_valeur = malloc(our_datas.nb_MCU * sizeof(uint32_t) * h1 * v1);
+    uint8_t maxi = h1;
+    if(v1 > h1)
+    {
+        maxi = v1;
+    }
+    uint64_t* liste_valeur = malloc(our_datas.nb_MCU * sizeof(uint32_t) * maxi);
     uint32_t x = (our_datas.nb_colonne/MCU_TAILLE);
     uint32_t nb_calcul = x / h1;
     if(our_datas.nb_colonne % MCU_TAILLE != 0)
@@ -76,11 +81,10 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
     {
         nb_calcul = x / h1;
     }
-    uint32_t nb = 0;
-    // = malloc(h1*v1*sizeof(uint64_t));
+    uint64_t nb = 0;
     while (numero < our_datas.nb_MCU)
     {
-         uint64_t* liste_numero_MCU= sous_echantilonnage(value, our_datas, numero);
+        uint64_t* liste_numero_MCU = sous_echantilonnage(value, our_datas, numero);
         for (uint8_t i = 0; i < h1 * v1; i++)
         {
             liste_valeur[compteur] = liste_numero_MCU[i];
@@ -91,6 +95,7 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
         if (nb >= nb_calcul)
         {
             numero = liste_valeur[compteur - 1] + 1;
+
             nb = 0;
         }
         else
@@ -102,7 +107,6 @@ uint64_t* ensemble_valeur(uint8_t* value, data_frame our_datas)
     liste_valeur[compteur] = 2147483648;
     return liste_valeur;
 }
-
 
 uint8_t** concat_matrice(uint8_t*** liste_matrice, uint8_t h, uint8_t v, uint8_t decalage)
 {
@@ -171,7 +175,7 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8
             
             if(h >= v)
             {    
-                if (compteur_h  == 7 && compteur == h * v - 1){
+                if (compteur_h == 7 && compteur == h * v - 1){
                     compteur = 0;
                     compteur_v++;
                     compteur_h=0;
@@ -186,7 +190,7 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8
             }
             else
             {
-                if (compteur_h  == 7 && compteur_v == 7){
+                if (compteur_h == 7 && compteur_v == 7){
                     compteur++;
                     compteur_v = 0;
                     compteur_h=0;
