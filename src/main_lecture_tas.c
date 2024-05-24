@@ -6,7 +6,6 @@
 #include "../include/MCU.h"
 #include "../include/zigzag.h"
 #include "../include/htables.h"
-#include "../include/qtables.h"
 #include "../include/recup_v2.h"
 #include "../include/progression.h"
 #include "../include/option_main.h"
@@ -48,7 +47,7 @@ int main(int argc, char **argv)
     FILE *fptr = fopen(filename, "wb");
     ecrire_debut(fptr);
     ecrire_commentaire_SOS_PC(fptr);
-    ecrire_qtable(fptr, quantification_table_Y, quantification_table_CbCr, couleur);
+    ecrire_qtable(fptr, couleur);
     ecrire_SOF(fptr, our_datas.nb_ligne, our_datas.nb_colonne, tableau_coeffs_sous_echantillonage, couleur); // faire en sorte qu'il change en fonction de l'image
     ecrire_htable(fptr, htables_nb_symb_per_lengths, couleur);
     ecrire_SOS_en_tete(fptr, couleur);

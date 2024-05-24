@@ -29,7 +29,7 @@ void ecrire_fin(FILE* fptr){
 }
 
 
-void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr, bool couleur){
+void ecrire_qtable( FILE* fptr, bool couleur){
     // Indice de table quantification pour Y est 0
     int16_t marqueur = 0xdbff;
     int16_t length = 0x4300;                //la longueur de la section
@@ -38,7 +38,7 @@ void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr, bool coul
     fwrite(&length, sizeof(int16_t), 1, fptr);
     fwrite(&precision, sizeof(int8_t),1,fptr);
     for (int8_t i = 0; i < 64; i++){
-        fwrite(&table_Y[i], sizeof(uint8_t), 1, fptr);
+        fwrite(&quantification_table_Y[i], sizeof(uint8_t), 1, fptr);
     }
 
     if (couleur){
@@ -47,7 +47,7 @@ void ecrire_qtable( FILE* fptr, uint8_t* table_Y, uint8_t* table_CbCr, bool coul
         fwrite(&length, sizeof(int16_t), 1, fptr);
         fwrite(&precision1, sizeof(int8_t),1,fptr);
         for (int8_t i = 0; i < 64; i++){
-            fwrite(&table_CbCr[i], sizeof(uint8_t), 1, fptr);
+            fwrite(&quantification_table_CbCr[i], sizeof(uint8_t), 1, fptr);
         }
     }
 }
