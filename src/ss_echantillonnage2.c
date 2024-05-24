@@ -305,6 +305,46 @@ bool verif_rectriction(uint8_t h1,uint8_t v1,uint8_t h2,uint8_t v2,uint8_t h3,ui
     return true;
 }
 
+uint8_t** toutes_le_valeurs()
+{
+    uint8_t** liste_valeur = malloc(16 * 16 * 16 * sizeof(uint8_t*));
+    for(uint32_t i = 0; i < 16 * 16 * 16; i++)
+    {
+        liste_valeur[i] = malloc(6 * sizeof(uint8_t));
+    }
+    uint32_t compteur = 0;
+    for(uint8_t i = 1; i < 5; i++)
+    {
+        for(uint8_t j = 1; j < 5; j++)
+        {
+            for(uint8_t k = 1; k < 5; k++)
+            {
+                for(uint8_t l = 1; l < 5; l++)
+                {
+                    for(uint8_t m = 1; m <5; m++)
+                    {
+                        for(uint8_t n = 1; n < 5; n++)
+                        {
+                            bool good = verif_rectriction(i , j , k , l, m, n);
+                            if (good)
+                            {
+                                liste_valeur[compteur][0] = i;
+                                liste_valeur[compteur][1] = j;
+                                liste_valeur[compteur][2] = k;
+                                liste_valeur[compteur][3] = l;
+                                liste_valeur[compteur][4] = m;
+                                liste_valeur[compteur][5] = n;
+                                compteur++;
+                            }
+                        }
+                    }
+                }    
+            }
+        }    
+    }
+    return liste_valeur;
+}
+
 uint8_t *echantillonage(char* sample_factors) {
     uint8_t* value = malloc(sizeof(uint8_t)*6);
     for (int i = 0; i < 11; i++){
@@ -325,6 +365,5 @@ uint8_t *echantillonage(char* sample_factors) {
         free(value);
         exit(1);
     }
-    
     return value;
 }
