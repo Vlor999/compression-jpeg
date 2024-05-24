@@ -327,6 +327,7 @@ uint8_t *echantillonage(char* sample_factors) {
     {
         probleme_echantillonnage();
         free(value);
+        exit(1);
     }
     
     return value;

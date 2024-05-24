@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "../include/MCU.h"
-#include "../include/DCT.h"
 #include "../include/zigzag.h"
 #include "../include/htables.h"
 #include "../include/qtables.h"
@@ -18,6 +17,7 @@
 #include "../include/conversionRGB.h"
 #include "../include/quantification.h"
 #include "../include/ss_echantillonnage2.h"
+#include "../include/DCT.h"
 
 int main(int argc, char **argv)
 {

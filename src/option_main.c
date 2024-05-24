@@ -6,13 +6,14 @@
 
 void print_help() 
 {
-    printf("Usage: ./program <input> [--outfile=filename] [--sample=h1xv1,h2xv2,h3xv3] [--t] [--v] [--help]\n");
+    printf("Usage: ./program <input> [--outfile=filename] [--sample=h1xv1,h2xv2,h3xv3] [--t] [--v] [--st] [--help]\n");
     printf("Options:\n");
     printf("--help : pour de l'aide ;)\n");
     printf("--outfile=filename : tu mets le blaze du fichier de sortie et surtout on oublie pas le .jpg\n");
     printf("--sample=h1xv1,h2xv2,h3xv3 : tu me give le sous echatillonnage mon gazo \n");
     printf("--v : pour activer le mode verbose\n");
     printf("--t : pour activer le mode téléchargement\n");
+    printf("--st : pour activer le mode sample title : sample dans le titre\n");
 }
 
 char *copie_mot_jpeg(const char *s, bool extention) 
@@ -72,7 +73,7 @@ Arguments utilisation_argument(int argc, char *argv[])
     {
         printf("Erreur : Il me faut un fichier gros BG\n");
         print_help();
-        return mes_arguments;
+        exit(1);
     }
     
     char *input = NULL;
@@ -82,6 +83,8 @@ Arguments utilisation_argument(int argc, char *argv[])
     bool verbose = false;
     bool progression = false;
     bool st = false;
+
+    uint8_t nb = 0;
 
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--help") == 0) 
@@ -96,6 +99,7 @@ Arguments utilisation_argument(int argc, char *argv[])
         else if (strncmp(argv[i], "--sample=", 9) == 0) 
         {
             sample_factors = argv[i] + 9; 
+            printf("%s\n", sample_factors);
         } 
         else if (strcmp(argv[i], "--v") == 0)
         {
@@ -111,18 +115,37 @@ Arguments utilisation_argument(int argc, char *argv[])
         }
         else 
         {
+            nb++;
             input = argv[i];
+            if (nb > 1) 
+            {
+                printf("Erreur: les arguments sont mauvais\n");
+                print_help();
+                exit(1);
+            }
         }
     }
-
     if (!input) 
     {
         printf("Error: Il me faut quand même un fichier je t'avoue !!\n");
         print_help();
-        return mes_arguments;
+        exit(1);
     }
     char *point = strrchr(input, '.');
+    if(point == NULL)
+    {
+        printf("Erreur: Le fichier d'entrée n'a pas d'extension\n");
+        print_help();
+        exit(1);
+    }
     couleur = strcmp(point, ".ppm") == 0;
+    bool gris = strcmp(point, ".pgm") == 0;
+    if (!couleur && !gris) 
+    {
+        printf("Erreur: Le fichier d'entrée n'est pas un fichier PPM ou PGM\n");
+        print_help();
+        exit(1);
+    }
     if (!output) 
     {
         if(point) 
@@ -136,11 +159,17 @@ Arguments utilisation_argument(int argc, char *argv[])
         else 
         {
             output = copie_mot_jpeg(input, true); //n'existe pas dans la librairie standard 
-            
         }
     }
     else
     {
+        char* ext = strrchr(output, '.');
+        if (ext == NULL || strcmp(ext, ".jpg") != 0) 
+        {
+            printf("Erreur: Le fichier de sortie n'est pas un fichier JPEG\n");
+            print_help();
+            exit(1);
+        }
         output = copie_mot_jpeg(output, false);
     }
     if(sample_factors == NULL) 
