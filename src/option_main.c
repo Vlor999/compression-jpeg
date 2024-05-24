@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <unistd.h>
 #include "../include/option_main.h"
 
 void print_help() 
@@ -129,6 +130,19 @@ Arguments utilisation_argument(int argc, char *argv[])
         printf("Error: Il me faut quand même un fichier je t'avoue !!\n");
         print_help();
         exit(1);
+    }
+    else
+    {
+        if (access(input, R_OK ) != -1)
+        {
+            printf("Le fichier existe et est lisible\n");
+        } 
+        else 
+        {
+            printf("Le fichier n'existe pas ou n'est pas lisible\n");
+            print_help();
+            exit(1);
+        }
     }
     char *point = strrchr(input, '.');
     if(point == NULL)
