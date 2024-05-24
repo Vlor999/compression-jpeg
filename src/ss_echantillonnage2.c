@@ -209,7 +209,6 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
 
     uint8_t **temp_Cb = concat_matrice(liste_matrice,facteurs[0],facteurs[1],facteurs[1]*facteurs[0]);
 
-
     uint8_t ***liste_Cb = sous_echantillonnage_CbCr(temp_Cb,facteurs[0],facteurs[1],facteurs[2],facteurs[3]);
     
     for (uint16_t i=0;i<MCU_TAILLE*facteurs[1];i++){
@@ -219,10 +218,7 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
 
     uint8_t **temp_Cr = concat_matrice(liste_matrice,facteurs[0],facteurs[1],2*facteurs[1]*facteurs[0]);
 
-
-
     uint8_t ***liste_Cr = sous_echantillonnage_CbCr(temp_Cr,facteurs[0],facteurs[1],facteurs[4],facteurs[5]);
-    
     
     for (uint16_t i=0;i<MCU_TAILLE*facteurs[1];i++){
         free(temp_Cr[i]);
@@ -332,102 +328,3 @@ uint8_t *echantillonage(char* sample_factors) {
     
     return value;
 }
-
-
-
-
-// int main() {
-//     srand( time( NULL ) );
-//     char *sample_factors = "1x1,1x1,1x1";
-//     uint8_t *factors = echantillonage(sample_factors);
-//     uint8_t ***test=malloc(6*sizeof(uint8_t**));
-//     test[0] = malloc(MCU_TAILLE*sizeof(uint8_t*));
-//     printf("\n Y \n");
-//     for (int i=0;i<MCU_TAILLE;i++){
-//         test[0][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
-//         for (int j=0;j<MCU_TAILLE;j++){
-//             test[0][i][j] = rand()%10;
-//             printf("%d\t", test[0][i][j]);
-//         }
-//         printf("\n");
-//     }
-//     printf("\n Cb \n");
-//     test[1] = malloc(MCU_TAILLE*sizeof(uint8_t*));
-//     for (int i=0;i<MCU_TAILLE;i++){
-//         test[1][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
-//         for (int j=0;j<MCU_TAILLE;j++){
-//             test[1][i][j] = rand()%10;
-//             printf("%d\t", test[1][i][j]);
-//         }
-//         printf("\n");
-//     }
-//     printf("\n CR \n");
-//     test[2] = malloc(MCU_TAILLE*sizeof(uint8_t*));
-//     for (int i=0;i<MCU_TAILLE;i++){
-//         test[2][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
-//         for (int j=0;j<MCU_TAILLE;j++){
-//             test[2][i][j] = rand()%10;
-//             printf("%d\t", test[2][i][j]);
-//         }
-//         printf("\n");
-//     }
-//     // printf("\n");
-//     // test[3] = malloc(MCU_TAILLE*sizeof(uint8_t*));
-//     // for (int i=0;i<MCU_TAILLE;i++){
-//     //     test[3][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
-//     //     for (int j=0;j<MCU_TAILLE;j++){
-//     //         test[3][i][j] = rand()%10;
-//     //         printf("%d\t", test[3][i][j]);
-//     //     }
-//     //     printf("\n");
-//     // }
-//     // printf("\n Cr \n");
-//     // test[4] = malloc(MCU_TAILLE*sizeof(uint8_t*));
-//     // for (int i=0;i<MCU_TAILLE;i++){
-//     //     test[4][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
-//     //     for (int j=0;j<MCU_TAILLE;j++){
-//     //         test[4][i][j] = rand()%10;
-//     //         printf("%d\t", test[4][i][j]);
-//     //     }
-//     //     printf("\n");
-//     // }
-//     // printf("\n");
-//     // test[5] = malloc(MCU_TAILLE*sizeof(uint8_t*));
-//     // for (int i=0;i<MCU_TAILLE;i++){
-//     //     test[5][i] = malloc(MCU_TAILLE*sizeof(uint8_t));
-//     //     for (int j=0;j<MCU_TAILLE;j++){
-//     //         test[5][i][j] = rand()%10;
-//     //         printf("%d\t", test[5][i][j]);
-//     //     }
-//     //     printf("\n");
-//     // }
-//     // printf("fini\n");
-//     uint8_t ***retour =  echantillonnage_complet_depuis_YCbCr(test,factors);
-    
-//     // imagePGM_RGB *img = LecturePPM("images/thumbs.ppm"); // nom du fichier a preciser   
-//     // Triplet_YCbCr** new_image = conversionRGB_2_YCrCb(img); //violent le passage à l'entier ?
-//     // Triplet_YCbCr** img_echantillonner =  main_ss_echantillonnage(new_image, img->ligne, img->col,facteurs);
-//     // uint8_t **tab = (uint8_t**)malloc(MCU_TAILLE*sizeof(uint8_t*));
-//     // for (int i = 0 ; i < MCU_TAILLE; i++)
-//     // {
-//     //     tab[i] = (uint8_t*)malloc(MCU_TAILLE*sizeof(uint8_t));
-//     //     for (int j = 0; j < MCU_TAILLE; j ++)
-//     //     {
-//     //         tab[i][j] = i * MCU_TAILLE + j;
-//     //         printf("%d\t", tab[i][j]);
-//     //     }
-//     //     printf("\n");
-//     // }
-//     // data_frame data = {8, 8, 1, 255, 0, false, NULL, 8};
-//     // uint8_t** new_tab = sous_echantillonnage(facteurs, data, 1);
-//     // for(int i = 0; i < 8; i++)
-//     // {
-//     //     for(int j = 0; j < 8; j++)
-//     //     {
-//     //         printf("%d ", new_tab[i][j]);
-//     //     }
-//     //     printf("\n");
-//     // }
-
-//     return 0;
-// }
