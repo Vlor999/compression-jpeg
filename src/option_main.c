@@ -184,6 +184,12 @@ Arguments utilisation_argument(int argc, char *argv[])
             exit(1);
         }
         output = copie_mot_jpeg(output, false);
+        if (access(output, F_OK ) != -1)
+        {
+            printf("Nous ne pouvons pas écrire dans le fichier\n");
+            print_help();
+            exit(1);
+        }
     }
     if(sample_factors == NULL) 
     {
