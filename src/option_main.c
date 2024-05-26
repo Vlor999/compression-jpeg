@@ -143,6 +143,7 @@ Arguments utilisation_argument(int argc, char *argv[])
             exit(1);
         }
     }
+    printf("bisou");
     char *point = strrchr(input, '.');
     if(point == NULL)
     {
@@ -158,7 +159,6 @@ Arguments utilisation_argument(int argc, char *argv[])
         print_help();
         exit(1);
     }
-    printf("on est la hein");
     if (!output) 
     {
         if(point) 
