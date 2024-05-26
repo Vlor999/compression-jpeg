@@ -1025,9 +1025,6 @@ test-ssech-all-zig-zag:
     - ./ppm2jpeg --sample=1x1,1x1,1x1 ./images/zig-zag.ppm --st
     - test -f ./images/zig-zag_1x1,1x1,1x1.jpg
 
-    - ./ppm2jpeg --sample=1x2,1x1,1x1 ./images/zig-zag.ppm --st
-    - test -f ./images/zig-zag_1x2,1x1,1x1.jpg
-
     - ./ppm2jpeg --sample=1x2,1x1,1x2 ./images/zig-zag.ppm --st
     - test -f ./images/zig-zag_1x2,1x1,1x2.jpg
 

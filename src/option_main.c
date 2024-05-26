@@ -143,7 +143,6 @@ Arguments utilisation_argument(int argc, char *argv[])
             exit(1);
         }
     }
-    printf("bisou");
     char *point = strrchr(input, '.');
     if(point == NULL)
     {
@@ -204,6 +203,5 @@ Arguments utilisation_argument(int argc, char *argv[])
     mes_arguments.couleur = couleur;
     mes_arguments.verbose = verbose;
     mes_arguments.progression = progression;
-    printf("prog");
     return mes_arguments;
 }
