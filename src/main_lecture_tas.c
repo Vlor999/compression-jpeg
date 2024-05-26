@@ -27,6 +27,7 @@ int main(int argc, char **argv)
     bool couleur = mes_arguments.couleur;
     bool verbose = mes_arguments.verbose;
     bool progression = mes_arguments.progression;
+    printf("aller");
 
     uint8_t* tableau_coeffs_sous_echantillonage = echantillonage(sample_factors);
     uint8_t h1 = tableau_coeffs_sous_echantillonage[0];
@@ -37,9 +38,7 @@ int main(int argc, char **argv)
     uint8_t v3 = tableau_coeffs_sous_echantillonage[5];
 
     data_frame our_datas = Lecture_Init(input);
-    printf("fin lecture");
     affiche_data(our_datas, mes_arguments);
-    printf("fin affiche");
 
     FILE *fptr = fopen(filename, "wb");
     ecriture_en_tete(fptr, our_datas.nb_ligne, our_datas.nb_colonne, tableau_coeffs_sous_echantillonage, couleur);

@@ -344,7 +344,8 @@ uint8_t** toutes_le_valeurs()
     return liste_valeur;
 }
 
-uint8_t *echantillonage(char* sample_factors) {
+uint8_t *echantillonage(char* sample_factors) 
+{
     uint8_t* value = malloc(sizeof(uint8_t)*6);
     for (int i = 0; i < 11; i++)
     {
@@ -353,7 +354,6 @@ uint8_t *echantillonage(char* sample_factors) {
             value[i/2] = ((uint8_t)sample_factors[i]) - 48;
         }
     }
-    printf("fin ligne");
     uint8_t h1 = value[0];
     uint8_t v1 = value[1];
     uint8_t h2 = value[2];
@@ -367,6 +367,5 @@ uint8_t *echantillonage(char* sample_factors) {
         free(value);
         exit(1);
     }
-    printf("fin");
     return value;
 }

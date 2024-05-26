@@ -158,6 +158,7 @@ Arguments utilisation_argument(int argc, char *argv[])
         print_help();
         exit(1);
     }
+    printf("on est la hein");
     if (!output) 
     {
         if(point) 
@@ -170,7 +171,7 @@ Arguments utilisation_argument(int argc, char *argv[])
         } 
         else 
         {
-            output = copie_mot_jpeg(input, true); //n'existe pas dans la librairie standard 
+            output = copie_mot_jpeg(input, true);
         }
     }
     else
@@ -191,8 +192,6 @@ Arguments utilisation_argument(int argc, char *argv[])
         }
     }
 
-
-
     if(sample_factors == NULL) 
     {
         sample_factors = "1x1,1x1,1x1";
@@ -205,5 +204,6 @@ Arguments utilisation_argument(int argc, char *argv[])
     mes_arguments.couleur = couleur;
     mes_arguments.verbose = verbose;
     mes_arguments.progression = progression;
+    printf("prog");
     return mes_arguments;
 }
