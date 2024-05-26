@@ -66,3 +66,30 @@ uint8_t **decoupage(imagePGM *tab, uint32_t i, uint32_t j) //tab aux bonnes dime
     }
     return tableau;
 }
+
+uint8_t*** allocation(uint8_t h1, uint8_t v1)
+{
+    uint8_t ***liste_MCU = malloc((3 * h1 * v1) * sizeof(uint8_t**));
+    for (uint8_t k = 0; k < h1 * v1 * 3; k++)
+    {
+        liste_MCU[k] = malloc(MCU_TAILLE * sizeof(uint8_t*));
+        for (uint8_t l = 0; l < MCU_TAILLE; l++)
+        {
+            liste_MCU[k][l] = malloc(MCU_TAILLE * sizeof(uint8_t));
+        }
+    }
+    return liste_MCU;
+}
+
+void liberation(uint8_t*** liste, uint8_t h1, uint8_t v1)
+{
+    for (uint8_t k = 0; k < h1 * v1 * 3; k++)
+    {
+        for (uint8_t l = 0; l < MCU_TAILLE; l++)
+        {
+            free(liste[k][l]);
+        }
+        free(liste[k]);
+    }
+    free(liste);
+}

@@ -99,7 +99,6 @@ Arguments utilisation_argument(int argc, char *argv[])
         else if (strncmp(argv[i], "--sample=", 9) == 0) 
         {
             sample_factors = argv[i] + 9; 
-            printf("%s\n", sample_factors);
         } 
         else if (strcmp(argv[i], "--v") == 0)
         {

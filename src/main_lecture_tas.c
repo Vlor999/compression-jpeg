@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "../include/DCT.h"
 #include "../include/MCU.h"
 #include "../include/zigzag.h"
 #include "../include/htables.h"
@@ -16,7 +17,6 @@
 #include "../include/conversionRGB.h"
 #include "../include/quantification.h"
 #include "../include/ss_echantillonnage2.h"
-#include "../include/DCT.h"
 
 int main(int argc, char **argv)
 {
@@ -27,11 +27,6 @@ int main(int argc, char **argv)
     bool couleur = mes_arguments.couleur;
     bool verbose = mes_arguments.verbose;
     bool progression = mes_arguments.progression;
-
-    if (!input)
-    {
-        return 1;
-    }
 
     uint8_t* tableau_coeffs_sous_echantillonage = echantillonage(sample_factors);
     uint8_t h1 = tableau_coeffs_sous_echantillonage[0];
@@ -45,12 +40,7 @@ int main(int argc, char **argv)
     affiche_data(our_datas, mes_arguments);
 
     FILE *fptr = fopen(filename, "wb");
-    ecrire_debut(fptr);
-    ecrire_commentaire_SOS_PC(fptr);
-    ecrire_qtable(fptr, couleur);
-    ecrire_SOF(fptr, our_datas.nb_ligne, our_datas.nb_colonne, tableau_coeffs_sous_echantillonage, couleur); // faire en sorte qu'il change en fonction de l'image
-    ecrire_htable(fptr, htables_nb_symb_per_lengths, couleur);
-    ecrire_SOS_en_tete(fptr, couleur);
+    ecriture_en_tete(fptr, our_datas.nb_ligne, our_datas.nb_colonne, tableau_coeffs_sous_echantillonage, couleur);
 
     uint8_t *RLE;
     int16_t prec_Y = 0;
@@ -63,19 +53,10 @@ int main(int argc, char **argv)
     ecritureSOS *ecr = malloc(sizeof(ecritureSOS));
     ecr->nb = 0;
     ecr->compteur = 7;
+    uint8_t ***liste_MCU = allocation(h1, v1);
 
-    
     if ((h1 != 1 || v1 != 1) && couleur == true)
     {
-        uint8_t ***liste_MCU = malloc((3 * h1 * v1) * sizeof(uint8_t**));
-        for (uint8_t k = 0; k < h1 * v1 * 3; k++)
-        {
-            liste_MCU[k] = malloc(MCU_TAILLE * sizeof(uint8_t*));
-            for (uint8_t l = 0; l < MCU_TAILLE; l++)
-            {
-                liste_MCU[k][l] = malloc(MCU_TAILLE * sizeof(uint8_t));
-            }
-        }
         uint32_t nb_MCU_ligne = ceil(((float) our_datas.nb_ligne) / MCU_TAILLE);
         uint32_t nb_MCU_colonne = ceil(((float) our_datas.nb_colonne) / MCU_TAILLE);
         if (verbose)
@@ -132,6 +113,7 @@ int main(int argc, char **argv)
                 free(mcu_YCbCr);
             }
             uint8_t ***liste_echantillonnee = echantillonnage_complet_depuis_YCbCr(liste_MCU, tableau_coeffs_sous_echantillonage);
+            
 
             for (uint8_t k = 0; k < h1 * v1; k++)
             {
@@ -166,16 +148,15 @@ int main(int argc, char **argv)
                     ecr = ecrire_SOS_contenu(fptr, resultat_final, ecr);
                     prec_Cb = img_Cb_quantifie[0];
 
-                    free(img_Cb_ZigZag);
-                    free(img_Cb_quantifie);
-                    free(RLE);
-                    free(resultat_final);
-
                     for (uint8_t b=0;b<MCU_TAILLE;b++){
                         free(img_Cb_DCT[b]);
                         free(liste_echantillonnee[k+h1 * v1][b]);
                     }
                     free(img_Cb_DCT);
+                    free(img_Cb_ZigZag);
+                    free(img_Cb_quantifie);
+                    free(RLE);
+                    free(resultat_final);
                     free(liste_echantillonnee[k+h1 * v1]);
                 }
                 for (uint8_t k = 0; k < h3 * v3; k++)
@@ -206,16 +187,7 @@ int main(int argc, char **argv)
             
         }
 
-        // free(tab_lecture_mcu);
-        // for (uint8_t k = 0; k < h1 * v1 * 3; k++)
-        // {
-        //     for (uint8_t l = 0; l < MCU_TAILLE; l++)
-        //     {
-        //         free(liste_MCU[k][l]);
-        //     }
-        //     free(liste_MCU[k]);
-        // }
-        // free(liste_MCU);
+        
     }
     else
     {
@@ -393,6 +365,7 @@ int main(int argc, char **argv)
     fclose(fptr);
     affichage_fin(input, filename);
     free(filename);
+    liberation(liste_MCU, h1, v1);
     free(tableau_coeffs_sous_echantillonage);
     return 0;
 }

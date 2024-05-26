@@ -20,4 +20,9 @@ uint8_t **decoupage(imagePGM *tab, uint32_t i, uint32_t j);
 
 imagePGM *nouveau_tableau(imagePGM *image);
 
+uint8_t*** allocation(uint8_t h1, uint8_t v1);
+
+void liberation(uint8_t*** liste, uint8_t h1, uint8_t v1);
+
+
 #endif

@@ -21,7 +21,7 @@ data_frame Lecture_Init(const char *filename)
     }
 
     char input[3];
-    (void)fscanf(file, "%2s\n", input);
+    fscanf(file, "%2s\n", input);
     if (input[0] != 'P' || (input[1] != '6' && input[1] != '5'))
     {
         fprintf(stderr, "Le fromat n'est ni PGM ni PPM\n");
@@ -34,7 +34,7 @@ data_frame Lecture_Init(const char *filename)
     uint8_t header = 9;
     bool isRGB = input[1] == '6';
     uint32_t nb_MCU = 0;
-    (void)fscanf(file, "%hd %hd\n%hd\n", &col, &ligne, &max);
+    fscanf(file, "%hd %hd\n%hd\n", &col, &ligne, &max);
     
 
     header = header + (uint8_t)log10(max) + (uint8_t)log10(col) + (uint8_t)log10(ligne);
@@ -56,15 +56,15 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     uint32_t nb_colonne = data.nb_colonne;
     uint32_t nb_ligne = data.nb_ligne;
 
-    nb_colonne = ((nb_colonne + 7) / MCU_TAILLE) * MCU_TAILLE;
-    nb_ligne = ((nb_ligne + 7) / MCU_TAILLE) * MCU_TAILLE;
+    nb_colonne = ((nb_colonne + MCU_TAILLE - 1) / MCU_TAILLE) * MCU_TAILLE;
+    nb_ligne = ((nb_ligne + MCU_TAILLE - 1) / MCU_TAILLE) * MCU_TAILLE;
 
     uint32_t sous_matrice_par_ligne = nb_colonne / MCU_TAILLE;
-    uint32_t debut_ligne = ((number) / sous_matrice_par_ligne) * MCU_TAILLE;
-    uint32_t debut_colonne = ((number) % sous_matrice_par_ligne) * MCU_TAILLE;
+    uint32_t debut_ligne = (number / sous_matrice_par_ligne) * MCU_TAILLE;
+    uint32_t debut_colonne = (number % sous_matrice_par_ligne) * MCU_TAILLE;
 
-    bool ligne_ok = debut_ligne + 7 < data.nb_ligne;
-    bool colonne_ok = debut_colonne + 7 < data.nb_colonne;
+    bool ligne_ok = debut_ligne + MCU_TAILLE <= data.nb_ligne;
+    bool colonne_ok = debut_colonne + MCU_TAILLE <= data.nb_colonne;
 
     uint8_t max_value_i = MCU_TAILLE;
     uint8_t max_value_j = MCU_TAILLE;
@@ -86,7 +86,7 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
     }
 
     long int position_debut = data.header * sizeof(uint8_t) + debut_ligne * data.nb_colonne * sizeof(uint8_t) * taille + debut_colonne * sizeof(uint8_t) * taille;
-    (void)fseek(file, position_debut, SEEK_SET);
+    fseek(file, position_debut, SEEK_SET);
 
     for (uint8_t i = 0; i < MCU_TAILLE; i++)
     {
@@ -94,52 +94,38 @@ MCU_RGB *Read_File(data_frame data, uint64_t number)
         {
             if (data.isRGB)
             {
-                if (i < max_value_i)
+                if (i < max_value_i && j < max_value_j)
                 {
-                    if (j < max_value_j)
-                    {
-                        (void)fread(&mcu->tab[i][j], taille, 1, file);
-                    }
-                    else
-                    {
-                        mcu->tab[i][j] = mcu->tab[i][max_value_j - 1];
-                    }
+                    fread(&mcu->tab[i][j], taille, 1, file);
                 }
                 else
                 {
-                    if(j < max_value_j)
+                    if (j >= max_value_j)
+                    {
+                        mcu->tab[i][j] = mcu->tab[i][max_value_j - 1];
+                    }
+                    if (i >= max_value_i)
                     {
                         mcu->tab[i][j] = mcu->tab[max_value_i - 1][j];
-                    }
-                    else
-                    {
-                        mcu->tab[i][j] = mcu->tab[max_value_i - 1][max_value_j - 1];
                     }
                 }
             }
             else
             {
-                uint8_t pixel;
-                if (i < max_value_i)
+                uint8_t pixel = 0;
+                if (i < max_value_i && j < max_value_j)
                 {
-                    if (j < max_value_j)
-                    {
-                        (void)fread(&pixel, taille, 1, file);
-                    }
-                    else
-                    {
-                        pixel = mcu->tab[i][max_value_j - 1].R;
-                    }
+                    fread(&pixel, taille, 1, file);
                 }
                 else
                 {
-                    if(j < max_value_j)
+                    if (j >= max_value_j)
+                    {
+                        pixel = mcu->tab[i][max_value_j - 1].R;
+                    }
+                    if (i >= max_value_i)
                     {
                         pixel = mcu->tab[max_value_i - 1][j].R;
-                    }
-                    else
-                    {
-                        pixel = mcu->tab[max_value_i - 1][max_value_j - 1].R;
                     }
                 }
                 mcu->tab[i][j].R = pixel;
@@ -168,7 +154,7 @@ imagePGM_RGB *LecturePPM(const char *filename)
     }
 
     char input[3];
-    (void)fscanf(file, "%2s\n", input);
+    fscanf(file, "%2s\n", input);
     
     if (input[0] != 'P' || (input[1] != '6' && input[1] != '5'))
     {
@@ -178,7 +164,7 @@ imagePGM_RGB *LecturePPM(const char *filename)
     }
 
     int32_t col, ligne, max;
-    (void)fscanf(file, "%d %d\n%d\n", &col, &ligne, &max);
+    fscanf(file, "%d %d\n%d\n", &col, &ligne, &max);
     
     imagePGM_RGB *img = malloc(sizeof(imagePGM_RGB));
     if (img == NULL)
@@ -202,12 +188,12 @@ imagePGM_RGB *LecturePPM(const char *filename)
         {
             if (isRGB)
             {
-                (void)fread(&img->tab[i][j], sizeof(Triplet_RGB), 1, file);
+                fread(&img->tab[i][j], sizeof(Triplet_RGB), 1, file);
             }
             else
             {
                 uint8_t *pixel = malloc(sizeof(uint8_t));
-                (void)fread(pixel, sizeof(uint8_t), 1, file);
+                fread(pixel, sizeof(uint8_t), 1, file);
                 img->tab[i][j].R = *pixel;
                 img->tab[i][j].G = *pixel;
                 img->tab[i][j].B = *pixel;

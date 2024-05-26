@@ -287,5 +287,15 @@ ecritureSOS *ecrire_SOS_contenu(FILE* fptr, uint8_t* tab_MCU_huffman_Y, ecriture
     ecr2 -> compteur = biffleur;
     ecr2 -> nb = nb;
     return ecr2; //savoir ou on est dans les bits
-    }
+}
+
+void ecriture_en_tete(FILE* fptr, uint32_t nombre_ligne, uint16_t nombre_colonne, uint8_t* tableau, bool couleur)
+{
+    ecrire_debut(fptr);
+    ecrire_commentaire_SOS_PC(fptr);
+    ecrire_qtable(fptr, couleur);
+    ecrire_SOF(fptr, nombre_ligne, nombre_colonne, tableau, couleur);
+    ecrire_htable(fptr, htables_nb_symb_per_lengths, couleur);
+    ecrire_SOS_en_tete(fptr, couleur);
+}
 

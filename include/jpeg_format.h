@@ -93,4 +93,7 @@ void ecrire_commentaire_SOS(FILE* fptr);
 
 void ecrire_commentaire_SOS_PC(FILE* fptr);
 
+void ecriture_en_tete(FILE* fptr, uint32_t nombre_ligne, uint16_t nombre_colonne, uint8_t* tableau, bool couleur);
+
+
 #endif
