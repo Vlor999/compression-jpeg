@@ -35,10 +35,11 @@ int main(int argc, char **argv)
     uint8_t v2 = tableau_coeffs_sous_echantillonage[3];
     uint8_t h3 = tableau_coeffs_sous_echantillonage[4];
     uint8_t v3 = tableau_coeffs_sous_echantillonage[5];
-    printf("fin echc");
 
     data_frame our_datas = Lecture_Init(input);
+    printf("fin lecture");
     affiche_data(our_datas, mes_arguments);
+    printf("fin affiche");
 
     FILE *fptr = fopen(filename, "wb");
     ecriture_en_tete(fptr, our_datas.nb_ligne, our_datas.nb_colonne, tableau_coeffs_sous_echantillonage, couleur);
