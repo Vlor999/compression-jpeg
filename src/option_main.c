@@ -144,7 +144,6 @@ Arguments utilisation_argument(int argc, char *argv[])
         }
     }
     char *point = strrchr(input, '.');
-    printf("coucou3");
     if(point == NULL)
     {
         printf("Erreur: Le fichier d'entrée n'a pas d'extension\n");
@@ -159,7 +158,6 @@ Arguments utilisation_argument(int argc, char *argv[])
         print_help();
         exit(1);
     }
-    printf("coucou4");
     if (!output) 
     {
         if(point) 
@@ -192,7 +190,9 @@ Arguments utilisation_argument(int argc, char *argv[])
             exit(1);
         }
     }
-    printf("coucou5");
+
+
+
     if(sample_factors == NULL) 
     {
         sample_factors = "1x1,1x1,1x1";

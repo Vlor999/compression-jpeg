@@ -17,6 +17,13 @@
         "compare": "c",
         "stdint.h": "c",
         "stdbool.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "htables.h": "c",
+        "mcu.h": "c",
+        "zigzag.h": "c",
+        "progression.h": "c",
+        "option_main.h": "c",
+        "jpeg_format.h": "c",
+        "magnetude_dc.h": "c"
     }
 }
