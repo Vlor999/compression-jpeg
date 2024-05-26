@@ -28,3 +28,12 @@ clean:
 	rm -rf ppm2jpeg $(OBJ_FILES)
 	rm -rf src/*.o
 	rm -rf gmon.out
+
+
+.PHONY: real_clean
+real_clean:
+	rm -rf ppm2jpeg $(OBJ_FILES)
+	rm -rf src/*.o
+	rm -rf gmon.out
+	rm -rf images/*.jpg
+	rm -rf images/*.bla

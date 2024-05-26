@@ -364,6 +364,5 @@ uint8_t *echantillonage(char* sample_factors) {
         free(value);
         exit(1);
     }
-    printf("coucou");
     return value;
 }

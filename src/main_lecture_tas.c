@@ -21,12 +21,14 @@
 int main(int argc, char **argv)
 {
     Arguments mes_arguments = utilisation_argument(argc, argv);
+    printf("coucou1");
     char *filename = mes_arguments.output;
     char *input = mes_arguments.input;
     char *sample_factors = mes_arguments.sample_factors;
     bool couleur = mes_arguments.couleur;
     bool verbose = mes_arguments.verbose;
     bool progression = mes_arguments.progression;
+    printf("coucou2");
 
     uint8_t* tableau_coeffs_sous_echantillonage = echantillonage(sample_factors);
     uint8_t h1 = tableau_coeffs_sous_echantillonage[0];
