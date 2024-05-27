@@ -5,6 +5,7 @@
 #include "../include/conversionRGB.h"
 
 #define M_PI  3.14159265358979323846
+#define RACINE 0.70710678118
 
 int16_t calcul_dct(uint8_t **m, uint8_t i, uint8_t j, uint16_t compteur)
 {
@@ -15,7 +16,7 @@ int16_t calcul_dct(uint8_t **m, uint8_t i, uint8_t j, uint16_t compteur)
         {
             int16_t tmp = m[x][y] - 128;
             somme += tmp * tab_DCT[compteur];
-            compteur ++;
+            compteur++;
         }
     }
     somme = somme/4;
@@ -23,7 +24,7 @@ int16_t calcul_dct(uint8_t **m, uint8_t i, uint8_t j, uint16_t compteur)
         somme = somme/2;
     }
     else if (i==0 || j==0){
-        somme = somme/sqrt(2);
+        somme = somme * RACINE;
     }
     return (int16_t)somme;
 }
