@@ -44,3 +44,31 @@ int16_t **dct(uint8_t **m)
     }
     return tab_final;
 }
+
+// int main()
+// {
+//     uint8_t** m;
+//     m = (uint8_t **)malloc(8 * sizeof(uint8_t *));
+//     for (int i = 0; i < 8; i++)
+//     {
+//         m[i] = (uint8_t *)malloc(8 * sizeof(uint8_t));
+//     }
+//     for(uint8_t i = 0; i< 8; i++)
+//     {
+//         for(uint8_t j = 0; j < 8; j++)
+//         {
+//             m[i][j] = i * 8 + j;
+//         }
+//     }
+//     int16_t** final = dct(m);
+
+//     for(uint8_t i = 0; i< 8; i++)
+//     {
+//         for(uint8_t j = 0; j < 8; j++)
+//         {
+//             printf("%d\t", final[i][j]);
+//         }
+//         printf("\n");
+//     }
+
+// }

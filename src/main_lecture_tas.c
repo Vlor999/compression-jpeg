@@ -17,6 +17,8 @@
 #include "../include/conversionRGB.h"
 #include "../include/quantification.h"
 #include "../include/ss_echantillonnage2.h"
+#include "../include/fft.h"
+
 
 int main(int argc, char **argv)
 {
@@ -114,7 +116,6 @@ int main(int argc, char **argv)
             }
             uint8_t ***liste_echantillonnee = echantillonnage_complet_depuis_YCbCr(liste_MCU, tableau_coeffs_sous_echantillonage);
             
-
             for (uint8_t k = 0; k < h1 * v1; k++)
             {
                 int16_t** img_Y_DCT = dct(liste_echantillonnee[k]);
@@ -161,6 +162,7 @@ int main(int argc, char **argv)
                 }
                 for (uint8_t k = 0; k < h3 * v3; k++)
                 {
+
                     int16_t **img_Cr_DCT = dct(liste_echantillonnee[h1*v1 + h2*v2 + k]);//tableau_MCU[nb_Cb]);
                     int16_t *img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
                     int16_t *img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);

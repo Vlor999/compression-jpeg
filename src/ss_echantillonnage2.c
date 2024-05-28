@@ -197,8 +197,12 @@ uint8_t*** sous_echantillonnage_CbCr(uint8_t** grande_matrice, uint8_t h1, uint8
                     if (compteur_v == MCU_TAILLE - 1)
                     {
                         compteur++;
+                        compteur_v = 0;
                     }
-                    compteur_v = 0;
+                    else
+                    {
+                        compteur_v++;
+                    }
                     compteur_h = 0;
                 }
                 else
@@ -224,9 +228,11 @@ uint8_t ***echantillonnage_complet_depuis_YCbCr(uint8_t ***liste_matrice,uint8_t
     free(temp_Cb);
 
     uint8_t **temp_Cr = concat_matrice(liste_matrice,facteurs[0],facteurs[1],2*facteurs[1]*facteurs[0]);
-
+    
+    
     uint8_t ***liste_Cr = sous_echantillonnage_CbCr(temp_Cr,facteurs[0],facteurs[1],facteurs[4],facteurs[5]);
     
+
     for (uint16_t i=0;i<MCU_TAILLE*facteurs[1];i++){
         free(temp_Cr[i]);
     }

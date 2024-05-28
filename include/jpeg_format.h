@@ -36,7 +36,7 @@ void ecrire_fin(FILE* fptr);
 * @return rien hehe
 *
 **/
-void ecrire_qtable( FILE* fptr,bool couleur);
+void ecrire_qtable( FILE* fptr, bool couleur);
 
 
 /**

@@ -753,3 +753,189 @@ test -f ./images/zig-zag_4x1,4x1,2x1.jpg
 test -f ./images/zig-zag_4x2,1x1,1x1.jpg
 
 
+
+./ppm2jpeg --sample=1x1,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x1,1x1,1x1.jpg
+
+./ppm2jpeg --sample=1x2,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x2,1x1,1x1.jpg
+
+./ppm2jpeg --sample=1x2,1x1,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x2,1x1,1x2.jpg
+
+./ppm2jpeg --sample=1x2,1x2,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x2,1x2,1x1.jpg
+
+./ppm2jpeg --sample=1x2,1x2,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x2,1x2,1x2.jpg
+
+./ppm2jpeg --sample=1x3,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x3,1x1,1x1.jpg
+
+./ppm2jpeg --sample=1x3,1x1,1x3 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x3,1x1,1x3.jpg
+
+./ppm2jpeg --sample=1x3,1x3,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x3,1x3,1x1.jpg
+
+./ppm2jpeg --sample=1x3,1x3,1x3 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x3,1x3,1x3.jpg
+
+./ppm2jpeg --sample=1x4,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x4,1x1,1x1.jpg
+
+./ppm2jpeg --sample=1x4,1x1,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x4,1x1,1x2.jpg
+
+./ppm2jpeg --sample=1x4,1x1,1x4 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x4,1x1,1x4.jpg
+
+./ppm2jpeg --sample=1x4,1x2,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x4,1x2,1x1.jpg
+
+./ppm2jpeg --sample=1x4,1x2,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x4,1x2,1x2.jpg
+
+./ppm2jpeg --sample=1x4,1x2,1x4 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x4,1x2,1x4.jpg
+
+./ppm2jpeg --sample=1x4,1x4,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x4,1x4,1x1.jpg
+
+./ppm2jpeg --sample=1x4,1x4,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_1x4,1x4,1x2.jpg
+
+./ppm2jpeg --sample=2x1,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x1,1x1,1x1.jpg
+
+./ppm2jpeg --sample=2x1,1x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x1,1x1,2x1.jpg
+
+./ppm2jpeg --sample=2x1,2x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x1,2x1,1x1.jpg
+
+./ppm2jpeg --sample=2x1,2x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x1,2x1,2x1.jpg
+
+./ppm2jpeg --sample=2x2,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,1x1,1x1.jpg
+
+./ppm2jpeg --sample=2x2,1x1,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,1x1,1x2.jpg
+
+./ppm2jpeg --sample=2x2,1x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,1x1,2x1.jpg
+
+./ppm2jpeg --sample=2x2,1x1,2x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,1x1,2x2.jpg
+
+./ppm2jpeg --sample=2x2,1x2,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,1x2,1x1.jpg
+
+./ppm2jpeg --sample=2x2,1x2,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,1x2,1x2.jpg
+
+./ppm2jpeg --sample=2x2,1x2,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,1x2,2x1.jpg
+
+./ppm2jpeg --sample=2x2,1x2,2x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,1x2,2x2.jpg
+
+./ppm2jpeg --sample=2x2,2x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,2x1,1x1.jpg
+
+./ppm2jpeg --sample=2x2,2x1,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,2x1,1x2.jpg
+
+./ppm2jpeg --sample=2x2,2x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,2x1,2x1.jpg
+
+./ppm2jpeg --sample=2x2,2x1,2x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,2x1,2x2.jpg
+
+./ppm2jpeg --sample=2x2,2x2,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,2x2,1x1.jpg
+
+./ppm2jpeg --sample=2x2,2x2,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,2x2,1x2.jpg
+
+./ppm2jpeg --sample=2x2,2x2,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x2,2x2,2x1.jpg
+
+./ppm2jpeg --sample=2x3,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x3,1x1,1x1.jpg
+
+./ppm2jpeg --sample=2x3,1x1,1x3 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x3,1x1,1x3.jpg
+
+./ppm2jpeg --sample=2x3,1x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x3,1x1,2x1.jpg
+
+./ppm2jpeg --sample=2x3,1x3,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x3,1x3,1x1.jpg
+
+./ppm2jpeg --sample=2x3,2x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x3,2x1,1x1.jpg
+
+./ppm2jpeg --sample=2x3,2x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x3,2x1,2x1.jpg
+
+./ppm2jpeg --sample=2x4,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_2x4,1x1,1x1.jpg
+
+./ppm2jpeg --sample=3x1,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x1,1x1,1x1.jpg
+
+./ppm2jpeg --sample=3x1,1x1,3x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x1,1x1,3x1.jpg
+
+./ppm2jpeg --sample=3x1,3x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x1,3x1,1x1.jpg
+
+./ppm2jpeg --sample=3x1,3x1,3x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x1,3x1,3x1.jpg
+
+./ppm2jpeg --sample=3x2,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x2,1x1,1x1.jpg
+
+./ppm2jpeg --sample=3x2,1x1,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x2,1x1,1x2.jpg
+
+./ppm2jpeg --sample=3x2,1x1,3x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x2,1x1,3x1.jpg
+
+./ppm2jpeg --sample=3x2,1x2,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x2,1x2,1x1.jpg
+
+./ppm2jpeg --sample=3x2,1x2,1x2 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x2,1x2,1x2.jpg
+
+./ppm2jpeg --sample=3x2,3x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_3x2,3x1,1x1.jpg
+
+./ppm2jpeg --sample=4x1,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x1,1x1,1x1.jpg
+
+./ppm2jpeg --sample=4x1,1x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x1,1x1,2x1.jpg
+
+./ppm2jpeg --sample=4x1,1x1,4x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x1,1x1,4x1.jpg
+
+./ppm2jpeg --sample=4x1,2x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x1,2x1,1x1.jpg
+
+./ppm2jpeg --sample=4x1,2x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x1,2x1,2x1.jpg
+
+./ppm2jpeg --sample=4x1,2x1,4x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x1,2x1,4x1.jpg
+
+./ppm2jpeg --sample=4x1,4x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x1,4x1,1x1.jpg
+
+./ppm2jpeg --sample=4x1,4x1,2x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x1,4x1,2x1.jpg
+
+./ppm2jpeg --sample=4x2,1x1,1x1 ./images/shaun_sheep.ppm --st
+test -f ./images/shaun_sheep_4x2,1x1,1x1.jpg
