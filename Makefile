@@ -1,41 +1,41 @@
-CC = gcc -lm -lpthread
+# Compilateur et options
+CC = gcc
 LD = gcc
-
-# -O0 désactive les optimisations à la compilation
-# C'est utile pour débugger, par contre en "production"
-# on active au moins les optimisations de niveau 2 (-O2).
 CFLAGS = -Wall -Wextra -std=c99 -Iinclude -O2 -g
-LDFLAGS = -lm -lpthread
+LDFLAGS = -lm
 
-# Par défaut, on compile tous les fichiers source (.c) qui se trouvent dans le
-# répertoire src/
-SRC_FILES=$(wildcard src/*.c)
+# Fichiers source et objets
+SRC_DIR = src
+OBJ_DIR = obj
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
 
-# Par défaut, la compilation de src/toto.c génère le fichier objet obj/toto.o
-OBJ_FILES=$(patsubst src/%.c,obj/%.o,$(SRC_FILES))
-
+# Cible par défaut
 all: ppm2jpeg
 
+# Cible principale : construction de l'exécutable
 ppm2jpeg: $(OBJ_FILES)
+	@echo "Édition des liens pour créer l'exécutable : $@"
 	$(LD) $(OBJ_FILES) $(LDFLAGS) -o $@
 
-obj/%.o: src/%.c
+testAll: ppm2jpeg
+	@echo "Lancement des tests"
+	./execution_all
+
+# Règle de construction des fichiers objets
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)  # Création du dossier obj si nécessaire
+	@echo "Compilation de $< -> $@"
 	$(CC) -c $(CFLAGS) $< -o $@
 
+# Nettoyage des fichiers objets et exécutables
 .PHONY: clean
-
 clean:
-	rm -rf ppm2jpeg $(OBJ_FILES)
-	rm -rf src/*.o
-	rm -rf gmon.out
+	@echo "Nettoyage des fichiers objets et de l'exécutable"
+	rm -rf ppm2jpeg $(OBJ_DIR)/*.o
 
-
+# Nettoyage complet
 .PHONY: real_clean
-real_clean:
-	rm -rf ppm2jpeg $(OBJ_FILES)
-	rm -rf src/*.o
-	rm -rf gmon.out
-	rm -rf images/*.jpg
-	rm -rf images/*.bla
-	rm -rf images/our_images/*.jpg
-	rm -rf images/our_images/*.bla
+real_clean: clean
+	@echo "Nettoyage complet (fichiers générés et résultats)"
+	rm -rf $(OBJ_DIR) images/*.jpg images/*.bla images/our_images/*.jpg images/our_images/*.bla

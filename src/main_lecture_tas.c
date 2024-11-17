@@ -17,7 +17,6 @@
 #include "../include/conversionRGB.h"
 #include "../include/quantification.h"
 #include "../include/ss_echantillonnage2.h"
-#include "../include/DCT_2.h"
 
 
 int main(int argc, char **argv)
@@ -118,7 +117,7 @@ int main(int argc, char **argv)
             
             for (uint8_t k = 0; k < h1 * v1; k++)
             {
-                int16_t** img_Y_DCT = dct_2(liste_echantillonnee[k]);
+                int16_t** img_Y_DCT = dct(liste_echantillonnee[k]);
                 int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
                 int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
                 RLE = codage_AC_RLE(img_Y_quantifie);
@@ -141,7 +140,7 @@ int main(int argc, char **argv)
             {
                 for (uint8_t k = 0; k < h2 * v2; k++)
                 {
-                    int16_t **img_Cb_DCT = dct_2(liste_echantillonnee[k + h1 * v1]);//tableau_MCU[nb_Cb]);
+                    int16_t **img_Cb_DCT = dct(liste_echantillonnee[k + h1 * v1]);//tableau_MCU[nb_Cb]);
                     int16_t *img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
                     int16_t *img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
                     RLE = codage_AC_RLE(img_Cb_quantifie);
@@ -163,7 +162,7 @@ int main(int argc, char **argv)
                 for (uint8_t k = 0; k < h3 * v3; k++)
                 {
 
-                    int16_t **img_Cr_DCT = dct_2(liste_echantillonnee[h1*v1 + h2*v2 + k]);//tableau_MCU[nb_Cb]);
+                    int16_t **img_Cr_DCT = dct(liste_echantillonnee[h1*v1 + h2*v2 + k]);//tableau_MCU[nb_Cb]);
                     int16_t *img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
                     int16_t *img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
                     RLE = codage_AC_RLE(img_Cr_quantifie);
@@ -287,7 +286,7 @@ int main(int argc, char **argv)
                 }
             }
             
-            int16_t** img_Y_DCT = dct_2(mcu_Y);
+            int16_t** img_Y_DCT = dct(mcu_Y);
             int16_t* img_Y_ZigZag = zigzag_matrice1(img_Y_DCT);
             int16_t* img_Y_quantifie = quotient_qtable_Y(img_Y_ZigZag);
             RLE = codage_AC_RLE(img_Y_quantifie);
@@ -300,7 +299,7 @@ int main(int argc, char **argv)
             if (couleur)
             { // on fait Cb et Cr
                 // Partie Cb
-                int16_t **img_Cb_DCT = dct_2(mcu_Cb);//tableau_MCU[nb_Cb]);
+                int16_t **img_Cb_DCT = dct(mcu_Cb);//tableau_MCU[nb_Cb]);
                 int16_t *img_Cb_ZigZag = zigzag_matrice1(img_Cb_DCT);
                 int16_t *img_Cb_quantifie = quotient_qtable_CbCr(img_Cb_ZigZag);
                 RLE = codage_AC_RLE(img_Cb_quantifie);
@@ -318,7 +317,7 @@ int main(int argc, char **argv)
 
 
                 // Partie Cr
-                int16_t **img_Cr_DCT = dct_2(mcu_Cr);//tableau_MCU[nb_Cr]);
+                int16_t **img_Cr_DCT = dct(mcu_Cr);//tableau_MCU[nb_Cr]);
                 int16_t *img_Cr_ZigZag = zigzag_matrice1(img_Cr_DCT);
                 int16_t *img_Cr_quantifie = quotient_qtable_CbCr(img_Cr_ZigZag);
                 RLE = codage_AC_RLE(img_Cr_quantifie);

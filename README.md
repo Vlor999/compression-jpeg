@@ -1,69 +1,93 @@
-# Projet JPEG : 1A
-## Team 6 :
-## ADNET Willem, DA CRUZ Édouard, ZABIEGO Hugo
+# Projet JPEG - 1A  
+**Team 6**  
+- Willem Adnet  
+- Édouard Da Cruz  
+- Hugo Zabiego  
 
-### Présentation: 
+## Introduction  
 
-Nous vous présentons ici notre projet **JPEG** qui consiste à convertir une image sous format ppm/pgm en une image compressée sous format **JPEG**. Nous allons tout d'abord vous présenter les points suivants :   
+Ce projet a pour objectif de convertir une image au format **PPM/PGM** en une image compressée au format **JPEG**. Nous détaillons ici les étapes clés du projet ainsi que les choix techniques et méthodologiques adoptés.
 
-1) Découpage des fonctionnalités du projet en module.
-2) Structure de donnée du projet.
-3) Répartition des tâches au sein de l'équipe.
+## Découpage des fonctionnalités du projet  
 
-Il sera alors présenter l'avancement à chque étape du projet.
+1. **Lecture et génération d'images**  
+   - Lecture des images PPM/PGM à partir d'un chemin spécifié.  
+   - Génération d'images PPM/PGM à partir de matrices définies.  
 
-#### 1 : Le découpage des fonctionnalités du projet en module.
+2. **Conversion de l'image en YCbCr**  
+   - Transformation des images RGB au format YCbCr.  
 
-1) Module 1 : 
-    1) Module 1.1 : Lecture des images **PPM/PGM**.
-        1) Entrée : Chemin d'accès des images.
-        2) Sortie : Images **PGM** ou **PPM** : matrice de taille **M × N** (**M** lignes et **N** colonnes).
-    2) Module 1.2 : Génération des images **PGM** et **PPM**.
-        1) Entrée : Nombre d'images à générer.
-        2) Sortie : Images **PGM** ou **PPM** : matrice de taille **M × N**.
-2) Module 2 : Conversion de l'image en **YCbCr**.
-    1) Entrée : Image **PPM** ou **PGM** sous format **RGB**.
-    2) Sortie : Image sous format **YCbCr** : matrice de taille **M × N**.
-3) Module 3 : Sous-échantillonnage de l'image.
-    1) Entrée : Image sous format **YCbCr**.
-    2) Sortie : Image sous format **YCbCr** sous-échantillonnée sous le format : 
-        * h<sub>1</sub> × v<sub>1</sub>, h<sub>2</sub> × v<sub>2</sub>, h<sub>3</sub> × v<sub>3</sub>.
-4) Module 4 : Transformation **DCT**.
-    1) Entrée : Image sous format **YCbCr** : matrices d'entiers non signés sur 16 bits.
-    2) Sortie : Image sous format **DCT** : matrices d'entiers signés.
-5) Module 5 : ZigZag.
-    1) Entrée : Image sous format **DCT**.
-    2) Sortie : Image sous format **ZigZag** : Vecteur ligne d'entiers signés vecteur de taille : **MN**.
-6) Module 6 : Quantification.
-    1) Entrée : Image sous format **ZigZag** : Vecteur ligne.
-    2) Sortie : Image sous format **ZigZag** : Vecteur quantifié mais avec le même format que précédement.
-7) Module 7 : Encodage **RLE**.
-    1) Entrée : Image sous format **ZigZag** : Vecteur quantifié.
-    2) Sortie : Image sous format **RLE** : Compression des zéros.
-8) Module 8 : Encodage **Huffman**.
-    1) Entrée : Image sous format **RLE**.
-    2) Sortie : Image sous format **Huffman** : Compression des pixels via le codage de Huffan préfixé.
-9) Module 9 : Ecriture de l'image compressée.
-    1) Entrée : Image sous format **Huffman**.
-    2) Sortie : Image compressée sous format **JPEG**.
-10) Module 10 : Optimisation de la compression **JPEG**.
-    1) Entrée : Notre code de compression **JPEG**.
-    2) Sortie : Image compressée sous format **JPEG** optimisée, plus rapidement et en utilisant moins d'espace mémoire.
+3. **Sous-échantillonnage**  
+   - Réduction des composantes chromatiques selon des ratios prédéfinis.  
 
-#### 2 : Structure de donnée du projet.
+4. **Transformation DCT**  
+   - Conversion des données spatiales en données fréquentielles via la transformation discrète en cosinus.  
 
-<img src="IMG_1210.jpg">
+5. **ZigZag**  
+   - Réorganisation des coefficients DCT en un vecteur ligne.  
 
-#### 3 : Répartition des tâches au sein de l'équipe.
+6. **Quantification**  
+   - Réduction de la précision des coefficients pour maximiser la compression.  
 
-<img src="IMG_1182.jpg">
+7. **Encodage RLE**  
+   - Compression des séquences de zéros en utilisant l'encodage Run-Length.  
 
-### Compte - Rendu : 
-#### Semaine 1:
-Le but de cette première semaine était d'voir un code qui fonctionnne pour les iamges de tailles 8 x 8 afin d'avoir une structure fonctionnelle. Cette étape clés à été réussi et permet d'avoir une idée globale de comment fonctionne la compression JPEG. Nous avons aussi pu remarquer que pour des images de petites tailles alors la compression ne fait pas son travailler. Pour l'images invaders, nous avions une image de 75 bytes et après compression JPEG nous avons une image de 380 bytes. Finalement nous avons pu voir que la structure globale de l'image ne changeaient effectivement pas : <img src="images/invader.jpg">
+8. **Codage Huffman**  
+   - Compression des coefficients via un algorithme de codage préfixé.  
 
-#### Semaine 2:
-Nous avons en cette deuxième semaine réussi à encoder toutes les images, mêmes celles en couleur. La compression est efficace avec un gain de rapport 10 mais est assez lent. Il est alors nécessaire d'améliorer l'efficacité et de faire le sous-échantillonage.
+9. **Écriture de l'image compressée**  
+   - Génération de fichiers conformes au standard JPEG.  
 
-#### Semaine 3:
-Nous avons gérer toutes les erreurs la semaine dernière, nous avons toutes les images en couleur et sans couleur. De plus, l'optimisation a permisde gagner beaucoup de temps de calcul sur les grands images. Nous avons libérer au mieux l'espace mémoire mais il y a toujours des problèmes.
+10. **Optimisation**  
+    - Amélioration des performances et réduction de l'utilisation mémoire.  
+
+## Structure des données  
+
+Le projet repose sur une organisation modulaire et utilise des matrices et vecteurs pour représenter les images à chaque étape du processus.  
+
+## Répartition des tâches  
+
+- **Willem Adnet** : Transformation DCT, ZigZag, et quantification.  
+- **Édouard Da Cruz** : Conversion YCbCr et sous-échantillonnage.  
+- **Hugo Zabiego** : Encodages RLE et Huffman, écriture JPEG.  
+
+## Compilation et exécution  
+
+Le projet utilise un fichier `Makefile` pour automatiser la compilation et la gestion des fichiers.  
+
+### Commandes disponibles  
+
+- **`make` ou `make all`** : Compile le projet et génère l'exécutable `ppm2jpeg`.  
+- **`make clean`** : Supprime les fichiers objets (.o) et l'exécutable généré.  
+- **`make real_clean`** : Supprime tous les fichiers générés, y compris les fichiers compressés dans les dossiers `images` et `images/our_images`.  
+
+### Dépendances  
+
+Le projet utilise :  
+- Le compilateur GCC avec les options :  
+  - `-Wall` : Affiche tous les avertissements.  
+  - `-Wextra` : Affiche des avertissements supplémentaires.  
+  - `-std=c99` : Force l'utilisation du standard C99.  
+  - `-O2` : Optimisations de niveau 2.  
+  - `-g` : Ajoute les symboles de débogage.  
+- Les bibliothèques :  
+  - `-lm` : Pour les calculs mathématiques.  
+  - `-lpthread` : Pour les threads POSIX.  
+
+### Structure des fichiers  
+
+- **Code source** : Les fichiers `.c` sont dans le dossier `src/`.  
+- **Fichiers objets** : Générés dans le dossier `obj/`.  
+- **Exécutable** : Produit final nommé `ppm2jpeg`.  
+
+## Limitations  
+
+- La compression peut être inefficace pour les très petites images.  
+- Quelques problèmes subsistent dans la gestion mémoire, nécessitant une attention future.  
+
+## Conclusion  
+
+Le projet illustre les concepts fondamentaux de la compression JPEG tout en mettant en lumière les défis techniques associés à sa mise en œuvre. Les prochaines étapes incluraient des optimisations supplémentaires pour une meilleure gestion des ressources.
+
+---  
+**Note** : Ce projet a été réalisé dans le cadre de notre première année d'étude et peut servir de base pour des travaux ultérieurs en traitement d'image.
