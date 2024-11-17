@@ -24,6 +24,8 @@
         "progression.h": "c",
         "option_main.h": "c",
         "jpeg_format.h": "c",
-        "magnetude_dc.h": "c"
+        "magnetude_dc.h": "c",
+        "ss_echantillonnage2.h": "c",
+        "dct.h": "c"
     }
 }
